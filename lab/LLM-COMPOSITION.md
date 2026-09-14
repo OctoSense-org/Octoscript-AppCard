@@ -115,6 +115,15 @@ The application owns live context and runtime state. Lab tools build, export
 and validate capabilities consumed by that application. Preserve current paths
 until their consumers and capture provenance have a tested migration.
 
+## Interactive image-flow delivery
+
+[image-to-appcard-flow](image-to-appcard-flow/README.md) implements the delivery
+extension for an authored 8–12-screen service journey: one atlas, source-bound
+native mapping, explicit service ownership, subtree extraction, reducer tests,
+WASM packaging and native-input browser checks. Applications still supply their
+own service model and state bindings. This does not claim the broader automatic
+context selection or capability-registry completion described above.
+
 ## Completion criteria
 
 Both import pipelines register every reusable capability or explain why it is

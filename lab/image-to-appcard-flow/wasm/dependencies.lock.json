@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "description": "Exact dependency revisions and tracked local changes used by the validated Makepad/Splash service-card runtime. Native-only compatibility hunks are retained in the snapshot; no submodule commits are changed.",
+  "dependencies": {
+    "makepad": {
+      "revision": "38f4d3bc28938dfc8d8afe05082e84e599c0575d",
+      "origin": "https://github.com/OctoSense-org/makepad.git",
+      "patch": "patches/makepad.patch",
+      "patch_sha256": "695a4c6b649e0b108fe796f19b7f138b699c2042e9c10042f6369da557477247",
+      "modified_sources": {
+        "draw/src/shader/draw_text.rs": "b5e6645cd0e7568970a47554e5b616a190d3a2bd876b3b44eb7812fb7da5e4df",
+        "draw/src/text/font_family.rs": "75c4f254c42fecab8baab38ad8da8835c130a766e304177b12035cb04bc04a32",
+        "draw/src/text/fonts.rs": "c5f16d855e77294c5d17850ef4511ac2e92c37e5c2a295e9e353c3054a0ce830",
+        "draw/src/text/layouter.rs": "926f4ed2badeced3de365c523bf1ae26fb793895cca41cdb495e168382dac9d9",
+        "platform/script/src/vm.rs": "355a46d33727418ac86ca1a598f14e0907257494a594e53099a4236c26e07299",
+        "tools/cargo_makepad/src/studio.rs": "9649f486231b9e3ca9d8c9c31eb11c2422e1f350185e24b95db28cef868bf603",
+        "widgets/src/gauss_view.rs": "f319ec43c184093464e465e3b4ac42544e76d026599cd9597a87237e7d9f3840",
+        "widgets/src/label.rs": "50ee7c538e0550b929312b1e92fdf75e2709a243c460e36fc34e2683d47929ad",
+        "widgets/src/view.rs": "85eede98f2019b525032b63547ce4cb1fc4df4ccdb692dbe65ac143ae5710e71",
+        "widgets/src/widget.rs": "4c200598bb14f86f455d8524acb27af7f08d0773b62bd694be8994b54361590f"
+      }
+    },
+    "splash": {
+      "revision": "7a77b075f37449b34f135879a5563a27b806edd4",
+      "origin": "https://github.com/OctoSense-org/Octoscript.git",
+      "patch": "patches/splash.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modified_sources": {}
+    },
+    "splash-makepad": {
+      "revision": "3a3bdb4fe74456e18c6416d54ff51ec1f4016bca",
+      "origin": "https://github.com/OctoSense-org/Octoscript-Makepad.git",
+      "patch": "patches/splash-makepad.patch",
+      "patch_sha256": "dec18a6a844351c5941a4e29336fcfb85534e4857b22dd08fe7bd767b7af6ee6",
+      "modified_sources": {
+        "apps/kit-host/src/beauty.rs": "ce327f9acff79f4eae80ca673b346a7570037901d406103f2751ef966409958b",
+        "crates/makepad-plot/src/chart_paint.rs": "4a6a736ad15a8dd69b3f397cdb7ac3cc453e21c7ac8efc427671dfde55b5aa60",
+        "crates/makepad-plot/src/plot_view.rs": "822d0c65dcdfac3620593b720afceb0226c2c006b659ee25da3276b2452827ee",
+        "crates/splash-makepad/src/design.rs": "4e2a3d77f832de634690b1625b28f1f38e97104e41ac0df30c029cd8017c126d",
+        "crates/splash-render/src/eval.rs": "b9ca518b15ef4260af0faeac8b2caff80ca945b8b852d4b0509788ade1a0e275",
+        "makepad.splash": "0ebd1d3fdd522a8b97dd7655ef4e5a61de61af0f6ace074aa59e8ab6d3aa5ae7"
+      }
+    }
+  },
+  "lab_compatibility": {
+    "revision": "6c5759fbebf74254ec5ede0fa7992b29f9b6cfa7",
+    "patch": "patches/image-to-appcard.patch",
+    "patch_sha256": "9cee49a7f5ba2b4eb96708afce630e7e34767b525a67331eaa605fb40e0f404d",
+    "modified_sources": {
+      "lab/image-to-appcard/observe.py": "fb72689790f5f7f29ca9453f47b0da8d93304ee4cece6634bb5a3110b3466a26",
+      "lab/image-to-appcard/ocr.swift": "216ae38249b81bb25250bfde267b2907d9e1b4317fbe525287b3e30f4c164f02",
+      "lab/image-to-appcard/studio.py": "48f88eb2e5a778fdd39abbf7630110001bb793fe10efa6407da3a2e069b738d9",
+      "lab/image-to-appcard/test_capture_lifecycle.py": "51a32e24ec237350c68e10da0f7cfb6453f17ca880a9db17792594b96a54b050"
+    },
+    "scope": "Chinese OCR, disabled native action checks, per-artboard viewport cropping and capture lifecycle tests. Required for the recorded native inspection workflow, not the in-memory WASM compiler."
+  }
+}

@@ -6,6 +6,13 @@
 #   tools/beauty-pipeline.sh --kit <name> --stages audit
 #   tools/beauty-pipeline.sh --kit <name> --stages report
 set -euo pipefail
+if [[ "${1:-}" == "--image-to-appcard-flow" ]]; then
+    shift
+    ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+    PYTHON="${BEAUTY_PYTHON:-$ROOT/lab/image-to-appcard/.venv/bin/python}"
+    if [[ ! -x "$PYTHON" ]]; then PYTHON=python3; fi
+    exec "$PYTHON" "$ROOT/lab/image-to-appcard-flow/flow.py" "$@"
+fi
 if [[ "${1:-}" == "--repair" ]]; then
     shift
     ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

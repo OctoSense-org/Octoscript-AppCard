@@ -1,0 +1,20 @@
+name: image-to-appcard-flow
+on:
+  push:
+    paths: ['lab/image-to-appcard-flow/**', 'tools/image-to-appcard-flow.sh', '.github/workflows/image-to-appcard-flow.yml']
+  pull_request:
+    paths: ['lab/image-to-appcard-flow/**', 'tools/image-to-appcard-flow.sh', '.github/workflows/image-to-appcard-flow.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pipeline-tests:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r lab/image-to-appcard/requirements.txt
+      - run: python -m unittest discover -s lab/image-to-appcard-flow -p 'test_*.py'
+      - run: python -m unittest discover -s lab/image-to-appcard-flow/wasm -p 'test_*.py'

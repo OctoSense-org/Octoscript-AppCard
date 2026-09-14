@@ -18,6 +18,11 @@ builds it. One OS, many app agents, one routing brain that can grow the app set.
 
 ## What's here
 
+For the complete generated-image → interactive native service-card → WASM website
+workflow, see [image-to-appcard-flow](lab/image-to-appcard-flow/README.md).
+It starts from one 8–12-screen atlas and preserves source, widget and verification
+provenance through the native and browser stages.
+
 ```
 octos-one/
   app/          The Android client (Makepad + Rust). The AMA (router + composer),

@@ -6,10 +6,12 @@ select from context and validate the resulting native composition. Directory
 cleanup supports that product goal. The linked contract distinguishes current
 runtime capabilities from the exposure and context work still required.
 
-The lab keeps exactly two supported paths, Sketch → AppCard and image → AppCard, and one shared
+The lab keeps two source adapters, Sketch → AppCard and image → AppCard, and one shared
 `core`: `core` owns policy, review, repair, the Studio transport, composition and gates and the
 native renderer; `sketch-to-appcard` owns document import and kit promotion; `image-to-appcard`
-owns image observation and mapping. Keep shared
+owns image observation and mapping. `image-to-appcard-flow` extends the image
+adapter into multi-screen service state, independent cards and WASM/web delivery;
+it reuses core gates and does not define a third source adapter. Keep shared
 rules in the core and source-specific conversion in its adapter. New
 experiments belong in a named study directory with a README stating purpose,
 inputs, entry point and status. Remove obsolete studies after checking their
@@ -38,6 +40,9 @@ lab/
     <design-id>/            prompt, reference, contract and reviewed mapping
       rounds/<round>/       immutable capture evidence (ignored)
     .venv/                  local environment (ignored)
+  image-to-appcard-flow/    whole-flow orchestration, atlas intake, native subtree
+                            export, provenance-aware bundle and WASM templates;
+                            application sources/evidence stay in external projects
 ```
 
 Code, durable input descriptions and generic examples are versionable. New

@@ -1,0 +1,160 @@
+diff --git a/apps/kit-host/src/beauty.rs b/apps/kit-host/src/beauty.rs
+index ef3c677e63fe1faf78a28239ef4617484bbdc35c..1a84a2bf4428aff5ffecffa488078fdb12ffd45d 100644
+--- a/apps/kit-host/src/beauty.rs
++++ b/apps/kit-host/src/beauty.rs
+@@ -104,8 +104,11 @@ impl App {
+             splash_makepad::to_makepad_l0_ui(&tree)
+         };
+         let code = format!(
+-            "use mod.prelude.widgets.*\nlet root = View{{width:Fill height:Fill flow:Overlay {ui}}}\nroot"
++            "use mod.prelude.widgets.*\nreturn View{{width:Fill height:Fill flow:Overlay {ui}}}"
+         );
++        if let Some(layout) = r["layout"].as_str() {
++            let _ = std::fs::write(format!("{layout}.native.splash"), &code);
++        }
+         let sm = ScriptMod {
+             cargo_manifest_path: env!("CARGO_MANIFEST_DIR").into(),
+             module_path: module_path!().into(),
+@@ -118,7 +121,8 @@ impl App {
+         let view = cx.with_vm(|vm| {
+             let value = vm
+                 .eval_checked(sm, 2_000_000)
+-                .ok_or("native VM rejected the widget tree")?;
++                .ok_or_else(|| format!("native VM rejected the widget tree; consumed={}; captured={:?}",
++                    vm.last_limit_consumed(), vm.bx.captured_errors))?;
+             Ok::<_, String>(View::script_from_value(vm, value))
+         })?;
+         let width = r["width"].as_f64().ok_or("missing width")?;
+@@ -148,7 +152,11 @@ impl App {
+             splash_widgets::kit::retire_overlay(cx,&widget);
+             let list=widget.borrow::<DesignOverlay>().and_then(|v|v.draw_list.as_ref().map(|l|l.id()))
+                 .or_else(||widget.borrow::<DesignGlassSvg>().and_then(|v|v.draw_list.as_ref().map(|l|l.id())));
+-            if let Some(id)=list {cx.draw_lists[id].clear_draw_items(cx.redraw_id);}
++            if let Some(id)=list {
++                let recording_gen=cx.next_uniform_gen();
++                let uniforms_gen=cx.next_uniform_gen();
++                cx.draw_lists[id].clear_draw_items(cx.redraw_id,recording_gen,uniforms_gen);
++            }
+             let mut children=Vec::new();
+             widget.children(&mut |_,child|children.push(child));
+             for child in children {retire_overlay(cx,child);}
+diff --git a/crates/makepad-plot/src/chart_paint.rs b/crates/makepad-plot/src/chart_paint.rs
+index fbed0213ecf1f49a5c3556c433ae0f946e9303db..f4b2d32c494c98d72f07a0b4a9319eda8ef7c81f 100644
+--- a/crates/makepad-plot/src/chart_paint.rs
++++ b/crates/makepad-plot/src/chart_paint.rs
+@@ -27,7 +27,7 @@ impl ChartPaint {
+ 
+     pub fn apply(&self, draw: &mut DrawVector, x: f32, y: f32, w: f32, h: f32) {
+         let stops: Vec<_> = self.stops.iter().map(|&(offset,c)| GradientStop {
+-            offset, color:[c.x*c.w,c.y*c.w,c.z*c.w,c.w], straight_rgb:Some([c.x,c.y,c.z]),
++            offset, color:[c.x*c.w,c.y*c.w,c.z*c.w,c.w],
+         }).collect();
+         draw.cur_gradient_row_v=draw.add_gradient_row(&stops);
+         if self.radial {
+diff --git a/crates/makepad-plot/src/plot_view.rs b/crates/makepad-plot/src/plot_view.rs
+index 046193b3718d555084b96c720b4e02353a3d2377..700c12653c9aab01ecde6431f3dd350c3353334d 100644
+--- a/crates/makepad-plot/src/plot_view.rs
++++ b/crates/makepad-plot/src/plot_view.rs
+@@ -276,6 +276,7 @@ impl PlotView {
+                 height: Size::Fixed(self.rect.size.y),
+                 margin: Inset::default(),
+                 metrics: Metrics::default(),
++                ..Walk::default()
+             },
+             Layout {
+                 clip_x: self.clip_plot,
+@@ -748,8 +749,8 @@ impl PlotView {
+         let top=self.plot_rect.pos.y as f32;
+         let bottom=(self.plot_rect.pos.y+self.plot_rect.size.y) as f32;
+         let stops=vec![
+-            GradientStop{offset:0.,color:[color.x*color.w,color.y*color.w,color.z*color.w,color.w],straight_rgb:None},
+-            GradientStop{offset:1.,color:[0.;4],straight_rgb:None},
++            GradientStop{offset:0.,color:[color.x*color.w,color.y*color.w,color.z*color.w,color.w]},
++            GradientStop{offset:1.,color:[0.;4]},
+         ];
+         self.draw_vector.cur_gradient_row_v=self.draw_vector.add_gradient_row(&stops);
+         self.draw_vector.set_paint(VectorPaint::linear_gradient(0.,top,0.,bottom,stops));
+diff --git a/crates/splash-makepad/src/design.rs b/crates/splash-makepad/src/design.rs
+index 348a3a9108bc44e5ee6cd6a3bfb0128f1c40fe48..e79d4f36f1b5d95d3831b4035b4ffa45819df973 100644
+--- a/crates/splash-makepad/src/design.rs
++++ b/crates/splash-makepad/src/design.rs
+@@ -4,6 +4,30 @@
+ use splash_render::{NodeKind, UiNode};
+ use std::fmt::Write;
+ 
++fn design_asset_allowed(src: &str) -> bool {
++    if src.starts_with("http://127.0.0.1:") { return true; }
++    #[cfg(target_arch = "wasm32")]
++    if src.starts_with("http://localhost:") || src.starts_with("http://localhost/") { return true; }
++    // The browser host additionally checks against its own iframe origin/base.
++    // Native/lab builds retain their loopback-only resource rule.
++    #[cfg(target_arch = "wasm32")]
++    for base in [
++        "https://octosense.org/wasm/service-cards/card-assets/",
++        "https://octosense-org.github.io/wasm/service-cards/card-assets/",
++        "https://octosense-org.github.io/Octosense-website/wasm/service-cards/card-assets/",
++    ] {
++        if let Some(path) = src.strip_prefix(base) {
++            let parts: Vec<_> = path.split('/').collect();
++            if parts.len() == 3 && parts[1] == "assets"
++                && parts.iter().all(|part| !part.is_empty() && *part != "." && *part != ".."
++                    && part.bytes().all(|c| c.is_ascii_alphanumeric() || matches!(c, b'-' | b'_' | b'.'))) {
++                return true;
++            }
++        }
++    }
++    false
++}
++
+ /// Turn template-local child paths into the IDs of this mounted instance.
+ /// Reject broken bindings before evaluating any Makepad widget source.
+ pub fn kit_contract(n: &UiNode) -> Result<Option<serde_json::Value>, String> {
+@@ -335,7 +359,7 @@ pub fn to_makepad_ui(tree: &UiNode) -> Result<String, String> {
+             }
+             NodeKind::Image => {
+                 let src = a.src.as_ref().ok_or("design image resource required")?;
+-                if !src.starts_with("http://127.0.0.1:") {
++                if !design_asset_allowed(src) {
+                     return Err("design assets must use the lab's local asset server".into());
+                 }
+                 writeln!(out, "src: http_resource({src:?}) fit: ImageFit.Stretch").unwrap();
+@@ -356,7 +380,7 @@ pub fn to_makepad_ui(tree: &UiNode) -> Result<String, String> {
+                     writeln!(out,"draw_svg.overlay_blend: {}",a.value.unwrap_or(0.)).unwrap();
+                 }
+                 let src=a.src.as_ref().ok_or("design SVG resource required")?;
+-                if !src.starts_with("http://127.0.0.1:") || !src.ends_with(".svg") {
++                if !design_asset_allowed(src) || !src.ends_with(".svg") {
+                     return Err("design vectors require a local SVG asset".into());
+                 }
+                 writeln!(out,"animating: false draw_svg.svg: http_resource({src:?}) draw_svg.preserve_viewbox: true draw_svg.preserve_aspect: false").unwrap();
+diff --git a/crates/splash-render/src/eval.rs b/crates/splash-render/src/eval.rs
+index 92cb0d2935f2a436f218651748d22f7888798fa6..a555e696b660d67ae9f620169b72f47184ebfa5c 100644
+--- a/crates/splash-render/src/eval.rs
++++ b/crates/splash-render/src/eval.rs
+@@ -17,11 +17,9 @@ use splash_node::{Attrs, NodeKind, UiNode};
+ /// Returns `None` for evaluation errors, exhausted execution/tree budgets or any
+ /// malformed node. A failed child invalidates the entire tree.
+ pub fn build(src: &str, register: impl FnOnce(&mut ScriptVm)) -> Option<UiNode> {
+-    let mut std_slot = 0;
+-    let mut host = 0;
++    let mut host = ScriptVmHost::new((), ());
+     let vm = &mut ScriptVm {
+         host: &mut host,
+-        std: &mut std_slot,
+         bx: Box::new(ScriptVmBase::new()),
+     };
+ 
+diff --git a/makepad.splash b/makepad.splash
+index 2059dbd5f3c8a565dc9674be21aa7dbae310178a..d43abd4b41a3cf5de4d7d8cb258b5341cf0de50c 100644
+--- a/makepad.splash
++++ b/makepad.splash
+@@ -9,7 +9,8 @@ hub.set_run_items([
+         on_run: fn(id) {
+             hub.run(
+                 {"STUDIO_HOST": hub.studio_local_host() "STUDIO_BUILD": id.to_string()
+-                 "STUDIO_CRATE": "kit-host" "BEAUTY_REQUEST": "../lab/ux-image/current-request.json"},
++                 "STUDIO_CRATE": "kit-host" "BEAUTY_REQUEST": "../lab/image-to-appcard/current-request.json"
++                 "CARGO_PROFILE_RELEASE_LTO": "false"},
+                 "cargo",
+                 ["run" "-p" "kit-host" "--bin" "beauty-host" "--release" "--message-format=json"
+                  "--" "--message-format=json" "--stdin-loop"]

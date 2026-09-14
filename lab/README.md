@@ -6,7 +6,12 @@ preferences, time of day and other supplied context. Sketch and generated-image
 conversion build this library; native validation makes its capabilities
 reviewable. See [the composition contract and current gaps](LLM-COMPOSITION.md).
 
-For current beauty-card work, start with
+For a complete agentic application journey, start with
+[image-to-appcard-flow](image-to-appcard-flow/README.md): one 8–12-screen atlas,
+reviewed native scenes, independently owned service cards, click-driven state,
+Makepad WASM and verified Astro integration. Run `tools/image-to-appcard-flow.sh`.
+
+For individual beauty-card work, start with
 [the generic reproduction guide](core/REPRODUCE.md). Both Sketch and
 generated-image inputs produce native Makepad widgets and pass Studio
 inspection, semantic checks and explicit visual review. The entry point is
@@ -17,6 +22,7 @@ inspection, semantic checks and explicit visual review. The entry point is
 | [core](core/README.md) | Current shared infrastructure | Mapping policy, repair engine, review packets, Studio bridge, reproducible setup |
 | [sketch-to-appcard](sketch-to-appcard/README.md) | Current Sketch adapter | Import, native/L0 composition, kit promotion, capture and gates; `run_kit.py` |
 | [image-to-appcard](image-to-appcard/README.md) | Current image adapter | Prompt/contract intake, OCR and measurements, widget mapping, capture and gates; `run.py` |
+| [image-to-appcard-flow](image-to-appcard-flow/README.md) | Service-flow extension of the image adapter | Single-atlas intake, native subtree export, service checks, WASM packaging and web integration; `flow.py` |
 | `tests/` | Maintenance tests | Cache-cleanup safety checks |
 
 Use [STRUCTURE.md](STRUCTURE.md) for directory ownership, retained dependencies,

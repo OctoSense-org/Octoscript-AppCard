@@ -1,0 +1,2 @@
+# Preserve exact diff bytes recorded in the dependency provenance lock.
+/lab/image-to-appcard-flow/wasm/patches/*.patch -whitespace

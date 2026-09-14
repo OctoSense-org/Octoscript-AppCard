@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octosense · Makepad</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f0f5f2}
+    canvas{display:block;width:100%;height:100%;touch-action:none}
+    #status{position:fixed;inset:0;display:grid;place-content:center;margin:0;padding:24px;font:14px/1.6 system-ui;color:#31413c;background:#f0f5f2}
+    #status[hidden]{display:none}
+  </style>
+</head>
+<body>
+  <canvas aria-label="Octosense interactive service cards"></canvas>
+  <p id="status" role="status">正在载入交互卡片…</p>
+  <script type="module" src="./bridge.mjs"></script>
+</body>
+</html>

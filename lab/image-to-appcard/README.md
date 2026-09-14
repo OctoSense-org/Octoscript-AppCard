@@ -1,5 +1,11 @@
 # UX image → native Makepad beauty loop
 
+For **8–12 related screens in one agentic application flow**, use
+[image-to-appcard-flow](../image-to-appcard-flow/README.md). It generates no
+independent per-state images: preserve one complete atlas, measure/crop its
+screens, reuse this native mapping loop, then bind service state and package
+interactive Makepad WASM. This page remains the individual-design adapter guide.
+
 This branch starts with an externally generated UX image and an explicit design brief.
 Use [the generic reproduction guide](../core/REPRODUCE.md) for a clean
 installation, a new input and the complete command sequence. No Astra-specific
@@ -20,7 +26,9 @@ prototypes; a fresh semantic audit can block them even when geometry passed.
 1. Author a layout contract with semantic element IDs, hierarchy, exact fixture
    text, bundled font family/weights, font sizes, line boxes, colors, dimensions,
    spacing and native control intent. `catalogue.py` contains the 30 briefs.
-2. Generate **one image per design** with your chosen external image generation tool.
+2. For an independent design, generate one image with your chosen external image
+   generation tool. For a complete service journey, generate **one atlas containing
+   all 8–12 states** and use the flow adapter's hash-bound crop intake.
    Save the exact submitted prompt in `image-prompt.md`. `generation.json`
    records the original filename, declared provider/model, prompt/image hashes
    and actual dimensions. `save_reference.py --provider` records the actual

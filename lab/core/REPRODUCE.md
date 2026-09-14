@@ -1,5 +1,10 @@
 # Reproduce the Sketch and generated-image beauty-card pipelines
 
+For the full image → service state → interactive native App Cards → WASM website
+workflow, see [image-to-appcard-flow](../image-to-appcard-flow/README.md). It reuses
+the native setup and visual gates below, adding one-atlas 8–12-screen intake,
+service card extraction, portable WASM packaging and browser checks.
+
 This guide uses local tools, relative project paths and example inputs. It
 contains no service credentials and requires no particular model provider.
 The normal native loop does not call an LLM API or provider CLI. Image

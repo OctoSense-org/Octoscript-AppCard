@@ -1,0 +1,363 @@
+diff --git a/draw/src/shader/draw_text.rs b/draw/src/shader/draw_text.rs
+index 4a5faf7ab2ce74aaf0ba187fb8dcc9928abd07c3..9d59f1e442cfd5ae5f018e5d98b483c8ca1fe38f 100644
+--- a/draw/src/shader/draw_text.rs
++++ b/draw/src/shader/draw_text.rs
+@@ -2730,6 +2730,7 @@ pub fn layout(
+                 wrap,
+                 align: align.x as f32,
+                 line_spacing_scale: self.text_style.line_spacing,
++                letter_spacing_in_lpxs: self.text_style.letter_spacing,
+                 max_rows: if self.max_lines > 0 {
+                     Some(self.max_lines)
+                 } else {
+@@ -3407,6 +3408,9 @@ pub struct TextStyle {
+     pub font_size: f32,
+     #[live(1.0)]
+     pub line_spacing: f32,
++    /// Additional advance per glyph in logical pixels, including negative tracking.
++    #[live(0.0)]
++    pub letter_spacing: f32,
+     /// A vertical offset applied when drawing text, as a fraction of the font size.
+     /// Positive values shift text downward, useful for aligning baselines when
+     /// mixing fonts with different vertical metrics (e.g., code font with regular text).
+diff --git a/draw/src/text/font_family.rs b/draw/src/text/font_family.rs
+index ed3b4870d8a1448cf6adf4748c655231cff33fdb..6dd0e6d223c8204a71978e3d4ee4e7131663fda5 100644
+--- a/draw/src/text/font_family.rs
++++ b/draw/src/text/font_family.rs
+@@ -72,11 +72,15 @@ pub fn id(&self) -> FontFamilyId {
+     }
+ 
+     pub fn get_or_shape(&self, text: Substr) -> Rc<ShapedText> {
++        self.get_or_shape_with_spacing(text, 0.0)
++    }
++
++    pub fn get_or_shape_with_spacing(&self, text: Substr, letter_spacing_in_ems: f32) -> Rc<ShapedText> {
+         self.shaper.borrow_mut().get_or_shape(ShapeParams {
+             text,
+             fonts: self.fonts.clone(),
+             direction: Direction::default(),
+-            letter_spacing: Ems(0.0),
++            letter_spacing: Ems(letter_spacing_in_ems),
+             word_spacing: Ems(0.0),
+             features: Rc::new(Vec::new()),
+             diagnostics: self.diagnostics.clone(),
+diff --git a/draw/src/text/fonts.rs b/draw/src/text/fonts.rs
+index a47a691ead2b0b2c986597e897b33df53e6be527..686422c0da4d53a153a4a7dd8abc6f96096da1a2 100644
+--- a/draw/src/text/fonts.rs
++++ b/draw/src/text/fonts.rs
+@@ -87,6 +87,16 @@ pub fn new(cx: &mut Cx, settings: layouter::Settings) -> Self {
+ 
+         let mut msdf_job_sender: FromUISender<QueuedMsdfJob> = Default::default();
+         let msdf_result_receiver: ToUIReceiver<CompletedMsdfJob> = Default::default();
++        // Single-threaded browser builds intentionally use the existing SDF/SLUG
++        // path. Do not launch an unavailable worker or queue MSDF work for it.
++        #[cfg(all(target_arch = "wasm32", not(target_feature = "atomics")))]
++        {
++            layouter.rasterizer().borrow_mut()
++                .set_outline_rasterization_mode(OutlineRasterizationMode::Sdf);
++            drop(msdf_job_sender.receiver());
++        }
++        #[cfg(not(all(target_arch = "wasm32", not(target_feature = "atomics"))))]
++        {
+         let worker_rx = msdf_job_sender
+             .receiver()
+             .expect("MSDF worker receiver is taken exactly once");
+@@ -114,6 +124,7 @@ pub fn new(cx: &mut Cx, settings: layouter::Settings) -> Self {
+         }) {
+             task.detach();
+         }
++        }
+ 
+         Self {
+             layouter,
+diff --git a/draw/src/text/layouter.rs b/draw/src/text/layouter.rs
+index b259419a985ccd5d9a36e3a56e085f9d1947fa74..8d8cbfa833fc490063a3356633dfc24bfc5c07e3 100644
+--- a/draw/src/text/layouter.rs
++++ b/draw/src/text/layouter.rs
+@@ -427,6 +427,7 @@ fn layout_by_word(&mut self, len: usize) {
+             self.font_family.clone(),
+             self.style.font_size_in_lpxs(),
+             SegmentKind::Word,
++            self.options.letter_spacing_in_lpxs,
+         );
+         while !fitter.is_empty() {
+             if self.is_past_max_rows() {
+@@ -469,6 +470,7 @@ fn layout_by_grapheme(&mut self, len: usize) {
+             self.font_family.clone(),
+             self.style.font_size_in_lpxs(),
+             SegmentKind::Grapheme,
++            self.options.letter_spacing_in_lpxs,
+         );
+         while !fitter.is_empty() {
+             if self.is_past_max_rows() {
+@@ -489,9 +491,10 @@ fn layout_by_grapheme(&mut self, len: usize) {
+ 
+     fn layout_directly(&mut self, len: usize) {
+         self.append_text(
+-            &self.font_family.get_or_shape(
++            &self.font_family.get_or_shape_with_spacing(
+                 self.text
+                     .substr(self.current_row_end..self.current_row_end + len),
++                self.options.letter_spacing_in_lpxs / self.style.font_size_in_lpxs().max(f32::EPSILON),
+             ),
+         );
+     }
+@@ -652,7 +655,8 @@ fn apply_ellipsis_truncation(mut self) -> LaidoutText {
+ 
+     /// Truncates the last row to fit within `max_width` and appends an ellipsis glyph.
+     fn truncate_last_row_with_ellipsis(&mut self, max_width: f32) {
+-        let ellipsis_shaped = self.font_family.get_or_shape("…".into());
++        let ellipsis_shaped = self.font_family.get_or_shape_with_spacing("…".into(),
++            self.options.letter_spacing_in_lpxs / self.style.font_size_in_lpxs().max(f32::EPSILON));
+         let font_size_in_lpxs = self.style.font_size_in_lpxs();
+         let ellipsis_width: f32 = ellipsis_shaped
+             .glyphs
+@@ -715,6 +719,7 @@ struct Fitter {
+     text: Substr,
+     font_family: Rc<FontFamily>,
+     font_size_in_lpxs: f32,
++    letter_spacing_in_ems: f32,
+     lens: Vec<usize>,
+     widths_in_lpxs: Vec<f32>,
+ }
+@@ -725,7 +730,9 @@ fn new(
+         font_family: Rc<FontFamily>,
+         font_size_in_lpxs: f32,
+         segment_kind: SegmentKind,
++        letter_spacing_in_lpxs: f32,
+     ) -> Self {
++        let letter_spacing_in_ems = letter_spacing_in_lpxs / font_size_in_lpxs.max(f32::EPSILON);
+         let mut lens: Vec<_> = match segment_kind {
+             SegmentKind::Word => text
+                 .split_word_bounds()
+@@ -742,7 +749,7 @@ fn new(
+             .scan(0, |state, len| {
+                 let start = *state;
+                 let end = start + len;
+-                let segment = font_family.get_or_shape(text.substr(start..end));
++                let segment = font_family.get_or_shape_with_spacing(text.substr(start..end), letter_spacing_in_ems);
+                 let width_in_lpxs = segment.width_in_ems * font_size_in_lpxs;
+                 *state = end;
+                 Some(width_in_lpxs)
+@@ -752,6 +759,7 @@ fn new(
+             text,
+             font_family,
+             font_size_in_lpxs,
++            letter_spacing_in_ems,
+             lens,
+             widths_in_lpxs,
+         }
+@@ -781,7 +789,7 @@ fn fit(&mut self, wrap_width_in_lpxs: f32) -> Option<Rc<ShapedText>> {
+         if let Some(mut best_count) = best_count {
+             while best_count > 0 {
+                 let best_len = self.lens[..best_count].iter().sum();
+-                let best_text = self.font_family.get_or_shape(self.text.substr(0..best_len));
++                let best_text = self.font_family.get_or_shape_with_spacing(self.text.substr(0..best_len), self.letter_spacing_in_ems);
+                 if best_text.width_in_ems * self.font_size_in_lpxs <= wrap_width_in_lpxs {
+                     self.lens.drain(..best_count);
+                     self.widths_in_lpxs.drain(..best_count);
+@@ -1059,6 +1067,7 @@ pub struct LayoutOptions {
+     pub wrap: bool,
+     pub align: f32,
+     pub line_spacing_scale: f32,
++    pub letter_spacing_in_lpxs: f32,
+     /// Maximum number of rows to display. `None` means unlimited.
+     /// When set and the text exceeds this many rows, excess rows are discarded.
+     pub max_rows: Option<usize>,
+@@ -1077,6 +1086,7 @@ fn default() -> Self {
+             wrap: false,
+             align: 0.0,
+             line_spacing_scale: 1.0,
++            letter_spacing_in_lpxs: 0.0,
+             max_rows: None,
+             ellipsis: false,
+         }
+@@ -1098,6 +1108,7 @@ fn hash<H>(&self, hasher: &mut H)
+         self.wrap.hash(hasher);
+         self.align.to_bits().hash(hasher);
+         self.line_spacing_scale.to_bits().hash(hasher);
++        self.letter_spacing_in_lpxs.to_bits().hash(hasher);
+         self.max_rows.hash(hasher);
+         self.ellipsis.hash(hasher);
+     }
+@@ -1112,6 +1123,7 @@ fn eq(&self, other: &Self) -> bool {
+             && self.wrap == other.wrap
+             && self.align.to_bits() == other.align.to_bits()
+             && self.line_spacing_scale.to_bits() == other.line_spacing_scale.to_bits()
++            && self.letter_spacing_in_lpxs.to_bits() == other.letter_spacing_in_lpxs.to_bits()
+             && self.max_rows == other.max_rows
+             && self.ellipsis == other.ellipsis
+     }
+diff --git a/platform/script/src/vm.rs b/platform/script/src/vm.rs
+index 40df5e44aec01573f0ada8409cab1850a6d2ab83..80a61b4035e50662f1d63db4732668a03b0a8fe9 100644
+--- a/platform/script/src/vm.rs
++++ b/platform/script/src/vm.rs
+@@ -708,6 +708,7 @@ pub fn drain_errors(&mut self) {
+         loop {
+             let err = self.bx.threads.cur().trap.err_pop_front();
+             if let Some(err) = err {
++                self.bx.uncaught_error_count = self.bx.uncaught_error_count.saturating_add(1);
+                 if self.bx.captured_errors.is_some() {
+                     let formatted = self.format_error(&err);
+                     if let Some(sink) = self.bx.captured_errors.as_mut() {
+@@ -1380,6 +1381,19 @@ pub fn add_script_mod(&mut self, new_mod: ScriptMod) -> u16 {
+         i as u16
+     }
+ 
++    /// Bounded document evaluation backported from OctoSense revision 5b6932cf.
++    pub fn eval_checked(&mut self, script_mod: ScriptMod, limit: usize) -> Option<ScriptValue> {
++        let errors = self.bx.uncaught_error_count;
++        let value = self.with_instruction_limit(limit, |vm| vm.eval(script_mod));
++        self.drain_errors();
++        let valid = !value.is_nil() && !value.is_err() && self.bx.uncaught_error_count == errors;
++        if !valid {
++            log!("CHECKED_EVAL_REJECT value={:?} uncaught_before={} uncaught_after={} paused={} captured={:?}",
++                value, errors, self.bx.uncaught_error_count, self.bx.threads.cur_ref().is_paused(), self.bx.captured_errors);
++        }
++        valid.then_some(value)
++    }
++
+     pub fn eval(&mut self, script_mod: ScriptMod) -> ScriptValue {
+         self.eval_with_source(script_mod, ScriptObject::ZERO)
+     }
+@@ -1583,6 +1597,7 @@ pub struct ScriptVmBase {
+     pub is_reload: bool,
+     pub debug_trace: bool,
+     pub silence_errors: bool,
++    pub uncaught_error_count: usize,
+     /// When Some, drained errors are pushed here (formatted) instead of being
+     /// logged or dropped — even under `silence_errors`. Install before an
+     /// eval/call, take after, to feed diagnostics back to a host (e.g. an AI
+@@ -1608,6 +1623,7 @@ pub fn empty() -> Self {
+             is_reload: false,
+             debug_trace: false,
+             silence_errors: false,
++            uncaught_error_count: 0,
+             captured_errors: None,
+             run_budget: None,
+             last_limit_consumed: 0,
+@@ -1643,6 +1659,7 @@ pub fn new() -> Self {
+             is_reload: false,
+             debug_trace: false,
+             silence_errors: false,
++            uncaught_error_count: 0,
+             captured_errors: None,
+             run_budget: None,
+             last_limit_consumed: 0,
+diff --git a/tools/cargo_makepad/src/studio.rs b/tools/cargo_makepad/src/studio.rs
+index 9c767bf8a9e9e6b397f3cd8d9ab2671307bb1098..3e81827686b7bd4e224cf4c9e65616374ca93bd3 100644
+--- a/tools/cargo_makepad/src/studio.rs
++++ b/tools/cargo_makepad/src/studio.rs
+@@ -514,6 +514,7 @@ fn should_emit_protocol_response(msg: &HubToClient) -> bool {
+             | HubToClient::Screenshot { .. }
+             | HubToClient::WidgetTreeDump { .. }
+             | HubToClient::WidgetQuery { .. }
++            | HubToClient::WidgetSnapshot { .. }
+             | HubToClient::QueryCancelled { .. }
+     )
+ }
+@@ -533,6 +534,7 @@ fn message_query_id(msg: &HubToClient) -> Option<QueryId> {
+         HubToClient::Screenshot { query_id, .. }
+         | HubToClient::WidgetTreeDump { query_id, .. }
+         | HubToClient::WidgetQuery { query_id, .. }
++        | HubToClient::WidgetSnapshot { query_id, .. }
+         | HubToClient::FindFileResults { query_id, .. }
+         | HubToClient::SearchFileResults { query_id, .. }
+         | HubToClient::QueryLogResults { query_id, .. }
+diff --git a/widgets/src/gauss_view.rs b/widgets/src/gauss_view.rs
+index 72cfaa67e594655e1b740f060379629b7aa2877e..f17cf6b727a2e2391bae4a6f172f8a13d3a486b7 100644
+--- a/widgets/src/gauss_view.rs
++++ b/widgets/src/gauss_view.rs
+@@ -559,6 +559,8 @@ pub struct GaussRoundedView {
+     // view is placed in the normal (background) flow rather than inside a `glass.Layer`.
+     #[rust]
+     draw_list: Option<DrawList2d>,
++    #[rust]
++    pub snapshot_ready: bool,
+ }
+ 
+ impl GaussRoundedView {
+@@ -571,6 +573,7 @@ pub fn draw_surface_with_backdrop(&mut self, cx: &mut Cx2d, rect: Rect, snapshot
+     }
+ 
+     fn bind_snapshot(&mut self, cx: &mut Cx2d, snapshot: Option<GaussBlurSnapshot>) {
++        self.snapshot_ready = snapshot.is_some();
+         let draw_bg = &mut self.view.draw_bg.draw_vars;
+         if let Some(snapshot) = snapshot {
+             draw_bg.set_texture(0, &snapshot.scene_texture);
+diff --git a/widgets/src/label.rs b/widgets/src/label.rs
+index 8b97cfae698b691783d2ab15518db0c2ae04aaa6..e185c258cf27d087e0db876af75ab44f2584b7ad 100644
+--- a/widgets/src/label.rs
++++ b/widgets/src/label.rs
+@@ -237,6 +237,12 @@ pub struct Label {
+     pub walk: Walk,
+     #[live]
+     pub align: Align,
++    #[live(false)]
++    pub clip_x: bool,
++    #[live(false)]
++    pub clip_y: bool,
++    #[rust]
++    pub text_layout_rect: Rect,
+     #[live(Flow::right_wrap())]
+     flow: Flow,
+     #[live]
+@@ -251,6 +257,7 @@ pub struct Label {
+     pub text_overflow: TextOverflow,
+ 
+     #[rust]
++    #[area]
+     area: Area,
+     #[live]
+     text: ArcStringMut,
+@@ -312,6 +319,8 @@ fn draw_walk(&mut self, cx: &mut Cx2d, _scope: &mut Scope, walk: Walk) -> DrawSt
+             walk,
+             Layout {
+                 flow: self.flow,
++                clip_x: self.clip_x,
++                clip_y: self.clip_y,
+                 ..Default::default()
+             },
+         );
+@@ -322,7 +331,7 @@ fn draw_walk(&mut self, cx: &mut Cx2d, _scope: &mut Scope, walk: Walk) -> DrawSt
+         });
+         self.draw_text.max_lines = self.max_lines;
+         self.draw_text.text_overflow = self.text_overflow;
+-        self.draw_text
++        self.text_layout_rect = self.draw_text
+             .draw_walk(cx, walk, self.align, self.text.as_ref());
+         cx.end_turtle_with_area(&mut self.area);
+         DrawStep::done()
+diff --git a/widgets/src/view.rs b/widgets/src/view.rs
+index d170cf13743662995866546cae17f42bc33e0758..2e6dfbd7924efbb37a2563d653bc28a5a315e66d 100644
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -103,6 +103,8 @@ pub struct View {
+     #[live(true)]
+     #[apply_state]
+     pub visible: bool,
++    #[live]
++    pub selected: Option<bool>,
+     #[live(false)]
+     skip_widget_tree_search: bool,
+ 
+diff --git a/widgets/src/widget.rs b/widgets/src/widget.rs
+index bb85cff285a0110930dfc34ddd569c3bc09072fb..03e4c685868c5260156a52941f9eb4ca876d4a5a 100644
+--- a/widgets/src/widget.rs
++++ b/widgets/src/widget.rs
+@@ -341,6 +341,15 @@ fn disabled(&self, _cx: &Cx) -> bool {
+         false
+     }
+ 
++    /// Optional state supplied by native AppCard compositions.
++    fn selected_value(&self, _cx: &Cx) -> Option<String> {
++        None
++    }
++
++    fn checked(&self, _cx: &Cx) -> Option<bool> {
++        None
++    }
++
+     fn ref_cast_type_id(&self) -> TypeId
+     where
+         Self: 'static,

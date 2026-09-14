@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "id": "aircon-fresh-v2",
+  "artboard": [
+    406,
+    776
+  ],
+  "locales": [
+    "en",
+    "cn"
+  ],
+  "generation": {
+    "atlas": "source/atlas.png",
+    "prompt": "source/prompt.txt",
+    "provider": "OpenAI Image API",
+    "model": "gpt-image-2",
+    "requested_size": [
+      2400,
+      3456
+    ],
+    "quality": "high"
+  },
+  "scenes": [
+    {
+      "id": "1",
+      "design_id": "aircon-01",
+      "directory": "cards/aircon-01",
+      "crop": [
+        45,
+        82,
+        512,
+        1084
+      ],
+      "surface": "app",
+      "title": "好物详情"
+    },
+    {
+      "id": "2",
+      "design_id": "aircon-02",
+      "directory": "cards/aircon-02",
+      "crop": [
+        598,
+        82,
+        517,
+        1084
+      ],
+      "surface": "app",
+      "title": "订单详情"
+    },
+    {
+      "id": "3",
+      "design_id": "aircon-03",
+      "directory": "cards/aircon-03",
+      "crop": [
+        1154,
+        82,
+        523,
+        1087
+      ],
+      "surface": "desktop",
+      "title": "桌面订单卡"
+    },
+    {
+      "id": "4",
+      "design_id": "aircon-04",
+      "directory": "cards/aircon-04",
+      "crop": [
+        1716,
+        82,
+        637,
+        1086
+      ],
+      "surface": "desktop",
+      "title": "物流更新"
+    },
+    {
+      "id": "5",
+      "design_id": "aircon-05",
+      "directory": "cards/aircon-05",
+      "crop": [
+        45,
+        1255,
+        512,
+        1021
+      ],
+      "surface": "desktop",
+      "title": "预约安装"
+    },
+    {
+      "id": "6",
+      "design_id": "aircon-06",
+      "directory": "cards/aircon-06",
+      "crop": [
+        597,
+        1253,
+        517,
+        1023
+      ],
+      "surface": "desktop",
+      "title": "展开时段"
+    },
+    {
+      "id": "7",
+      "design_id": "aircon-07",
+      "directory": "cards/aircon-07",
+      "crop": [
+        1154,
+        1253,
+        520,
+        1023
+      ],
+      "surface": "desktop",
+      "title": "选中时段"
+    },
+    {
+      "id": "8",
+      "design_id": "aircon-08",
+      "directory": "cards/aircon-08",
+      "crop": [
+        1713,
+        1253,
+        638,
+        1024
+      ],
+      "surface": "desktop",
+      "title": "预约与日历"
+    },
+    {
+      "id": "9",
+      "design_id": "aircon-09",
+      "directory": "cards/aircon-09",
+      "crop": [
+        45,
+        2365,
+        512,
+        997
+      ],
+      "surface": "desktop",
+      "title": "撤销日历分支"
+    },
+    {
+      "id": "10",
+      "design_id": "aircon-10",
+      "directory": "cards/aircon-10",
+      "crop": [
+        596,
+        2365,
+        521,
+        997
+      ],
+      "surface": "desktop",
+      "title": "师傅即将到达"
+    },
+    {
+      "id": "11",
+      "design_id": "aircon-11",
+      "directory": "cards/aircon-11",
+      "crop": [
+        1155,
+        2365,
+        515,
+        998
+      ],
+      "surface": "desktop",
+      "title": "材料费待支付"
+    },
+    {
+      "id": "12",
+      "design_id": "aircon-12",
+      "directory": "cards/aircon-12",
+      "crop": [
+        1711,
+        2364,
+        638,
+        1001
+      ],
+      "surface": "desktop",
+      "title": "付款完成"
+    }
+  ],
+  "cards": [
+    {
+      "id": "order-card-03",
+      "scene": "3",
+      "root": "order_card",
+      "owner": "shopping"
+    },
+    {
+      "id": "logistics-card-04",
+      "scene": "4",
+      "root": "logistics_card",
+      "owner": "logistics"
+    },
+    {
+      "id": "installation-card-05",
+      "scene": "5",
+      "root": "installation_card",
+      "owner": "installation"
+    },
+    {
+      "id": "installation-card-06",
+      "scene": "6",
+      "root": "installation_card",
+      "owner": "installation"
+    },
+    {
+      "id": "installation-card-07",
+      "scene": "7",
+      "root": "installation_card",
+      "owner": "installation"
+    },
+    {
+      "id": "installation-booking-08",
+      "scene": "8",
+      "root": "installation_booking",
+      "owner": "installation"
+    },
+    {
+      "id": "calendar-updated-08",
+      "scene": "8",
+      "root": "calendar_updated",
+      "owner": "calendar"
+    },
+    {
+      "id": "installation-booking-09",
+      "scene": "9",
+      "root": "installation_booking",
+      "owner": "installation"
+    },
+    {
+      "id": "calendar-undone-09",
+      "scene": "9",
+      "root": "calendar_undone",
+      "owner": "calendar"
+    },
+    {
+      "id": "installation-arriving-10",
+      "scene": "10",
+      "root": "installation_arriving",
+      "owner": "installation"
+    },
+    {
+      "id": "payment-due-11",
+      "scene": "11",
+      "root": "payment_due",
+      "owner": "payment"
+    },
+    {
+      "id": "installation-complete-11",
+      "scene": "11",
+      "root": "installation_complete",
+      "owner": "installation"
+    },
+    {
+      "id": "payment-complete-12",
+      "scene": "12",
+      "root": "payment_complete",
+      "owner": "payment"
+    },
+    {
+      "id": "installation-complete-12",
+      "scene": "12",
+      "root": "installation_complete",
+      "owner": "installation"
+    }
+  ],
+  "artwork": {
+    "source_prefix": "http://127.0.0.1:8170/ux-images/",
+    "root": "pipeline/docs/reviews/theme-phone-evidence/ux-images"
+  },
+  "outputs": {
+    "intake": "pipeline-output/intake",
+    "cards": "pipeline-output/service-cards",
+    "bundle": "wizard/card-bundle",
+    "wasm": "wizard/wasm-dist",
+    "runs": "pipeline-output/runs"
+  },
+  "browser_modules": [
+    "wizard/service.mjs",
+    "wizard/render.mjs",
+    "wizard/wizard.mjs"
+  ],
+  "checks": {
+    "service-test": [
+      {
+        "argv": [
+          "{python}",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "service",
+          "-p",
+          "test_*.py"
+        ],
+        "cwd": "."
+      },
+      {
+        "argv": [
+          "{node}",
+          "--test",
+          "wizard/service.test.mjs",
+          "wizard/render.test.mjs"
+        ],
+        "cwd": "."
+      }
+    ],
+    "web-test": [
+      {
+        "argv": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "cwd": "{website}"
+      },
+      {
+        "argv": [
+          "npm",
+          "run",
+          "test:e2e",
+          "--",
+          "tests/wizard.spec.ts",
+          "--workers=1"
+        ],
+        "cwd": "{website}"
+      }
+    ],
+    "hosted-test": [
+      {
+        "argv": [
+          "npm",
+          "run",
+          "verify:wizard"
+        ],
+        "cwd": "{website}"
+      }
+    ]
+  }
+}
