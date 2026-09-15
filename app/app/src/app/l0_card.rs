@@ -1565,31 +1565,79 @@ pub enum Piece<'a> {
 /// end of the pipeline downcast the VM host to one — and a unit test has no
 /// `Cx` to give. This half is this module's own logic and is testable; the other
 /// half is covered by `octoscript-ui-l0`'s lowering tests and by the device harness.
+///
+/// FENCES ARE LINES. An opener is a line that is ```` ```runl0 ```` (Markdown's
+/// up-to-three leading spaces allowed, nothing else on the line); the close is
+/// the next line that is exactly ```` ``` ````. This scanned for the SUBSTRINGS
+/// instead — the first "```runl0" anywhere and the next "```" anywhere — and a
+/// thinking model showed why that is wrong: DeepSeek V4 Flash's visible
+/// reasoning says, in prose, "I must emit exactly one ```runl0 fenced block",
+/// and then drafts the card inside a bare ```` ``` ```` block before writing the
+/// real one. Substring scanning takes the prose mention as the opener and the
+/// draft's fence as its close, and what renders is a "ledger" made of the
+/// model's sentence. Reasoning is kept off the message text upstream (the
+/// thinking strip), and this scanner no longer depends on that.
 pub fn split_l0_blocks(text: &str) -> Vec<Piece<'_>> {
-    const FENCE: &str = "```runl0";
     let mut out = Vec::new();
-    let mut rest = text;
-    while let Some(open) = rest.find(FENCE) {
-        out.push(Piece::Prose(&rest[..open]));
-        let after = &rest[open + FENCE.len()..];
-        let body_start = after.find('\n').map(|n| n + 1).unwrap_or(after.len());
-        let body_and_rest = &after[body_start..];
-        match body_and_rest.find("```") {
-            Some(close) => {
-                out.push(Piece::Ledger(&body_and_rest[..close]));
-                rest = &body_and_rest[close + 3..];
+    let mut prose_from = 0;
+    let mut pos = 0;
+    while pos < text.len() {
+        let line_end = text[pos..].find('\n').map(|n| pos + n + 1).unwrap_or(text.len());
+        let line = &text[pos..line_end];
+        if !is_opening_fence(line) {
+            pos = line_end;
+            continue;
+        }
+        let body_start = line_end;
+        // The close: the next line that is only ```.
+        let mut scan = body_start;
+        let mut close: Option<(usize, usize)> = None;
+        while scan < text.len() {
+            let end = text[scan..].find('\n').map(|n| scan + n + 1).unwrap_or(text.len());
+            if let Some(after_ticks) = closing_fence_end(&text[scan..end]) {
+                close = Some((scan, scan + after_ticks));
+                break;
+            }
+            scan = end;
+        }
+        match close {
+            Some((close_line, after_ticks)) => {
+                out.push(Piece::Prose(&text[prose_from..pos]));
+                out.push(Piece::Ledger(&text[body_start..close_line]));
+                // Prose resumes right after the three backticks, as before:
+                // the rest of that line and everything below is the caller's.
+                prose_from = after_ticks;
+                pos = after_ticks;
             }
             // An unclosed block is still streaming. Leave it whole rather than
             // rendering half a ledger, which looks like a card the model got
             // wrong rather than one that has not finished arriving.
             None => {
-                out.push(Piece::Prose(&rest[open..]));
+                out.push(Piece::Prose(&text[prose_from..]));
                 return out;
             }
         }
     }
-    out.push(Piece::Prose(rest));
+    out.push(Piece::Prose(&text[prose_from..]));
     out
+}
+
+/// A line (with or without its `\n`) that opens an L0 ledger: ```` ```runl0 ````
+/// alone, after at most three spaces of indentation.
+fn is_opening_fence(line: &str) -> bool {
+    let body = line.trim_end_matches(['\n', '\r']);
+    let indent = body.len() - body.trim_start_matches(' ').len();
+    indent <= 3 && body[indent..].trim_end() == "```runl0"
+}
+
+/// A line (with or without its `\n`) that closes a ledger: ```` ``` ```` alone,
+/// whitespace around it allowed. The offset just past the backticks, so the
+/// caller can resume prose there.
+fn closing_fence_end(line: &str) -> Option<usize> {
+    let body = line.trim_end_matches(['\n', '\r']);
+    let indent = body.len() - body.trim_start().len();
+    let rest = &body[indent..];
+    (rest.trim_end() == "```").then_some(indent + 3)
 }
 
 /// What each source's fetch is actually doing, keyed by the ledger it belongs to.
@@ -2094,12 +2142,97 @@ mod resolve_tests {
     /// Two ledgers in one message are both found.
     #[test]
     fn two_ledgers_are_both_found() {
-        let msg = "```runl0\na\n```mid```runl0\nb\n```";
-        let n = split_l0_blocks(msg)
+        let msg = "```runl0\na\n```\nmid\n```runl0\nb\n```";
+        let pieces = split_l0_blocks(msg);
+        let ledgers: Vec<&str> = pieces
             .iter()
-            .filter(|p| matches!(p, Piece::Ledger(_)))
-            .count();
-        assert_eq!(n, 2, "both ledgers must be found");
+            .filter_map(|p| match p {
+                Piece::Ledger(t) => Some(*t),
+                _ => None,
+            })
+            .collect();
+        assert_eq!(ledgers, vec!["a\n", "b\n"], "both ledgers must be found: {pieces:?}");
+        assert_eq!(
+            pieces.iter().filter(|p| matches!(p, Piece::Prose(_))).count(),
+            3,
+            "prose before, between and after: {pieces:?}"
+        );
+    }
+
+    /// Fences are lines. A "```runl0" inside a sentence opens nothing, and a
+    /// bare ``` block is prose, not a ledger.
+    #[test]
+    fn a_fence_mentioned_in_prose_opens_nothing() {
+        let msg = "I must emit exactly one ```runl0 fenced block as the entire answer.\n\n\
+                   ```\n# level: L0\ndraft\n```\n";
+        let pieces = split_l0_blocks(msg);
+        assert!(
+            !pieces.iter().any(|p| matches!(p, Piece::Ledger(_))),
+            "prose that names the fence is not a fence: {pieces:?}"
+        );
+        assert_eq!(rejoin(&pieces), msg);
+    }
+
+    /// A close is a line that is exactly ```; a longer run of backticks or a
+    /// ``` with trailing text on its line does not end the ledger.
+    #[test]
+    fn a_close_is_a_line_of_three_backticks() {
+        let msg = "```runl0\nview root Col { Text(\"```not a close\") }\n```\n";
+        assert_eq!(
+            split_l0_blocks(msg),
+            vec![
+                Piece::Prose(""),
+                Piece::Ledger("view root Col { Text(\"```not a close\") }\n"),
+                Piece::Prose("\n"),
+            ]
+        );
+        // Whitespace around either fence is tolerated (Markdown's three spaces).
+        let indented = "  ```runl0  \nview root Rule()\n   ```  \n";
+        let pieces = split_l0_blocks(indented);
+        assert!(matches!(pieces.as_slice(), [Piece::Prose(""), Piece::Ledger("view root Rule()\n"), Piece::Prose("  \n")]), "{pieces:?}");
+    }
+
+    /// The exact shape a thinking model produced (DeepSeek V4 Flash, "tokyo
+    /// weather", ledger 6aa88d76): 98 lines of visible reasoning that (a) name
+    /// the fence in prose and (b) draft the card inside a bare ``` block,
+    /// followed by the real answer — one ```runl0 block. If the reasoning ever
+    /// reaches the message text, exactly the answer must be the ledger.
+    #[test]
+    fn reasoning_before_the_card_yields_exactly_the_card() {
+        let reasoning = "The user request is \"tokyo weather\" — a bare place name + weather. \
+                         Pick the weather app.\n\n\
+                         I must emit exactly one ```runl0 fenced block as the entire answer. No prose.\n\n\
+                         Let me carefully transcribe.\n\n\
+                         ```\n# level: L0\n# model: weather\ntheme atro_light\n\n\
+                         source place       sys.geocode(name: state.city)\n\
+                         copy feels ... etc.\n```\n\n\
+                         Wait — catalog says `sys.moonphase` answers `phase`. Fix that.\n\n";
+        let card = "# level: L0\n# model: weather\ntheme atro_light\n\n\
+                    source place       sys.geocode(name: state.city)\n\
+                    state city    { shape: text, initial: \"Tokyo\" }\n\n\
+                    view root Surface(pad: .page) {\n\
+                    \x20            when now.$state == .pending { TextBody(text: copy.loading) }\n\
+                    \x20            when now.$state == .failed  { TextBody(text: copy.offline) }\n\
+                    }\n";
+        let msg = format!("{reasoning}```runl0\n{card}```");
+        let pieces = split_l0_blocks(&msg);
+        let ledgers: Vec<&str> = pieces
+            .iter()
+            .filter_map(|p| match p {
+                Piece::Ledger(t) => Some(*t),
+                _ => None,
+            })
+            .collect();
+        assert_eq!(ledgers, vec![card], "the answer, whole, and nothing from the reasoning: {pieces:?}");
+        assert!(
+            matches!(pieces.as_slice(), [Piece::Prose(p), Piece::Ledger(_), Piece::Prose("")] if *p == reasoning),
+            "the reasoning is prose, untouched, and nothing follows the card: {pieces:?}"
+        );
+        // And the card alone — the message as the thinking strip keeps it.
+        assert_eq!(
+            split_l0_blocks(&format!("```runl0\n{card}```")),
+            vec![Piece::Prose(""), Piece::Ledger(card), Piece::Prose("")]
+        );
     }
 }
 
