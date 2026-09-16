@@ -95,6 +95,13 @@ fn alert_label(alert: Option<i64>, locale: &str) -> String {
     }
 }
 const ALERTS: [Option<i64>; 7] = [None, Some(0), Some(5), Some(15), Some(30), Some(60), Some(1440)];
+/// Calendars in the order people expect (shared first, hidden last), not the map's alphabetical one.
+fn ordered_calendars(state: &State) -> Vec<(&String, &model::Calendar)> {
+    let rank = |id: &str| ["family", "work", "personal", "birthdays"].iter().position(|k| *k == id).unwrap_or(9);
+    let mut out: Vec<_> = state.calendars.iter().collect();
+    out.sort_by_key(|(id, c)| (!c.visible, rank(id), (*id).clone()));
+    out
+}
 
 impl Session {
     pub fn new(device: &str, locale: &str) -> Self {
@@ -312,7 +319,7 @@ impl Session {
         self.nav_button(s, "add_event", Action::Add, Some("plus"), "", 350.0, 44.0, Align::Left);
         s.text("month_title", "page", &month_title(y, m, &locale), 20.0, 48.0, 300.0, 44.0, 34.0, true, RED, Align::Left);
         let year_note = if locale == "en" { y.to_string() } else { format!("{y}年") };
-        s.text("month_year", "page", &year_note, 200.0, 62.0, 186.0, 24.0, 15.0, false, GRAY, Align::Right);
+        s.text("month_year", "page", &year_note, 200.0, 66.0, 186.0, 24.0, 15.0, false, GRAY, Align::Right);
         for i in 0..7 { s.text(&format!("weekday_{i}"), "page", if locale == "en" { &WD_EN[i][..1] } else { WD_CN[i] }, 20.0 + i as f64 * 52.0, 100.0, 52.0, 16.0, 12.0, false, GRAY, Align::Center); }
         s.stack("grid_line", "page", 20.0, 120.0, 366.0, 1.0, Some(LINE), 0.0, None);
         let offset = first.weekday().num_days_from_sunday();
@@ -388,19 +395,20 @@ impl Session {
         // Start the timeline an hour before the first event (or at 07:00), so the day is in view without scrolling.
         let first_hour = events.iter().filter(|e| !e.all_day).map(|e| e.start_time().hour()).min().map(|h| h.saturating_sub(1)).unwrap_or(7).min(7);
         s.scroll("timeline", "page", 0.0, top, 406.0, 660.0 - top);
+        let head = 12.0; // room for the first hour label, which sits centred on its line
         for h in first_hour..24u32 {
-            let yy = (h - first_hour) as f64 * hour_h;
+            let yy = head + (h - first_hour) as f64 * hour_h;
             s.text(&format!("hour_{h}"), "timeline", &format!("{h:02}:00"), 12.0, yy - 8.0, 44.0, 16.0, 11.0, false, GRAY, Align::Right);
             s.stack(&format!("hour_line_{h}"), "timeline", 64.0, yy, 330.0, 1.0, Some(LINE), 0.0, None);
         }
-        s.stack("timeline_end", "timeline", 0.0, (24 - first_hour) as f64 * hour_h + 4.0, 1.0, 1.0, None, 0.0, None);
-        if day == today() { let n = model::now(); let yy = (n.hour() as f64 + n.minute() as f64 / 60.0 - first_hour as f64) * hour_h; s.stack("now_dot", "timeline", 58.0, yy - 4.0, 8.0, 8.0, Some(RED), 4.0, None); s.stack("now_line", "timeline", 64.0, yy - 1.0, 330.0, 2.0, Some(RED), 0.0, None); }
+        s.stack("timeline_end", "timeline", 0.0, head + (24 - first_hour) as f64 * hour_h + 4.0, 1.0, 1.0, None, 0.0, None);
+        if day == today() { let n = model::now(); let yy = head + (n.hour() as f64 + n.minute() as f64 / 60.0 - first_hour as f64) * hour_h; s.stack("now_dot", "timeline", 58.0, yy - 4.0, 8.0, 8.0, Some(RED), 4.0, None); s.stack("now_line", "timeline", 64.0, yy - 1.0, 330.0, 2.0, Some(RED), 0.0, None); }
         // Overlapping timed events share the width.
         let timed: Vec<&&Event> = events.iter().filter(|e| !e.all_day).collect();
         for (i, e) in timed.iter().enumerate() {
             let start = e.start_time(); let end = e.end_time();
             let minutes = (end - start).num_minutes().max(20) as f64;
-            let yy = (start.hour() as f64 + start.minute() as f64 / 60.0 - first_hour as f64) * hour_h;
+            let yy = head + (start.hour() as f64 + start.minute() as f64 / 60.0 - first_hour as f64) * hour_h;
             let hh = minutes / 60.0 * hour_h - 2.0;
             let lane_count = timed.iter().filter(|o| model::overlaps(&o.start, &o.end, &e.start, &e.end)).count().max(1) as f64;
             let lane = timed[..i].iter().filter(|o| model::overlaps(&o.start, &o.end, &e.start, &e.end)).count() as f64;
@@ -552,7 +560,7 @@ impl Session {
         s.text("chooser_title", "page", t(&locale, "日历", "Calendar"), 20.0, 50.0, 300.0, 32.0, 24.0, true, INK, Align::Left);
         let current = self.draft.as_ref().map(|d| d.calendar.clone()).unwrap_or_default();
         s.stack("chooser_group", "page", 20.0, 96.0, 366.0, state.calendars.len() as f64 * 52.0 + 4.0, Some(GROUP), 14.0, None);
-        for (i, (id, c)) in state.calendars.iter().enumerate() {
+        for (i, (id, c)) in ordered_calendars(state).into_iter().enumerate() {
             let yy = 100.0 + i as f64 * 52.0;
             let ctl = self.ctl(&format!("choose_{}", ident(id)), Action::SetCalendar(id.clone()));
             s.button(&ctl, "page", 20.0, yy, 366.0, 50.0, true);
@@ -569,7 +577,7 @@ impl Session {
         s.labelled(&lang, "page", t(&locale, "English", "中文"), 296.0, 8.0, 98.0, 36.0, "text", 15.0, true);
         s.text("section_icloud", "page", t(&locale, "本机与 Sam 共享", "On this device · shared with Sam"), 36.0, 58.0, 300.0, 18.0, 13.0, false, GRAY, Align::Left);
         s.stack("calendars_group", "page", 20.0, 80.0, 366.0, state.calendars.len() as f64 * 52.0 + 4.0, Some(GROUP), 14.0, None);
-        for (i, (id, c)) in state.calendars.iter().enumerate() {
+        for (i, (id, c)) in ordered_calendars(state).into_iter().enumerate() {
             let yy = 84.0 + i as f64 * 52.0;
             let ctl = self.ctl(&format!("toggle_{}", ident(id)), Action::ToggleCalendar(id.clone()));
             s.button(&ctl, "page", 20.0, yy, 366.0, 50.0, true);
