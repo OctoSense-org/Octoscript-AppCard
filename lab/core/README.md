@@ -127,3 +127,18 @@ for the Taskplan, Atro and Camo mappings and their evidence.
 The pipeline does not claim live market/weather data, arbitrary responsive
 layouts, full application navigation, accessibility or Mate 70 parity from a
 desktop screenshot. Those need separate functional and device evidence.
+
+## OpenHarmony instrument
+
+Makepad's Studio inspection only sees widgets makepad draws itself, so a card
+Octoscript-OH renders as native ArkUI needs the OS's own instrument.
+`ohos_instrument.py` captures the same artifacts a Studio round has —
+`tree.json` (WidgetTreeDump shape), `snapshot.json`, `queries.json` and
+`native.png` — from `uitest dumpLayout` and `uitest screenCap` over hdc, in
+logical pixels (`--density`, 3.25 on the Mate 70 Air). Ids come from the ArkUI
+component id, which Octoscript-OH sets from the card node's `id`.
+
+```sh
+python3 lab/core/ohos_instrument.py --device 5ZGYD25B13020968 \
+  --bundle com.example.myapplication --out lab/core/work/<kit>/ohos/001
+```
