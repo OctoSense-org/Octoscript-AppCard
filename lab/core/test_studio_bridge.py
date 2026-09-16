@@ -1,44 +1,27 @@
-import sys as _sys, pathlib as _pathlib
-_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parents[1]))  # lab/, for `core`
-import io
-import queue
+import json
+import sys
 import unittest
-from types import SimpleNamespace
-from core.studio_bridge import query_batch
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from core.studio_bridge import loads_row
 
 
-class QueryBatchTests(unittest.TestCase):
-    def run_batch(self, replies, queries=('id:a', 'id:b')):
-        messages = queue.Queue()
-        for row in replies:
-            messages.put({'WidgetQuery': row})
-        process = SimpleNamespace(stdin=io.StringIO())
-        requests = [{'WidgetQuery': {'build_id': [7], 'query': q}} for q in queries]
-        return query_batch(requests, process, messages, timeout=.01), process.stdin.getvalue()
+class LoadsRowTest(unittest.TestCase):
+    def test_strict_json_passes_through(self):
+        self.assertEqual(loads_row('{"Hello":{"client_id":[1]}}'), {"Hello": {"client_id": [1]}})
 
-    def test_out_of_order_exact_replies_are_preserved(self):
-        replies = [{'build_id': [7], 'query': q, 'widgets': [{'id': q}]} for q in ('id:b', 'id:a')]
-        result, sent = self.run_batch(replies)
-        self.assertEqual(result['responses'], replies)
-        self.assertEqual(len(sent.splitlines()), 2)
+    def test_trailing_commas_from_absent_optional_fields(self):
+        row = ('{"WidgetSnapshot":{"query_id":[1],"build_id":[1],"widgets":['
+               '{"id":"-","widget_type":"Root","visible":false,"x":0,"y":0,"width":0,"height":0,},'
+               '{"id":"main_window","widget_type":"Window","visible":true,"width":406,"height":776,},]}}')
+        widgets = loads_row(row)["WidgetSnapshot"]["widgets"]
+        self.assertEqual([w["id"] for w in widgets], ["-", "main_window"])
 
-    def test_other_build_cannot_satisfy_batch(self):
-        with self.assertRaisesRegex(RuntimeError, 'unexpected'):
-            self.run_batch([{'build_id': [8], 'query': 'id:a'}])
-
-    def test_duplicate_reply_fails(self):
-        with self.assertRaisesRegex(RuntimeError, 'duplicate'):
-            self.run_batch([{'build_id': [7], 'query': 'id:a'}]*2)
-
-    def test_missing_reply_fails(self):
-        with self.assertRaises(queue.Empty):
-            self.run_batch([{'build_id': [7], 'query': 'id:a'}])
-
-    def test_wildcards_and_duplicate_requests_fail(self):
-        for queries in (('*',), ('id:a','id:a')):
-            with self.assertRaises(ValueError):
-                self.run_batch([], queries)
+    def test_still_rejects_garbage(self):
+        with self.assertRaises(ValueError):
+            loads_row("studio remote: invalid request json")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

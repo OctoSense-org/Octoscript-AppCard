@@ -1,3 +1,4 @@
+import re
 """Serial HTTP access to one persistent, version-matched Studio remote client."""
 import argparse,json,queue,subprocess,threading,time
 from pathlib import Path
@@ -46,7 +47,7 @@ def main():
     def read():
         for line in process.stdout:
             output.write(line);output.flush()
-            try:messages.put(json.loads(line))
+            try:messages.put(loads_row(line))
             except ValueError:pass
         messages.put({'Error':{'message':'Studio bridge process ended'}})
     threading.Thread(target=read,daemon=True).start()
@@ -79,6 +80,17 @@ def main():
     print(f'Persistent Studio bridge: http://127.0.0.1:{a.port}, Studio {a.studio}',flush=True)
     try:server.serve_forever()
     finally:server.server_close();process.terminate();process.wait(timeout=5);output.close()
+
+
+def loads_row(line):
+    """A hub row as JSON. The bridge's serializer leaves a comma before the
+    closing brace when a record's trailing optional fields are absent (every
+    WidgetSnapshot widget without text does this), which strict JSON rejects;
+    dropping such rows made every snapshot wait time out."""
+    try:
+        return json.loads(line)
+    except ValueError:
+        return json.loads(re.sub(r',\s*([}\]])', r'\1', line))
 
 
 if __name__=='__main__':main()
