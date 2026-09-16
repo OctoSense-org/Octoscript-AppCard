@@ -1,0 +1,326 @@
+{
+  "$kit": {
+    "theme": "light",
+    "placements": {
+      "page": {
+        "component": "Surface156d085f4ff5",
+        "layout": {
+          "x": 0,
+          "y": 0,
+          "w": 406,
+          "h": 776
+        }
+      },
+      "screen": {
+        "component": "Surface77131ad4bbf5",
+        "layout": {
+          "x": 0.0,
+          "y": 0.0,
+          "w": 203.0,
+          "h": 388.0
+        }
+      },
+      "status_icons": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 163.0,
+          "y": 6.5,
+          "w": 28.0,
+          "h": 7.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-07/assets/status_icons-416cbc07c261.svg"
+        }
+      },
+      "back_editor": {
+        "component": "KitButton870a84d356fb",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 50.0,
+          "h": 18.0
+        }
+      },
+      "back_editor_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 50.0,
+          "h": 18.0
+        }
+      },
+      "back_editor_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 50.0,
+          "h": 18.0
+        }
+      },
+      "back_editor_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 7.0,
+          "y": 28.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-07/assets/back_editor_icon-1027440064a9.svg"
+        }
+      },
+      "back_editor_label": {
+        "component": "Text5794209d5e62",
+        "layout": {
+          "x": 18.0,
+          "y": 28.532000000000004,
+          "w": 38.0,
+          "h": 11.854
+        }
+      },
+      "slot_13": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 84.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_13_surface": {
+        "component": "Surfacecd7755cda6bf",
+        "layout": {
+          "x": 10.0,
+          "y": 84.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_13_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 84.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_13_label": {
+        "component": "Text74c573a54c57",
+        "layout": {
+          "x": 20.0,
+          "y": 93.36500000000001,
+          "w": 54.830000000000005,
+          "h": 10.4515
+        }
+      },
+      "slot_14": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 117.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_14_surface": {
+        "component": "Surface37a3ac8c1a41",
+        "layout": {
+          "x": 10.0,
+          "y": 117.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_14_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 117.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_14_label": {
+        "component": "Texta300da76d35e",
+        "layout": {
+          "x": 20.0,
+          "y": 121.86500000000002,
+          "w": 54.830000000000005,
+          "h": 10.4515
+        }
+      },
+      "slot_14_why": {
+        "component": "Text2c5a328c7122",
+        "layout": {
+          "x": 20.0,
+          "y": 133.03400000000002,
+          "w": 58.0,
+          "h": 9.597999999999999
+        }
+      },
+      "slot_15": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 150.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_15_surface": {
+        "component": "Surfacecd7755cda6bf",
+        "layout": {
+          "x": 10.0,
+          "y": 150.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_15_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 150.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_15_label": {
+        "component": "Text74c573a54c57",
+        "layout": {
+          "x": 20.0,
+          "y": 159.365,
+          "w": 54.830000000000005,
+          "h": 10.4515
+        }
+      },
+      "slot_16": {
+        "component": "KitButton870a84d356fb",
+        "layout": {
+          "x": 10.0,
+          "y": 183.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_16_surface": {
+        "component": "Surfacecd7755cda6bf",
+        "layout": {
+          "x": 10.0,
+          "y": 183.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_16_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 183.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_16_check": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 175.0,
+          "y": 191.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-07/assets/slot_16_check-9706b555dd2c.svg"
+        }
+      },
+      "slot_16_label": {
+        "component": "Text74c573a54c57",
+        "layout": {
+          "x": 20.0,
+          "y": 192.365,
+          "w": 54.830000000000005,
+          "h": 10.4515
+        }
+      },
+      "slot_17": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 216.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_17_surface": {
+        "component": "Surfacecd7755cda6bf",
+        "layout": {
+          "x": 10.0,
+          "y": 216.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_17_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 216.0,
+          "w": 183.0,
+          "h": 28.0
+        }
+      },
+      "slot_17_label": {
+        "component": "Text74c573a54c57",
+        "layout": {
+          "x": 20.0,
+          "y": 225.365,
+          "w": 54.830000000000005,
+          "h": 10.4515
+        }
+      },
+      "home_indicator": {
+        "component": "Surface92bde3a718b5",
+        "layout": {
+          "x": 69.5,
+          "y": 381.0,
+          "w": 64.0,
+          "h": 2.5
+        }
+      },
+      "status_time": {
+        "component": "Text6a37fd0d3c23",
+        "layout": {
+          "x": 14.0,
+          "y": 6.614999999999998,
+          "w": 24.1375,
+          "h": 9.76
+        }
+      },
+      "picker_title": {
+        "component": "Text59521b4f184a",
+        "layout": {
+          "x": 10.0,
+          "y": 49.044,
+          "w": 52.0,
+          "h": 15.388
+        }
+      },
+      "picker_sub": {
+        "component": "Text8a75c6e4460d",
+        "layout": {
+          "x": 10.0,
+          "y": 64.8155,
+          "w": 77.6905,
+          "h": 10.0775
+        }
+      },
+      "picker_hint": {
+        "component": "Text3d01f16ddc53",
+        "layout": {
+          "x": 50.5,
+          "y": 255.034,
+          "w": 106.0,
+          "h": 10.048
+        }
+      }
+    },
+    "bindings": []
+  }
+}

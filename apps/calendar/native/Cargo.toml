@@ -1,0 +1,36 @@
+[package]
+name = "octosense-calendar"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+description = "The Calendar app as an in-process OctoSense AppModule: native Makepad L0 scenes built at runtime from the calendar state, synced through the calendar service"
+
+[dependencies]
+makepad-widgets = { git = "https://github.com/OctoSense-org/makepad.git", rev = "d4502ef1e4d196d2829a07aa137740cb0581e9b4" }
+makepad-app-module = { git = "https://github.com/OctoSense-org/makepad.git", rev = "d4502ef1e4d196d2829a07aa137740cb0581e9b4" }
+octoscript-makepad = { git = "https://github.com/OctoSense-org/Octoscript-Makepad.git", rev = "b1596d9c2cee6e80cca9d27b1b0c2d57b9d28dd8" }
+octoscript-widgets = { git = "https://github.com/OctoSense-org/Octoscript-Makepad.git", rev = "b1596d9c2cee6e80cca9d27b1b0c2d57b9d28dd8" }
+octoscript-node = { git = "https://github.com/OctoSense-org/Octoscript-Makepad.git", rev = "b1596d9c2cee6e80cca9d27b1b0c2d57b9d28dd8" }
+octoscript-ui-l0 = { git = "https://github.com/OctoSense-org/Octoscript.git", rev = "5430518683462eebb65b56b9b5d0e620006f04f4" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = "0.4"
+sha2 = "0.10"
+
+# Standalone builds (cargo test here) resolve the pinned sources from the
+# prepared siblings, as the launcher workspace does; ignored as a dependency.
+[patch."https://github.com/OctoSense-org/makepad.git"]
+makepad-widgets = { path = "../../../../makepad/widgets" }
+makepad-app-module = { path = "../../../../makepad/libs/app_module" }
+makepad-script = { path = "../../../../makepad/platform/script" }
+makepad-ai-services = { path = "../../../../makepad/libs/ai/services" }
+makepad-strict-json = { path = "../../../../makepad/libs/strict_json" }
+makepad-studio-protocol = { path = "../../../../makepad/platform/studio" }
+makepad-network = { path = "../../../../makepad/platform/network" }
+[patch."https://github.com/OctoSense-org/Octoscript-Makepad.git"]
+octoscript-makepad = { path = "../../../../octoscript-makepad/crates/octoscript-makepad" }
+octoscript-widgets = { path = "../../../../octoscript-makepad/crates/octoscript-widgets" }
+octoscript-node = { path = "../../../../octoscript-makepad/crates/octoscript-node" }
+[patch."https://github.com/OctoSense-org/Octoscript.git"]
+octoscript-ui-l0 = { path = "../../../../octoscript/crates/octoscript-ui-l0" }

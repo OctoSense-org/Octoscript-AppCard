@@ -1,0 +1,677 @@
+{
+  "schema_version": 1,
+  "elements": [
+    {
+      "source_id": "page",
+      "native_id": "beauty_0",
+      "parent": null,
+      "kind": "stack",
+      "component": "Surface160815de9849",
+      "semantic_role": "layout",
+      "bounds": [
+        0,
+        0,
+        406,
+        776
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "screen",
+      "native_id": "beauty_0_0",
+      "parent": "page",
+      "kind": "stack",
+      "component": "Surface5aa9b209b611",
+      "semantic_role": "layout",
+      "bounds": [
+        0.0,
+        0.0,
+        203.0,
+        388.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_card",
+      "native_id": "beauty_0_0_0",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surface92c04b3e3983",
+      "semantic_role": "card",
+      "bounds": [
+        12.0,
+        75.0,
+        179.0,
+        134.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_card_icon_tile",
+      "native_id": "beauty_0_0_0_0",
+      "parent": "sync_card",
+      "kind": "stack",
+      "component": "Surfaceaa315ee97772",
+      "semantic_role": "layout",
+      "bounds": [
+        22.0,
+        84.0,
+        18.0,
+        18.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_card_icon",
+      "native_id": "beauty_0_0_0_1",
+      "parent": "sync_card",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        25.5,
+        87.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_now",
+      "native_id": "beauty_0_0_0_2",
+      "parent": "sync_card",
+      "kind": "stack",
+      "component": "KitButton5dc7ea8cd583",
+      "semantic_role": "button",
+      "bounds": [
+        22.0,
+        166.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_now_surface",
+      "native_id": "beauty_0_0_0_2_0",
+      "parent": "sync_now",
+      "kind": "stack",
+      "component": "Surfaceaa315ee97772",
+      "semantic_role": "layout",
+      "bounds": [
+        22.0,
+        166.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_now_control",
+      "native_id": "beauty_0_0_0_2_1",
+      "parent": "sync_now",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        22.0,
+        166.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_now_label",
+      "native_id": "beauty_0_0_0_2_2",
+      "parent": "sync_now",
+      "kind": "text",
+      "component": "Text0afe3b7d9b69",
+      "semantic_role": "text",
+      "bounds": [
+        44.5,
+        170.81249999999997,
+        34.0,
+        11.14
+      ],
+      "text": "\u7acb\u5373\u540c\u6b65",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "open_calendar",
+      "native_id": "beauty_0_0_0_3",
+      "parent": "sync_card",
+      "kind": "stack",
+      "component": "KitButton5dc7ea8cd583",
+      "semantic_role": "button",
+      "bounds": [
+        104.0,
+        166.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "open_calendar_surface",
+      "native_id": "beauty_0_0_0_3_0",
+      "parent": "open_calendar",
+      "kind": "stack",
+      "component": "Surface0d9374fbe8bf",
+      "semantic_role": "layout",
+      "bounds": [
+        104.0,
+        166.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "open_calendar_control",
+      "native_id": "beauty_0_0_0_3_1",
+      "parent": "open_calendar",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        104.0,
+        166.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "open_calendar_label",
+      "native_id": "beauty_0_0_0_3_2",
+      "parent": "open_calendar",
+      "kind": "text",
+      "component": "Text8a9edc9d1301",
+      "semantic_role": "text",
+      "bounds": [
+        126.5,
+        170.96999999999997,
+        34.0,
+        10.93
+      ],
+      "text": "\u6253\u5f00\u65e5\u5386",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "sync_card_kicker",
+      "native_id": "beauty_0_0_0_4",
+      "parent": "sync_card",
+      "kind": "text",
+      "component": "Textca61a246aa8c",
+      "semantic_role": "text",
+      "bounds": [
+        46.0,
+        88.348,
+        39.412000000000006,
+        10.018999999999998
+      ],
+      "text": "\u540c\u6b65 \u00b7 \u6700\u65b0",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.5
+    },
+    {
+      "source_id": "sync_title",
+      "native_id": "beauty_0_0_0_5",
+      "parent": "sync_card",
+      "kind": "text",
+      "component": "Texte892c640469a",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        109.77000000000001,
+        70.0,
+        14.527
+      ],
+      "text": "\u4e24\u53f0\u8bbe\u5907\u4e00\u81f4",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 11.0
+    },
+    {
+      "source_id": "device_phone",
+      "native_id": "beauty_0_0_0_6",
+      "parent": "sync_card",
+      "kind": "text",
+      "component": "Textb9e9e5798961",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        127.172,
+        69.366,
+        10.44
+      ],
+      "text": "Alex \u00b7 \u624b\u673a \u00b7 09:41",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.0
+    },
+    {
+      "source_id": "device_desktop",
+      "native_id": "beauty_0_0_0_7",
+      "parent": "sync_card",
+      "kind": "text",
+      "component": "Textb9e9e5798961",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        138.172,
+        70.353,
+        10.44
+      ],
+      "text": "Sam \u00b7 \u684c\u9762 \u00b7 09:40",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.0
+    },
+    {
+      "source_id": "pending_count",
+      "native_id": "beauty_0_0_0_8",
+      "parent": "sync_card",
+      "kind": "text",
+      "component": "Textbd9144719f14",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        149.8415,
+        93.6025,
+        10.038499999999999
+      ],
+      "text": "0 \u9879\u5f85\u540c\u6b65\u66f4\u6539 \u00b7 \u7b2c 12 \u6b21\u540c\u6b65",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.5
+    },
+    {
+      "source_id": "sync_foot",
+      "native_id": "beauty_0_0_0_9",
+      "parent": "sync_card",
+      "kind": "text",
+      "component": "Textc84c25b693fd",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        192.256,
+        103.0,
+        9.2305
+      ],
+      "text": "\u66f4\u6539\u53ea\u4f1a\u5728\u4f60\u64cd\u4f5c\u540e\u53d1\u9001\uff0c\u4e0d\u4f1a\u81ea\u52a8\u6392\u7a0b",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.5
+    },
+    {
+      "source_id": "dock",
+      "native_id": "beauty_0_0_1",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surface6d4d125026db",
+      "semantic_role": "layout",
+      "bounds": [
+        12.0,
+        345.0,
+        179.0,
+        33.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar",
+      "native_id": "beauty_0_0_1_0",
+      "parent": "dock",
+      "kind": "stack",
+      "component": "KitButtoncf0eee1a640d",
+      "semantic_role": "button",
+      "bounds": [
+        20.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_tile",
+      "native_id": "beauty_0_0_1_0_0",
+      "parent": "dock_calendar",
+      "kind": "stack",
+      "component": "Surfacef14af3ff6c0c",
+      "semantic_role": "layout",
+      "bounds": [
+        35.0,
+        349.0,
+        20.0,
+        17.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_icon",
+      "native_id": "beauty_0_0_1_0_1",
+      "parent": "dock_calendar",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        40.0,
+        351.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_control",
+      "native_id": "beauty_0_0_1_0_2",
+      "parent": "dock_calendar",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        20.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_label",
+      "native_id": "beauty_0_0_1_0_3",
+      "parent": "dock_calendar",
+      "kind": "text",
+      "component": "Textb15addbbe3ba",
+      "semantic_role": "text",
+      "bounds": [
+        40.0,
+        366.725,
+        14.0,
+        8.34
+      ],
+      "text": "\u65e5\u5386",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.0
+    },
+    {
+      "source_id": "dock_mail",
+      "native_id": "beauty_0_0_1_1",
+      "parent": "dock",
+      "kind": "stack",
+      "component": "KitButtoncf0eee1a640d",
+      "semantic_role": "button",
+      "bounds": [
+        78.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_tile",
+      "native_id": "beauty_0_0_1_1_0",
+      "parent": "dock_mail",
+      "kind": "stack",
+      "component": "Surfacef14af3ff6c0c",
+      "semantic_role": "layout",
+      "bounds": [
+        93.0,
+        349.0,
+        20.0,
+        17.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_icon",
+      "native_id": "beauty_0_0_1_1_1",
+      "parent": "dock_mail",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        98.0,
+        351.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_control",
+      "native_id": "beauty_0_0_1_1_2",
+      "parent": "dock_mail",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        78.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_label",
+      "native_id": "beauty_0_0_1_1_3",
+      "parent": "dock_mail",
+      "kind": "text",
+      "component": "Text685742a63f8c",
+      "semantic_role": "text",
+      "bounds": [
+        98.0,
+        366.485,
+        14.0,
+        8.594999999999999
+      ],
+      "text": "\u90ae\u4ef6",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.0
+    },
+    {
+      "source_id": "dock_settings",
+      "native_id": "beauty_0_0_1_2",
+      "parent": "dock",
+      "kind": "stack",
+      "component": "KitButtoncf0eee1a640d",
+      "semantic_role": "button",
+      "bounds": [
+        136.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_tile",
+      "native_id": "beauty_0_0_1_2_0",
+      "parent": "dock_settings",
+      "kind": "stack",
+      "component": "Surfacef14af3ff6c0c",
+      "semantic_role": "layout",
+      "bounds": [
+        151.0,
+        349.0,
+        20.0,
+        17.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_icon",
+      "native_id": "beauty_0_0_1_2_1",
+      "parent": "dock_settings",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        156.0,
+        351.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_control",
+      "native_id": "beauty_0_0_1_2_2",
+      "parent": "dock_settings",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        136.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_label",
+      "native_id": "beauty_0_0_1_2_3",
+      "parent": "dock_settings",
+      "kind": "text",
+      "component": "Texte8488d34cbed",
+      "semantic_role": "text",
+      "bounds": [
+        156.0,
+        366.57,
+        14.0,
+        8.524999999999999
+      ],
+      "text": "\u8bbe\u7f6e",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.0
+    },
+    {
+      "source_id": "desk_date",
+      "native_id": "beauty_0_0_2",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Textf96e8600fe82",
+      "semantic_role": "text",
+      "bounds": [
+        12.0,
+        15.829999999999998,
+        48.167500000000004,
+        10.585
+      ],
+      "text": "9\u670824\u65e5 \u5468\u56db",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "desk_time",
+      "native_id": "beauty_0_0_3",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Textf11296869b0f",
+      "semantic_role": "text",
+      "bounds": [
+        12.0,
+        30.275999999999996,
+        52.33,
+        17.823999999999998
+      ],
+      "text": "09:44",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 18.0
+    }
+  ],
+  "fonts": {
+    "self:resources/service/NotoSansSC-Bold.ttf": "900b1b791ba502293f14151010e067686499101af9b830199a6db2bf4126e552",
+    "self:resources/service/NotoSansSC-Regular.ttf": "62513a5d6706afa489edfd29e1c860d076a3d36f0ba865fa917ebb79a96dfef8"
+  },
+  "contract_sha256": "10478a5ffb90715cc217f3fb3e40562347d452a2d9d517c735a3e383ca63c041",
+  "mapping_basis": "mapped.json"
+}

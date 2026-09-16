@@ -1,0 +1,427 @@
+{
+  "atlas_sha256": "69e348329f1c8421cba914dd2d55bd8ba99a38868ff47f9f900cb384b3304e70",
+  "reference_sha256": "c15eda187bff1e029d67ac17792fbb9a5f7128017dcfc33ca4080a9a1eb32930",
+  "source_crop": [
+    2628,
+    1716,
+    812,
+    1552
+  ],
+  "transform": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      2628,
+      1716,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -2628.0,
+      0,
+      1.0,
+      -1716.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      2628.0,
+      0,
+      1.0,
+      1716.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -1314.0,
+      0,
+      0.5,
+      -858.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      2628.0,
+      0,
+      2.0,
+      1716.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "reviewed_source": true,
+  "text": [
+    {
+      "id": "status_time",
+      "css_box": [
+        28,
+        12,
+        60,
+        20
+      ],
+      "ink_bounds": [
+        28.66,
+        17.229999999999997,
+        38.669999999999995,
+        11.52
+      ],
+      "copy": {
+        "cn": "09:41",
+        "en": "09:41"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "nav_title",
+      "css_box": [
+        100,
+        50,
+        206,
+        36
+      ],
+      "ink_bounds": [
+        188.618,
+        61.62500000000001,
+        30.549000000000003,
+        15.3
+      ],
+      "copy": {
+        "cn": "日历",
+        "en": "Calendars"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "done_calendars_label",
+      "css_box": [
+        306,
+        50,
+        88,
+        36
+      ],
+      "ink_bounds": [
+        306.748,
+        60.979000000000006,
+        32.555,
+        15.911999999999999
+      ],
+      "copy": {
+        "cn": "完成",
+        "en": "Done"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "section_icloud",
+      "css_box": [
+        36,
+        108,
+        200,
+        18
+      ],
+      "ink_bounds": [
+        37.014,
+        112.32,
+        37.18000000000001,
+        10.517000000000001
+      ],
+      "copy": {
+        "cn": "iCloud",
+        "en": "iCloud"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "toggle_family_label",
+      "css_box": [
+        88,
+        138,
+        200,
+        26
+      ],
+      "ink_bounds": [
+        89.037,
+        143.979,
+        32.351,
+        15.826999999999998
+      ],
+      "copy": {
+        "cn": "家庭",
+        "en": "Family"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "toggle_family_sub",
+      "css_box": [
+        88,
+        162,
+        200,
+        18
+      ],
+      "ink_bounds": [
+        88.684,
+        166.068,
+        65.088,
+        11.148
+      ],
+      "copy": {
+        "cn": "与 Sam 共享",
+        "en": "Shared with Sam"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "toggle_work_label",
+      "css_box": [
+        88,
+        198,
+        200,
+        26
+      ],
+      "ink_bounds": [
+        88.884,
+        204.20000000000002,
+        32.47,
+        15.554999999999998
+      ],
+      "copy": {
+        "cn": "工作",
+        "en": "Work"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "toggle_personal_label",
+      "css_box": [
+        88,
+        250,
+        200,
+        26
+      ],
+      "ink_bounds": [
+        88.595,
+        256.115,
+        32.81,
+        15.639999999999999
+      ],
+      "copy": {
+        "cn": "个人",
+        "en": "Personal"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "toggle_birthdays_label",
+      "css_box": [
+        88,
+        294,
+        200,
+        26
+      ],
+      "ink_bounds": [
+        88.918,
+        300.13200000000006,
+        30.226,
+        15.453000000000001
+      ],
+      "copy": {
+        "cn": "生日",
+        "en": "Birthdays"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "toggle_birthdays_sub",
+      "css_box": [
+        88,
+        318,
+        200,
+        18
+      ],
+      "ink_bounds": [
+        89.116,
+        322.15200000000004,
+        34.488,
+        11.064
+      ],
+      "copy": {
+        "cn": "已隐藏",
+        "en": "Hidden"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "sync_status",
+      "css_box": [
+        72,
+        372,
+        300,
+        24
+      ],
+      "ink_bounds": [
+        73.395,
+        377.93999999999994,
+        101.82000000000001,
+        13.829999999999998
+      ],
+      "copy": {
+        "cn": "已同步 · 09:41",
+        "en": "Synced · 09:41"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "sync_devices",
+      "css_box": [
+        72,
+        398,
+        300,
+        18
+      ],
+      "ink_bounds": [
+        72.48,
+        402.10400000000004,
+        199.30800000000002,
+        11.411999999999999
+      ],
+      "copy": {
+        "cn": "2 台设备：Alex · 手机，Sam · 桌面",
+        "en": "2 devices: Alex · Phone, Sam · Desktop"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "tab_today_label",
+      "css_box": [
+        20,
+        732,
+        122,
+        16
+      ],
+      "ink_bounds": [
+        70.385,
+        735.4789999999999,
+        21.241,
+        10.229999999999999
+      ],
+      "copy": {
+        "cn": "今天",
+        "en": "Today"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "tab_calendars_label",
+      "css_box": [
+        142,
+        732,
+        122,
+        16
+      ],
+      "ink_bounds": [
+        193.936,
+        736.0949999999999,
+        19.481,
+        9.548
+      ],
+      "copy": {
+        "cn": "日历",
+        "en": "Calendars"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "tab_inbox_label",
+      "css_box": [
+        264,
+        732,
+        122,
+        16
+      ],
+      "ink_bounds": [
+        309.171,
+        735.512,
+        31.757,
+        10.174999999999999
+      ],
+      "copy": {
+        "cn": "收件箱",
+        "en": "Inbox"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "inbox_badge_count",
+      "css_box": [
+        292,
+        700,
+        18,
+        18
+      ],
+      "ink_bounds": [
+        298.657,
+        705.645,
+        4.8950000000000005,
+        8.151
+      ],
+      "copy": {
+        "cn": "1",
+        "en": "1"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    }
+  ],
+  "limits": [
+    "The storyboard is authored, so measurement is a consistency check of the render against the spec, not OCR of an unknown image",
+    "No native visual acceptance"
+  ]
+}

@@ -1,0 +1,176 @@
+# ledger calendar-06@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy accept_invite_label_text { class: user-copy, en: "接受" }
+copy maybe_invite_label_text { class: user-copy, en: "待定" }
+copy decline_invite_label_text { class: user-copy, en: "拒绝" }
+copy open_calendar_label_text { class: user-copy, en: "在日历中查看当天" }
+copy invite_card_kicker_text { class: user-copy, en: "邀请 · 来自 Sam" }
+copy invite_title_text { class: user-copy, en: "周末远足" }
+copy invite_when_text { class: user-copy, en: "9月26日 周六 · 09:00–12:00" }
+copy invite_where_text { class: user-copy, en: "西山步道 · 家庭日历" }
+copy invite_note_text { class: user-copy, en: "接受后会加入你的日历，并通知 Sam" }
+copy dock_calendar_label_text { class: user-copy, en: "日历" }
+copy dock_mail_label_text { class: user-copy, en: "邮件" }
+copy dock_settings_label_text { class: user-copy, en: "设置" }
+copy desk_date_text { class: user-copy, en: "9月24日 周四" }
+copy desk_time_text { class: user-copy, en: "09:43" }
+state accept_invite_control_enabled { shape: bool, initial: true }
+state maybe_invite_control_enabled { shape: bool, initial: true }
+state decline_invite_control_enabled { shape: bool, initial: true }
+state open_calendar_control_enabled { shape: bool, initial: true }
+state dock_calendar_control_enabled { shape: bool, initial: true }
+state dock_mail_control_enabled { shape: bool, initial: true }
+state dock_settings_control_enabled { shape: bool, initial: true }
+component Surface160815de9849(instance: text) {
+  view Kit(component: "Surface160815de9849", instance: instance) { slot }
+}
+component Surface5aa9b209b611(instance: text) {
+  view Kit(component: "Surface5aa9b209b611", instance: instance) { slot }
+}
+component Surface92c04b3e3983(instance: text) {
+  view Kit(component: "Surface92c04b3e3983", instance: instance) { slot }
+}
+component Surfacee4b0d954f855(instance: text) {
+  view Kit(component: "Surfacee4b0d954f855", instance: instance) { slot }
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component KitButton5dc7ea8cd583(instance: text) {
+  view Kit(component: "KitButton5dc7ea8cd583", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Textfc5754b98616(instance: text, text: text) {
+  view Kit(component: "Textfc5754b98616", instance: instance, text: text)
+}
+component Surface0d9374fbe8bf(instance: text) {
+  view Kit(component: "Surface0d9374fbe8bf", instance: instance) { slot }
+}
+component Text7bb89bd8b011(instance: text, text: text) {
+  view Kit(component: "Text7bb89bd8b011", instance: instance, text: text)
+}
+component Text4d0926ce4486(instance: text, text: text) {
+  view Kit(component: "Text4d0926ce4486", instance: instance, text: text)
+}
+component Group3d2637879433(instance: text) {
+  view Kit(component: "Group3d2637879433", instance: instance) { slot }
+}
+component Text71072a324ade(instance: text, text: text) {
+  view Kit(component: "Text71072a324ade", instance: instance, text: text)
+}
+component Textade3a70dab31(instance: text, text: text) {
+  view Kit(component: "Textade3a70dab31", instance: instance, text: text)
+}
+component Text7ac9b508ffaf(instance: text, text: text) {
+  view Kit(component: "Text7ac9b508ffaf", instance: instance, text: text)
+}
+component Textc36d06959e27(instance: text, text: text) {
+  view Kit(component: "Textc36d06959e27", instance: instance, text: text)
+}
+component Textefdaad07dc40(instance: text, text: text) {
+  view Kit(component: "Textefdaad07dc40", instance: instance, text: text)
+}
+component Texte4b57023d74d(instance: text, text: text) {
+  view Kit(component: "Texte4b57023d74d", instance: instance, text: text)
+}
+component Surface6d4d125026db(instance: text) {
+  view Kit(component: "Surface6d4d125026db", instance: instance) { slot }
+}
+component KitButtoncf0eee1a640d(instance: text) {
+  view Kit(component: "KitButtoncf0eee1a640d", instance: instance) { slot }
+}
+component Surfacef14af3ff6c0c(instance: text) {
+  view Kit(component: "Surfacef14af3ff6c0c", instance: instance) { slot }
+}
+component Textb15addbbe3ba(instance: text, text: text) {
+  view Kit(component: "Textb15addbbe3ba", instance: instance, text: text)
+}
+component Text685742a63f8c(instance: text, text: text) {
+  view Kit(component: "Text685742a63f8c", instance: instance, text: text)
+}
+component Texte8488d34cbed(instance: text, text: text) {
+  view Kit(component: "Texte8488d34cbed", instance: instance, text: text)
+}
+component Textf96e8600fe82(instance: text, text: text) {
+  view Kit(component: "Textf96e8600fe82", instance: instance, text: text)
+}
+component Textf11296869b0f(instance: text, text: text) {
+  view Kit(component: "Textf11296869b0f", instance: instance, text: text)
+}
+
+view root Surface160815de9849(instance: "page") {
+  Surface5aa9b209b611(instance: "screen") {
+    Surface92c04b3e3983(instance: "invite_card") {
+      Surfacee4b0d954f855(instance: "invite_card_icon_tile") {
+
+      }
+      Vectore0a378fde04f(instance: "invite_card_icon")
+      KitButton5dc7ea8cd583(instance: "accept_invite") {
+        Surfacee4b0d954f855(instance: "accept_invite_surface") {
+
+        }
+        NativeButton02f1d1bd99b4(instance: "accept_invite_control", enabled: accept_invite_control_enabled)
+        Textfc5754b98616(instance: "accept_invite_label", text: copy.accept_invite_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "maybe_invite") {
+        Surface0d9374fbe8bf(instance: "maybe_invite_surface") {
+
+        }
+        NativeButton02f1d1bd99b4(instance: "maybe_invite_control", enabled: maybe_invite_control_enabled)
+        Text7bb89bd8b011(instance: "maybe_invite_label", text: copy.maybe_invite_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "decline_invite") {
+        Surface0d9374fbe8bf(instance: "decline_invite_surface") {
+
+        }
+        NativeButton02f1d1bd99b4(instance: "decline_invite_control", enabled: decline_invite_control_enabled)
+        Text4d0926ce4486(instance: "decline_invite_label", text: copy.decline_invite_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "open_calendar") {
+        Group3d2637879433(instance: "open_calendar_surface") {
+
+        }
+        NativeButton02f1d1bd99b4(instance: "open_calendar_control", enabled: open_calendar_control_enabled)
+        Text71072a324ade(instance: "open_calendar_label", text: copy.open_calendar_label_text)
+      }
+      Textade3a70dab31(instance: "invite_card_kicker", text: copy.invite_card_kicker_text)
+      Text7ac9b508ffaf(instance: "invite_title", text: copy.invite_title_text)
+      Textc36d06959e27(instance: "invite_when", text: copy.invite_when_text)
+      Textefdaad07dc40(instance: "invite_where", text: copy.invite_where_text)
+      Texte4b57023d74d(instance: "invite_note", text: copy.invite_note_text)
+    }
+    Surface6d4d125026db(instance: "dock") {
+      KitButtoncf0eee1a640d(instance: "dock_calendar") {
+        Surfacef14af3ff6c0c(instance: "dock_calendar_tile") {
+
+        }
+        Vectore0a378fde04f(instance: "dock_calendar_icon")
+        NativeButton02f1d1bd99b4(instance: "dock_calendar_control", enabled: dock_calendar_control_enabled)
+        Textb15addbbe3ba(instance: "dock_calendar_label", text: copy.dock_calendar_label_text)
+      }
+      KitButtoncf0eee1a640d(instance: "dock_mail") {
+        Surfacef14af3ff6c0c(instance: "dock_mail_tile") {
+
+        }
+        Vectore0a378fde04f(instance: "dock_mail_icon")
+        NativeButton02f1d1bd99b4(instance: "dock_mail_control", enabled: dock_mail_control_enabled)
+        Text685742a63f8c(instance: "dock_mail_label", text: copy.dock_mail_label_text)
+      }
+      KitButtoncf0eee1a640d(instance: "dock_settings") {
+        Surfacef14af3ff6c0c(instance: "dock_settings_tile") {
+
+        }
+        Vectore0a378fde04f(instance: "dock_settings_icon")
+        NativeButton02f1d1bd99b4(instance: "dock_settings_control", enabled: dock_settings_control_enabled)
+        Texte8488d34cbed(instance: "dock_settings_label", text: copy.dock_settings_label_text)
+      }
+    }
+    Textf96e8600fe82(instance: "desk_date", text: copy.desk_date_text)
+    Textf11296869b0f(instance: "desk_time", text: copy.desk_time_text)
+  }
+}

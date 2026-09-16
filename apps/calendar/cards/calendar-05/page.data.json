@@ -1,0 +1,363 @@
+{
+  "$kit": {
+    "theme": "light",
+    "placements": {
+      "page": {
+        "component": "Surface160815de9849",
+        "layout": {
+          "x": 0,
+          "y": 0,
+          "w": 406,
+          "h": 776
+        }
+      },
+      "screen": {
+        "component": "Surface5aa9b209b611",
+        "layout": {
+          "x": 0.0,
+          "y": 0.0,
+          "w": 203.0,
+          "h": 388.0
+        }
+      },
+      "calendar_card": {
+        "component": "Surface92c04b3e3983",
+        "layout": {
+          "x": 12.0,
+          "y": 75.0,
+          "w": 179.0,
+          "h": 131.0
+        }
+      },
+      "calendar_card_icon_tile": {
+        "component": "Surface8e4a3948984f",
+        "layout": {
+          "x": 22.0,
+          "y": 84.0,
+          "w": 18.0,
+          "h": 18.0
+        }
+      },
+      "calendar_card_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 25.5,
+          "y": 87.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-05/assets/calendar_card_icon-a770c5049093.svg"
+        }
+      },
+      "ack_sync": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 22.0,
+          "y": 154.0,
+          "w": 75.0,
+          "h": 20.0
+        }
+      },
+      "ack_sync_surface": {
+        "component": "Surface8e4a3948984f",
+        "layout": {
+          "x": 22.0,
+          "y": 154.0,
+          "w": 75.0,
+          "h": 20.0
+        }
+      },
+      "ack_sync_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 22.0,
+          "y": 154.0,
+          "w": 75.0,
+          "h": 20.0
+        }
+      },
+      "ack_sync_label": {
+        "component": "Text7c6de6607d3e",
+        "layout": {
+          "x": 48.25,
+          "y": 158.83499999999998,
+          "w": 26.5,
+          "h": 11.1325
+        }
+      },
+      "undo_event": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 104.0,
+          "y": 154.0,
+          "w": 75.0,
+          "h": 20.0
+        }
+      },
+      "undo_event_surface": {
+        "component": "Surface0d9374fbe8bf",
+        "layout": {
+          "x": 104.0,
+          "y": 154.0,
+          "w": 75.0,
+          "h": 20.0
+        }
+      },
+      "undo_event_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 104.0,
+          "y": 154.0,
+          "w": 75.0,
+          "h": 20.0
+        }
+      },
+      "undo_event_label": {
+        "component": "Textf5b1951f25ae",
+        "layout": {
+          "x": 134.0,
+          "y": 158.9175,
+          "w": 19.0,
+          "h": 10.9675
+        }
+      },
+      "open_calendar": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 22.0,
+          "y": 180.0,
+          "w": 100.0,
+          "h": 16.0
+        }
+      },
+      "open_calendar_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 22.0,
+          "y": 180.0,
+          "w": 100.0,
+          "h": 16.0
+        }
+      },
+      "open_calendar_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 22.0,
+          "y": 180.0,
+          "w": 100.0,
+          "h": 16.0
+        }
+      },
+      "open_calendar_label": {
+        "component": "Texta75336d83c07",
+        "layout": {
+          "x": 22.0,
+          "y": 183.172,
+          "w": 46.0,
+          "h": 10.468
+        }
+      },
+      "calendar_card_kicker": {
+        "component": "Textbb9ba39ccbf0",
+        "layout": {
+          "x": 46.0,
+          "y": 88.37400000000001,
+          "w": 45.912000000000006,
+          "h": 9.992999999999999
+        }
+      },
+      "card_title": {
+        "component": "Textf07adab572ab",
+        "layout": {
+          "x": 22.0,
+          "y": 109.97900000000001,
+          "w": 37.0,
+          "h": 14.405999999999999
+        }
+      },
+      "card_when": {
+        "component": "Text3cc08fe11b7d",
+        "layout": {
+          "x": 22.0,
+          "y": 125.508,
+          "w": 94.083,
+          "h": 10.146
+        }
+      },
+      "card_source": {
+        "component": "Textefdaad07dc40",
+        "layout": {
+          "x": 22.0,
+          "y": 135.81550000000001,
+          "w": 88.916,
+          "h": 10.0515
+        }
+      },
+      "dock": {
+        "component": "Surface6d4d125026db",
+        "layout": {
+          "x": 12.0,
+          "y": 345.0,
+          "w": 179.0,
+          "h": 33.0
+        }
+      },
+      "dock_calendar": {
+        "component": "KitButtoncf0eee1a640d",
+        "layout": {
+          "x": 20.0,
+          "y": 348.0,
+          "w": 50.0,
+          "h": 27.0
+        }
+      },
+      "dock_calendar_tile": {
+        "component": "Surfacef14af3ff6c0c",
+        "layout": {
+          "x": 35.0,
+          "y": 349.0,
+          "w": 20.0,
+          "h": 17.0
+        }
+      },
+      "dock_calendar_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 40.0,
+          "y": 351.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-05/assets/dock_calendar_icon-fae6f2960edc.svg"
+        }
+      },
+      "dock_calendar_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 20.0,
+          "y": 348.0,
+          "w": 50.0,
+          "h": 27.0
+        }
+      },
+      "dock_calendar_label": {
+        "component": "Textb15addbbe3ba",
+        "layout": {
+          "x": 40.0,
+          "y": 366.725,
+          "w": 14.0,
+          "h": 8.34
+        }
+      },
+      "dock_mail": {
+        "component": "KitButtoncf0eee1a640d",
+        "layout": {
+          "x": 78.0,
+          "y": 348.0,
+          "w": 50.0,
+          "h": 27.0
+        }
+      },
+      "dock_mail_tile": {
+        "component": "Surfacef14af3ff6c0c",
+        "layout": {
+          "x": 93.0,
+          "y": 349.0,
+          "w": 20.0,
+          "h": 17.0
+        }
+      },
+      "dock_mail_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 98.0,
+          "y": 351.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-05/assets/dock_mail_icon-5700c00c4c61.svg"
+        }
+      },
+      "dock_mail_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 78.0,
+          "y": 348.0,
+          "w": 50.0,
+          "h": 27.0
+        }
+      },
+      "dock_mail_label": {
+        "component": "Text685742a63f8c",
+        "layout": {
+          "x": 98.0,
+          "y": 366.485,
+          "w": 14.0,
+          "h": 8.594999999999999
+        }
+      },
+      "dock_settings": {
+        "component": "KitButtoncf0eee1a640d",
+        "layout": {
+          "x": 136.0,
+          "y": 348.0,
+          "w": 50.0,
+          "h": 27.0
+        }
+      },
+      "dock_settings_tile": {
+        "component": "Surfacef14af3ff6c0c",
+        "layout": {
+          "x": 151.0,
+          "y": 349.0,
+          "w": 20.0,
+          "h": 17.0
+        }
+      },
+      "dock_settings_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 156.0,
+          "y": 351.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-05/assets/dock_settings_icon-dac6f2b7e7bb.svg"
+        }
+      },
+      "dock_settings_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 136.0,
+          "y": 348.0,
+          "w": 50.0,
+          "h": 27.0
+        }
+      },
+      "dock_settings_label": {
+        "component": "Texte8488d34cbed",
+        "layout": {
+          "x": 156.0,
+          "y": 366.57,
+          "w": 14.0,
+          "h": 8.524999999999999
+        }
+      },
+      "desk_date": {
+        "component": "Textf96e8600fe82",
+        "layout": {
+          "x": 12.0,
+          "y": 15.829999999999998,
+          "w": 48.167500000000004,
+          "h": 10.585
+        }
+      },
+      "desk_time": {
+        "component": "Textf11296869b0f",
+        "layout": {
+          "x": 12.0,
+          "y": 30.275999999999996,
+          "w": 52.33,
+          "h": 17.823999999999998
+        }
+      }
+    },
+    "bindings": []
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "id": "calendar",
+  "artboard": [
+    406,
+    776
+  ],
+  "locales": [
+    "en",
+    "cn"
+  ],
+  "generation": {
+    "atlas": "source/atlas.png",
+    "prompt": "source/prompt.txt",
+    "provider": "Authored HTML storyboard rendered by headless Chromium through Playwright; no generative image model",
+    "model": "chromium 153.0.8010.12 (playwright)",
+    "requested_size": [
+      3488,
+      4950
+    ],
+    "quality": "high"
+  },
+  "scenes": [
+    {
+      "id": "1",
+      "design_id": "calendar-01",
+      "directory": "cards/calendar-01",
+      "crop": [
+        48,
+        82,
+        812,
+        1552
+      ],
+      "surface": "app",
+      "title": "月视图",
+      "title_en": "Month"
+    },
+    {
+      "id": "2",
+      "design_id": "calendar-02",
+      "directory": "cards/calendar-02",
+      "crop": [
+        908,
+        82,
+        812,
+        1552
+      ],
+      "surface": "app",
+      "title": "日视图",
+      "title_en": "Day"
+    },
+    {
+      "id": "3",
+      "design_id": "calendar-03",
+      "directory": "cards/calendar-03",
+      "crop": [
+        1768,
+        82,
+        812,
+        1552
+      ],
+      "surface": "app",
+      "title": "日程详情",
+      "title_en": "Event"
+    },
+    {
+      "id": "4",
+      "design_id": "calendar-04",
+      "directory": "cards/calendar-04",
+      "crop": [
+        2628,
+        82,
+        812,
+        1552
+      ],
+      "surface": "app",
+      "title": "新建日程",
+      "title_en": "New Event"
+    },
+    {
+      "id": "5",
+      "design_id": "calendar-05",
+      "directory": "cards/calendar-05",
+      "crop": [
+        48,
+        1716,
+        812,
+        1552
+      ],
+      "surface": "desktop",
+      "title": "日历已同步",
+      "title_en": "Calendar synced"
+    },
+    {
+      "id": "6",
+      "design_id": "calendar-06",
+      "directory": "cards/calendar-06",
+      "crop": [
+        908,
+        1716,
+        812,
+        1552
+      ],
+      "surface": "desktop",
+      "title": "日程邀请",
+      "title_en": "Invitation"
+    },
+    {
+      "id": "7",
+      "design_id": "calendar-07",
+      "directory": "cards/calendar-07",
+      "crop": [
+        1768,
+        1716,
+        812,
+        1552
+      ],
+      "surface": "app",
+      "title": "选择时间",
+      "title_en": "Choose a time"
+    },
+    {
+      "id": "8",
+      "design_id": "calendar-08",
+      "directory": "cards/calendar-08",
+      "crop": [
+        2628,
+        1716,
+        812,
+        1552
+      ],
+      "surface": "app",
+      "title": "日历列表",
+      "title_en": "Calendars"
+    },
+    {
+      "id": "9",
+      "design_id": "calendar-09",
+      "directory": "cards/calendar-09",
+      "crop": [
+        48,
+        3350,
+        812,
+        1552
+      ],
+      "surface": "desktop",
+      "title": "同步状态",
+      "title_en": "Sync status"
+    },
+    {
+      "id": "10",
+      "design_id": "calendar-10",
+      "directory": "cards/calendar-10",
+      "crop": [
+        908,
+        3350,
+        812,
+        1552
+      ],
+      "surface": "desktop",
+      "title": "日程已删除",
+      "title_en": "Event removed"
+    }
+  ],
+  "cards": [
+    {
+      "id": "calendar-synced-05",
+      "scene": "5",
+      "root": "calendar_card",
+      "owner": "calendar"
+    },
+    {
+      "id": "calendar-invite-06",
+      "scene": "6",
+      "root": "invite_card",
+      "owner": "calendar"
+    },
+    {
+      "id": "calendar-sync-status-09",
+      "scene": "9",
+      "root": "sync_card",
+      "owner": "sync"
+    },
+    {
+      "id": "calendar-removed-10",
+      "scene": "10",
+      "root": "calendar_card",
+      "owner": "calendar"
+    }
+  ],
+  "artwork": {
+    "source_prefix": "http://127.0.0.1:8170/ux-images/",
+    "root": "artwork"
+  },
+  "outputs": {
+    "intake": "pipeline-output/intake",
+    "cards": "pipeline-output/service-cards",
+    "bundle": "wizard/card-bundle",
+    "runs": "pipeline-output/runs"
+  },
+  "browser_modules": [
+    "wizard/service.mjs",
+    "wizard/core.mjs",
+    "wizard/sync.mjs",
+    "wizard/copy.mjs"
+  ],
+  "checks": {
+    "service-test": [
+      {
+        "argv": [
+          "{python}",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "service",
+          "-p",
+          "test_*.py"
+        ],
+        "cwd": "."
+      },
+      {
+        "argv": [
+          "{python}",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "server",
+          "-p",
+          "test_*.py"
+        ],
+        "cwd": "."
+      },
+      {
+        "argv": [
+          "{node}",
+          "--test",
+          "wizard/service.test.mjs",
+          "wizard/core.test.mjs"
+        ],
+        "cwd": "."
+      },
+      {
+        "argv": [
+          "{node}",
+          "--test",
+          "wizard/sync.test.mjs"
+        ],
+        "cwd": "."
+      }
+    ]
+  }
+}

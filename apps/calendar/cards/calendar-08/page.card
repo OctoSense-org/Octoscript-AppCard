@@ -1,0 +1,238 @@
+# ledger calendar-08@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy done_calendars_label_text { class: user-copy, en: "完成" }
+copy toggle_family_label_text { class: user-copy, en: "家庭" }
+copy toggle_family_sub_text { class: user-copy, en: "与 Sam 共享" }
+copy toggle_work_label_text { class: user-copy, en: "工作" }
+copy toggle_personal_label_text { class: user-copy, en: "个人" }
+copy toggle_birthdays_label_text { class: user-copy, en: "生日" }
+copy toggle_birthdays_sub_text { class: user-copy, en: "已隐藏" }
+copy tab_today_label_text { class: user-copy, en: "今天" }
+copy tab_calendars_label_text { class: user-copy, en: "日历" }
+copy tab_inbox_label_text { class: user-copy, en: "收件箱" }
+copy inbox_badge_count_text { class: user-copy, en: "1" }
+copy status_time_text { class: user-copy, en: "09:41" }
+copy nav_title_text { class: user-copy, en: "日历" }
+copy section_icloud_text { class: user-copy, en: "iCloud" }
+copy sync_status_text { class: user-copy, en: "已同步 · 09:41" }
+copy sync_devices_text { class: user-copy, en: "2 台设备：Alex · 手机，Sam · 桌面" }
+state done_calendars_control_enabled { shape: bool, initial: true }
+state toggle_family_control_enabled { shape: bool, initial: true }
+state toggle_work_control_enabled { shape: bool, initial: true }
+state toggle_personal_control_enabled { shape: bool, initial: true }
+state toggle_birthdays_control_enabled { shape: bool, initial: true }
+state tab_today_control_enabled { shape: bool, initial: true }
+state tab_calendars_control_enabled { shape: bool, initial: true }
+state tab_inbox_control_enabled { shape: bool, initial: true }
+component Surface156d085f4ff5(instance: text) {
+  view Kit(component: "Surface156d085f4ff5", instance: instance) { slot }
+}
+component Surface77131ad4bbf5(instance: text) {
+  view Kit(component: "Surface77131ad4bbf5", instance: instance) { slot }
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component KitButton5dc7ea8cd583(instance: text) {
+  view Kit(component: "KitButton5dc7ea8cd583", instance: instance) { slot }
+}
+component Group3d2637879433(instance: text) {
+  view Kit(component: "Group3d2637879433", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Text19120ef55d91(instance: text, text: text) {
+  view Kit(component: "Text19120ef55d91", instance: instance, text: text)
+}
+component Surfacecd7755cda6bf(instance: text) {
+  view Kit(component: "Surfacecd7755cda6bf", instance: instance) { slot }
+}
+component KitButton36b6e7615b3d(instance: text) {
+  view Kit(component: "KitButton36b6e7615b3d", instance: instance) { slot }
+}
+component Surface48cc4671a3f7(instance: text) {
+  view Kit(component: "Surface48cc4671a3f7", instance: instance) { slot }
+}
+component Surface396ee6390bb9(instance: text) {
+  view Kit(component: "Surface396ee6390bb9", instance: instance) { slot }
+}
+component Texta7243b1ca490(instance: text, text: text) {
+  view Kit(component: "Texta7243b1ca490", instance: instance, text: text)
+}
+component Text0bf10bb11d96(instance: text, text: text) {
+  view Kit(component: "Text0bf10bb11d96", instance: instance, text: text)
+}
+component Surfaced63c5b191541(instance: text) {
+  view Kit(component: "Surfaced63c5b191541", instance: instance) { slot }
+}
+component Text2bd91180f201(instance: text, text: text) {
+  view Kit(component: "Text2bd91180f201", instance: instance, text: text)
+}
+component Surfaced51dfc8e3ab3(instance: text) {
+  view Kit(component: "Surfaced51dfc8e3ab3", instance: instance) { slot }
+}
+component Text2fdfc11c8c97(instance: text, text: text) {
+  view Kit(component: "Text2fdfc11c8c97", instance: instance, text: text)
+}
+component KitButtona8c9d412b00c(instance: text) {
+  view Kit(component: "KitButtona8c9d412b00c", instance: instance) { slot }
+}
+component Surface60fcb0346fa4(instance: text) {
+  view Kit(component: "Surface60fcb0346fa4", instance: instance) { slot }
+}
+component Text64afc446806a(instance: text, text: text) {
+  view Kit(component: "Text64afc446806a", instance: instance, text: text)
+}
+component Text062ba2a185fb(instance: text, text: text) {
+  view Kit(component: "Text062ba2a185fb", instance: instance, text: text)
+}
+component Surfacecc3f4cfacc10(instance: text) {
+  view Kit(component: "Surfacecc3f4cfacc10", instance: instance) { slot }
+}
+component Text5335314436d2(instance: text, text: text) {
+  view Kit(component: "Text5335314436d2", instance: instance, text: text)
+}
+component Text2d789b4eda3e(instance: text, text: text) {
+  view Kit(component: "Text2d789b4eda3e", instance: instance, text: text)
+}
+component KitButton870a84d356fb(instance: text) {
+  view Kit(component: "KitButton870a84d356fb", instance: instance) { slot }
+}
+component Surfacedd13f2cce3dd(instance: text) {
+  view Kit(component: "Surfacedd13f2cce3dd", instance: instance) { slot }
+}
+component Textac6fb4c051fd(instance: text, text: text) {
+  view Kit(component: "Textac6fb4c051fd", instance: instance, text: text)
+}
+component Text6d27197266b9(instance: text, text: text) {
+  view Kit(component: "Text6d27197266b9", instance: instance, text: text)
+}
+component Surface92bde3a718b5(instance: text) {
+  view Kit(component: "Surface92bde3a718b5", instance: instance) { slot }
+}
+component Text6a37fd0d3c23(instance: text, text: text) {
+  view Kit(component: "Text6a37fd0d3c23", instance: instance, text: text)
+}
+component Textb17dc8abc310(instance: text, text: text) {
+  view Kit(component: "Textb17dc8abc310", instance: instance, text: text)
+}
+component Textc20c72f67d1c(instance: text, text: text) {
+  view Kit(component: "Textc20c72f67d1c", instance: instance, text: text)
+}
+component Textcec81451dca5(instance: text, text: text) {
+  view Kit(component: "Textcec81451dca5", instance: instance, text: text)
+}
+component Texte4b57023d74d(instance: text, text: text) {
+  view Kit(component: "Texte4b57023d74d", instance: instance, text: text)
+}
+
+view root Surface156d085f4ff5(instance: "page") {
+  Surface77131ad4bbf5(instance: "screen") {
+    Vectore0a378fde04f(instance: "status_icons")
+    KitButton5dc7ea8cd583(instance: "done_calendars") {
+      Group3d2637879433(instance: "done_calendars_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "done_calendars_control", enabled: done_calendars_control_enabled)
+      Text19120ef55d91(instance: "done_calendars_label", text: copy.done_calendars_label_text)
+    }
+    Surfacecd7755cda6bf(instance: "calendars_group") {
+
+    }
+    KitButton36b6e7615b3d(instance: "toggle_family") {
+      Group3d2637879433(instance: "toggle_family_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "toggle_family_control", enabled: toggle_family_control_enabled)
+      Vectore0a378fde04f(instance: "toggle_family_check")
+      Surface48cc4671a3f7(instance: "toggle_family_dot") {
+
+      }
+      Surface396ee6390bb9(instance: "toggle_family_line") {
+
+      }
+      Texta7243b1ca490(instance: "toggle_family_label", text: copy.toggle_family_label_text)
+      Text0bf10bb11d96(instance: "toggle_family_sub", text: copy.toggle_family_sub_text)
+    }
+    KitButton36b6e7615b3d(instance: "toggle_work") {
+      Group3d2637879433(instance: "toggle_work_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "toggle_work_control", enabled: toggle_work_control_enabled)
+      Vectore0a378fde04f(instance: "toggle_work_check")
+      Surfaced63c5b191541(instance: "toggle_work_dot") {
+
+      }
+      Surface396ee6390bb9(instance: "toggle_work_line") {
+
+      }
+      Text2bd91180f201(instance: "toggle_work_label", text: copy.toggle_work_label_text)
+    }
+    KitButton36b6e7615b3d(instance: "toggle_personal") {
+      Group3d2637879433(instance: "toggle_personal_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "toggle_personal_control", enabled: toggle_personal_control_enabled)
+      Vectore0a378fde04f(instance: "toggle_personal_check")
+      Surfaced51dfc8e3ab3(instance: "toggle_personal_dot") {
+
+      }
+      Surface396ee6390bb9(instance: "toggle_personal_line") {
+
+      }
+      Text2fdfc11c8c97(instance: "toggle_personal_label", text: copy.toggle_personal_label_text)
+    }
+    KitButtona8c9d412b00c(instance: "toggle_birthdays") {
+      Group3d2637879433(instance: "toggle_birthdays_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "toggle_birthdays_control", enabled: toggle_birthdays_control_enabled)
+      Vectore0a378fde04f(instance: "toggle_birthdays_check")
+      Surface60fcb0346fa4(instance: "toggle_birthdays_dot") {
+
+      }
+      Text64afc446806a(instance: "toggle_birthdays_label", text: copy.toggle_birthdays_label_text)
+      Text062ba2a185fb(instance: "toggle_birthdays_sub", text: copy.toggle_birthdays_sub_text)
+    }
+    Surfacecd7755cda6bf(instance: "sync_group") {
+
+    }
+    Vectore0a378fde04f(instance: "sync_icon")
+    Surfacecc3f4cfacc10(instance: "tab_bar") {
+      KitButton5dc7ea8cd583(instance: "tab_today") {
+        Vectore0a378fde04f(instance: "tab_today_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_today_control", enabled: tab_today_control_enabled)
+        Text5335314436d2(instance: "tab_today_label", text: copy.tab_today_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "tab_calendars") {
+        Vectore0a378fde04f(instance: "tab_calendars_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_calendars_control", enabled: tab_calendars_control_enabled)
+        Text2d789b4eda3e(instance: "tab_calendars_label", text: copy.tab_calendars_label_text)
+      }
+      KitButton870a84d356fb(instance: "tab_inbox") {
+        Vectore0a378fde04f(instance: "tab_inbox_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_inbox_control", enabled: tab_inbox_control_enabled)
+        Surfacedd13f2cce3dd(instance: "inbox_badge") {
+
+        }
+        Textac6fb4c051fd(instance: "tab_inbox_label", text: copy.tab_inbox_label_text)
+        Text6d27197266b9(instance: "inbox_badge_count", text: copy.inbox_badge_count_text)
+      }
+    }
+    Surface396ee6390bb9(instance: "tab_line") {
+
+    }
+    Surface92bde3a718b5(instance: "home_indicator") {
+
+    }
+    Text6a37fd0d3c23(instance: "status_time", text: copy.status_time_text)
+    Textb17dc8abc310(instance: "nav_title", text: copy.nav_title_text)
+    Textc20c72f67d1c(instance: "section_icloud", text: copy.section_icloud_text)
+    Textcec81451dca5(instance: "sync_status", text: copy.sync_status_text)
+    Texte4b57023d74d(instance: "sync_devices", text: copy.sync_devices_text)
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "frame_id": 6,
+  "source": "calendar-06",
+  "controls": {
+    "accept_invite": {
+      "event": "accept_invite",
+      "text_ids": [
+        "accept_invite_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        44,
+        330,
+        100,
+        40
+      ],
+      "enabled": true
+    },
+    "maybe_invite": {
+      "event": "maybe_invite",
+      "text_ids": [
+        "maybe_invite_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        154,
+        330,
+        100,
+        40
+      ],
+      "enabled": true
+    },
+    "decline_invite": {
+      "event": "decline_invite",
+      "text_ids": [
+        "decline_invite_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        264,
+        330,
+        94,
+        40
+      ],
+      "enabled": true
+    },
+    "open_calendar": {
+      "event": "open_calendar",
+      "text_ids": [
+        "open_calendar_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        44,
+        384,
+        240,
+        32
+      ],
+      "enabled": true
+    },
+    "dock_calendar": {
+      "event": "dock_calendar",
+      "text_ids": [
+        "dock_calendar_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        40,
+        696,
+        100,
+        54
+      ],
+      "enabled": true
+    },
+    "dock_mail": {
+      "event": "dock_mail",
+      "text_ids": [
+        "dock_mail_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        156,
+        696,
+        100,
+        54
+      ],
+      "enabled": true
+    },
+    "dock_settings": {
+      "event": "dock_settings",
+      "text_ids": [
+        "dock_settings_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        272,
+        696,
+        100,
+        54
+      ],
+      "enabled": true
+    }
+  }
+}

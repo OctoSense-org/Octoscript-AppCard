@@ -1,0 +1,12 @@
+{
+  "frames": 10,
+  "atlas_dimensions": [
+    3488,
+    4950
+  ],
+  "native_only": true,
+  "labels": 190,
+  "controls": 64,
+  "capture": "not run",
+  "visual_gate": "not run"
+}

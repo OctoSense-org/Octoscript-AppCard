@@ -1,0 +1,90 @@
+{
+  "frame_id": 5,
+  "source": "calendar-05",
+  "controls": {
+    "ack_sync": {
+      "event": "ack_sync",
+      "text_ids": [
+        "ack_sync_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        44,
+        308,
+        150,
+        40
+      ],
+      "enabled": true
+    },
+    "undo_event": {
+      "event": "undo_event",
+      "text_ids": [
+        "undo_event_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        208,
+        308,
+        150,
+        40
+      ],
+      "enabled": true
+    },
+    "open_calendar": {
+      "event": "open_calendar",
+      "text_ids": [
+        "open_calendar_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        44,
+        360,
+        200,
+        32
+      ],
+      "enabled": true
+    },
+    "dock_calendar": {
+      "event": "dock_calendar",
+      "text_ids": [
+        "dock_calendar_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        40,
+        696,
+        100,
+        54
+      ],
+      "enabled": true
+    },
+    "dock_mail": {
+      "event": "dock_mail",
+      "text_ids": [
+        "dock_mail_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        156,
+        696,
+        100,
+        54
+      ],
+      "enabled": true
+    },
+    "dock_settings": {
+      "event": "dock_settings",
+      "text_ids": [
+        "dock_settings_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        272,
+        696,
+        100,
+        54
+      ],
+      "enabled": true
+    }
+  }
+}

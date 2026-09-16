@@ -1,0 +1,132 @@
+{
+  "id": "6",
+  "design_id": "calendar-06",
+  "surface": "desktop",
+  "declared_scene": {
+    "id": "6",
+    "design_id": "calendar-06",
+    "directory": "cards/calendar-06",
+    "crop": [
+      908,
+      1716,
+      812,
+      1552
+    ],
+    "surface": "desktop",
+    "title": "\u65e5\u7a0b\u9080\u8bf7",
+    "title_en": "Invitation"
+  },
+  "crop": [
+    908,
+    1716,
+    812,
+    1552
+  ],
+  "crop_image": "scenes/calendar-06/crop.png",
+  "reference_image": "scenes/calendar-06/reference.png",
+  "provenance": "scenes/calendar-06/provenance.json",
+  "crop_sha256": "3421040fdf7cddb3d6281e878cf9f0aa9fd20234d72039dbc73f288326ddde25",
+  "reference_sha256": "3421040fdf7cddb3d6281e878cf9f0aa9fd20234d72039dbc73f288326ddde25",
+  "source_atlas_sha256": "69e348329f1c8421cba914dd2d55bd8ba99a38868ff47f9f900cb384b3304e70",
+  "source_prompt_sha256": "5f0faa313906497d0a5cd518351084c942e3f5cb2e846c9a24fc930a06ddc845",
+  "crop_resampled": false,
+  "crop_mode": "RGB",
+  "transform": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      908,
+      1716,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -908.0,
+      0,
+      1.0,
+      -1716.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      908.0,
+      0,
+      1.0,
+      1716.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -454.0,
+      0,
+      0.5,
+      -858.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      908.0,
+      0,
+      2.0,
+      1716.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "source_review": {
+    "status": "not_reviewed",
+    "reviewer": null
+  },
+  "native_mapping": {
+    "status": "not_started",
+    "automatic": false
+  }
+}

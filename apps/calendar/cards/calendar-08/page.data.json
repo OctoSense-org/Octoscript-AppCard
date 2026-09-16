@@ -1,0 +1,566 @@
+{
+  "$kit": {
+    "theme": "light",
+    "placements": {
+      "page": {
+        "component": "Surface156d085f4ff5",
+        "layout": {
+          "x": 0,
+          "y": 0,
+          "w": 406,
+          "h": 776
+        }
+      },
+      "screen": {
+        "component": "Surface77131ad4bbf5",
+        "layout": {
+          "x": 0.0,
+          "y": 0.0,
+          "w": 203.0,
+          "h": 388.0
+        }
+      },
+      "status_icons": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 163.0,
+          "y": 6.5,
+          "w": 28.0,
+          "h": 7.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/status_icons-416cbc07c261.svg"
+        }
+      },
+      "done_calendars": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 153.0,
+          "y": 25.0,
+          "w": 44.0,
+          "h": 18.0
+        }
+      },
+      "done_calendars_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 153.0,
+          "y": 25.0,
+          "w": 44.0,
+          "h": 18.0
+        }
+      },
+      "done_calendars_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 153.0,
+          "y": 25.0,
+          "w": 44.0,
+          "h": 18.0
+        }
+      },
+      "done_calendars_label": {
+        "component": "Text19120ef55d91",
+        "layout": {
+          "x": 153.0,
+          "y": 28.489500000000003,
+          "w": 21.0,
+          "h": 11.956
+        }
+      },
+      "calendars_group": {
+        "component": "Surfacecd7755cda6bf",
+        "layout": {
+          "x": 10.0,
+          "y": 65.0,
+          "w": 183.0,
+          "h": 105.0
+        }
+      },
+      "toggle_family": {
+        "component": "KitButton36b6e7615b3d",
+        "layout": {
+          "x": 10.0,
+          "y": 67.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_family_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 10.0,
+          "y": 67.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_family_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 67.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_family_check": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 16.0,
+          "y": 74.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/toggle_family_check-9706b555dd2c.svg"
+        }
+      },
+      "toggle_family_dot": {
+        "component": "Surface48cc4671a3f7",
+        "layout": {
+          "x": 33.0,
+          "y": 76.5,
+          "w": 6.0,
+          "h": 6.0
+        }
+      },
+      "toggle_family_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 33.0,
+          "y": 92.0,
+          "w": 155.0,
+          "h": 0.5
+        }
+      },
+      "toggle_family_label": {
+        "component": "Texta7243b1ca490",
+        "layout": {
+          "x": 44.0,
+          "y": 69.9895,
+          "w": 21.0,
+          "h": 11.913499999999999
+        }
+      },
+      "toggle_family_sub": {
+        "component": "Text0bf10bb11d96",
+        "layout": {
+          "x": 44.0,
+          "y": 81.034,
+          "w": 37.198,
+          "h": 9.574
+        }
+      },
+      "toggle_work": {
+        "component": "KitButton36b6e7615b3d",
+        "layout": {
+          "x": 10.0,
+          "y": 93.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_work_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 10.0,
+          "y": 93.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_work_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 93.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_work_check": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 16.0,
+          "y": 100.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/toggle_work_check-08794cca4e88.svg"
+        }
+      },
+      "toggle_work_dot": {
+        "component": "Surfaced63c5b191541",
+        "layout": {
+          "x": 33.0,
+          "y": 102.5,
+          "w": 6.0,
+          "h": 6.0
+        }
+      },
+      "toggle_work_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 33.0,
+          "y": 118.0,
+          "w": 155.0,
+          "h": 0.5
+        }
+      },
+      "toggle_work_label": {
+        "component": "Text2bd91180f201",
+        "layout": {
+          "x": 44.0,
+          "y": 100.10000000000001,
+          "w": 21.0,
+          "h": 11.7775
+        }
+      },
+      "toggle_personal": {
+        "component": "KitButton36b6e7615b3d",
+        "layout": {
+          "x": 10.0,
+          "y": 119.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_personal_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 10.0,
+          "y": 119.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_personal_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 119.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_personal_check": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 16.0,
+          "y": 126.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/toggle_personal_check-637115c01f02.svg"
+        }
+      },
+      "toggle_personal_dot": {
+        "component": "Surfaced51dfc8e3ab3",
+        "layout": {
+          "x": 33.0,
+          "y": 128.5,
+          "w": 6.0,
+          "h": 6.0
+        }
+      },
+      "toggle_personal_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 33.0,
+          "y": 144.0,
+          "w": 155.0,
+          "h": 0.5
+        }
+      },
+      "toggle_personal_label": {
+        "component": "Text2fdfc11c8c97",
+        "layout": {
+          "x": 44.0,
+          "y": 126.0575,
+          "w": 21.0,
+          "h": 11.82
+        }
+      },
+      "toggle_birthdays": {
+        "component": "KitButtona8c9d412b00c",
+        "layout": {
+          "x": 10.0,
+          "y": 145.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_birthdays_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 10.0,
+          "y": 145.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_birthdays_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 145.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "toggle_birthdays_check": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 16.0,
+          "y": 152.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/toggle_birthdays_check-6eae36f3e0a6.svg"
+        }
+      },
+      "toggle_birthdays_dot": {
+        "component": "Surface60fcb0346fa4",
+        "layout": {
+          "x": 33.0,
+          "y": 154.5,
+          "w": 6.0,
+          "h": 6.0
+        }
+      },
+      "toggle_birthdays_label": {
+        "component": "Text64afc446806a",
+        "layout": {
+          "x": 44.0,
+          "y": 148.06600000000003,
+          "w": 21.0,
+          "h": 11.726500000000001
+        }
+      },
+      "toggle_birthdays_sub": {
+        "component": "Text062ba2a185fb",
+        "layout": {
+          "x": 44.0,
+          "y": 159.07600000000002,
+          "w": 22.0,
+          "h": 9.532
+        }
+      },
+      "sync_group": {
+        "component": "Surfacecd7755cda6bf",
+        "layout": {
+          "x": 10.0,
+          "y": 182.0,
+          "w": 183.0,
+          "h": 32.0
+        }
+      },
+      "sync_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 18.0,
+          "y": 192.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/sync_icon-3f46bec658d9.svg"
+        }
+      },
+      "tab_bar": {
+        "component": "Surfacecc3f4cfacc10",
+        "layout": {
+          "x": 0.0,
+          "y": 347.0,
+          "w": 203.0,
+          "h": 41.0
+        }
+      },
+      "tab_today": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_today_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 34.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/tab_today_icon-4591784cd98a.svg"
+        }
+      },
+      "tab_today_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_today_label": {
+        "component": "Text5335314436d2",
+        "layout": {
+          "x": 35.0,
+          "y": 365.73949999999996,
+          "w": 15.0,
+          "h": 9.114999999999998
+        }
+      },
+      "tab_calendars": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 71.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_calendars_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 95.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/tab_calendars_icon-b4e3170d50ee.svg"
+        }
+      },
+      "tab_calendars_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 71.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_calendars_label": {
+        "component": "Text2d789b4eda3e",
+        "layout": {
+          "x": 96.0,
+          "y": 366.04749999999996,
+          "w": 15.0,
+          "h": 8.774000000000001
+        }
+      },
+      "tab_inbox": {
+        "component": "KitButton870a84d356fb",
+        "layout": {
+          "x": 132.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_inbox_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 156.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-08/assets/tab_inbox_icon-6ac382742f14.svg"
+        }
+      },
+      "tab_inbox_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 132.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "inbox_badge": {
+        "component": "Surfacedd13f2cce3dd",
+        "layout": {
+          "x": 146.0,
+          "y": 350.0,
+          "w": 9.0,
+          "h": 9.0
+        }
+      },
+      "tab_inbox_label": {
+        "component": "Textac6fb4c051fd",
+        "layout": {
+          "x": 154.25,
+          "y": 365.756,
+          "w": 20.5,
+          "h": 9.087499999999999
+        }
+      },
+      "inbox_badge_count": {
+        "component": "Text6d27197266b9",
+        "layout": {
+          "x": 148.8775,
+          "y": 350.8225,
+          "w": 7.244999999999999,
+          "h": 8.0755
+        }
+      },
+      "tab_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 0.0,
+          "y": 347.0,
+          "w": 203.0,
+          "h": 0.5
+        }
+      },
+      "home_indicator": {
+        "component": "Surface92bde3a718b5",
+        "layout": {
+          "x": 69.5,
+          "y": 381.0,
+          "w": 64.0,
+          "h": 2.5
+        }
+      },
+      "status_time": {
+        "component": "Text6a37fd0d3c23",
+        "layout": {
+          "x": 14.0,
+          "y": 6.614999999999998,
+          "w": 24.1375,
+          "h": 9.76
+        }
+      },
+      "nav_title": {
+        "component": "Textb17dc8abc310",
+        "layout": {
+          "x": 93.0,
+          "y": 28.812500000000004,
+          "w": 21.0,
+          "h": 11.65
+        }
+      },
+      "section_icloud": {
+        "component": "Textc20c72f67d1c",
+        "layout": {
+          "x": 18.0,
+          "y": 54.16,
+          "w": 23.695,
+          "h": 9.258500000000002
+        }
+      },
+      "sync_status": {
+        "component": "Textcec81451dca5",
+        "layout": {
+          "x": 36.0,
+          "y": 186.96999999999997,
+          "w": 56.095,
+          "h": 10.915
+        }
+      },
+      "sync_devices": {
+        "component": "Texte4b57023d74d",
+        "layout": {
+          "x": 36.0,
+          "y": 199.05200000000002,
+          "w": 104.224,
+          "h": 9.706
+        }
+      }
+    },
+    "bindings": []
+  }
+}

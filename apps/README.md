@@ -11,6 +11,7 @@ tests and fixture evidence. App runtime state and personal data stay ignored.
 | [School](school/README.md) | Native cards / WASM | School notice, calendar and payment journey. |
 | [Health](health/README.md) | Native cards / WASM | Fictional health-check booking journey. |
 | [Reunion](reunion/README.md) | Native cards / WASM | Reunion planning, RSVP and payment journey. |
+| [Calendar](calendar/README.md) | Native cards / browser preview + sync server | iOS-style calendar for two devices: 10 screens, 4 service cards, and a SQLite-backed operation-log server every client replays. |
 
 All five projects are siblings here. The repository root is
 `Octosense-Service-AppCards/`; there is no nested `pipeline/` checkout.

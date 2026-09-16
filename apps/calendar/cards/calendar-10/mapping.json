@@ -1,0 +1,641 @@
+{
+  "schema_version": 1,
+  "elements": [
+    {
+      "source_id": "page",
+      "native_id": "beauty_0",
+      "parent": null,
+      "kind": "stack",
+      "component": "Surface160815de9849",
+      "semantic_role": "layout",
+      "bounds": [
+        0,
+        0,
+        406,
+        776
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "screen",
+      "native_id": "beauty_0_0",
+      "parent": "page",
+      "kind": "stack",
+      "component": "Surface5aa9b209b611",
+      "semantic_role": "layout",
+      "bounds": [
+        0.0,
+        0.0,
+        203.0,
+        388.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "calendar_card",
+      "native_id": "beauty_0_0_0",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surface92c04b3e3983",
+      "semantic_role": "card",
+      "bounds": [
+        12.0,
+        75.0,
+        179.0,
+        118.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "calendar_card_icon_tile",
+      "native_id": "beauty_0_0_0_0",
+      "parent": "calendar_card",
+      "kind": "stack",
+      "component": "Surface023335095501",
+      "semantic_role": "layout",
+      "bounds": [
+        22.0,
+        84.0,
+        18.0,
+        18.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "calendar_card_icon",
+      "native_id": "beauty_0_0_0_1",
+      "parent": "calendar_card",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        25.5,
+        87.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "undo_delete",
+      "native_id": "beauty_0_0_0_2",
+      "parent": "calendar_card",
+      "kind": "stack",
+      "component": "KitButton5dc7ea8cd583",
+      "semantic_role": "button",
+      "bounds": [
+        22.0,
+        154.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "undo_delete_surface",
+      "native_id": "beauty_0_0_0_2_0",
+      "parent": "undo_delete",
+      "kind": "stack",
+      "component": "Surface8e4a3948984f",
+      "semantic_role": "layout",
+      "bounds": [
+        22.0,
+        154.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "undo_delete_control",
+      "native_id": "beauty_0_0_0_2_1",
+      "parent": "undo_delete",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        22.0,
+        154.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "undo_delete_label",
+      "native_id": "beauty_0_0_0_2_2",
+      "parent": "undo_delete",
+      "kind": "text",
+      "component": "Text004ad0d94da8",
+      "semantic_role": "text",
+      "bounds": [
+        44.5,
+        158.80499999999998,
+        34.0,
+        11.192499999999999
+      ],
+      "text": "\u64a4\u9500\u5220\u9664",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "open_calendar",
+      "native_id": "beauty_0_0_0_3",
+      "parent": "calendar_card",
+      "kind": "stack",
+      "component": "KitButton5dc7ea8cd583",
+      "semantic_role": "button",
+      "bounds": [
+        104.0,
+        154.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "open_calendar_surface",
+      "native_id": "beauty_0_0_0_3_0",
+      "parent": "open_calendar",
+      "kind": "stack",
+      "component": "Surface0d9374fbe8bf",
+      "semantic_role": "layout",
+      "bounds": [
+        104.0,
+        154.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "open_calendar_control",
+      "native_id": "beauty_0_0_0_3_1",
+      "parent": "open_calendar",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        104.0,
+        154.0,
+        75.0,
+        20.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "open_calendar_label",
+      "native_id": "beauty_0_0_0_3_2",
+      "parent": "open_calendar",
+      "kind": "text",
+      "component": "Text8a9edc9d1301",
+      "semantic_role": "text",
+      "bounds": [
+        126.5,
+        158.96999999999997,
+        34.0,
+        10.93
+      ],
+      "text": "\u6253\u5f00\u65e5\u5386",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "calendar_card_kicker",
+      "native_id": "beauty_0_0_0_4",
+      "parent": "calendar_card",
+      "kind": "text",
+      "component": "Text7ecac8a97f50",
+      "semantic_role": "text",
+      "bounds": [
+        46.0,
+        88.3285,
+        45.912000000000006,
+        10.032
+      ],
+      "text": "\u65e5\u5386 \u00b7 \u5df2\u5220\u9664",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.5
+    },
+    {
+      "source_id": "removed_title",
+      "native_id": "beauty_0_0_0_5",
+      "parent": "calendar_card",
+      "kind": "text",
+      "component": "Texte85f472046e6",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        109.94600000000001,
+        65.963,
+        14.373
+      ],
+      "text": "\u4e0e Sam \u665a\u9910",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 11.0
+    },
+    {
+      "source_id": "removed_when",
+      "native_id": "beauty_0_0_0_6",
+      "parent": "calendar_card",
+      "kind": "text",
+      "component": "Textc2c13adde7de",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        125.508,
+        94.083,
+        10.146
+      ],
+      "text": "9\u670824\u65e5 \u5468\u56db \u00b7 19:00\u201320:30",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.0
+    },
+    {
+      "source_id": "removed_note",
+      "native_id": "beauty_0_0_0_7",
+      "parent": "calendar_card",
+      "kind": "text",
+      "component": "Texteb8fee674831",
+      "semantic_role": "text",
+      "bounds": [
+        22.0,
+        135.8285,
+        141.4685,
+        10.552
+      ],
+      "text": "\u5728 Alex \u00b7 \u624b\u673a \u4e0a\u5220\u9664\uff1bSam \u7684\u526f\u672c\u5df2\u540c\u6b65\u66f4\u65b0",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.5
+    },
+    {
+      "source_id": "dock",
+      "native_id": "beauty_0_0_1",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surface6d4d125026db",
+      "semantic_role": "layout",
+      "bounds": [
+        12.0,
+        345.0,
+        179.0,
+        33.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar",
+      "native_id": "beauty_0_0_1_0",
+      "parent": "dock",
+      "kind": "stack",
+      "component": "KitButtoncf0eee1a640d",
+      "semantic_role": "button",
+      "bounds": [
+        20.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_tile",
+      "native_id": "beauty_0_0_1_0_0",
+      "parent": "dock_calendar",
+      "kind": "stack",
+      "component": "Surfacef14af3ff6c0c",
+      "semantic_role": "layout",
+      "bounds": [
+        35.0,
+        349.0,
+        20.0,
+        17.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_icon",
+      "native_id": "beauty_0_0_1_0_1",
+      "parent": "dock_calendar",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        40.0,
+        351.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_control",
+      "native_id": "beauty_0_0_1_0_2",
+      "parent": "dock_calendar",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        20.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_calendar_label",
+      "native_id": "beauty_0_0_1_0_3",
+      "parent": "dock_calendar",
+      "kind": "text",
+      "component": "Textb15addbbe3ba",
+      "semantic_role": "text",
+      "bounds": [
+        40.0,
+        366.725,
+        14.0,
+        8.34
+      ],
+      "text": "\u65e5\u5386",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.0
+    },
+    {
+      "source_id": "dock_mail",
+      "native_id": "beauty_0_0_1_1",
+      "parent": "dock",
+      "kind": "stack",
+      "component": "KitButtoncf0eee1a640d",
+      "semantic_role": "button",
+      "bounds": [
+        78.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_tile",
+      "native_id": "beauty_0_0_1_1_0",
+      "parent": "dock_mail",
+      "kind": "stack",
+      "component": "Surfacef14af3ff6c0c",
+      "semantic_role": "layout",
+      "bounds": [
+        93.0,
+        349.0,
+        20.0,
+        17.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_icon",
+      "native_id": "beauty_0_0_1_1_1",
+      "parent": "dock_mail",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        98.0,
+        351.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_control",
+      "native_id": "beauty_0_0_1_1_2",
+      "parent": "dock_mail",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        78.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_mail_label",
+      "native_id": "beauty_0_0_1_1_3",
+      "parent": "dock_mail",
+      "kind": "text",
+      "component": "Text685742a63f8c",
+      "semantic_role": "text",
+      "bounds": [
+        98.0,
+        366.485,
+        14.0,
+        8.594999999999999
+      ],
+      "text": "\u90ae\u4ef6",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.0
+    },
+    {
+      "source_id": "dock_settings",
+      "native_id": "beauty_0_0_1_2",
+      "parent": "dock",
+      "kind": "stack",
+      "component": "KitButtoncf0eee1a640d",
+      "semantic_role": "button",
+      "bounds": [
+        136.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_tile",
+      "native_id": "beauty_0_0_1_2_0",
+      "parent": "dock_settings",
+      "kind": "stack",
+      "component": "Surfacef14af3ff6c0c",
+      "semantic_role": "layout",
+      "bounds": [
+        151.0,
+        349.0,
+        20.0,
+        17.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_icon",
+      "native_id": "beauty_0_0_1_2_1",
+      "parent": "dock_settings",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        156.0,
+        351.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_control",
+      "native_id": "beauty_0_0_1_2_2",
+      "parent": "dock_settings",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        136.0,
+        348.0,
+        50.0,
+        27.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "dock_settings_label",
+      "native_id": "beauty_0_0_1_2_3",
+      "parent": "dock_settings",
+      "kind": "text",
+      "component": "Texte8488d34cbed",
+      "semantic_role": "text",
+      "bounds": [
+        156.0,
+        366.57,
+        14.0,
+        8.524999999999999
+      ],
+      "text": "\u8bbe\u7f6e",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.0
+    },
+    {
+      "source_id": "desk_date",
+      "native_id": "beauty_0_0_2",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Textf96e8600fe82",
+      "semantic_role": "text",
+      "bounds": [
+        12.0,
+        15.829999999999998,
+        48.167500000000004,
+        10.585
+      ],
+      "text": "9\u670824\u65e5 \u5468\u56db",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "desk_time",
+      "native_id": "beauty_0_0_3",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Textf11296869b0f",
+      "semantic_role": "text",
+      "bounds": [
+        12.0,
+        30.275999999999996,
+        52.33,
+        17.823999999999998
+      ],
+      "text": "09:45",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 18.0
+    }
+  ],
+  "fonts": {
+    "self:resources/service/NotoSansSC-Bold.ttf": "900b1b791ba502293f14151010e067686499101af9b830199a6db2bf4126e552",
+    "self:resources/service/NotoSansSC-Regular.ttf": "62513a5d6706afa489edfd29e1c860d076a3d36f0ba865fa917ebb79a96dfef8"
+  },
+  "contract_sha256": "bf0ec8277ae4592536f60dedd5a083c7d34c6c1f3c64a1b0f6e5a4a1b649de95",
+  "mapping_basis": "mapped.json"
+}

@@ -1,0 +1,132 @@
+{
+  "id": "3",
+  "design_id": "calendar-03",
+  "surface": "app",
+  "declared_scene": {
+    "id": "3",
+    "design_id": "calendar-03",
+    "directory": "cards/calendar-03",
+    "crop": [
+      1768,
+      82,
+      812,
+      1552
+    ],
+    "surface": "app",
+    "title": "\u65e5\u7a0b\u8be6\u60c5",
+    "title_en": "Event"
+  },
+  "crop": [
+    1768,
+    82,
+    812,
+    1552
+  ],
+  "crop_image": "scenes/calendar-03/crop.png",
+  "reference_image": "scenes/calendar-03/reference.png",
+  "provenance": "scenes/calendar-03/provenance.json",
+  "crop_sha256": "cd3359370450b440f43bdb06cc9557397d91423d6b0a53f0ffb1cb35691397a7",
+  "reference_sha256": "cd3359370450b440f43bdb06cc9557397d91423d6b0a53f0ffb1cb35691397a7",
+  "source_atlas_sha256": "69e348329f1c8421cba914dd2d55bd8ba99a38868ff47f9f900cb384b3304e70",
+  "source_prompt_sha256": "5f0faa313906497d0a5cd518351084c942e3f5cb2e846c9a24fc930a06ddc845",
+  "crop_resampled": false,
+  "crop_mode": "RGB",
+  "transform": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      1768,
+      82,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -1768.0,
+      0,
+      1.0,
+      -82.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      1768.0,
+      0,
+      1.0,
+      82.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -884.0,
+      0,
+      0.5,
+      -41.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      1768.0,
+      0,
+      2.0,
+      82.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "source_review": {
+    "status": "not_reviewed",
+    "reviewer": null
+  },
+  "native_mapping": {
+    "status": "not_started",
+    "automatic": false
+  }
+}

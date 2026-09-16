@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "d5fe079d7362afeee6360dde7f39bacf17fcb09420edf3017d818995be157fe5",
+  "tree": {
+    "t": "stack",
+    "id": "page",
+    "x": 0,
+    "y": 0,
+    "w": 406,
+    "h": 776,
+    "variant": "surface",
+    "bg": 4293520883,
+    "c": [
+      {
+        "t": "stack",
+        "id": "screen",
+        "x": 0.0,
+        "y": 0.0,
+        "w": 203.0,
+        "h": 388.0,
+        "c": [
+          {
+            "t": "stack",
+            "id": "calendar_card",
+            "x": 12.0,
+            "y": 75.0,
+            "w": 179.0,
+            "h": 118.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "calendar_card_icon_tile",
+                "x": 22.0,
+                "y": 84.0,
+                "w": 18.0,
+                "h": 18.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4287532691,
+                "radius": 5.0
+              },
+              {
+                "t": "svg",
+                "id": "calendar_card_icon",
+                "x": 25.5,
+                "y": 87.5,
+                "w": 11.0,
+                "h": 11.0,
+                "src": ""
+              },
+              {
+                "t": "stack",
+                "id": "undo_delete",
+                "x": 22.0,
+                "y": 154.0,
+                "w": 75.0,
+                "h": 20.0,
+                "c": [
+                  {
+                    "t": "stack",
+                    "id": "undo_delete_surface",
+                    "x": 22.0,
+                    "y": 154.0,
+                    "w": 75.0,
+                    "h": 20.0,
+                    "c": [],
+                    "variant": "surface",
+                    "bg": 4294916912,
+                    "radius": 5.0
+                  },
+                  {
+                    "t": "button",
+                    "id": "undo_delete_control",
+                    "x": 22.0,
+                    "y": 154.0,
+                    "w": 75.0,
+                    "h": 20.0,
+                    "enabled": 1
+                  },
+                  {
+                    "t": "text",
+                    "id": "undo_delete_label",
+                    "text": "撤销删除",
+                    "x": 44.5,
+                    "y": 158.80499999999998,
+                    "w": 34.0,
+                    "h": 11.192499999999999,
+                    "size": 7.5,
+                    "weight": 700,
+                    "tracking": 0,
+                    "line_height": 11.192499999999999,
+                    "alignx": 0,
+                    "variant": "single_line",
+                    "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                    "color": 4294967295,
+                    "font_asc": -0.03133333333333321,
+                    "font_desc": -0.07566666666666655
+                  }
+                ],
+                "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[2]}}"
+              },
+              {
+                "t": "stack",
+                "id": "open_calendar",
+                "x": 104.0,
+                "y": 154.0,
+                "w": 75.0,
+                "h": 20.0,
+                "c": [
+                  {
+                    "t": "stack",
+                    "id": "open_calendar_surface",
+                    "x": 104.0,
+                    "y": 154.0,
+                    "w": 75.0,
+                    "h": 20.0,
+                    "c": [],
+                    "variant": "surface",
+                    "bg": 4294111991,
+                    "radius": 5.0,
+                    "border": 0.7,
+                    "bordercolor": 4291282892
+                  },
+                  {
+                    "t": "button",
+                    "id": "open_calendar_control",
+                    "x": 104.0,
+                    "y": 154.0,
+                    "w": 75.0,
+                    "h": 20.0,
+                    "enabled": 1
+                  },
+                  {
+                    "t": "text",
+                    "id": "open_calendar_label",
+                    "text": "打开日历",
+                    "x": 126.5,
+                    "y": 158.96999999999997,
+                    "w": 34.0,
+                    "h": 10.93,
+                    "size": 7.5,
+                    "weight": 400,
+                    "tracking": 0,
+                    "line_height": 10.93,
+                    "alignx": 0,
+                    "variant": "single_line",
+                    "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                    "color": 4280032286,
+                    "font_asc": -0.05333333333333323,
+                    "font_desc": -0.06266666666666654
+                  }
+                ],
+                "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[2]}}"
+              },
+              {
+                "t": "text",
+                "id": "calendar_card_kicker",
+                "text": "日历 · 已删除",
+                "x": 46.0,
+                "y": 88.3285,
+                "w": 45.912000000000006,
+                "h": 10.032,
+                "size": 6.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.032,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4287532691,
+                "font_asc": -0.0053076923076922355,
+                "font_desc": -0.1006923076923078
+              },
+              {
+                "t": "text",
+                "id": "removed_title",
+                "text": "与 Sam 晚餐",
+                "x": 22.0,
+                "y": 109.94600000000001,
+                "w": 65.963,
+                "h": 14.373,
+                "size": 11.0,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 14.373,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4280032286,
+                "font_asc": -0.12818181818181817,
+                "font_desc": 0.013181818181818183
+              },
+              {
+                "t": "text",
+                "id": "removed_when",
+                "text": "9月24日 周四 · 19:00–20:30",
+                "x": 22.0,
+                "y": 125.508,
+                "w": 94.083,
+                "h": 10.146,
+                "size": 7.0,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.146,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4287532691,
+                "font_asc": -0.08228571428571407,
+                "font_desc": -0.0837142857142858
+              },
+              {
+                "t": "text",
+                "id": "removed_note",
+                "text": "在 Alex · 手机 上删除；Sam 的副本已同步更新",
+                "x": 22.0,
+                "y": 135.8285,
+                "w": 141.4685,
+                "h": 10.552,
+                "size": 6.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.552,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4287532691,
+                "font_asc": -0.0053076923076922355,
+                "font_desc": -0.1806923076923077
+              }
+            ],
+            "variant": "surface",
+            "bg": 4294967295,
+            "radius": 8.0,
+            "border": 0.7,
+            "bordercolor": 4293256682
+          },
+          {
+            "t": "stack",
+            "id": "dock",
+            "x": 12.0,
+            "y": 345.0,
+            "w": 179.0,
+            "h": 33.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "dock_calendar",
+                "x": 20.0,
+                "y": 348.0,
+                "w": 50.0,
+                "h": 27.0,
+                "c": [
+                  {
+                    "t": "stack",
+                    "id": "dock_calendar_tile",
+                    "x": 35.0,
+                    "y": 349.0,
+                    "w": 20.0,
+                    "h": 17.0,
+                    "c": [],
+                    "variant": "surface",
+                    "bg": 4294967295,
+                    "radius": 4.0
+                  },
+                  {
+                    "t": "svg",
+                    "id": "dock_calendar_icon",
+                    "x": 40.0,
+                    "y": 351.5,
+                    "w": 11.0,
+                    "h": 11.0,
+                    "src": ""
+                  },
+                  {
+                    "t": "button",
+                    "id": "dock_calendar_control",
+                    "x": 20.0,
+                    "y": 348.0,
+                    "w": 50.0,
+                    "h": 27.0,
+                    "enabled": 1
+                  },
+                  {
+                    "t": "text",
+                    "id": "dock_calendar_label",
+                    "text": "日历",
+                    "x": 40.0,
+                    "y": 366.725,
+                    "w": 14.0,
+                    "h": 8.34,
+                    "size": 5.0,
+                    "weight": 400,
+                    "tracking": 0,
+                    "line_height": 8.34,
+                    "alignx": 0,
+                    "variant": "single_line",
+                    "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                    "color": 4284179568,
+                    "font_asc": 0.03100000000000014,
+                    "font_desc": -0.189
+                  }
+                ],
+                "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[2],\"label\":[3]}}"
+              },
+              {
+                "t": "stack",
+                "id": "dock_mail",
+                "x": 78.0,
+                "y": 348.0,
+                "w": 50.0,
+                "h": 27.0,
+                "c": [
+                  {
+                    "t": "stack",
+                    "id": "dock_mail_tile",
+                    "x": 93.0,
+                    "y": 349.0,
+                    "w": 20.0,
+                    "h": 17.0,
+                    "c": [],
+                    "variant": "surface",
+                    "bg": 4294967295,
+                    "radius": 4.0
+                  },
+                  {
+                    "t": "svg",
+                    "id": "dock_mail_icon",
+                    "x": 98.0,
+                    "y": 351.5,
+                    "w": 11.0,
+                    "h": 11.0,
+                    "src": ""
+                  },
+                  {
+                    "t": "button",
+                    "id": "dock_mail_control",
+                    "x": 78.0,
+                    "y": 348.0,
+                    "w": 50.0,
+                    "h": 27.0,
+                    "enabled": 1
+                  },
+                  {
+                    "t": "text",
+                    "id": "dock_mail_label",
+                    "text": "邮件",
+                    "x": 98.0,
+                    "y": 366.485,
+                    "w": 14.0,
+                    "h": 8.594999999999999,
+                    "size": 5.0,
+                    "weight": 400,
+                    "tracking": 0,
+                    "line_height": 8.594999999999999,
+                    "alignx": 0,
+                    "variant": "single_line",
+                    "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                    "color": 4284179568,
+                    "font_asc": 0.07899999999999996,
+                    "font_desc": -0.19199999999999973
+                  }
+                ],
+                "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[2],\"label\":[3]}}"
+              },
+              {
+                "t": "stack",
+                "id": "dock_settings",
+                "x": 136.0,
+                "y": 348.0,
+                "w": 50.0,
+                "h": 27.0,
+                "c": [
+                  {
+                    "t": "stack",
+                    "id": "dock_settings_tile",
+                    "x": 151.0,
+                    "y": 349.0,
+                    "w": 20.0,
+                    "h": 17.0,
+                    "c": [],
+                    "variant": "surface",
+                    "bg": 4294967295,
+                    "radius": 4.0
+                  },
+                  {
+                    "t": "svg",
+                    "id": "dock_settings_icon",
+                    "x": 156.0,
+                    "y": 351.5,
+                    "w": 11.0,
+                    "h": 11.0,
+                    "src": ""
+                  },
+                  {
+                    "t": "button",
+                    "id": "dock_settings_control",
+                    "x": 136.0,
+                    "y": 348.0,
+                    "w": 50.0,
+                    "h": 27.0,
+                    "enabled": 1
+                  },
+                  {
+                    "t": "text",
+                    "id": "dock_settings_label",
+                    "text": "设置",
+                    "x": 156.0,
+                    "y": 366.57,
+                    "w": 14.0,
+                    "h": 8.524999999999999,
+                    "size": 5.0,
+                    "weight": 400,
+                    "tracking": 0,
+                    "line_height": 8.524999999999999,
+                    "alignx": 0,
+                    "variant": "single_line",
+                    "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                    "color": 4284179568,
+                    "font_asc": 0.062000000000000055,
+                    "font_desc": -0.19499999999999984
+                  }
+                ],
+                "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[2],\"label\":[3]}}"
+              }
+            ],
+            "variant": "surface",
+            "bg": 4294441468,
+            "radius": 9.0,
+            "border": 0.7,
+            "bordercolor": 4293256682
+          },
+          {
+            "t": "text",
+            "id": "desk_date",
+            "text": "9月24日 周四",
+            "x": 12.0,
+            "y": 15.829999999999998,
+            "w": 48.167500000000004,
+            "h": 10.585,
+            "size": 7.5,
+            "weight": 400,
+            "tracking": 0,
+            "line_height": 10.585,
+            "alignx": 0,
+            "variant": "single_line",
+            "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+            "color": 4284179568,
+            "font_asc": -0.10133333333333328,
+            "font_desc": -0.06466666666666676
+          },
+          {
+            "t": "text",
+            "id": "desk_time",
+            "text": "09:45",
+            "x": 12.0,
+            "y": 30.275999999999996,
+            "w": 52.33,
+            "h": 17.823999999999998,
+            "size": 18.0,
+            "weight": 700,
+            "tracking": 0,
+            "line_height": 17.823999999999998,
+            "alignx": 0,
+            "variant": "single_line",
+            "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+            "color": 4281021248,
+            "font_asc": -0.29488888888888876,
+            "font_desc": 0.16288888888888892
+          }
+        ],
+        "variant": "surface",
+        "bg": 4293520883,
+        "radius": 0.0
+      }
+    ]
+  },
+  "changes": [
+    {
+      "source": "Storyboard spec rendered at 2× by Chromium; contract geometry is the spec, ink boxes from glyph metrics"
+    }
+  ],
+  "limits": [
+    "The reference is a deterministic render of the same spec, not an independent design source",
+    "No native capture or visual approval yet"
+  ]
+}

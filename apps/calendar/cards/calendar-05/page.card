@@ -1,0 +1,159 @@
+# ledger calendar-05@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy ack_sync_label_text { class: user-copy, en: "知道了" }
+copy undo_event_label_text { class: user-copy, en: "撤销" }
+copy open_calendar_label_text { class: user-copy, en: "在日历中打开" }
+copy calendar_card_kicker_text { class: user-copy, en: "日历 · 已同步" }
+copy card_title_text { class: user-copy, en: "钢琴课" }
+copy card_when_text { class: user-copy, en: "9月25日 周五 · 16:00–17:00" }
+copy card_source_text { class: user-copy, en: "家庭日历 · 来自 Alex · 手机" }
+copy dock_calendar_label_text { class: user-copy, en: "日历" }
+copy dock_mail_label_text { class: user-copy, en: "邮件" }
+copy dock_settings_label_text { class: user-copy, en: "设置" }
+copy desk_date_text { class: user-copy, en: "9月24日 周四" }
+copy desk_time_text { class: user-copy, en: "09:42" }
+state ack_sync_control_enabled { shape: bool, initial: true }
+state undo_event_control_enabled { shape: bool, initial: true }
+state open_calendar_control_enabled { shape: bool, initial: true }
+state dock_calendar_control_enabled { shape: bool, initial: true }
+state dock_mail_control_enabled { shape: bool, initial: true }
+state dock_settings_control_enabled { shape: bool, initial: true }
+component Surface160815de9849(instance: text) {
+  view Kit(component: "Surface160815de9849", instance: instance) { slot }
+}
+component Surface5aa9b209b611(instance: text) {
+  view Kit(component: "Surface5aa9b209b611", instance: instance) { slot }
+}
+component Surface92c04b3e3983(instance: text) {
+  view Kit(component: "Surface92c04b3e3983", instance: instance) { slot }
+}
+component Surface8e4a3948984f(instance: text) {
+  view Kit(component: "Surface8e4a3948984f", instance: instance) { slot }
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component KitButton5dc7ea8cd583(instance: text) {
+  view Kit(component: "KitButton5dc7ea8cd583", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Text7c6de6607d3e(instance: text, text: text) {
+  view Kit(component: "Text7c6de6607d3e", instance: instance, text: text)
+}
+component Surface0d9374fbe8bf(instance: text) {
+  view Kit(component: "Surface0d9374fbe8bf", instance: instance) { slot }
+}
+component Textf5b1951f25ae(instance: text, text: text) {
+  view Kit(component: "Textf5b1951f25ae", instance: instance, text: text)
+}
+component Group3d2637879433(instance: text) {
+  view Kit(component: "Group3d2637879433", instance: instance) { slot }
+}
+component Texta75336d83c07(instance: text, text: text) {
+  view Kit(component: "Texta75336d83c07", instance: instance, text: text)
+}
+component Textbb9ba39ccbf0(instance: text, text: text) {
+  view Kit(component: "Textbb9ba39ccbf0", instance: instance, text: text)
+}
+component Textf07adab572ab(instance: text, text: text) {
+  view Kit(component: "Textf07adab572ab", instance: instance, text: text)
+}
+component Text3cc08fe11b7d(instance: text, text: text) {
+  view Kit(component: "Text3cc08fe11b7d", instance: instance, text: text)
+}
+component Textefdaad07dc40(instance: text, text: text) {
+  view Kit(component: "Textefdaad07dc40", instance: instance, text: text)
+}
+component Surface6d4d125026db(instance: text) {
+  view Kit(component: "Surface6d4d125026db", instance: instance) { slot }
+}
+component KitButtoncf0eee1a640d(instance: text) {
+  view Kit(component: "KitButtoncf0eee1a640d", instance: instance) { slot }
+}
+component Surfacef14af3ff6c0c(instance: text) {
+  view Kit(component: "Surfacef14af3ff6c0c", instance: instance) { slot }
+}
+component Textb15addbbe3ba(instance: text, text: text) {
+  view Kit(component: "Textb15addbbe3ba", instance: instance, text: text)
+}
+component Text685742a63f8c(instance: text, text: text) {
+  view Kit(component: "Text685742a63f8c", instance: instance, text: text)
+}
+component Texte8488d34cbed(instance: text, text: text) {
+  view Kit(component: "Texte8488d34cbed", instance: instance, text: text)
+}
+component Textf96e8600fe82(instance: text, text: text) {
+  view Kit(component: "Textf96e8600fe82", instance: instance, text: text)
+}
+component Textf11296869b0f(instance: text, text: text) {
+  view Kit(component: "Textf11296869b0f", instance: instance, text: text)
+}
+
+view root Surface160815de9849(instance: "page") {
+  Surface5aa9b209b611(instance: "screen") {
+    Surface92c04b3e3983(instance: "calendar_card") {
+      Surface8e4a3948984f(instance: "calendar_card_icon_tile") {
+
+      }
+      Vectore0a378fde04f(instance: "calendar_card_icon")
+      KitButton5dc7ea8cd583(instance: "ack_sync") {
+        Surface8e4a3948984f(instance: "ack_sync_surface") {
+
+        }
+        NativeButton02f1d1bd99b4(instance: "ack_sync_control", enabled: ack_sync_control_enabled)
+        Text7c6de6607d3e(instance: "ack_sync_label", text: copy.ack_sync_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "undo_event") {
+        Surface0d9374fbe8bf(instance: "undo_event_surface") {
+
+        }
+        NativeButton02f1d1bd99b4(instance: "undo_event_control", enabled: undo_event_control_enabled)
+        Textf5b1951f25ae(instance: "undo_event_label", text: copy.undo_event_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "open_calendar") {
+        Group3d2637879433(instance: "open_calendar_surface") {
+
+        }
+        NativeButton02f1d1bd99b4(instance: "open_calendar_control", enabled: open_calendar_control_enabled)
+        Texta75336d83c07(instance: "open_calendar_label", text: copy.open_calendar_label_text)
+      }
+      Textbb9ba39ccbf0(instance: "calendar_card_kicker", text: copy.calendar_card_kicker_text)
+      Textf07adab572ab(instance: "card_title", text: copy.card_title_text)
+      Text3cc08fe11b7d(instance: "card_when", text: copy.card_when_text)
+      Textefdaad07dc40(instance: "card_source", text: copy.card_source_text)
+    }
+    Surface6d4d125026db(instance: "dock") {
+      KitButtoncf0eee1a640d(instance: "dock_calendar") {
+        Surfacef14af3ff6c0c(instance: "dock_calendar_tile") {
+
+        }
+        Vectore0a378fde04f(instance: "dock_calendar_icon")
+        NativeButton02f1d1bd99b4(instance: "dock_calendar_control", enabled: dock_calendar_control_enabled)
+        Textb15addbbe3ba(instance: "dock_calendar_label", text: copy.dock_calendar_label_text)
+      }
+      KitButtoncf0eee1a640d(instance: "dock_mail") {
+        Surfacef14af3ff6c0c(instance: "dock_mail_tile") {
+
+        }
+        Vectore0a378fde04f(instance: "dock_mail_icon")
+        NativeButton02f1d1bd99b4(instance: "dock_mail_control", enabled: dock_mail_control_enabled)
+        Text685742a63f8c(instance: "dock_mail_label", text: copy.dock_mail_label_text)
+      }
+      KitButtoncf0eee1a640d(instance: "dock_settings") {
+        Surfacef14af3ff6c0c(instance: "dock_settings_tile") {
+
+        }
+        Vectore0a378fde04f(instance: "dock_settings_icon")
+        NativeButton02f1d1bd99b4(instance: "dock_settings_control", enabled: dock_settings_control_enabled)
+        Texte8488d34cbed(instance: "dock_settings_label", text: copy.dock_settings_label_text)
+      }
+    }
+    Textf96e8600fe82(instance: "desk_date", text: copy.desk_date_text)
+    Textf11296869b0f(instance: "desk_time", text: copy.desk_time_text)
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "frame_id": 3,
+  "source": "calendar-03",
+  "controls": {
+    "back_day": {
+      "event": "back_day",
+      "text_ids": [
+        "back_day_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        12,
+        50,
+        117,
+        36
+      ],
+      "enabled": true
+    },
+    "edit_event": {
+      "event": "edit_event",
+      "text_ids": [
+        "edit_event_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        306,
+        50,
+        88,
+        36
+      ],
+      "enabled": true
+    },
+    "delete_event": {
+      "event": "delete_event",
+      "text_ids": [
+        "delete_event_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        520,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "tab_today": {
+      "event": "tab_today",
+      "text_ids": [
+        "tab_today_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_calendars": {
+      "event": "tab_calendars",
+      "text_ids": [
+        "tab_calendars_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        142,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_inbox": {
+      "event": "tab_inbox",
+      "text_ids": [
+        "tab_inbox_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        264,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    }
+  }
+}

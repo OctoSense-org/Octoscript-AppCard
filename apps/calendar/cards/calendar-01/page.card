@@ -1,0 +1,366 @@
+# ledger calendar-01@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy back_year_label_text { class: user-copy, en: "2026年" }
+copy open_today_label_text { class: user-copy, en: "24" }
+copy open_dentist_time_text { class: user-copy, en: "10:30" }
+copy open_dentist_label_text { class: user-copy, en: "牙医" }
+copy open_dentist_sub_text { class: user-copy, en: "个人" }
+copy open_team_sync_time_text { class: user-copy, en: "14:00" }
+copy open_team_sync_label_text { class: user-copy, en: "团队同步" }
+copy open_team_sync_sub_text { class: user-copy, en: "工作" }
+copy open_dinner_time_text { class: user-copy, en: "19:00" }
+copy open_dinner_label_text { class: user-copy, en: "与 Sam 晚餐" }
+copy open_dinner_sub_text { class: user-copy, en: "家庭 · 来自 Sam" }
+copy tab_today_label_text { class: user-copy, en: "今天" }
+copy tab_calendars_label_text { class: user-copy, en: "日历" }
+copy tab_inbox_label_text { class: user-copy, en: "收件箱" }
+copy inbox_badge_count_text { class: user-copy, en: "1" }
+copy status_time_text { class: user-copy, en: "09:41" }
+copy month_title_text { class: user-copy, en: "9月" }
+copy weekday_0_text { class: user-copy, en: "日" }
+copy weekday_1_text { class: user-copy, en: "一" }
+copy weekday_2_text { class: user-copy, en: "二" }
+copy weekday_3_text { class: user-copy, en: "三" }
+copy weekday_4_text { class: user-copy, en: "四" }
+copy weekday_5_text { class: user-copy, en: "五" }
+copy weekday_6_text { class: user-copy, en: "六" }
+copy day_1_text { class: user-copy, en: "1" }
+copy day_2_text { class: user-copy, en: "2" }
+copy day_3_text { class: user-copy, en: "3" }
+copy day_4_text { class: user-copy, en: "4" }
+copy day_5_text { class: user-copy, en: "5" }
+copy day_6_text { class: user-copy, en: "6" }
+copy day_7_text { class: user-copy, en: "7" }
+copy day_8_text { class: user-copy, en: "8" }
+copy day_9_text { class: user-copy, en: "9" }
+copy day_10_text { class: user-copy, en: "10" }
+copy day_11_text { class: user-copy, en: "11" }
+copy day_12_text { class: user-copy, en: "12" }
+copy day_13_text { class: user-copy, en: "13" }
+copy day_14_text { class: user-copy, en: "14" }
+copy day_15_text { class: user-copy, en: "15" }
+copy day_16_text { class: user-copy, en: "16" }
+copy day_17_text { class: user-copy, en: "17" }
+copy day_18_text { class: user-copy, en: "18" }
+copy day_19_text { class: user-copy, en: "19" }
+copy day_20_text { class: user-copy, en: "20" }
+copy day_21_text { class: user-copy, en: "21" }
+copy day_22_text { class: user-copy, en: "22" }
+copy day_23_text { class: user-copy, en: "23" }
+copy day_25_text { class: user-copy, en: "25" }
+copy day_26_text { class: user-copy, en: "26" }
+copy day_27_text { class: user-copy, en: "27" }
+copy day_28_text { class: user-copy, en: "28" }
+copy day_29_text { class: user-copy, en: "29" }
+copy day_30_text { class: user-copy, en: "30" }
+copy list_title_text { class: user-copy, en: "9月24日 周四 · 今天" }
+state back_year_control_enabled { shape: bool, initial: true }
+state add_event_control_enabled { shape: bool, initial: true }
+state open_today_control_enabled { shape: bool, initial: true }
+state open_dentist_control_enabled { shape: bool, initial: true }
+state open_team_sync_control_enabled { shape: bool, initial: true }
+state open_dinner_control_enabled { shape: bool, initial: true }
+state tab_today_control_enabled { shape: bool, initial: true }
+state tab_calendars_control_enabled { shape: bool, initial: true }
+state tab_inbox_control_enabled { shape: bool, initial: true }
+component Surface156d085f4ff5(instance: text) {
+  view Kit(component: "Surface156d085f4ff5", instance: instance) { slot }
+}
+component Surface77131ad4bbf5(instance: text) {
+  view Kit(component: "Surface77131ad4bbf5", instance: instance) { slot }
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component KitButton870a84d356fb(instance: text) {
+  view Kit(component: "KitButton870a84d356fb", instance: instance) { slot }
+}
+component Group3d2637879433(instance: text) {
+  view Kit(component: "Group3d2637879433", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Text5794209d5e62(instance: text, text: text) {
+  view Kit(component: "Text5794209d5e62", instance: instance, text: text)
+}
+component KitButton6e131485d969(instance: text) {
+  view Kit(component: "KitButton6e131485d969", instance: instance) { slot }
+}
+component Surface396ee6390bb9(instance: text) {
+  view Kit(component: "Surface396ee6390bb9", instance: instance) { slot }
+}
+component Surfacec44bbcf7e5ae(instance: text) {
+  view Kit(component: "Surfacec44bbcf7e5ae", instance: instance) { slot }
+}
+component KitButton5dc7ea8cd583(instance: text) {
+  view Kit(component: "KitButton5dc7ea8cd583", instance: instance) { slot }
+}
+component Textd9f7a84a2a18(instance: text, text: text) {
+  view Kit(component: "Textd9f7a84a2a18", instance: instance, text: text)
+}
+component Surfacecbd73a4e1fad(instance: text) {
+  view Kit(component: "Surfacecbd73a4e1fad", instance: instance) { slot }
+}
+component Surface619e4b2b66ae(instance: text) {
+  view Kit(component: "Surface619e4b2b66ae", instance: instance) { slot }
+}
+component Surfaced2f94372b68b(instance: text) {
+  view Kit(component: "Surfaced2f94372b68b", instance: instance) { slot }
+}
+component KitButton36b6e7615b3d(instance: text) {
+  view Kit(component: "KitButton36b6e7615b3d", instance: instance) { slot }
+}
+component Surfaceb08c40214306(instance: text) {
+  view Kit(component: "Surfaceb08c40214306", instance: instance) { slot }
+}
+component Text6a37fd0d3c23(instance: text, text: text) {
+  view Kit(component: "Text6a37fd0d3c23", instance: instance, text: text)
+}
+component Textd30fb82e5fcb(instance: text, text: text) {
+  view Kit(component: "Textd30fb82e5fcb", instance: instance, text: text)
+}
+component Textf94abcb46810(instance: text, text: text) {
+  view Kit(component: "Textf94abcb46810", instance: instance, text: text)
+}
+component Surfacee7ccfd59d9b3(instance: text) {
+  view Kit(component: "Surfacee7ccfd59d9b3", instance: instance) { slot }
+}
+component Textcec81451dca5(instance: text, text: text) {
+  view Kit(component: "Textcec81451dca5", instance: instance, text: text)
+}
+component Textec5d7bace2d3(instance: text, text: text) {
+  view Kit(component: "Textec5d7bace2d3", instance: instance, text: text)
+}
+component Surfaceae17109b0370(instance: text) {
+  view Kit(component: "Surfaceae17109b0370", instance: instance) { slot }
+}
+component Textc90c2d5e8c8b(instance: text, text: text) {
+  view Kit(component: "Textc90c2d5e8c8b", instance: instance, text: text)
+}
+component Textc9c62ddce585(instance: text, text: text) {
+  view Kit(component: "Textc9c62ddce585", instance: instance, text: text)
+}
+component Surfacecc3f4cfacc10(instance: text) {
+  view Kit(component: "Surfacecc3f4cfacc10", instance: instance) { slot }
+}
+component Textd938af7f8704(instance: text, text: text) {
+  view Kit(component: "Textd938af7f8704", instance: instance, text: text)
+}
+component Textf2b9a2e17414(instance: text, text: text) {
+  view Kit(component: "Textf2b9a2e17414", instance: instance, text: text)
+}
+component Surfacedd13f2cce3dd(instance: text) {
+  view Kit(component: "Surfacedd13f2cce3dd", instance: instance) { slot }
+}
+component Textac6fb4c051fd(instance: text, text: text) {
+  view Kit(component: "Textac6fb4c051fd", instance: instance, text: text)
+}
+component Text6d27197266b9(instance: text, text: text) {
+  view Kit(component: "Text6d27197266b9", instance: instance, text: text)
+}
+component Surface92bde3a718b5(instance: text) {
+  view Kit(component: "Surface92bde3a718b5", instance: instance) { slot }
+}
+component Textfe855fbcb7ca(instance: text, text: text) {
+  view Kit(component: "Textfe855fbcb7ca", instance: instance, text: text)
+}
+component Text4f2fe3a0c4c8(instance: text, text: text) {
+  view Kit(component: "Text4f2fe3a0c4c8", instance: instance, text: text)
+}
+component Text631c95840b11(instance: text, text: text) {
+  view Kit(component: "Text631c95840b11", instance: instance, text: text)
+}
+component Textb7b62caa732b(instance: text, text: text) {
+  view Kit(component: "Textb7b62caa732b", instance: instance, text: text)
+}
+component Text04f67221f752(instance: text, text: text) {
+  view Kit(component: "Text04f67221f752", instance: instance, text: text)
+}
+component Text6a6525a82aef(instance: text, text: text) {
+  view Kit(component: "Text6a6525a82aef", instance: instance, text: text)
+}
+component Text8aa80bb1adcb(instance: text, text: text) {
+  view Kit(component: "Text8aa80bb1adcb", instance: instance, text: text)
+}
+component Text1b3ff6f6d9a4(instance: text, text: text) {
+  view Kit(component: "Text1b3ff6f6d9a4", instance: instance, text: text)
+}
+component Text00868f55d031(instance: text, text: text) {
+  view Kit(component: "Text00868f55d031", instance: instance, text: text)
+}
+component Texte95ed57ce7bc(instance: text, text: text) {
+  view Kit(component: "Texte95ed57ce7bc", instance: instance, text: text)
+}
+component Text4c5f062d74e4(instance: text, text: text) {
+  view Kit(component: "Text4c5f062d74e4", instance: instance, text: text)
+}
+component Textecb0fd0e4c84(instance: text, text: text) {
+  view Kit(component: "Textecb0fd0e4c84", instance: instance, text: text)
+}
+component Textc2548d29f6ac(instance: text, text: text) {
+  view Kit(component: "Textc2548d29f6ac", instance: instance, text: text)
+}
+component Text9d21b99928dd(instance: text, text: text) {
+  view Kit(component: "Text9d21b99928dd", instance: instance, text: text)
+}
+
+view root Surface156d085f4ff5(instance: "page") {
+  Surface77131ad4bbf5(instance: "screen") {
+    Vectore0a378fde04f(instance: "status_icons")
+    KitButton870a84d356fb(instance: "back_year") {
+      Group3d2637879433(instance: "back_year_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "back_year_control", enabled: back_year_control_enabled)
+      Vectore0a378fde04f(instance: "back_year_icon")
+      Text5794209d5e62(instance: "back_year_label", text: copy.back_year_label_text)
+    }
+    KitButton6e131485d969(instance: "add_event") {
+      Group3d2637879433(instance: "add_event_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "add_event_control", enabled: add_event_control_enabled)
+      Vectore0a378fde04f(instance: "add_event_icon")
+    }
+    Surface396ee6390bb9(instance: "grid_line") {
+
+    }
+    Surfacec44bbcf7e5ae(instance: "today_ring") {
+
+    }
+    KitButton5dc7ea8cd583(instance: "open_today") {
+      Group3d2637879433(instance: "open_today_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "open_today_control", enabled: open_today_control_enabled)
+      Textd9f7a84a2a18(instance: "open_today_label", text: copy.open_today_label_text)
+    }
+    Surfacecbd73a4e1fad(instance: "dot_24_0") {
+
+    }
+    Surface619e4b2b66ae(instance: "dot_24_1") {
+
+    }
+    Surfaced2f94372b68b(instance: "dot_24_2") {
+
+    }
+    Surfaced2f94372b68b(instance: "dot_25_0") {
+
+    }
+    Surfaced2f94372b68b(instance: "dot_26_0") {
+
+    }
+    Surface396ee6390bb9(instance: "list_line") {
+
+    }
+    KitButton36b6e7615b3d(instance: "open_dentist") {
+      Group3d2637879433(instance: "open_dentist_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "open_dentist_control", enabled: open_dentist_control_enabled)
+      Surfaceb08c40214306(instance: "open_dentist_bar") {
+
+      }
+      Vectore0a378fde04f(instance: "open_dentist_chevron")
+      Text6a37fd0d3c23(instance: "open_dentist_time", text: copy.open_dentist_time_text)
+      Textd30fb82e5fcb(instance: "open_dentist_label", text: copy.open_dentist_label_text)
+      Textf94abcb46810(instance: "open_dentist_sub", text: copy.open_dentist_sub_text)
+    }
+    KitButton36b6e7615b3d(instance: "open_team_sync") {
+      Group3d2637879433(instance: "open_team_sync_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "open_team_sync_control", enabled: open_team_sync_control_enabled)
+      Surfacee7ccfd59d9b3(instance: "open_team_sync_bar") {
+
+      }
+      Vectore0a378fde04f(instance: "open_team_sync_chevron")
+      Text6a37fd0d3c23(instance: "open_team_sync_time", text: copy.open_team_sync_time_text)
+      Textcec81451dca5(instance: "open_team_sync_label", text: copy.open_team_sync_label_text)
+      Textec5d7bace2d3(instance: "open_team_sync_sub", text: copy.open_team_sync_sub_text)
+    }
+    KitButton36b6e7615b3d(instance: "open_dinner") {
+      Group3d2637879433(instance: "open_dinner_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "open_dinner_control", enabled: open_dinner_control_enabled)
+      Surfaceae17109b0370(instance: "open_dinner_bar") {
+
+      }
+      Vectore0a378fde04f(instance: "open_dinner_chevron")
+      Text6a37fd0d3c23(instance: "open_dinner_time", text: copy.open_dinner_time_text)
+      Textc90c2d5e8c8b(instance: "open_dinner_label", text: copy.open_dinner_label_text)
+      Textc9c62ddce585(instance: "open_dinner_sub", text: copy.open_dinner_sub_text)
+    }
+    Surfacecc3f4cfacc10(instance: "tab_bar") {
+      KitButton5dc7ea8cd583(instance: "tab_today") {
+        Vectore0a378fde04f(instance: "tab_today_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_today_control", enabled: tab_today_control_enabled)
+        Textd938af7f8704(instance: "tab_today_label", text: copy.tab_today_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "tab_calendars") {
+        Vectore0a378fde04f(instance: "tab_calendars_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_calendars_control", enabled: tab_calendars_control_enabled)
+        Textf2b9a2e17414(instance: "tab_calendars_label", text: copy.tab_calendars_label_text)
+      }
+      KitButton870a84d356fb(instance: "tab_inbox") {
+        Vectore0a378fde04f(instance: "tab_inbox_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_inbox_control", enabled: tab_inbox_control_enabled)
+        Surfacedd13f2cce3dd(instance: "inbox_badge") {
+
+        }
+        Textac6fb4c051fd(instance: "tab_inbox_label", text: copy.tab_inbox_label_text)
+        Text6d27197266b9(instance: "inbox_badge_count", text: copy.inbox_badge_count_text)
+      }
+    }
+    Surface396ee6390bb9(instance: "tab_line") {
+
+    }
+    Surface92bde3a718b5(instance: "home_indicator") {
+
+    }
+    Text6a37fd0d3c23(instance: "status_time", text: copy.status_time_text)
+    Textfe855fbcb7ca(instance: "month_title", text: copy.month_title_text)
+    Text4f2fe3a0c4c8(instance: "weekday_0", text: copy.weekday_0_text)
+    Text631c95840b11(instance: "weekday_1", text: copy.weekday_1_text)
+    Textb7b62caa732b(instance: "weekday_2", text: copy.weekday_2_text)
+    Text04f67221f752(instance: "weekday_3", text: copy.weekday_3_text)
+    Text6a6525a82aef(instance: "weekday_4", text: copy.weekday_4_text)
+    Text8aa80bb1adcb(instance: "weekday_5", text: copy.weekday_5_text)
+    Text1b3ff6f6d9a4(instance: "weekday_6", text: copy.weekday_6_text)
+    Text00868f55d031(instance: "day_1", text: copy.day_1_text)
+    Texte95ed57ce7bc(instance: "day_2", text: copy.day_2_text)
+    Text4c5f062d74e4(instance: "day_3", text: copy.day_3_text)
+    Text00868f55d031(instance: "day_4", text: copy.day_4_text)
+    Textecb0fd0e4c84(instance: "day_5", text: copy.day_5_text)
+    Text4c5f062d74e4(instance: "day_6", text: copy.day_6_text)
+    Text00868f55d031(instance: "day_7", text: copy.day_7_text)
+    Textc2548d29f6ac(instance: "day_8", text: copy.day_8_text)
+    Text4c5f062d74e4(instance: "day_9", text: copy.day_9_text)
+    Text4c5f062d74e4(instance: "day_10", text: copy.day_10_text)
+    Text00868f55d031(instance: "day_11", text: copy.day_11_text)
+    Texte95ed57ce7bc(instance: "day_12", text: copy.day_12_text)
+    Text4c5f062d74e4(instance: "day_13", text: copy.day_13_text)
+    Text00868f55d031(instance: "day_14", text: copy.day_14_text)
+    Textecb0fd0e4c84(instance: "day_15", text: copy.day_15_text)
+    Text4c5f062d74e4(instance: "day_16", text: copy.day_16_text)
+    Text00868f55d031(instance: "day_17", text: copy.day_17_text)
+    Textc2548d29f6ac(instance: "day_18", text: copy.day_18_text)
+    Text4c5f062d74e4(instance: "day_19", text: copy.day_19_text)
+    Text4c5f062d74e4(instance: "day_20", text: copy.day_20_text)
+    Texte95ed57ce7bc(instance: "day_21", text: copy.day_21_text)
+    Texte95ed57ce7bc(instance: "day_22", text: copy.day_22_text)
+    Text4c5f062d74e4(instance: "day_23", text: copy.day_23_text)
+    Text4c5f062d74e4(instance: "day_25", text: copy.day_25_text)
+    Text4c5f062d74e4(instance: "day_26", text: copy.day_26_text)
+    Texte95ed57ce7bc(instance: "day_27", text: copy.day_27_text)
+    Text4c5f062d74e4(instance: "day_28", text: copy.day_28_text)
+    Text4c5f062d74e4(instance: "day_29", text: copy.day_29_text)
+    Text4c5f062d74e4(instance: "day_30", text: copy.day_30_text)
+    Text9d21b99928dd(instance: "list_title", text: copy.list_title_text)
+  }
+}

@@ -1,0 +1,475 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "fb82337e809629acf41c094618eba987d6b79662be05c8d91f28dd7d453b205f",
+  "tree": {
+    "t": "stack",
+    "id": "page",
+    "x": 0,
+    "y": 0,
+    "w": 406,
+    "h": 776,
+    "variant": "surface",
+    "bg": 4294967295,
+    "c": [
+      {
+        "t": "stack",
+        "id": "screen",
+        "x": 0.0,
+        "y": 0.0,
+        "w": 203.0,
+        "h": 388.0,
+        "c": [
+          {
+            "t": "svg",
+            "id": "status_icons",
+            "x": 163.0,
+            "y": 6.5,
+            "w": 28.0,
+            "h": 7.0,
+            "src": ""
+          },
+          {
+            "t": "stack",
+            "id": "back_editor",
+            "x": 6.0,
+            "y": 25.0,
+            "w": 50.0,
+            "h": 18.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "back_editor_surface",
+                "x": 6.0,
+                "y": 25.0,
+                "w": 50.0,
+                "h": 18.0,
+                "c": []
+              },
+              {
+                "t": "button",
+                "id": "back_editor_control",
+                "x": 6.0,
+                "y": 25.0,
+                "w": 50.0,
+                "h": 18.0,
+                "enabled": 1
+              },
+              {
+                "t": "svg",
+                "id": "back_editor_icon",
+                "x": 7.0,
+                "y": 28.0,
+                "w": 11.0,
+                "h": 11.0,
+                "src": ""
+              },
+              {
+                "t": "text",
+                "id": "back_editor_label",
+                "text": "新建日程",
+                "x": 18.0,
+                "y": 28.532000000000004,
+                "w": 38.0,
+                "h": 11.854,
+                "size": 8.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 11.854,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4294916912,
+                "font_asc": -0.08070588235294118,
+                "font_desc": -0.027294117647058802
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[3]}}"
+          },
+          {
+            "t": "stack",
+            "id": "slot_13",
+            "x": 10.0,
+            "y": 84.0,
+            "w": 183.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "slot_13_surface",
+                "x": 10.0,
+                "y": 84.0,
+                "w": 183.0,
+                "h": 28.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294111991,
+                "radius": 7.0
+              },
+              {
+                "t": "button",
+                "id": "slot_13_control",
+                "x": 10.0,
+                "y": 84.0,
+                "w": 183.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "slot_13_label",
+                "text": "13:00 – 14:00",
+                "x": 20.0,
+                "y": 93.36500000000001,
+                "w": 54.830000000000005,
+                "h": 10.4515,
+                "size": 8.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.4515,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4280032286,
+                "font_asc": -0.17870588235294105,
+                "font_desc": 0.03970588235294137
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[2]}}"
+          },
+          {
+            "t": "stack",
+            "id": "slot_14",
+            "x": 10.0,
+            "y": 117.0,
+            "w": 183.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "slot_14_surface",
+                "x": 10.0,
+                "y": 117.0,
+                "w": 183.0,
+                "h": 28.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294440953,
+                "radius": 7.0
+              },
+              {
+                "t": "button",
+                "id": "slot_14_control",
+                "x": 10.0,
+                "y": 117.0,
+                "w": 183.0,
+                "h": 28.0,
+                "enabled": 0
+              },
+              {
+                "t": "text",
+                "id": "slot_14_label",
+                "text": "14:00 – 15:00",
+                "x": 20.0,
+                "y": 121.86500000000002,
+                "w": 54.830000000000005,
+                "h": 10.4515,
+                "size": 8.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.4515,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4291282892,
+                "font_asc": -0.17870588235294105,
+                "font_desc": 0.03970588235294137
+              },
+              {
+                "t": "text",
+                "id": "slot_14_why",
+                "text": "与「团队同步」冲突",
+                "x": 20.0,
+                "y": 133.03400000000002,
+                "w": 58.0,
+                "h": 9.597999999999999,
+                "size": 6.0,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 9.597999999999999,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4287532691,
+                "font_asc": 0.020333333333333314,
+                "font_desc": -0.1313333333333332
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[2]}}"
+          },
+          {
+            "t": "stack",
+            "id": "slot_15",
+            "x": 10.0,
+            "y": 150.0,
+            "w": 183.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "slot_15_surface",
+                "x": 10.0,
+                "y": 150.0,
+                "w": 183.0,
+                "h": 28.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294111991,
+                "radius": 7.0
+              },
+              {
+                "t": "button",
+                "id": "slot_15_control",
+                "x": 10.0,
+                "y": 150.0,
+                "w": 183.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "slot_15_label",
+                "text": "15:00 – 16:00",
+                "x": 20.0,
+                "y": 159.365,
+                "w": 54.830000000000005,
+                "h": 10.4515,
+                "size": 8.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.4515,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4280032286,
+                "font_asc": -0.17870588235294105,
+                "font_desc": 0.03970588235294137
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[2]}}"
+          },
+          {
+            "t": "stack",
+            "id": "slot_16",
+            "x": 10.0,
+            "y": 183.0,
+            "w": 183.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "slot_16_surface",
+                "x": 10.0,
+                "y": 183.0,
+                "w": 183.0,
+                "h": 28.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294111991,
+                "radius": 7.0
+              },
+              {
+                "t": "button",
+                "id": "slot_16_control",
+                "x": 10.0,
+                "y": 183.0,
+                "w": 183.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "svg",
+                "id": "slot_16_check",
+                "x": 175.0,
+                "y": 191.5,
+                "w": 11.0,
+                "h": 11.0,
+                "src": ""
+              },
+              {
+                "t": "text",
+                "id": "slot_16_label",
+                "text": "16:00 – 17:00",
+                "x": 20.0,
+                "y": 192.365,
+                "w": 54.830000000000005,
+                "h": 10.4515,
+                "size": 8.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.4515,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4280032286,
+                "font_asc": -0.17870588235294105,
+                "font_desc": 0.03970588235294137
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[3]}}"
+          },
+          {
+            "t": "stack",
+            "id": "slot_17",
+            "x": 10.0,
+            "y": 216.0,
+            "w": 183.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "stack",
+                "id": "slot_17_surface",
+                "x": 10.0,
+                "y": 216.0,
+                "w": 183.0,
+                "h": 28.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294111991,
+                "radius": 7.0
+              },
+              {
+                "t": "button",
+                "id": "slot_17_control",
+                "x": 10.0,
+                "y": 216.0,
+                "w": 183.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "slot_17_label",
+                "text": "17:00 – 18:00",
+                "x": 20.0,
+                "y": 225.365,
+                "w": 54.830000000000005,
+                "h": 10.4515,
+                "size": 8.5,
+                "weight": 400,
+                "tracking": 0,
+                "line_height": 10.4515,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+                "color": 4280032286,
+                "font_asc": -0.17870588235294105,
+                "font_desc": 0.03970588235294137
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[2]}}"
+          },
+          {
+            "t": "stack",
+            "id": "home_indicator",
+            "x": 69.5,
+            "y": 381.0,
+            "w": 64.0,
+            "h": 2.5,
+            "c": [],
+            "variant": "surface",
+            "bg": 4280032286,
+            "radius": 1.5
+          },
+          {
+            "t": "text",
+            "id": "status_time",
+            "text": "09:41",
+            "x": 14.0,
+            "y": 6.614999999999998,
+            "w": 24.1375,
+            "h": 9.76,
+            "size": 7.5,
+            "weight": 700,
+            "tracking": 0,
+            "line_height": 9.76,
+            "alignx": 0,
+            "variant": "single_line",
+            "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+            "color": 4280032286,
+            "font_asc": -0.1393333333333333,
+            "font_desc": 0.007333333333333358
+          },
+          {
+            "t": "text",
+            "id": "picker_title",
+            "text": "选择时间",
+            "x": 10.0,
+            "y": 49.044,
+            "w": 52.0,
+            "h": 15.388,
+            "size": 12.0,
+            "weight": 700,
+            "tracking": 0,
+            "line_height": 15.388,
+            "alignx": 0,
+            "variant": "single_line",
+            "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+            "color": 4280032286,
+            "font_asc": -0.1443333333333332,
+            "font_desc": 0.021333333333333204
+          },
+          {
+            "t": "text",
+            "id": "picker_sub",
+            "text": "9月24日 周四 · 家庭日历",
+            "x": 10.0,
+            "y": 64.8155,
+            "w": 77.6905,
+            "h": 10.0775,
+            "size": 6.5,
+            "weight": 400,
+            "tracking": 0,
+            "line_height": 10.0775,
+            "alignx": 0,
+            "variant": "single_line",
+            "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+            "color": 4287532691,
+            "font_asc": -0.0033076923076922338,
+            "font_desc": -0.10569230769230786
+          },
+          {
+            "t": "text",
+            "id": "picker_hint",
+            "text": "冲突时段不可选择；日程不会自动重叠",
+            "x": 50.5,
+            "y": 255.034,
+            "w": 106.0,
+            "h": 10.048,
+            "size": 6.0,
+            "weight": 400,
+            "tracking": 0,
+            "line_height": 10.048,
+            "alignx": 0,
+            "variant": "single_line",
+            "font_src": "self:resources/service/NotoSansSC-Regular.ttf",
+            "color": 4287532691,
+            "font_asc": 0.020333333333333314,
+            "font_desc": -0.20633333333333337
+          }
+        ],
+        "variant": "surface",
+        "bg": 4294967295,
+        "radius": 0.0
+      }
+    ]
+  },
+  "changes": [
+    {
+      "source": "Storyboard spec rendered at 2× by Chromium; contract geometry is the spec, ink boxes from glyph metrics"
+    }
+  ],
+  "limits": [
+    "The reference is a deterministic render of the same spec, not an independent design source",
+    "No native capture or visual approval yet"
+  ]
+}

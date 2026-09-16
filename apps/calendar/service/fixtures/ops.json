@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "description": "A two-device log replayed by service/test_calendar_core.py and wizard/core.test.mjs; both reducers must accept and reject the same records and reach the same state digest.",
+  "records": [
+    {
+      "op": {
+        "id": "op-phone-1",
+        "actor": "alex-phone",
+        "action": "event.create",
+        "payload": {
+          "event": {
+            "id": "piano",
+            "title": {
+              "cn": "钢琴课",
+              "en": "Piano lesson"
+            },
+            "calendar": "family",
+            "start": "2026-09-25T16:00:00+08:00",
+            "end": "2026-09-25T17:00:00+08:00",
+            "location": {
+              "cn": "",
+              "en": ""
+            }
+          }
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-phone-1",
+        "actor": "alex-phone",
+        "action": "event.create",
+        "payload": {
+          "event": {
+            "id": "piano",
+            "title": {
+              "cn": "钢琴课",
+              "en": "Piano lesson"
+            },
+            "calendar": "family",
+            "start": "2026-09-25T16:00:00+08:00",
+            "end": "2026-09-25T17:00:00+08:00",
+            "location": {
+              "cn": "",
+              "en": ""
+            }
+          }
+        }
+      },
+      "accepted": true,
+      "replayed": true
+    },
+    {
+      "op": {
+        "id": "op-phone-2",
+        "actor": "alex-phone",
+        "action": "event.create",
+        "payload": {
+          "event": {
+            "id": "piano-again",
+            "title": {
+              "cn": "钢琴课",
+              "en": "Piano lesson"
+            },
+            "calendar": "family",
+            "start": "2026-09-25T16:30:00+08:00",
+            "end": "2026-09-25T17:30:00+08:00"
+          }
+        }
+      },
+      "accepted": false,
+      "reason": "conflict:piano"
+    },
+    {
+      "op": {
+        "id": "op-desk-1",
+        "actor": "sam-desktop",
+        "action": "invite.respond",
+        "payload": {
+          "id": "hike",
+          "status": "maybe"
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-phone-3",
+        "actor": "alex-phone",
+        "action": "invite.respond",
+        "payload": {
+          "id": "hike",
+          "status": "accepted"
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-phone-4",
+        "actor": "alex-phone",
+        "action": "event.create",
+        "payload": {
+          "event": {
+            "id": "clash",
+            "title": {
+              "cn": "冲突",
+              "en": "Clash"
+            },
+            "calendar": "work",
+            "start": "2026-09-24T14:00:00+08:00",
+            "end": "2026-09-24T15:00:00+08:00"
+          }
+        }
+      },
+      "accepted": false,
+      "reason": "conflict:team-sync"
+    },
+    {
+      "op": {
+        "id": "op-phone-5",
+        "actor": "alex-phone",
+        "action": "event.create",
+        "payload": {
+          "event": {
+            "id": "family-at-14",
+            "title": {
+              "cn": "家庭 14 点",
+              "en": "Family at 14:00"
+            },
+            "calendar": "family",
+            "start": "2026-09-24T14:00:00+08:00",
+            "end": "2026-09-24T15:00:00+08:00"
+          }
+        }
+      },
+      "accepted": false,
+      "reason": "conflict:team-sync"
+    },
+    {
+      "op": {
+        "id": "op-phone-6",
+        "actor": "alex-phone",
+        "action": "event.delete",
+        "payload": {
+          "id": "dinner"
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-desk-2",
+        "actor": "sam-desktop",
+        "action": "event.update",
+        "payload": {
+          "id": "dinner",
+          "patch": {
+            "start": "2026-09-24T19:30:00+08:00"
+          }
+        }
+      },
+      "accepted": false,
+      "reason": "missing_event"
+    },
+    {
+      "op": {
+        "id": "op-desk-3",
+        "actor": "sam-desktop",
+        "action": "event.restore",
+        "payload": {
+          "id": "dinner"
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-desk-4",
+        "actor": "sam-desktop",
+        "action": "event.update",
+        "payload": {
+          "id": "dinner",
+          "patch": {
+            "start": "2026-09-24T19:30:00+08:00",
+            "end": "2026-09-24T21:00:00+08:00"
+          }
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-phone-7",
+        "actor": "alex-phone",
+        "action": "event.update",
+        "payload": {
+          "id": "dinner",
+          "patch": {
+            "created_by": "alex-phone"
+          }
+        }
+      },
+      "accepted": false,
+      "reason": "invalid_patch"
+    },
+    {
+      "op": {
+        "id": "op-phone-8",
+        "actor": "alex-phone",
+        "action": "calendar.set_visible",
+        "payload": {
+          "id": "birthdays",
+          "visible": true
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-phone-9",
+        "actor": "alex-phone",
+        "action": "calendar.set_visible",
+        "payload": {
+          "id": "birthdays",
+          "visible": "yes"
+        }
+      },
+      "accepted": false,
+      "reason": "invalid_calendar"
+    },
+    {
+      "op": {
+        "id": "op-desk-5",
+        "actor": "sam-desktop",
+        "action": "device.sync",
+        "payload": {
+          "at": "2026-09-24T09:44:00+08:00"
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-ghost-1",
+        "actor": "ghost-tablet",
+        "action": "device.sync",
+        "payload": {
+          "at": "2026-09-24T09:44:00+08:00"
+        }
+      },
+      "accepted": false,
+      "reason": "unknown_device"
+    },
+    {
+      "op": {
+        "id": "op-phone-1",
+        "actor": "alex-phone",
+        "action": "event.delete",
+        "payload": {
+          "id": "piano"
+        }
+      },
+      "accepted": false,
+      "reason": "operation_id_reused"
+    },
+    {
+      "op": {
+        "id": "op-phone-10",
+        "actor": "alex-phone",
+        "action": "invite.respond",
+        "payload": {
+          "id": "hike",
+          "status": "declined"
+        }
+      },
+      "accepted": true
+    },
+    {
+      "op": {
+        "id": "op-phone-11",
+        "actor": "alex-phone",
+        "action": "event.restore",
+        "payload": {
+          "id": "invite-hike"
+        }
+      },
+      "accepted": true
+    }
+  ],
+  "expect": {
+    "seq": 10,
+    "events_visible_today": [
+      "dentist",
+      "team-sync",
+      "dinner"
+    ],
+    "events_visible_2026-09-26": [
+      "invite-hike"
+    ],
+    "dinner_start": "2026-09-24T19:30:00+08:00",
+    "hike_status": "declined",
+    "birthdays_visible": true,
+    "sam_sync_count": 1,
+    "state_digest": "ee6c3000dbf9b9ed6299e4054c04ff6e47a1cf6a952f54ce8bcd18dd4c8adedb"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "frame_id": 2,
+  "source": "calendar-02",
+  "controls": {
+    "back_month": {
+      "event": "back_month",
+      "text_ids": [
+        "back_month_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        12,
+        50,
+        66,
+        36
+      ],
+      "enabled": true
+    },
+    "add_event": {
+      "event": "add_event",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        346,
+        50,
+        44,
+        36
+      ],
+      "enabled": true
+    },
+    "open_dentist": {
+      "event": "open_dentist",
+      "text_ids": [
+        "open_dentist_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        88,
+        166,
+        298,
+        96
+      ],
+      "enabled": true
+    },
+    "open_team_sync": {
+      "event": "open_team_sync",
+      "text_ids": [
+        "open_team_sync_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        88,
+        286,
+        298,
+        96
+      ],
+      "enabled": true
+    },
+    "open_dinner": {
+      "event": "open_dinner",
+      "text_ids": [
+        "open_dinner_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        88,
+        406,
+        298,
+        96
+      ],
+      "enabled": true
+    },
+    "tab_today": {
+      "event": "tab_today",
+      "text_ids": [
+        "tab_today_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_calendars": {
+      "event": "tab_calendars",
+      "text_ids": [
+        "tab_calendars_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        142,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_inbox": {
+      "event": "tab_inbox",
+      "text_ids": [
+        "tab_inbox_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        264,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    }
+  }
+}

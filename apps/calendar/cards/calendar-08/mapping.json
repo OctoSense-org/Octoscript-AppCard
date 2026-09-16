@@ -1,0 +1,1109 @@
+{
+  "schema_version": 1,
+  "elements": [
+    {
+      "source_id": "page",
+      "native_id": "beauty_0",
+      "parent": null,
+      "kind": "stack",
+      "component": "Surface156d085f4ff5",
+      "semantic_role": "layout",
+      "bounds": [
+        0,
+        0,
+        406,
+        776
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "screen",
+      "native_id": "beauty_0_0",
+      "parent": "page",
+      "kind": "stack",
+      "component": "Surface77131ad4bbf5",
+      "semantic_role": "layout",
+      "bounds": [
+        0.0,
+        0.0,
+        203.0,
+        388.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "status_icons",
+      "native_id": "beauty_0_0_0",
+      "parent": "screen",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        163.0,
+        6.5,
+        28.0,
+        7.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "done_calendars",
+      "native_id": "beauty_0_0_1",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "KitButton5dc7ea8cd583",
+      "semantic_role": "button",
+      "bounds": [
+        153.0,
+        25.0,
+        44.0,
+        18.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "done_calendars_surface",
+      "native_id": "beauty_0_0_1_0",
+      "parent": "done_calendars",
+      "kind": "stack",
+      "component": "Group3d2637879433",
+      "semantic_role": "layout",
+      "bounds": [
+        153.0,
+        25.0,
+        44.0,
+        18.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "done_calendars_control",
+      "native_id": "beauty_0_0_1_1",
+      "parent": "done_calendars",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        153.0,
+        25.0,
+        44.0,
+        18.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "done_calendars_label",
+      "native_id": "beauty_0_0_1_2",
+      "parent": "done_calendars",
+      "kind": "text",
+      "component": "Text19120ef55d91",
+      "semantic_role": "text",
+      "bounds": [
+        153.0,
+        28.489500000000003,
+        21.0,
+        11.956
+      ],
+      "text": "\u5b8c\u6210",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 8.5
+    },
+    {
+      "source_id": "calendars_group",
+      "native_id": "beauty_0_0_2",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surfacecd7755cda6bf",
+      "semantic_role": "layout",
+      "bounds": [
+        10.0,
+        65.0,
+        183.0,
+        105.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_family",
+      "native_id": "beauty_0_0_3",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "KitButton36b6e7615b3d",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        67.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_family_surface",
+      "native_id": "beauty_0_0_3_0",
+      "parent": "toggle_family",
+      "kind": "stack",
+      "component": "Group3d2637879433",
+      "semantic_role": "layout",
+      "bounds": [
+        10.0,
+        67.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_family_control",
+      "native_id": "beauty_0_0_3_1",
+      "parent": "toggle_family",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        67.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_family_check",
+      "native_id": "beauty_0_0_3_2",
+      "parent": "toggle_family",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        16.0,
+        74.0,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_family_dot",
+      "native_id": "beauty_0_0_3_3",
+      "parent": "toggle_family",
+      "kind": "stack",
+      "component": "Surface48cc4671a3f7",
+      "semantic_role": "layout",
+      "bounds": [
+        33.0,
+        76.5,
+        6.0,
+        6.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_family_line",
+      "native_id": "beauty_0_0_3_4",
+      "parent": "toggle_family",
+      "kind": "stack",
+      "component": "Surface396ee6390bb9",
+      "semantic_role": "layout",
+      "bounds": [
+        33.0,
+        92.0,
+        155.0,
+        0.5
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_family_label",
+      "native_id": "beauty_0_0_3_5",
+      "parent": "toggle_family",
+      "kind": "text",
+      "component": "Texta7243b1ca490",
+      "semantic_role": "text",
+      "bounds": [
+        44.0,
+        69.9895,
+        21.0,
+        11.913499999999999
+      ],
+      "text": "\u5bb6\u5ead",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 8.5
+    },
+    {
+      "source_id": "toggle_family_sub",
+      "native_id": "beauty_0_0_3_6",
+      "parent": "toggle_family",
+      "kind": "text",
+      "component": "Text0bf10bb11d96",
+      "semantic_role": "text",
+      "bounds": [
+        44.0,
+        81.034,
+        37.198,
+        9.574
+      ],
+      "text": "\u4e0e Sam \u5171\u4eab",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.0
+    },
+    {
+      "source_id": "toggle_work",
+      "native_id": "beauty_0_0_4",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "KitButton36b6e7615b3d",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        93.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_work_surface",
+      "native_id": "beauty_0_0_4_0",
+      "parent": "toggle_work",
+      "kind": "stack",
+      "component": "Group3d2637879433",
+      "semantic_role": "layout",
+      "bounds": [
+        10.0,
+        93.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_work_control",
+      "native_id": "beauty_0_0_4_1",
+      "parent": "toggle_work",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        93.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_work_check",
+      "native_id": "beauty_0_0_4_2",
+      "parent": "toggle_work",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        16.0,
+        100.0,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_work_dot",
+      "native_id": "beauty_0_0_4_3",
+      "parent": "toggle_work",
+      "kind": "stack",
+      "component": "Surfaced63c5b191541",
+      "semantic_role": "layout",
+      "bounds": [
+        33.0,
+        102.5,
+        6.0,
+        6.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_work_line",
+      "native_id": "beauty_0_0_4_4",
+      "parent": "toggle_work",
+      "kind": "stack",
+      "component": "Surface396ee6390bb9",
+      "semantic_role": "layout",
+      "bounds": [
+        33.0,
+        118.0,
+        155.0,
+        0.5
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_work_label",
+      "native_id": "beauty_0_0_4_5",
+      "parent": "toggle_work",
+      "kind": "text",
+      "component": "Text2bd91180f201",
+      "semantic_role": "text",
+      "bounds": [
+        44.0,
+        100.10000000000001,
+        21.0,
+        11.7775
+      ],
+      "text": "\u5de5\u4f5c",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 8.5
+    },
+    {
+      "source_id": "toggle_personal",
+      "native_id": "beauty_0_0_5",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "KitButton36b6e7615b3d",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        119.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_personal_surface",
+      "native_id": "beauty_0_0_5_0",
+      "parent": "toggle_personal",
+      "kind": "stack",
+      "component": "Group3d2637879433",
+      "semantic_role": "layout",
+      "bounds": [
+        10.0,
+        119.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_personal_control",
+      "native_id": "beauty_0_0_5_1",
+      "parent": "toggle_personal",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        119.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_personal_check",
+      "native_id": "beauty_0_0_5_2",
+      "parent": "toggle_personal",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        16.0,
+        126.0,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_personal_dot",
+      "native_id": "beauty_0_0_5_3",
+      "parent": "toggle_personal",
+      "kind": "stack",
+      "component": "Surfaced51dfc8e3ab3",
+      "semantic_role": "layout",
+      "bounds": [
+        33.0,
+        128.5,
+        6.0,
+        6.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_personal_line",
+      "native_id": "beauty_0_0_5_4",
+      "parent": "toggle_personal",
+      "kind": "stack",
+      "component": "Surface396ee6390bb9",
+      "semantic_role": "layout",
+      "bounds": [
+        33.0,
+        144.0,
+        155.0,
+        0.5
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_personal_label",
+      "native_id": "beauty_0_0_5_5",
+      "parent": "toggle_personal",
+      "kind": "text",
+      "component": "Text2fdfc11c8c97",
+      "semantic_role": "text",
+      "bounds": [
+        44.0,
+        126.0575,
+        21.0,
+        11.82
+      ],
+      "text": "\u4e2a\u4eba",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 8.5
+    },
+    {
+      "source_id": "toggle_birthdays",
+      "native_id": "beauty_0_0_6",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "KitButtona8c9d412b00c",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        145.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_birthdays_surface",
+      "native_id": "beauty_0_0_6_0",
+      "parent": "toggle_birthdays",
+      "kind": "stack",
+      "component": "Group3d2637879433",
+      "semantic_role": "layout",
+      "bounds": [
+        10.0,
+        145.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_birthdays_control",
+      "native_id": "beauty_0_0_6_1",
+      "parent": "toggle_birthdays",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        145.0,
+        183.0,
+        25.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_birthdays_check",
+      "native_id": "beauty_0_0_6_2",
+      "parent": "toggle_birthdays",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        16.0,
+        152.0,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_birthdays_dot",
+      "native_id": "beauty_0_0_6_3",
+      "parent": "toggle_birthdays",
+      "kind": "stack",
+      "component": "Surface60fcb0346fa4",
+      "semantic_role": "layout",
+      "bounds": [
+        33.0,
+        154.5,
+        6.0,
+        6.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "toggle_birthdays_label",
+      "native_id": "beauty_0_0_6_4",
+      "parent": "toggle_birthdays",
+      "kind": "text",
+      "component": "Text64afc446806a",
+      "semantic_role": "text",
+      "bounds": [
+        44.0,
+        148.06600000000003,
+        21.0,
+        11.726500000000001
+      ],
+      "text": "\u751f\u65e5",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 8.5
+    },
+    {
+      "source_id": "toggle_birthdays_sub",
+      "native_id": "beauty_0_0_6_5",
+      "parent": "toggle_birthdays",
+      "kind": "text",
+      "component": "Text062ba2a185fb",
+      "semantic_role": "text",
+      "bounds": [
+        44.0,
+        159.07600000000002,
+        22.0,
+        9.532
+      ],
+      "text": "\u5df2\u9690\u85cf",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.0
+    },
+    {
+      "source_id": "sync_group",
+      "native_id": "beauty_0_0_7",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surfacecd7755cda6bf",
+      "semantic_role": "layout",
+      "bounds": [
+        10.0,
+        182.0,
+        183.0,
+        32.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "sync_icon",
+      "native_id": "beauty_0_0_8",
+      "parent": "screen",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        18.0,
+        192.5,
+        11.0,
+        11.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_bar",
+      "native_id": "beauty_0_0_9",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surfacecc3f4cfacc10",
+      "semantic_role": "layout",
+      "bounds": [
+        0.0,
+        347.0,
+        203.0,
+        41.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_today",
+      "native_id": "beauty_0_0_9_0",
+      "parent": "tab_bar",
+      "kind": "stack",
+      "component": "KitButton5dc7ea8cd583",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        350.0,
+        61.0,
+        28.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_today_icon",
+      "native_id": "beauty_0_0_9_0_0",
+      "parent": "tab_today",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        34.5,
+        352.0,
+        12.0,
+        12.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_today_control",
+      "native_id": "beauty_0_0_9_0_1",
+      "parent": "tab_today",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        10.0,
+        350.0,
+        61.0,
+        28.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_today_label",
+      "native_id": "beauty_0_0_9_0_2",
+      "parent": "tab_today",
+      "kind": "text",
+      "component": "Text5335314436d2",
+      "semantic_role": "text",
+      "bounds": [
+        35.0,
+        365.73949999999996,
+        15.0,
+        9.114999999999998
+      ],
+      "text": "\u4eca\u5929",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.5
+    },
+    {
+      "source_id": "tab_calendars",
+      "native_id": "beauty_0_0_9_1",
+      "parent": "tab_bar",
+      "kind": "stack",
+      "component": "KitButton5dc7ea8cd583",
+      "semantic_role": "button",
+      "bounds": [
+        71.0,
+        350.0,
+        61.0,
+        28.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_calendars_icon",
+      "native_id": "beauty_0_0_9_1_0",
+      "parent": "tab_calendars",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        95.5,
+        352.0,
+        12.0,
+        12.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_calendars_control",
+      "native_id": "beauty_0_0_9_1_1",
+      "parent": "tab_calendars",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        71.0,
+        350.0,
+        61.0,
+        28.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_calendars_label",
+      "native_id": "beauty_0_0_9_1_2",
+      "parent": "tab_calendars",
+      "kind": "text",
+      "component": "Text2d789b4eda3e",
+      "semantic_role": "text",
+      "bounds": [
+        96.0,
+        366.04749999999996,
+        15.0,
+        8.774000000000001
+      ],
+      "text": "\u65e5\u5386",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.5
+    },
+    {
+      "source_id": "tab_inbox",
+      "native_id": "beauty_0_0_9_2",
+      "parent": "tab_bar",
+      "kind": "stack",
+      "component": "KitButton870a84d356fb",
+      "semantic_role": "button",
+      "bounds": [
+        132.0,
+        350.0,
+        61.0,
+        28.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_inbox_icon",
+      "native_id": "beauty_0_0_9_2_0",
+      "parent": "tab_inbox",
+      "kind": "svg",
+      "component": "Vectore0a378fde04f",
+      "semantic_role": "icon",
+      "bounds": [
+        156.5,
+        352.0,
+        12.0,
+        12.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_inbox_control",
+      "native_id": "beauty_0_0_9_2_1",
+      "parent": "tab_inbox",
+      "kind": "button",
+      "component": "NativeButton02f1d1bd99b4",
+      "semantic_role": "button",
+      "bounds": [
+        132.0,
+        350.0,
+        61.0,
+        28.0
+      ],
+      "text": null,
+      "enabled": 1,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "inbox_badge",
+      "native_id": "beauty_0_0_9_2_2",
+      "parent": "tab_inbox",
+      "kind": "stack",
+      "component": "Surfacedd13f2cce3dd",
+      "semantic_role": "layout",
+      "bounds": [
+        146.0,
+        350.0,
+        9.0,
+        9.0
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "tab_inbox_label",
+      "native_id": "beauty_0_0_9_2_3",
+      "parent": "tab_inbox",
+      "kind": "text",
+      "component": "Textac6fb4c051fd",
+      "semantic_role": "text",
+      "bounds": [
+        154.25,
+        365.756,
+        20.5,
+        9.087499999999999
+      ],
+      "text": "\u6536\u4ef6\u7bb1",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 5.5
+    },
+    {
+      "source_id": "inbox_badge_count",
+      "native_id": "beauty_0_0_9_2_4",
+      "parent": "tab_inbox",
+      "kind": "text",
+      "component": "Text6d27197266b9",
+      "semantic_role": "text",
+      "bounds": [
+        148.8775,
+        350.8225,
+        7.244999999999999,
+        8.0755
+      ],
+      "text": "1",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 5.5
+    },
+    {
+      "source_id": "tab_line",
+      "native_id": "beauty_0_0_10",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surface396ee6390bb9",
+      "semantic_role": "layout",
+      "bounds": [
+        0.0,
+        347.0,
+        203.0,
+        0.5
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "home_indicator",
+      "native_id": "beauty_0_0_11",
+      "parent": "screen",
+      "kind": "stack",
+      "component": "Surface92bde3a718b5",
+      "semantic_role": "layout",
+      "bounds": [
+        69.5,
+        381.0,
+        64.0,
+        2.5
+      ],
+      "text": null,
+      "enabled": null,
+      "font": null,
+      "size": null
+    },
+    {
+      "source_id": "status_time",
+      "native_id": "beauty_0_0_12",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Text6a37fd0d3c23",
+      "semantic_role": "text",
+      "bounds": [
+        14.0,
+        6.614999999999998,
+        24.1375,
+        9.76
+      ],
+      "text": "09:41",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "nav_title",
+      "native_id": "beauty_0_0_13",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Textb17dc8abc310",
+      "semantic_role": "text",
+      "bounds": [
+        93.0,
+        28.812500000000004,
+        21.0,
+        11.65
+      ],
+      "text": "\u65e5\u5386",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Bold.ttf",
+      "size": 8.5
+    },
+    {
+      "source_id": "section_icloud",
+      "native_id": "beauty_0_0_14",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Textc20c72f67d1c",
+      "semantic_role": "text",
+      "bounds": [
+        18.0,
+        54.16,
+        23.695,
+        9.258500000000002
+      ],
+      "text": "iCloud",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.5
+    },
+    {
+      "source_id": "sync_status",
+      "native_id": "beauty_0_0_15",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Textcec81451dca5",
+      "semantic_role": "text",
+      "bounds": [
+        36.0,
+        186.96999999999997,
+        56.095,
+        10.915
+      ],
+      "text": "\u5df2\u540c\u6b65 \u00b7 09:41",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 7.5
+    },
+    {
+      "source_id": "sync_devices",
+      "native_id": "beauty_0_0_16",
+      "parent": "screen",
+      "kind": "text",
+      "component": "Texte4b57023d74d",
+      "semantic_role": "text",
+      "bounds": [
+        36.0,
+        199.05200000000002,
+        104.224,
+        9.706
+      ],
+      "text": "2 \u53f0\u8bbe\u5907\uff1aAlex \u00b7 \u624b\u673a\uff0cSam \u00b7 \u684c\u9762",
+      "enabled": null,
+      "font": "self:resources/service/NotoSansSC-Regular.ttf",
+      "size": 6.0
+    }
+  ],
+  "fonts": {
+    "self:resources/service/NotoSansSC-Regular.ttf": "62513a5d6706afa489edfd29e1c860d076a3d36f0ba865fa917ebb79a96dfef8",
+    "self:resources/service/NotoSansSC-Bold.ttf": "900b1b791ba502293f14151010e067686499101af9b830199a6db2bf4126e552"
+  },
+  "contract_sha256": "fb37fe7b0a86342b409beebd25369a2cfbc8db9ec2eaa0767541c265014e04bc",
+  "mapping_basis": "mapped.json"
+}

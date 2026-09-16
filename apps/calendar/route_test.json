@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "name": "create-piano-and-acknowledge-the-synced-card",
+      "steps": [
+        {"control": "add_event", "frame": 4, "assert": {"ui.editing": false}},
+        {"control": "pick_calendar", "frame": 4, "assert": {"ui.draft.calendar": "work"}},
+        {"control": "pick_calendar", "frame": 4, "assert": {"ui.draft.calendar": "personal"}},
+        {"control": "pick_calendar", "frame": 4, "assert": {"ui.draft.calendar": "family"}},
+        {"control": "save_event", "frame": 5, "assert": {"state.events.piano.deleted": false, "state.events.piano.created_by": "alex-phone", "pending": 1}},
+        {"control": "ack_sync", "frame": 5, "assert": {"pending": 1}},
+        {"control": "ack_sync", "disabled": true, "frame": 5},
+        {"control": "open_calendar", "frame": 1},
+        {"control": "tab_calendars", "frame": 8},
+        {"control": "toggle_birthdays", "frame": 8, "assert": {"state.calendars.birthdays.visible": true, "pending": 2}},
+        {"control": "done_calendars", "frame": 1}
+      ]
+    },
+    {
+      "name": "the-time-picker-disables-the-conflicting-slot",
+      "steps": [
+        {"control": "add_event", "frame": 4},
+        {"control": "pick_time", "frame": 7},
+        {"control": "slot_14", "disabled": true, "frame": 7},
+        {"control": "slot_15", "frame": 4, "assert": {"ui.draft.start": "2026-09-24T15:00:00+08:00", "ui.draft.end": "2026-09-24T16:00:00+08:00"}},
+        {"control": "save_event", "frame": 5, "assert": {"state.events.piano.start": "2026-09-24T15:00:00+08:00"}},
+        {"control": "undo_event", "frame": 10, "assert": {"state.events.piano.deleted": true, "pending": 2}},
+        {"control": "undo_delete", "frame": 10, "assert": {"state.events.piano.deleted": false, "pending": 3}},
+        {"control": "undo_delete", "disabled": true, "frame": 10},
+        {"control": "open_calendar", "frame": 1}
+      ]
+    },
+    {
+      "name": "delete-dinner-then-undo-restores-the-same-event",
+      "steps": [
+        {"control": "open_today", "frame": 2},
+        {"control": "open_dinner", "frame": 3, "assert": {"ui.selected": "dinner"}},
+        {"control": "delete_event", "frame": 10, "assert": {"state.events.dinner.deleted": true, "ui.removed": "dinner"}},
+        {"control": "undo_delete", "frame": 10, "assert": {"state.events.dinner.deleted": false, "state.events.dinner.title.en": "Dinner with Sam"}},
+        {"control": "open_calendar", "frame": 1, "assert": {"pending": 2}}
+      ]
+    },
+    {
+      "name": "invitation-accept-then-decline-keeps-sams-event",
+      "steps": [
+        {"control": "tab_inbox", "frame": 6, "assert": {"state.invitations.hike.status": "pending"}},
+        {"control": "accept_invite", "frame": 5, "assert": {"state.invitations.hike.status": "accepted", "state.events.invite-hike.deleted": false}},
+        {"control": "open_calendar", "frame": 1},
+        {"control": "tab_inbox", "frame": 6},
+        {"control": "accept_invite", "disabled": true, "frame": 6},
+        {"control": "decline_invite", "frame": 6, "assert": {"state.invitations.hike.status": "declined", "state.events.invite-hike.deleted": true, "state.invitations.hike.title.en": "Weekend hike"}},
+        {"control": "maybe_invite", "frame": 6, "assert": {"state.invitations.hike.status": "maybe", "pending": 3}}
+      ]
+    },
+    {
+      "name": "a-simulated-remote-change-arrives-only-when-asked-for",
+      "steps": [
+        {"control": "open_today", "frame": 2},
+        {"control": "open_dinner", "frame": 3, "assert": {"state.events.dinner.start": "2026-09-24T19:00:00+08:00"}},
+        {"update": true, "frame": 5, "assert": {"state.events.dinner.start": "2026-09-24T19:30:00+08:00", "state.events.dinner.updated_by": "sam-desktop", "seq": 1, "pending": 0}},
+        {"control": "ack_sync", "frame": 5},
+        {"control": "open_calendar", "frame": 1},
+        {"control": "open_today", "frame": 2},
+        {"control": "open_dinner", "frame": 3, "assert": {"state.events.dinner.start": "2026-09-24T19:30:00+08:00"}},
+        {"back": true, "frame": 2},
+        {"back": true, "frame": 1},
+        {"restart": true, "frame": 1, "assert": {"seq": 1, "pending": 0}}
+      ]
+    },
+    {
+      "name": "edit-an-event-through-the-editor",
+      "steps": [
+        {"control": "open_dentist", "frame": 3, "assert": {"ui.selected": "dentist"}},
+        {"control": "edit_event", "frame": 4, "assert": {"ui.editing": true, "ui.draft.id": "dentist"}},
+        {"control": "pick_time", "frame": 7},
+        {"control": "slot_13", "frame": 4, "assert": {"ui.draft.start": "2026-09-24T13:00:00+08:00"}},
+        {"control": "save_event", "frame": 5, "assert": {"state.events.dentist.start": "2026-09-24T13:00:00+08:00", "state.events.dentist.title.en": "Dentist", "pending": 1}},
+        {"control": "open_calendar", "frame": 1}
+      ]
+    },
+    {
+      "name": "sync-card-records-a-sync-only",
+      "steps": [
+        {"control": "tab_calendars", "frame": 8},
+        {"control": "tab_inbox", "frame": 6},
+        {"control": "dock_mail", "disabled": true, "frame": 6},
+        {"control": "dock_calendar", "frame": 1}
+      ]
+    }
+  ]
+}
