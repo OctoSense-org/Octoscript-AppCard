@@ -1,0 +1,10 @@
+[
+  {
+    "id": "calendar",
+    "label": "Calendar",
+    "manifest": "Cargo.toml",
+    "package": "octosense-calendar",
+    "bin": "calendar",
+    "policy": "focus"
+  }
+]

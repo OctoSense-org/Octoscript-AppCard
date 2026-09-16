@@ -18,6 +18,7 @@ undo names the exact step it reverses, and a change made on one device is
 | Sync server | `server/calendar_server.py`, `service/sync_client.py` | Standard-library HTTP + SQLite (WAL). `POST /v1/ops` applies an operation and logs the verdict; `GET /v1/ops?since=N&wait=S` long-polls the log; `GET /v1/stream` is the same as server-sent events; `GET /v1/state` is the snapshot with its digest. Bearer token, explicit CORS origins. |
 | Session | `wizard/service.mjs`, `wizard/sync.mjs`, `wizard/copy.mjs`, `route_test.json` | The wizard session (`createSession`, `getView`, `activateControl`, `nextUpdate`, `goBack`, `restart`) plus `applyRecords`/`adoptSnapshot` for the server, and the fetch/long-poll transport. |
 | Preview | `wizard/preview/`, `scripts/demo.sh` | An HTML rendering of the storyboard driven by the real session, sync client and server, so two browser tabs can be watched syncing. It is not the native renderer. |
+| **Native app** | `native/` (crate `octosense-calendar`) | The Calendar as an in-process OctoSense AppModule. Every screen is a scene built at runtime from the calendar state (any month, any events), compiled to L0 and mounted as native Makepad Kit widgets — the same lowering the reviewed storyboard cards use. Ships its own replica of the service log (`model.rs`, the third twin of the reducer) and a sync link (`sync.rs`). Runs in the OctoSense shell on macOS and Android. |
 
 Scenes: 01 month · 02 day · 03 event · 04 new event · 05 desktop *Calendar · Synced* ·
 06 desktop *Invitation from Sam* · 07 time picker with a conflict · 08 calendars ·
@@ -80,6 +81,35 @@ BEAUTY_PYTHON=… node --test wizard/sync.test.mjs                  # two JS ses
 node wizard/preview/smoke.mjs                                     # two Chromium tabs against a live server, screenshots
 ```
 
+## The native app
+
+`native/` is a Rust `AppModule` the OctoSense shell links in (`OctoSense-mobile`
+feature `app-calendar`; always on Android/iOS). Screens: month (any month, dots
+per calendar, today/selection rings, the selected day's list), day timeline
+(hour rows, overlapping events share the width, now line), event detail, editor
+(title/location/notes fields, all-day, start/end pickers with conflicting slots
+disabled, calendar chooser, alert), calendars (show/hide, EN/中文), inbox
+(invitations with Accept/Maybe/Decline, changes from the other device), sync
+status. Ops go through the same reducer as the server; conflicts are refused
+before they are sent; a rejection from the server rolls the change back and is
+listed on the Sync screen.
+
+Configuration (environment on desktop; `--es makepad.APP_CONFIG` keys
+`calendar_server`, `calendar_token`, `calendar_device`, `calendar_locale` on Android):
+
+```sh
+cd ../OctoSense-mobile
+cargo build --release --features app-calendar
+CALENDAR_SERVER=http://127.0.0.1:8190 CALENDAR_TOKEN=$(cat ../Octoscript-AppCard/apps/calendar/runtime/calendar.token) \
+CALENDAR_DEVICE=sam-desktop CALENDAR_LOCALE=en \
+target/release/octosense --apps ../Octoscript-AppCard/apps/calendar/native/desktop-apps.json --module calendar --test-action launch-calendar
+```
+
+Without `CALENDAR_SERVER` the app runs on-device with the demo fixture laid
+around the real today. Unit tests: `cargo test --manifest-path apps/calendar/native/Cargo.toml`
+(reducer fixture parity with the Python/JS twins, scene lowering through the
+shared L0 pipeline, every screen renders, server records confirm/roll back).
+
 ## Status and limits
 
 - Pipeline stages run and passing: intake, prepare, semantic, compile, extract, bundle,
@@ -91,5 +121,6 @@ node wizard/preview/smoke.mjs                                     # two Chromium
 - The server is a local, single-process service with a shared bearer token: fine for a
   household and for tests, not multi-tenant. Actor identity is the device id the client
   declares; a production deployment authenticates devices before trusting `actor`.
-- The preview draws the storyboard HTML; native Label/Button geometry is only established
-  by mounting the compiled L0 scenes in the Makepad host.
+- The browser preview draws the storyboard HTML; the native app mounts real Kit widgets. The
+  native scenes are built at runtime rather than from the reviewed storyboard cards, so the
+  pipeline's capture/gate stages do not cover them yet.
