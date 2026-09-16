@@ -1,0 +1,266 @@
+# ledger calendar-02@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy back_month_label_text { class: user-copy, en: "9月" }
+copy open_dentist_label_text { class: user-copy, en: "牙医" }
+copy open_dentist_loc_text { class: user-copy, en: "日出牙科" }
+copy open_dentist_range_text { class: user-copy, en: "10:30 – 11:15" }
+copy open_team_sync_label_text { class: user-copy, en: "团队同步" }
+copy open_team_sync_loc_text { class: user-copy, en: "视频会议" }
+copy open_team_sync_range_text { class: user-copy, en: "14:00 – 14:45" }
+copy open_dinner_label_text { class: user-copy, en: "与 Sam 晚餐" }
+copy open_dinner_loc_text { class: user-copy, en: "莲花厨房 · 来自 Sam 桌面" }
+copy open_dinner_range_text { class: user-copy, en: "19:00 – 20:30" }
+copy tab_today_label_text { class: user-copy, en: "今天" }
+copy tab_calendars_label_text { class: user-copy, en: "日历" }
+copy tab_inbox_label_text { class: user-copy, en: "收件箱" }
+copy inbox_badge_count_text { class: user-copy, en: "1" }
+copy status_time_text { class: user-copy, en: "09:41" }
+copy day_title_text { class: user-copy, en: "9月24日 周四" }
+copy day_sub_text { class: user-copy, en: "今天 · 3 项日程" }
+copy open_dentist_start_text { class: user-copy, en: "10:30" }
+copy open_dentist_end_text { class: user-copy, en: "11:15" }
+copy open_team_sync_start_text { class: user-copy, en: "14:00" }
+copy open_team_sync_end_text { class: user-copy, en: "14:45" }
+copy open_dinner_start_text { class: user-copy, en: "19:00" }
+copy open_dinner_end_text { class: user-copy, en: "20:30" }
+copy now_line_label_text { class: user-copy, en: "09:41" }
+state back_month_control_enabled { shape: bool, initial: true }
+state add_event_control_enabled { shape: bool, initial: true }
+state open_dentist_control_enabled { shape: bool, initial: true }
+state open_team_sync_control_enabled { shape: bool, initial: true }
+state open_dinner_control_enabled { shape: bool, initial: true }
+state tab_today_control_enabled { shape: bool, initial: true }
+state tab_calendars_control_enabled { shape: bool, initial: true }
+state tab_inbox_control_enabled { shape: bool, initial: true }
+component Surface156d085f4ff5(instance: text) {
+  view Kit(component: "Surface156d085f4ff5", instance: instance) { slot }
+}
+component Surface77131ad4bbf5(instance: text) {
+  view Kit(component: "Surface77131ad4bbf5", instance: instance) { slot }
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component KitButton870a84d356fb(instance: text) {
+  view Kit(component: "KitButton870a84d356fb", instance: instance) { slot }
+}
+component Group3d2637879433(instance: text) {
+  view Kit(component: "Group3d2637879433", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Text585be83644b5(instance: text, text: text) {
+  view Kit(component: "Text585be83644b5", instance: instance, text: text)
+}
+component KitButton6e131485d969(instance: text) {
+  view Kit(component: "KitButton6e131485d969", instance: instance) { slot }
+}
+component KitButtona8c9d412b00c(instance: text) {
+  view Kit(component: "KitButtona8c9d412b00c", instance: instance) { slot }
+}
+component Surfacea4e584a73958(instance: text) {
+  view Kit(component: "Surfacea4e584a73958", instance: instance) { slot }
+}
+component Surfaceb08c40214306(instance: text) {
+  view Kit(component: "Surfaceb08c40214306", instance: instance) { slot }
+}
+component Text13fb3540d9c0(instance: text, text: text) {
+  view Kit(component: "Text13fb3540d9c0", instance: instance, text: text)
+}
+component Textd89c1cb55c9e(instance: text, text: text) {
+  view Kit(component: "Textd89c1cb55c9e", instance: instance, text: text)
+}
+component Textf93f3fc5522a(instance: text, text: text) {
+  view Kit(component: "Textf93f3fc5522a", instance: instance, text: text)
+}
+component Surfaceb6c1d64d34cc(instance: text) {
+  view Kit(component: "Surfaceb6c1d64d34cc", instance: instance) { slot }
+}
+component Surfacee7ccfd59d9b3(instance: text) {
+  view Kit(component: "Surfacee7ccfd59d9b3", instance: instance) { slot }
+}
+component Textd0f94497b7e5(instance: text, text: text) {
+  view Kit(component: "Textd0f94497b7e5", instance: instance, text: text)
+}
+component Textb9c5603c3963(instance: text, text: text) {
+  view Kit(component: "Textb9c5603c3963", instance: instance, text: text)
+}
+component Textfb320d66be65(instance: text, text: text) {
+  view Kit(component: "Textfb320d66be65", instance: instance, text: text)
+}
+component Surface94c7c8e91376(instance: text) {
+  view Kit(component: "Surface94c7c8e91376", instance: instance) { slot }
+}
+component Surfaceae17109b0370(instance: text) {
+  view Kit(component: "Surfaceae17109b0370", instance: instance) { slot }
+}
+component Text585570104be0(instance: text, text: text) {
+  view Kit(component: "Text585570104be0", instance: instance, text: text)
+}
+component Textade3a70dab31(instance: text, text: text) {
+  view Kit(component: "Textade3a70dab31", instance: instance, text: text)
+}
+component Texte0adcc0d4fd3(instance: text, text: text) {
+  view Kit(component: "Texte0adcc0d4fd3", instance: instance, text: text)
+}
+component Surface77ef4484477d(instance: text) {
+  view Kit(component: "Surface77ef4484477d", instance: instance) { slot }
+}
+component Surfacecc3f4cfacc10(instance: text) {
+  view Kit(component: "Surfacecc3f4cfacc10", instance: instance) { slot }
+}
+component KitButton5dc7ea8cd583(instance: text) {
+  view Kit(component: "KitButton5dc7ea8cd583", instance: instance) { slot }
+}
+component Textd938af7f8704(instance: text, text: text) {
+  view Kit(component: "Textd938af7f8704", instance: instance, text: text)
+}
+component Textf2b9a2e17414(instance: text, text: text) {
+  view Kit(component: "Textf2b9a2e17414", instance: instance, text: text)
+}
+component Surfacedd13f2cce3dd(instance: text) {
+  view Kit(component: "Surfacedd13f2cce3dd", instance: instance) { slot }
+}
+component Textac6fb4c051fd(instance: text, text: text) {
+  view Kit(component: "Textac6fb4c051fd", instance: instance, text: text)
+}
+component Text6d27197266b9(instance: text, text: text) {
+  view Kit(component: "Text6d27197266b9", instance: instance, text: text)
+}
+component Surface396ee6390bb9(instance: text) {
+  view Kit(component: "Surface396ee6390bb9", instance: instance) { slot }
+}
+component Surface92bde3a718b5(instance: text) {
+  view Kit(component: "Surface92bde3a718b5", instance: instance) { slot }
+}
+component Text6a37fd0d3c23(instance: text, text: text) {
+  view Kit(component: "Text6a37fd0d3c23", instance: instance, text: text)
+}
+component Textaff3fc136b15(instance: text, text: text) {
+  view Kit(component: "Textaff3fc136b15", instance: instance, text: text)
+}
+component Text84443a3e7776(instance: text, text: text) {
+  view Kit(component: "Text84443a3e7776", instance: instance, text: text)
+}
+component Text12517bc57609(instance: text, text: text) {
+  view Kit(component: "Text12517bc57609", instance: instance, text: text)
+}
+component Textc67badcd57f0(instance: text, text: text) {
+  view Kit(component: "Textc67badcd57f0", instance: instance, text: text)
+}
+component Texta36acb4c0cb4(instance: text, text: text) {
+  view Kit(component: "Texta36acb4c0cb4", instance: instance, text: text)
+}
+component Text8e8429ff49ca(instance: text, text: text) {
+  view Kit(component: "Text8e8429ff49ca", instance: instance, text: text)
+}
+
+view root Surface156d085f4ff5(instance: "page") {
+  Surface77131ad4bbf5(instance: "screen") {
+    Vectore0a378fde04f(instance: "status_icons")
+    KitButton870a84d356fb(instance: "back_month") {
+      Group3d2637879433(instance: "back_month_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "back_month_control", enabled: back_month_control_enabled)
+      Vectore0a378fde04f(instance: "back_month_icon")
+      Text585be83644b5(instance: "back_month_label", text: copy.back_month_label_text)
+    }
+    KitButton6e131485d969(instance: "add_event") {
+      Group3d2637879433(instance: "add_event_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "add_event_control", enabled: add_event_control_enabled)
+      Vectore0a378fde04f(instance: "add_event_icon")
+    }
+    KitButtona8c9d412b00c(instance: "open_dentist") {
+      Group3d2637879433(instance: "open_dentist_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "open_dentist_control", enabled: open_dentist_control_enabled)
+      Surfacea4e584a73958(instance: "open_dentist_card") {
+
+      }
+      Surfaceb08c40214306(instance: "open_dentist_bar") {
+
+      }
+      Text13fb3540d9c0(instance: "open_dentist_label", text: copy.open_dentist_label_text)
+      Textd89c1cb55c9e(instance: "open_dentist_loc", text: copy.open_dentist_loc_text)
+      Textf93f3fc5522a(instance: "open_dentist_range", text: copy.open_dentist_range_text)
+    }
+    KitButtona8c9d412b00c(instance: "open_team_sync") {
+      Group3d2637879433(instance: "open_team_sync_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "open_team_sync_control", enabled: open_team_sync_control_enabled)
+      Surfaceb6c1d64d34cc(instance: "open_team_sync_card") {
+
+      }
+      Surfacee7ccfd59d9b3(instance: "open_team_sync_bar") {
+
+      }
+      Textd0f94497b7e5(instance: "open_team_sync_label", text: copy.open_team_sync_label_text)
+      Textb9c5603c3963(instance: "open_team_sync_loc", text: copy.open_team_sync_loc_text)
+      Textfb320d66be65(instance: "open_team_sync_range", text: copy.open_team_sync_range_text)
+    }
+    KitButtona8c9d412b00c(instance: "open_dinner") {
+      Group3d2637879433(instance: "open_dinner_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "open_dinner_control", enabled: open_dinner_control_enabled)
+      Surface94c7c8e91376(instance: "open_dinner_card") {
+
+      }
+      Surfaceae17109b0370(instance: "open_dinner_bar") {
+
+      }
+      Text585570104be0(instance: "open_dinner_label", text: copy.open_dinner_label_text)
+      Textade3a70dab31(instance: "open_dinner_loc", text: copy.open_dinner_loc_text)
+      Texte0adcc0d4fd3(instance: "open_dinner_range", text: copy.open_dinner_range_text)
+    }
+    Surface77ef4484477d(instance: "now_line") {
+
+    }
+    Surfacecc3f4cfacc10(instance: "tab_bar") {
+      KitButton5dc7ea8cd583(instance: "tab_today") {
+        Vectore0a378fde04f(instance: "tab_today_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_today_control", enabled: tab_today_control_enabled)
+        Textd938af7f8704(instance: "tab_today_label", text: copy.tab_today_label_text)
+      }
+      KitButton5dc7ea8cd583(instance: "tab_calendars") {
+        Vectore0a378fde04f(instance: "tab_calendars_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_calendars_control", enabled: tab_calendars_control_enabled)
+        Textf2b9a2e17414(instance: "tab_calendars_label", text: copy.tab_calendars_label_text)
+      }
+      KitButton870a84d356fb(instance: "tab_inbox") {
+        Vectore0a378fde04f(instance: "tab_inbox_icon")
+        NativeButton02f1d1bd99b4(instance: "tab_inbox_control", enabled: tab_inbox_control_enabled)
+        Surfacedd13f2cce3dd(instance: "inbox_badge") {
+
+        }
+        Textac6fb4c051fd(instance: "tab_inbox_label", text: copy.tab_inbox_label_text)
+        Text6d27197266b9(instance: "inbox_badge_count", text: copy.inbox_badge_count_text)
+      }
+    }
+    Surface396ee6390bb9(instance: "tab_line") {
+
+    }
+    Surface92bde3a718b5(instance: "home_indicator") {
+
+    }
+    Text6a37fd0d3c23(instance: "status_time", text: copy.status_time_text)
+    Textaff3fc136b15(instance: "day_title", text: copy.day_title_text)
+    Text84443a3e7776(instance: "day_sub", text: copy.day_sub_text)
+    Text12517bc57609(instance: "open_dentist_start", text: copy.open_dentist_start_text)
+    Textc67badcd57f0(instance: "open_dentist_end", text: copy.open_dentist_end_text)
+    Text12517bc57609(instance: "open_team_sync_start", text: copy.open_team_sync_start_text)
+    Textc67badcd57f0(instance: "open_team_sync_end", text: copy.open_team_sync_end_text)
+    Text12517bc57609(instance: "open_dinner_start", text: copy.open_dinner_start_text)
+    Texta36acb4c0cb4(instance: "open_dinner_end", text: copy.open_dinner_end_text)
+    Text8e8429ff49ca(instance: "now_line_label", text: copy.now_line_label_text)
+  }
+}

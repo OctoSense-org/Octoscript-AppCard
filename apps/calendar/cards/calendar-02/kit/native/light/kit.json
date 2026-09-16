@@ -1,0 +1,1329 @@
+{
+  "schema_version": 1,
+  "theme": "light",
+  "tokens": {
+    "bg_f807212b6748": {
+      "value": 4294967295,
+      "property": "bg"
+    },
+    "radius_8aed642bf511": {
+      "value": 0.0,
+      "property": "radius"
+    },
+    "size_cc6f2aa507f6": {
+      "value": 8.5,
+      "property": "size"
+    },
+    "weight_26d228663f13": {
+      "value": 400,
+      "property": "weight"
+    },
+    "tracking_5feceb66ffc8": {
+      "value": 0,
+      "property": "tracking"
+    },
+    "line_height_8da24c5ca314": {
+      "value": 11.378,
+      "property": "line_height"
+    },
+    "font_src_68c7e4e210aa": {
+      "value": "self:resources/service/NotoSansSC-Regular.ttf",
+      "property": "font_src"
+    },
+    "color_320fb863dd53": {
+      "value": 4294916912,
+      "property": "color"
+    },
+    "font_asc_6f1b69b23e1a": {
+      "value": -0.13770588235294112,
+      "property": "font_asc"
+    },
+    "font_desc_78de7e9a005c": {
+      "value": -0.028294117647058803,
+      "property": "font_desc"
+    },
+    "bg_4410d4d68a37": {
+      "value": 573884249,
+      "property": "bg"
+    },
+    "radius_8ab31b5afaea": {
+      "value": 6.0,
+      "property": "radius"
+    },
+    "bg_4718e02ea3d0": {
+      "value": 4281648985,
+      "property": "bg"
+    },
+    "radius_d0ff5974b6aa": {
+      "value": 1.0,
+      "property": "radius"
+    },
+    "weight_99ee50221221": {
+      "value": 700,
+      "property": "weight"
+    },
+    "line_height_cca45402e6e8": {
+      "value": 11.642916666666666,
+      "property": "line_height"
+    },
+    "font_src_1fd5156f9fb4": {
+      "value": "self:resources/service/NotoSansSC-Bold.ttf",
+      "property": "font_src"
+    },
+    "color_f609b4f1dd6e": {
+      "value": 4280032286,
+      "property": "color"
+    },
+    "font_asc_9446f465124e": {
+      "value": -0.1157058823529411,
+      "property": "font_asc"
+    },
+    "font_desc_6d83a7ab94b6": {
+      "value": -0.03746078431372546,
+      "property": "font_desc"
+    },
+    "size_a22eea496bce": {
+      "value": 6.5,
+      "property": "size"
+    },
+    "line_height_cb4f8b82233c": {
+      "value": 9.988125,
+      "property": "line_height"
+    },
+    "color_af7e97cbad1b": {
+      "value": 4287532691,
+      "property": "color"
+    },
+    "font_asc_d6bb2ad38a48": {
+      "value": -0.011307692307692241,
+      "property": "font_asc"
+    },
+    "font_desc_3a0b525085e1": {
+      "value": -0.09994230769230777,
+      "property": "font_desc"
+    },
+    "line_height_80779495485e": {
+      "value": 8.9335,
+      "property": "line_height"
+    },
+    "color_4718e02ea3d0": {
+      "value": 4281648985,
+      "property": "color"
+    },
+    "font_asc_7d22d2696bf1": {
+      "value": -0.10630769230769221,
+      "property": "font_asc"
+    },
+    "font_desc_fa3b2c0213f8": {
+      "value": -0.03269230769230774,
+      "property": "font_desc"
+    },
+    "bg_00f8a8cf3ea0": {
+      "value": 571114751,
+      "property": "bg"
+    },
+    "bg_040c5f7a4479": {
+      "value": 4278879487,
+      "property": "bg"
+    },
+    "line_height_77d61b51a4e1": {
+      "value": 11.9985,
+      "property": "line_height"
+    },
+    "font_asc_56995368be61": {
+      "value": -0.07470588235294118,
+      "property": "font_asc"
+    },
+    "font_desc_05f86f7b642f": {
+      "value": -0.03829411764705887,
+      "property": "font_desc"
+    },
+    "line_height_7eed57a3634f": {
+      "value": 10.032,
+      "property": "line_height"
+    },
+    "font_desc_a9ba3ab50c1d": {
+      "value": -0.10669230769230775,
+      "property": "font_desc"
+    },
+    "color_040c5f7a4479": {
+      "value": 4278879487,
+      "property": "color"
+    },
+    "bg_0c4bdb2415d0": {
+      "value": 587152176,
+      "property": "bg"
+    },
+    "bg_320fb863dd53": {
+      "value": 4294916912,
+      "property": "bg"
+    },
+    "line_height_54c0d6d99a72": {
+      "value": 12.0155,
+      "property": "line_height"
+    },
+    "font_desc_e0ccc3fc337b": {
+      "value": -0.040294117647058814,
+      "property": "font_desc"
+    },
+    "line_height_77c44fe798db": {
+      "value": 9.9995,
+      "property": "line_height"
+    },
+    "font_asc_2d02edc2fe2b": {
+      "value": -0.010307692307692351,
+      "property": "font_asc"
+    },
+    "font_desc_21bef6d82269": {
+      "value": -0.10069230769230764,
+      "property": "font_desc"
+    },
+    "bg_23f94d233a78": {
+      "value": 4294572537,
+      "property": "bg"
+    },
+    "size_4819f5315cb4": {
+      "value": 5.5,
+      "property": "size"
+    },
+    "line_height_3ef2e0c607ae": {
+      "value": 9.114999999999998,
+      "property": "line_height"
+    },
+    "font_asc_d0509d737191": {
+      "value": 0.05063636363636381,
+      "property": "font_asc"
+    },
+    "font_desc_c977a7ea814b": {
+      "value": -0.15863636363636335,
+      "property": "font_desc"
+    },
+    "line_height_1c58d6207b63": {
+      "value": 8.774000000000001,
+      "property": "line_height"
+    },
+    "font_asc_873f5032e11a": {
+      "value": -0.005363636363636237,
+      "property": "font_asc"
+    },
+    "font_desc_d9d32a922a3f": {
+      "value": -0.1526363636363638,
+      "property": "font_desc"
+    },
+    "radius_32209ccbf8a8": {
+      "value": 4.5,
+      "property": "radius"
+    },
+    "line_height_0e60176a96b2": {
+      "value": 9.087499999999999,
+      "property": "line_height"
+    },
+    "font_asc_bb570a3a8b62": {
+      "value": 0.0476363636363637,
+      "property": "font_asc"
+    },
+    "font_desc_bc8f2048db80": {
+      "value": -0.15663636363636352,
+      "property": "font_desc"
+    },
+    "line_height_b8577a43c14a": {
+      "value": 8.0755,
+      "property": "line_height"
+    },
+    "color_f807212b6748": {
+      "value": 4294967295,
+      "property": "color"
+    },
+    "font_asc_88acb7d6752f": {
+      "value": -0.05536363636363628,
+      "property": "font_asc"
+    },
+    "font_desc_e7d5d72bb3ad": {
+      "value": -0.07563636363636367,
+      "property": "font_desc"
+    },
+    "bg_d3f971556d2c": {
+      "value": 4293256682,
+      "property": "bg"
+    },
+    "bg_f609b4f1dd6e": {
+      "value": 4280032286,
+      "property": "bg"
+    },
+    "radius_9f29a130438b": {
+      "value": 1.5,
+      "property": "radius"
+    },
+    "size_c4495da75095": {
+      "value": 7.5,
+      "property": "size"
+    },
+    "line_height_14e0a8927c47": {
+      "value": 9.76,
+      "property": "line_height"
+    },
+    "font_asc_305355794902": {
+      "value": -0.1393333333333333,
+      "property": "font_asc"
+    },
+    "font_desc_e5ceba96242a": {
+      "value": 0.007333333333333358,
+      "property": "font_desc"
+    },
+    "size_77c52f3feed5": {
+      "value": 12.0,
+      "property": "size"
+    },
+    "line_height_ec0d4f74d6fe": {
+      "value": 14.752,
+      "property": "line_height"
+    },
+    "font_asc_362217c720f8": {
+      "value": -0.19133333333333324,
+      "property": "font_asc"
+    },
+    "font_desc_581620578dc7": {
+      "value": 0.02733333333333332,
+      "property": "font_desc"
+    },
+    "line_height_1891fa382109": {
+      "value": 10.045,
+      "property": "line_height"
+    },
+    "font_asc_198a1acc9cef": {
+      "value": -0.0053076923076922355,
+      "property": "font_asc"
+    },
+    "font_desc_0ea0f552f857": {
+      "value": -0.10269230769230775,
+      "property": "font_desc"
+    },
+    "size_0de7cf39e1e6": {
+      "value": 7.0,
+      "property": "size"
+    },
+    "line_height_941273bc0bc6": {
+      "value": 9.376000000000001,
+      "property": "line_height"
+    },
+    "font_asc_b182cbae9eab": {
+      "value": -0.12028571428571433,
+      "property": "font_asc"
+    },
+    "font_desc_1e21e5faff83": {
+      "value": -0.011714285714285844,
+      "property": "font_desc"
+    },
+    "size_8ab31b5afaea": {
+      "value": 6.0,
+      "property": "size"
+    },
+    "line_height_66d1ab1d5d15": {
+      "value": 8.475999999999999,
+      "property": "line_height"
+    },
+    "font_asc_e82f7903d507": {
+      "value": -0.09366666666666656,
+      "property": "font_asc"
+    },
+    "font_desc_de5e4bcfd185": {
+      "value": -0.05833333333333324,
+      "property": "font_desc"
+    },
+    "line_height_bd45f4418fcc": {
+      "value": 8.554,
+      "property": "line_height"
+    },
+    "font_asc_e9e23b21cdb1": {
+      "value": -0.08066666666666666,
+      "property": "font_asc"
+    },
+    "font_desc_8ded4ed5fcc5": {
+      "value": -0.058333333333333404,
+      "property": "font_desc"
+    },
+    "line_height_56aab5d94b25": {
+      "value": 8.224,
+      "property": "line_height"
+    },
+    "font_asc_b45cfa9ebf0d": {
+      "value": -0.04236363636363616,
+      "property": "font_asc"
+    },
+    "font_desc_4aac5a92744c": {
+      "value": -0.08963636363636363,
+      "property": "font_desc"
+    }
+  },
+  "components": {
+    "Surface156d085f4ff5": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_f807212b6748"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Surface77131ad4bbf5": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_f807212b6748"
+        },
+        "radius": {
+          "$token": "radius_8aed642bf511"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Vectore0a378fde04f": {
+      "style": {
+        "t": "svg"
+      },
+      "props": {},
+      "slot": false
+    },
+    "KitButton870a84d356fb": {
+      "style": {
+        "t": "stack",
+        "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[3]}}"
+      },
+      "props": {},
+      "slot": true
+    },
+    "Group3d2637879433": {
+      "style": {
+        "t": "stack"
+      },
+      "props": {},
+      "slot": true
+    },
+    "NativeButton02f1d1bd99b4": {
+      "style": {
+        "t": "button"
+      },
+      "props": {
+        "enabled": "enabled"
+      },
+      "slot": false
+    },
+    "Text585be83644b5": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_cc6f2aa507f6"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_8da24c5ca314"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_320fb863dd53"
+        },
+        "font_asc": {
+          "$token": "font_asc_6f1b69b23e1a"
+        },
+        "font_desc": {
+          "$token": "font_desc_78de7e9a005c"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "KitButton6e131485d969": {
+      "style": {
+        "t": "stack",
+        "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1]}}"
+      },
+      "props": {},
+      "slot": true
+    },
+    "KitButtona8c9d412b00c": {
+      "style": {
+        "t": "stack",
+        "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[4]}}"
+      },
+      "props": {},
+      "slot": true
+    },
+    "Surfacea4e584a73958": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_4410d4d68a37"
+        },
+        "radius": {
+          "$token": "radius_8ab31b5afaea"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Surfaceb08c40214306": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_4718e02ea3d0"
+        },
+        "radius": {
+          "$token": "radius_d0ff5974b6aa"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Text13fb3540d9c0": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_cc6f2aa507f6"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_cca45402e6e8"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_f609b4f1dd6e"
+        },
+        "font_asc": {
+          "$token": "font_asc_9446f465124e"
+        },
+        "font_desc": {
+          "$token": "font_desc_6d83a7ab94b6"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textd89c1cb55c9e": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_a22eea496bce"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_cb4f8b82233c"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_d6bb2ad38a48"
+        },
+        "font_desc": {
+          "$token": "font_desc_3a0b525085e1"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textf93f3fc5522a": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_a22eea496bce"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_80779495485e"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_4718e02ea3d0"
+        },
+        "font_asc": {
+          "$token": "font_asc_7d22d2696bf1"
+        },
+        "font_desc": {
+          "$token": "font_desc_fa3b2c0213f8"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Surfaceb6c1d64d34cc": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_00f8a8cf3ea0"
+        },
+        "radius": {
+          "$token": "radius_8ab31b5afaea"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Surfacee7ccfd59d9b3": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_040c5f7a4479"
+        },
+        "radius": {
+          "$token": "radius_d0ff5974b6aa"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Textd0f94497b7e5": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_cc6f2aa507f6"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_77d61b51a4e1"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_f609b4f1dd6e"
+        },
+        "font_asc": {
+          "$token": "font_asc_56995368be61"
+        },
+        "font_desc": {
+          "$token": "font_desc_05f86f7b642f"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textb9c5603c3963": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_a22eea496bce"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_7eed57a3634f"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_d6bb2ad38a48"
+        },
+        "font_desc": {
+          "$token": "font_desc_a9ba3ab50c1d"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textfb320d66be65": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_a22eea496bce"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_80779495485e"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_040c5f7a4479"
+        },
+        "font_asc": {
+          "$token": "font_asc_7d22d2696bf1"
+        },
+        "font_desc": {
+          "$token": "font_desc_fa3b2c0213f8"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Surface94c7c8e91376": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_0c4bdb2415d0"
+        },
+        "radius": {
+          "$token": "radius_8ab31b5afaea"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Surfaceae17109b0370": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_320fb863dd53"
+        },
+        "radius": {
+          "$token": "radius_d0ff5974b6aa"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Text585570104be0": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_cc6f2aa507f6"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_54c0d6d99a72"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_f609b4f1dd6e"
+        },
+        "font_asc": {
+          "$token": "font_asc_56995368be61"
+        },
+        "font_desc": {
+          "$token": "font_desc_e0ccc3fc337b"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textade3a70dab31": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_a22eea496bce"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_77c44fe798db"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_2d02edc2fe2b"
+        },
+        "font_desc": {
+          "$token": "font_desc_21bef6d82269"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Texte0adcc0d4fd3": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_a22eea496bce"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_80779495485e"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_320fb863dd53"
+        },
+        "font_asc": {
+          "$token": "font_asc_7d22d2696bf1"
+        },
+        "font_desc": {
+          "$token": "font_desc_fa3b2c0213f8"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Surface77ef4484477d": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_320fb863dd53"
+        },
+        "radius": {
+          "$token": "radius_8aed642bf511"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Surfacecc3f4cfacc10": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_23f94d233a78"
+        },
+        "radius": {
+          "$token": "radius_8aed642bf511"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "KitButton5dc7ea8cd583": {
+      "style": {
+        "t": "stack",
+        "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[1],\"label\":[2]}}"
+      },
+      "props": {},
+      "slot": true
+    },
+    "Textd938af7f8704": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_4819f5315cb4"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_3ef2e0c607ae"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_320fb863dd53"
+        },
+        "font_asc": {
+          "$token": "font_asc_d0509d737191"
+        },
+        "font_desc": {
+          "$token": "font_desc_c977a7ea814b"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textf2b9a2e17414": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_4819f5315cb4"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_1c58d6207b63"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_873f5032e11a"
+        },
+        "font_desc": {
+          "$token": "font_desc_d9d32a922a3f"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Surfacedd13f2cce3dd": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_320fb863dd53"
+        },
+        "radius": {
+          "$token": "radius_32209ccbf8a8"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Textac6fb4c051fd": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_4819f5315cb4"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_0e60176a96b2"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_bb570a3a8b62"
+        },
+        "font_desc": {
+          "$token": "font_desc_bc8f2048db80"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Text6d27197266b9": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_4819f5315cb4"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_b8577a43c14a"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_f807212b6748"
+        },
+        "font_asc": {
+          "$token": "font_asc_88acb7d6752f"
+        },
+        "font_desc": {
+          "$token": "font_desc_e7d5d72bb3ad"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Surface396ee6390bb9": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_d3f971556d2c"
+        },
+        "radius": {
+          "$token": "radius_8aed642bf511"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Surface92bde3a718b5": {
+      "style": {
+        "t": "stack",
+        "variant": "surface",
+        "bg": {
+          "$token": "bg_f609b4f1dd6e"
+        },
+        "radius": {
+          "$token": "radius_9f29a130438b"
+        }
+      },
+      "props": {},
+      "slot": true
+    },
+    "Text6a37fd0d3c23": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_c4495da75095"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_14e0a8927c47"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_f609b4f1dd6e"
+        },
+        "font_asc": {
+          "$token": "font_asc_305355794902"
+        },
+        "font_desc": {
+          "$token": "font_desc_e5ceba96242a"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textaff3fc136b15": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_77c52f3feed5"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_ec0d4f74d6fe"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_f609b4f1dd6e"
+        },
+        "font_asc": {
+          "$token": "font_asc_362217c720f8"
+        },
+        "font_desc": {
+          "$token": "font_desc_581620578dc7"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Text84443a3e7776": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_a22eea496bce"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_1891fa382109"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_198a1acc9cef"
+        },
+        "font_desc": {
+          "$token": "font_desc_0ea0f552f857"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Text12517bc57609": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_0de7cf39e1e6"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_941273bc0bc6"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_f609b4f1dd6e"
+        },
+        "font_asc": {
+          "$token": "font_asc_b182cbae9eab"
+        },
+        "font_desc": {
+          "$token": "font_desc_1e21e5faff83"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Textc67badcd57f0": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_8ab31b5afaea"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_66d1ab1d5d15"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_e82f7903d507"
+        },
+        "font_desc": {
+          "$token": "font_desc_de5e4bcfd185"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Texta36acb4c0cb4": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_8ab31b5afaea"
+        },
+        "weight": {
+          "$token": "weight_26d228663f13"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_bd45f4418fcc"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_68c7e4e210aa"
+        },
+        "color": {
+          "$token": "color_af7e97cbad1b"
+        },
+        "font_asc": {
+          "$token": "font_asc_e9e23b21cdb1"
+        },
+        "font_desc": {
+          "$token": "font_desc_8ded4ed5fcc5"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    },
+    "Text8e8429ff49ca": {
+      "style": {
+        "t": "text",
+        "size": {
+          "$token": "size_4819f5315cb4"
+        },
+        "weight": {
+          "$token": "weight_99ee50221221"
+        },
+        "tracking": {
+          "$token": "tracking_5feceb66ffc8"
+        },
+        "line_height": {
+          "$token": "line_height_56aab5d94b25"
+        },
+        "alignx": 0,
+        "variant": "single_line",
+        "font_src": {
+          "$token": "font_src_1fd5156f9fb4"
+        },
+        "color": {
+          "$token": "color_320fb863dd53"
+        },
+        "font_asc": {
+          "$token": "font_asc_b45cfa9ebf0d"
+        },
+        "font_desc": {
+          "$token": "font_desc_4aac5a92744c"
+        }
+      },
+      "props": {
+        "text": "text"
+      },
+      "slot": false
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "stamp": "2026-09-16T06-15-24-727Z",
+  "serverUrl": "http://127.0.0.1:50909",
+  "steps": [
+    {
+      "name": "phone: 14:00 slot is disabled by the Team sync conflict",
+      "ok": true,
+      "detail": "{\"frame\":7,\"slot_14\":false}"
+    },
+    {
+      "name": "phone: piano lesson accepted by the server",
+      "ok": true,
+      "detail": "{\"seq\":1,\"piano\":{\"start\":\"2026-09-24T16:00:00+08:00\",\"deleted\":false}}"
+    },
+    {
+      "name": "desktop: replica has the event and is offered the change without moving",
+      "ok": true,
+      "detail": "{\"frame\":1,\"next\":\"Show 1 change from Alex · Phone\"}"
+    },
+    {
+      "name": "desktop: synced card shows the phone’s event",
+      "ok": true,
+      "detail": "{\"title\":\"Piano lesson\",\"source\":\"Family calendar · from Alex · Phone\"}"
+    },
+    {
+      "name": "phone: the desktop’s undo deleted the event in the phone replica",
+      "ok": true,
+      "detail": "{\"piano\":{\"start\":\"2026-09-24T16:00:00+08:00\",\"deleted\":true},\"next\":\"查看 1 项来自 Sam · 桌面 的更改\"}"
+    },
+    {
+      "name": "phone: restore from the desktop arrived",
+      "ok": true,
+      "detail": "{\"start\":\"2026-09-24T16:00:00+08:00\",\"deleted\":false}"
+    },
+    {
+      "name": "both replicas equal the server digest",
+      "ok": true,
+      "detail": "c64ed238a107a304"
+    }
+  ]
+}

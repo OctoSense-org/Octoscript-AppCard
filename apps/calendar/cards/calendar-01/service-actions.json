@@ -1,0 +1,130 @@
+{
+  "frame_id": 1,
+  "source": "calendar-01",
+  "controls": {
+    "back_year": {
+      "event": "back_year",
+      "text_ids": [
+        "back_year_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        12,
+        50,
+        80,
+        36
+      ],
+      "enabled": true
+    },
+    "add_event": {
+      "event": "add_event",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        346,
+        50,
+        44,
+        36
+      ],
+      "enabled": true
+    },
+    "open_today": {
+      "event": "open_today",
+      "text_ids": [
+        "open_today_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        228,
+        334,
+        52,
+        46
+      ],
+      "enabled": true
+    },
+    "open_dentist": {
+      "event": "open_dentist",
+      "text_ids": [
+        "open_dentist_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        486,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "open_team_sync": {
+      "event": "open_team_sync",
+      "text_ids": [
+        "open_team_sync_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        542,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "open_dinner": {
+      "event": "open_dinner",
+      "text_ids": [
+        "open_dinner_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        598,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "tab_today": {
+      "event": "tab_today",
+      "text_ids": [
+        "tab_today_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_calendars": {
+      "event": "tab_calendars",
+      "text_ids": [
+        "tab_calendars_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        142,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_inbox": {
+      "event": "tab_inbox",
+      "text_ids": [
+        "tab_inbox_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        264,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "frame_id": 4,
+  "source": "calendar-04",
+  "controls": {
+    "cancel_editor": {
+      "event": "cancel_editor",
+      "text_ids": [
+        "cancel_editor_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        12,
+        50,
+        80,
+        36
+      ],
+      "enabled": true
+    },
+    "save_event": {
+      "event": "save_event",
+      "text_ids": [
+        "save_event_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        318,
+        54,
+        72,
+        30
+      ],
+      "enabled": true
+    },
+    "pick_time": {
+      "event": "pick_time",
+      "text_ids": [
+        "pick_time_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        280,
+        366,
+        46
+      ],
+      "enabled": true
+    },
+    "pick_calendar": {
+      "event": "pick_calendar",
+      "text_ids": [
+        "pick_calendar_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        398,
+        366,
+        46
+      ],
+      "enabled": true
+    }
+  }
+}

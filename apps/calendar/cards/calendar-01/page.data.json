@@ -1,0 +1,953 @@
+{
+  "$kit": {
+    "theme": "light",
+    "placements": {
+      "page": {
+        "component": "Surface156d085f4ff5",
+        "layout": {
+          "x": 0,
+          "y": 0,
+          "w": 406,
+          "h": 776
+        }
+      },
+      "screen": {
+        "component": "Surface77131ad4bbf5",
+        "layout": {
+          "x": 0.0,
+          "y": 0.0,
+          "w": 203.0,
+          "h": 388.0
+        }
+      },
+      "status_icons": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 163.0,
+          "y": 6.5,
+          "w": 28.0,
+          "h": 7.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/status_icons-416cbc07c261.svg"
+        }
+      },
+      "back_year": {
+        "component": "KitButton870a84d356fb",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 40.0,
+          "h": 18.0
+        }
+      },
+      "back_year_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 40.0,
+          "h": 18.0
+        }
+      },
+      "back_year_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 40.0,
+          "h": 18.0
+        }
+      },
+      "back_year_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 7.0,
+          "y": 28.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/back_year_icon-1027440064a9.svg"
+        }
+      },
+      "back_year_label": {
+        "component": "Text5794209d5e62",
+        "layout": {
+          "x": 18.0,
+          "y": 28.532000000000004,
+          "w": 31.37,
+          "h": 11.854
+        }
+      },
+      "add_event": {
+        "component": "KitButton6e131485d969",
+        "layout": {
+          "x": 173.0,
+          "y": 25.0,
+          "w": 22.0,
+          "h": 18.0
+        }
+      },
+      "add_event_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 173.0,
+          "y": 25.0,
+          "w": 22.0,
+          "h": 18.0
+        }
+      },
+      "add_event_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 173.0,
+          "y": 25.0,
+          "w": 22.0,
+          "h": 18.0
+        }
+      },
+      "add_event_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 178.5,
+          "y": 28.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/add_event_icon-2e94041b38e4.svg"
+        }
+      },
+      "grid_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 10.0,
+          "y": 83.0,
+          "w": 183.0,
+          "h": 0.5
+        }
+      },
+      "today_ring": {
+        "component": "Surfacec44bbcf7e5ae",
+        "layout": {
+          "x": 118.0,
+          "y": 168.0,
+          "w": 18.0,
+          "h": 18.0
+        }
+      },
+      "open_today": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 114.0,
+          "y": 167.0,
+          "w": 26.0,
+          "h": 23.0
+        }
+      },
+      "open_today_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 114.0,
+          "y": 167.0,
+          "w": 26.0,
+          "h": 23.0
+        }
+      },
+      "open_today_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 114.0,
+          "y": 167.0,
+          "w": 26.0,
+          "h": 23.0
+        }
+      },
+      "open_today_label": {
+        "component": "Textd9f7a84a2a18",
+        "layout": {
+          "x": 121.69,
+          "y": 173.638,
+          "w": 14.62,
+          "h": 10.786
+        }
+      },
+      "dot_24_0": {
+        "component": "Surfacecbd73a4e1fad",
+        "layout": {
+          "x": 120.5,
+          "y": 187.0,
+          "w": 3.0,
+          "h": 3.0
+        }
+      },
+      "dot_24_1": {
+        "component": "Surface619e4b2b66ae",
+        "layout": {
+          "x": 124.5,
+          "y": 187.0,
+          "w": 3.0,
+          "h": 3.0
+        }
+      },
+      "dot_24_2": {
+        "component": "Surfaced2f94372b68b",
+        "layout": {
+          "x": 128.5,
+          "y": 187.0,
+          "w": 3.0,
+          "h": 3.0
+        }
+      },
+      "dot_25_0": {
+        "component": "Surfaced2f94372b68b",
+        "layout": {
+          "x": 150.5,
+          "y": 187.0,
+          "w": 3.0,
+          "h": 3.0
+        }
+      },
+      "dot_26_0": {
+        "component": "Surfaced2f94372b68b",
+        "layout": {
+          "x": 176.5,
+          "y": 187.0,
+          "w": 3.0,
+          "h": 3.0
+        }
+      },
+      "list_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 10.0,
+          "y": 223.0,
+          "w": 183.0,
+          "h": 0.5
+        }
+      },
+      "open_dentist": {
+        "component": "KitButton36b6e7615b3d",
+        "layout": {
+          "x": 10.0,
+          "y": 243.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_dentist_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 10.0,
+          "y": 243.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_dentist_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 243.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_dentist_bar": {
+        "component": "Surfaceb08c40214306",
+        "layout": {
+          "x": 10.0,
+          "y": 247.0,
+          "w": 2.0,
+          "h": 17.0
+        }
+      },
+      "open_dentist_chevron": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 183.0,
+          "y": 251.0,
+          "w": 8.0,
+          "h": 8.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/open_dentist_chevron-173ecccd4e15.svg"
+        }
+      },
+      "open_dentist_time": {
+        "component": "Text6a37fd0d3c23",
+        "layout": {
+          "x": 18.0,
+          "y": 245.61499999999998,
+          "w": 24.1375,
+          "h": 9.76
+        }
+      },
+      "open_dentist_label": {
+        "component": "Textd30fb82e5fcb",
+        "layout": {
+          "x": 50.0,
+          "y": 245.36749999999998,
+          "w": 19.0,
+          "h": 10.504375
+        }
+      },
+      "open_dentist_sub": {
+        "component": "Textf94abcb46810",
+        "layout": {
+          "x": 50.0,
+          "y": 256.07,
+          "w": 16.0,
+          "h": 9.52
+        }
+      },
+      "open_team_sync": {
+        "component": "KitButton36b6e7615b3d",
+        "layout": {
+          "x": 10.0,
+          "y": 271.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_team_sync_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 10.0,
+          "y": 271.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_team_sync_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 271.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_team_sync_bar": {
+        "component": "Surfacee7ccfd59d9b3",
+        "layout": {
+          "x": 10.0,
+          "y": 275.0,
+          "w": 2.0,
+          "h": 17.0
+        }
+      },
+      "open_team_sync_chevron": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 183.0,
+          "y": 279.0,
+          "w": 8.0,
+          "h": 8.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/open_team_sync_chevron-173ecccd4e15.svg"
+        }
+      },
+      "open_team_sync_time": {
+        "component": "Text6a37fd0d3c23",
+        "layout": {
+          "x": 18.0,
+          "y": 273.615,
+          "w": 24.1375,
+          "h": 9.76
+        }
+      },
+      "open_team_sync_label": {
+        "component": "Textcec81451dca5",
+        "layout": {
+          "x": 50.0,
+          "y": 272.96999999999997,
+          "w": 34.0,
+          "h": 10.915
+        }
+      },
+      "open_team_sync_sub": {
+        "component": "Textec5d7bace2d3",
+        "layout": {
+          "x": 50.0,
+          "y": 284.09999999999997,
+          "w": 16.0,
+          "h": 9.489999999999998
+        }
+      },
+      "open_dinner": {
+        "component": "KitButton36b6e7615b3d",
+        "layout": {
+          "x": 10.0,
+          "y": 299.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_dinner_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 10.0,
+          "y": 299.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_dinner_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 299.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "open_dinner_bar": {
+        "component": "Surfaceae17109b0370",
+        "layout": {
+          "x": 10.0,
+          "y": 303.0,
+          "w": 2.0,
+          "h": 17.0
+        }
+      },
+      "open_dinner_chevron": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 183.0,
+          "y": 307.0,
+          "w": 8.0,
+          "h": 8.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/open_dinner_chevron-173ecccd4e15.svg"
+        }
+      },
+      "open_dinner_time": {
+        "component": "Text6a37fd0d3c23",
+        "layout": {
+          "x": 18.0,
+          "y": 301.615,
+          "w": 24.1375,
+          "h": 9.76
+        }
+      },
+      "open_dinner_label": {
+        "component": "Textc90c2d5e8c8b",
+        "layout": {
+          "x": 50.0,
+          "y": 300.96999999999997,
+          "w": 45.4975,
+          "h": 10.9225
+        }
+      },
+      "open_dinner_sub": {
+        "component": "Textc9c62ddce585",
+        "layout": {
+          "x": 50.0,
+          "y": 312.022,
+          "w": 50.542,
+          "h": 9.585999999999999
+        }
+      },
+      "tab_bar": {
+        "component": "Surfacecc3f4cfacc10",
+        "layout": {
+          "x": 0.0,
+          "y": 347.0,
+          "w": 203.0,
+          "h": 41.0
+        }
+      },
+      "tab_today": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_today_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 34.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/tab_today_icon-fae6f2960edc.svg"
+        }
+      },
+      "tab_today_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_today_label": {
+        "component": "Textd938af7f8704",
+        "layout": {
+          "x": 35.0,
+          "y": 365.73949999999996,
+          "w": 15.0,
+          "h": 9.114999999999998
+        }
+      },
+      "tab_calendars": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 71.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_calendars_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 95.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/tab_calendars_icon-9ac047537118.svg"
+        }
+      },
+      "tab_calendars_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 71.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_calendars_label": {
+        "component": "Textf2b9a2e17414",
+        "layout": {
+          "x": 96.0,
+          "y": 366.04749999999996,
+          "w": 15.0,
+          "h": 8.774000000000001
+        }
+      },
+      "tab_inbox": {
+        "component": "KitButton870a84d356fb",
+        "layout": {
+          "x": 132.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_inbox_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 156.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-01/assets/tab_inbox_icon-6ac382742f14.svg"
+        }
+      },
+      "tab_inbox_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 132.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "inbox_badge": {
+        "component": "Surfacedd13f2cce3dd",
+        "layout": {
+          "x": 146.0,
+          "y": 350.0,
+          "w": 9.0,
+          "h": 9.0
+        }
+      },
+      "tab_inbox_label": {
+        "component": "Textac6fb4c051fd",
+        "layout": {
+          "x": 154.25,
+          "y": 365.756,
+          "w": 20.5,
+          "h": 9.087499999999999
+        }
+      },
+      "inbox_badge_count": {
+        "component": "Text6d27197266b9",
+        "layout": {
+          "x": 148.8775,
+          "y": 350.8225,
+          "w": 7.244999999999999,
+          "h": 8.0755
+        }
+      },
+      "tab_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 0.0,
+          "y": 347.0,
+          "w": 203.0,
+          "h": 0.5
+        }
+      },
+      "home_indicator": {
+        "component": "Surface92bde3a718b5",
+        "layout": {
+          "x": 69.5,
+          "y": 381.0,
+          "w": 64.0,
+          "h": 2.5
+        }
+      },
+      "status_time": {
+        "component": "Text6a37fd0d3c23",
+        "layout": {
+          "x": 14.0,
+          "y": 6.614999999999998,
+          "w": 24.1375,
+          "h": 9.76
+        }
+      },
+      "month_title": {
+        "component": "Textfe855fbcb7ca",
+        "layout": {
+          "x": 10.0,
+          "y": 48.778000000000006,
+          "w": 31.03,
+          "h": 19.164
+        }
+      },
+      "weekday_0": {
+        "component": "Text4f2fe3a0c4c8",
+        "layout": {
+          "x": 20.0,
+          "y": 72.984,
+          "w": 10.0,
+          "h": 9.046
+        }
+      },
+      "weekday_1": {
+        "component": "Text631c95840b11",
+        "layout": {
+          "x": 46.0,
+          "y": 75.03,
+          "w": 10.0,
+          "h": 4.492
+        }
+      },
+      "weekday_2": {
+        "component": "Textb7b62caa732b",
+        "layout": {
+          "x": 72.0,
+          "y": 73.434,
+          "w": 10.0,
+          "h": 8.062
+        }
+      },
+      "weekday_3": {
+        "component": "Text04f67221f752",
+        "layout": {
+          "x": 98.0,
+          "y": 73.158,
+          "w": 10.0,
+          "h": 8.5
+        }
+      },
+      "weekday_4": {
+        "component": "Text6a6525a82aef",
+        "layout": {
+          "x": 124.0,
+          "y": 73.098,
+          "w": 10.0,
+          "h": 8.8
+        }
+      },
+      "weekday_5": {
+        "component": "Text8aa80bb1adcb",
+        "layout": {
+          "x": 150.0,
+          "y": 73.158,
+          "w": 10.0,
+          "h": 8.608
+        }
+      },
+      "weekday_6": {
+        "component": "Text1b3ff6f6d9a4",
+        "layout": {
+          "x": 176.0,
+          "y": 72.606,
+          "w": 10.0,
+          "h": 9.454
+        }
+      },
+      "day_1": {
+        "component": "Text00868f55d031",
+        "layout": {
+          "x": 72.5025,
+          "y": 91.327,
+          "w": 8.995000000000001,
+          "h": 10.597
+        }
+      },
+      "day_2": {
+        "component": "Texte95ed57ce7bc",
+        "layout": {
+          "x": 98.5025,
+          "y": 91.21,
+          "w": 8.995000000000001,
+          "h": 10.714
+        }
+      },
+      "day_3": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 124.5025,
+          "y": 91.21,
+          "w": 8.995000000000001,
+          "h": 10.831
+        }
+      },
+      "day_4": {
+        "component": "Text00868f55d031",
+        "layout": {
+          "x": 150.5025,
+          "y": 91.327,
+          "w": 8.995000000000001,
+          "h": 10.597
+        }
+      },
+      "day_5": {
+        "component": "Textecb0fd0e4c84",
+        "layout": {
+          "x": 176.5025,
+          "y": 91.327,
+          "w": 8.995000000000001,
+          "h": 10.714
+        }
+      },
+      "day_6": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 20.502499999999998,
+          "y": 118.21,
+          "w": 8.995000000000001,
+          "h": 10.831
+        }
+      },
+      "day_7": {
+        "component": "Text00868f55d031",
+        "layout": {
+          "x": 46.5025,
+          "y": 118.327,
+          "w": 8.995000000000001,
+          "h": 10.597
+        }
+      },
+      "day_8": {
+        "component": "Textc2548d29f6ac",
+        "layout": {
+          "x": 72.5025,
+          "y": 118.228,
+          "w": 8.995000000000001,
+          "h": 10.812999999999999
+        }
+      },
+      "day_9": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 98.5025,
+          "y": 118.21,
+          "w": 8.995000000000001,
+          "h": 10.831
+        }
+      },
+      "day_10": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 122.005,
+          "y": 118.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_11": {
+        "component": "Text00868f55d031",
+        "layout": {
+          "x": 148.005,
+          "y": 118.327,
+          "w": 13.99,
+          "h": 10.597
+        }
+      },
+      "day_12": {
+        "component": "Texte95ed57ce7bc",
+        "layout": {
+          "x": 174.005,
+          "y": 118.21,
+          "w": 13.99,
+          "h": 10.714
+        }
+      },
+      "day_13": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 18.005,
+          "y": 145.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_14": {
+        "component": "Text00868f55d031",
+        "layout": {
+          "x": 44.004999999999995,
+          "y": 145.327,
+          "w": 13.99,
+          "h": 10.597
+        }
+      },
+      "day_15": {
+        "component": "Textecb0fd0e4c84",
+        "layout": {
+          "x": 70.005,
+          "y": 145.327,
+          "w": 13.99,
+          "h": 10.714
+        }
+      },
+      "day_16": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 96.005,
+          "y": 145.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_17": {
+        "component": "Text00868f55d031",
+        "layout": {
+          "x": 122.005,
+          "y": 145.327,
+          "w": 13.99,
+          "h": 10.597
+        }
+      },
+      "day_18": {
+        "component": "Textc2548d29f6ac",
+        "layout": {
+          "x": 148.005,
+          "y": 145.228,
+          "w": 13.99,
+          "h": 10.812999999999999
+        }
+      },
+      "day_19": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 174.005,
+          "y": 145.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_20": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 18.005,
+          "y": 172.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_21": {
+        "component": "Texte95ed57ce7bc",
+        "layout": {
+          "x": 44.004999999999995,
+          "y": 172.21,
+          "w": 13.99,
+          "h": 10.714
+        }
+      },
+      "day_22": {
+        "component": "Texte95ed57ce7bc",
+        "layout": {
+          "x": 70.005,
+          "y": 172.21,
+          "w": 13.99,
+          "h": 10.714
+        }
+      },
+      "day_23": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 96.005,
+          "y": 172.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_25": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 148.005,
+          "y": 172.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_26": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 174.005,
+          "y": 172.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_27": {
+        "component": "Texte95ed57ce7bc",
+        "layout": {
+          "x": 18.005,
+          "y": 199.21,
+          "w": 13.99,
+          "h": 10.714
+        }
+      },
+      "day_28": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 44.004999999999995,
+          "y": 199.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_29": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 70.005,
+          "y": 199.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "day_30": {
+        "component": "Text4c5f062d74e4",
+        "layout": {
+          "x": 96.005,
+          "y": 199.21,
+          "w": 13.99,
+          "h": 10.831
+        }
+      },
+      "list_title": {
+        "component": "Text9d21b99928dd",
+        "layout": {
+          "x": 10.0,
+          "y": 229.2375,
+          "w": 65.4315,
+          "h": 10.213999999999999
+        }
+      }
+    },
+    "bindings": []
+  }
+}

@@ -1,0 +1,531 @@
+{
+  "$kit": {
+    "theme": "light",
+    "placements": {
+      "page": {
+        "component": "Surface156d085f4ff5",
+        "layout": {
+          "x": 0,
+          "y": 0,
+          "w": 406,
+          "h": 776
+        }
+      },
+      "screen": {
+        "component": "Surface77131ad4bbf5",
+        "layout": {
+          "x": 0.0,
+          "y": 0.0,
+          "w": 203.0,
+          "h": 388.0
+        }
+      },
+      "status_icons": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 163.0,
+          "y": 6.5,
+          "w": 28.0,
+          "h": 7.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/status_icons-416cbc07c261.svg"
+        }
+      },
+      "back_day": {
+        "component": "KitButton870a84d356fb",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 58.5,
+          "h": 18.0
+        }
+      },
+      "back_day_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 58.5,
+          "h": 18.0
+        }
+      },
+      "back_day_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 6.0,
+          "y": 25.0,
+          "w": 58.5,
+          "h": 18.0
+        }
+      },
+      "back_day_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 7.0,
+          "y": 28.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/back_day_icon-1027440064a9.svg"
+        }
+      },
+      "back_day_label": {
+        "component": "Text585be83644b5",
+        "layout": {
+          "x": 18.0,
+          "y": 29.0165,
+          "w": 35.1525,
+          "h": 11.378
+        }
+      },
+      "edit_event": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 153.0,
+          "y": 25.0,
+          "w": 44.0,
+          "h": 18.0
+        }
+      },
+      "edit_event_surface": {
+        "component": "Group3d2637879433",
+        "layout": {
+          "x": 153.0,
+          "y": 25.0,
+          "w": 44.0,
+          "h": 18.0
+        }
+      },
+      "edit_event_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 153.0,
+          "y": 25.0,
+          "w": 44.0,
+          "h": 18.0
+        }
+      },
+      "edit_event_label": {
+        "component": "Textc55fe162e55c",
+        "layout": {
+          "x": 153.0,
+          "y": 28.515000000000004,
+          "w": 21.0,
+          "h": 11.870999999999999
+        }
+      },
+      "detail_head": {
+        "component": "Surfacec64885ed7b5d",
+        "layout": {
+          "x": 10.0,
+          "y": 52.0,
+          "w": 183.0,
+          "h": 46.0
+        }
+      },
+      "detail_bar": {
+        "component": "Surfaced2f94372b68b",
+        "layout": {
+          "x": 10.0,
+          "y": 52.0,
+          "w": 2.5,
+          "h": 46.0
+        }
+      },
+      "detail_group": {
+        "component": "Surfacecd7755cda6bf",
+        "layout": {
+          "x": 10.0,
+          "y": 107.0,
+          "w": 183.0,
+          "h": 107.0
+        }
+      },
+      "detail_when_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 18.0,
+          "y": 115.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/detail_when_icon-e6bb59cb3616.svg"
+        }
+      },
+      "detail_when_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 36.0,
+          "y": 135.0,
+          "w": 150.0,
+          "h": 0.5
+        }
+      },
+      "detail_where_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 18.0,
+          "y": 141.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/detail_where_icon-21f575dcf773.svg"
+        }
+      },
+      "detail_where_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 36.0,
+          "y": 161.0,
+          "w": 150.0,
+          "h": 0.5
+        }
+      },
+      "detail_alert_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 18.0,
+          "y": 167.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/detail_alert_icon-3d08916d7179.svg"
+        }
+      },
+      "detail_alert_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 36.0,
+          "y": 187.0,
+          "w": 150.0,
+          "h": 0.5
+        }
+      },
+      "detail_notes_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 18.0,
+          "y": 193.0,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/detail_notes_icon-82aa9e40a3fd.svg"
+        }
+      },
+      "sync_badge": {
+        "component": "Surfacef0304c3e4282",
+        "layout": {
+          "x": 10.0,
+          "y": 223.0,
+          "w": 183.0,
+          "h": 22.0
+        }
+      },
+      "sync_badge_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 17.0,
+          "y": 228.5,
+          "w": 11.0,
+          "h": 11.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/sync_badge_icon-f822beb1b002.svg"
+        }
+      },
+      "delete_event": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 260.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "delete_event_surface": {
+        "component": "Surface0d9374fbe8bf",
+        "layout": {
+          "x": 10.0,
+          "y": 260.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "delete_event_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 260.0,
+          "w": 183.0,
+          "h": 25.0
+        }
+      },
+      "delete_event_label": {
+        "component": "Textbc80bedef202",
+        "layout": {
+          "x": 84.5,
+          "y": 267.0065,
+          "w": 38.0,
+          "h": 11.888
+        }
+      },
+      "tab_bar": {
+        "component": "Surfacecc3f4cfacc10",
+        "layout": {
+          "x": 0.0,
+          "y": 347.0,
+          "w": 203.0,
+          "h": 41.0
+        }
+      },
+      "tab_today": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 10.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_today_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 34.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/tab_today_icon-fae6f2960edc.svg"
+        }
+      },
+      "tab_today_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_today_label": {
+        "component": "Textd938af7f8704",
+        "layout": {
+          "x": 35.0,
+          "y": 365.73949999999996,
+          "w": 15.0,
+          "h": 9.114999999999998
+        }
+      },
+      "tab_calendars": {
+        "component": "KitButton5dc7ea8cd583",
+        "layout": {
+          "x": 71.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_calendars_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 95.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/tab_calendars_icon-9ac047537118.svg"
+        }
+      },
+      "tab_calendars_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 71.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_calendars_label": {
+        "component": "Textf2b9a2e17414",
+        "layout": {
+          "x": 96.0,
+          "y": 366.04749999999996,
+          "w": 15.0,
+          "h": 8.774000000000001
+        }
+      },
+      "tab_inbox": {
+        "component": "KitButton870a84d356fb",
+        "layout": {
+          "x": 132.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "tab_inbox_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 156.5,
+          "y": 352.0,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/calendar-03/assets/tab_inbox_icon-6ac382742f14.svg"
+        }
+      },
+      "tab_inbox_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 132.0,
+          "y": 350.0,
+          "w": 61.0,
+          "h": 28.0
+        }
+      },
+      "inbox_badge": {
+        "component": "Surfacedd13f2cce3dd",
+        "layout": {
+          "x": 146.0,
+          "y": 350.0,
+          "w": 9.0,
+          "h": 9.0
+        }
+      },
+      "tab_inbox_label": {
+        "component": "Textac6fb4c051fd",
+        "layout": {
+          "x": 154.25,
+          "y": 365.756,
+          "w": 20.5,
+          "h": 9.087499999999999
+        }
+      },
+      "inbox_badge_count": {
+        "component": "Text6d27197266b9",
+        "layout": {
+          "x": 148.8775,
+          "y": 350.8225,
+          "w": 7.244999999999999,
+          "h": 8.0755
+        }
+      },
+      "tab_line": {
+        "component": "Surface396ee6390bb9",
+        "layout": {
+          "x": 0.0,
+          "y": 347.0,
+          "w": 203.0,
+          "h": 0.5
+        }
+      },
+      "home_indicator": {
+        "component": "Surface92bde3a718b5",
+        "layout": {
+          "x": 69.5,
+          "y": 381.0,
+          "w": 64.0,
+          "h": 2.5
+        }
+      },
+      "status_time": {
+        "component": "Text6a37fd0d3c23",
+        "layout": {
+          "x": 14.0,
+          "y": 6.614999999999998,
+          "w": 24.1375,
+          "h": 9.76
+        }
+      },
+      "event_title": {
+        "component": "Text83ebc78c5a6c",
+        "layout": {
+          "x": 20.0,
+          "y": 58.032,
+          "w": 71.596,
+          "h": 15.315999999999999
+        }
+      },
+      "event_calendar": {
+        "component": "Textefdaad07dc40",
+        "layout": {
+          "x": 20.0,
+          "y": 74.8155,
+          "w": 75.3765,
+          "h": 10.0515
+        }
+      },
+      "detail_when": {
+        "component": "Text78156bf0a770",
+        "layout": {
+          "x": 36.0,
+          "y": 112.44,
+          "w": 72.3175,
+          "h": 10.975
+        }
+      },
+      "detail_when_sub": {
+        "component": "Textac61ee51687a",
+        "layout": {
+          "x": 36.0,
+          "y": 123.485,
+          "w": 42.870000000000005,
+          "h": 8.9335
+        }
+      },
+      "detail_where": {
+        "component": "Textb6fd9e7075d5",
+        "layout": {
+          "x": 36.0,
+          "y": 138.46249999999998,
+          "w": 34.0,
+          "h": 10.899999999999999
+        }
+      },
+      "detail_where_sub": {
+        "component": "Text13b3678b0dfb",
+        "layout": {
+          "x": 36.0,
+          "y": 148.822,
+          "w": 46.626999999999995,
+          "h": 10.040666666666667
+        }
+      },
+      "detail_alert": {
+        "component": "Text4ee805f3d2fa",
+        "layout": {
+          "x": 36.0,
+          "y": 164.4775,
+          "w": 19.0,
+          "h": 10.892499999999998
+        }
+      },
+      "detail_alert_sub": {
+        "component": "Text546ddf555d0a",
+        "layout": {
+          "x": 36.0,
+          "y": 174.8415,
+          "w": 40.126999999999995,
+          "h": 10.032
+        }
+      },
+      "detail_notes": {
+        "component": "Text3258b559fff6",
+        "layout": {
+          "x": 36.0,
+          "y": 190.43999999999997,
+          "w": 19.0,
+          "h": 10.93
+        }
+      },
+      "detail_notes_sub": {
+        "component": "Text18056e0eb994",
+        "layout": {
+          "x": 36.0,
+          "y": 200.8285,
+          "w": 49.5,
+          "h": 10.038499999999999
+        }
+      },
+      "sync_note": {
+        "component": "Textaa8bd32aa52d",
+        "layout": {
+          "x": 33.0,
+          "y": 229.374,
+          "w": 128.48149999999998,
+          "h": 9.992999999999999
+        }
+      }
+    },
+    "bindings": []
+  }
+}

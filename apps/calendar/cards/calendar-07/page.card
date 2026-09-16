@@ -1,0 +1,134 @@
+# ledger calendar-07@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy back_editor_label_text { class: user-copy, en: "新建日程" }
+copy slot_13_label_text { class: user-copy, en: "13:00 – 14:00" }
+copy slot_14_label_text { class: user-copy, en: "14:00 – 15:00" }
+copy slot_14_why_text { class: user-copy, en: "与「团队同步」冲突" }
+copy slot_15_label_text { class: user-copy, en: "15:00 – 16:00" }
+copy slot_16_label_text { class: user-copy, en: "16:00 – 17:00" }
+copy slot_17_label_text { class: user-copy, en: "17:00 – 18:00" }
+copy status_time_text { class: user-copy, en: "09:41" }
+copy picker_title_text { class: user-copy, en: "选择时间" }
+copy picker_sub_text { class: user-copy, en: "9月24日 周四 · 家庭日历" }
+copy picker_hint_text { class: user-copy, en: "冲突时段不可选择；日程不会自动重叠" }
+state back_editor_control_enabled { shape: bool, initial: true }
+state slot_13_control_enabled { shape: bool, initial: true }
+state slot_14_control_enabled { shape: bool, initial: false }
+state slot_15_control_enabled { shape: bool, initial: true }
+state slot_16_control_enabled { shape: bool, initial: true }
+state slot_17_control_enabled { shape: bool, initial: true }
+component Surface156d085f4ff5(instance: text) {
+  view Kit(component: "Surface156d085f4ff5", instance: instance) { slot }
+}
+component Surface77131ad4bbf5(instance: text) {
+  view Kit(component: "Surface77131ad4bbf5", instance: instance) { slot }
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component KitButton870a84d356fb(instance: text) {
+  view Kit(component: "KitButton870a84d356fb", instance: instance) { slot }
+}
+component Group3d2637879433(instance: text) {
+  view Kit(component: "Group3d2637879433", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Text5794209d5e62(instance: text, text: text) {
+  view Kit(component: "Text5794209d5e62", instance: instance, text: text)
+}
+component KitButton5dc7ea8cd583(instance: text) {
+  view Kit(component: "KitButton5dc7ea8cd583", instance: instance) { slot }
+}
+component Surfacecd7755cda6bf(instance: text) {
+  view Kit(component: "Surfacecd7755cda6bf", instance: instance) { slot }
+}
+component Text74c573a54c57(instance: text, text: text) {
+  view Kit(component: "Text74c573a54c57", instance: instance, text: text)
+}
+component Surface37a3ac8c1a41(instance: text) {
+  view Kit(component: "Surface37a3ac8c1a41", instance: instance) { slot }
+}
+component Texta300da76d35e(instance: text, text: text) {
+  view Kit(component: "Texta300da76d35e", instance: instance, text: text)
+}
+component Text2c5a328c7122(instance: text, text: text) {
+  view Kit(component: "Text2c5a328c7122", instance: instance, text: text)
+}
+component Surface92bde3a718b5(instance: text) {
+  view Kit(component: "Surface92bde3a718b5", instance: instance) { slot }
+}
+component Text6a37fd0d3c23(instance: text, text: text) {
+  view Kit(component: "Text6a37fd0d3c23", instance: instance, text: text)
+}
+component Text59521b4f184a(instance: text, text: text) {
+  view Kit(component: "Text59521b4f184a", instance: instance, text: text)
+}
+component Text8a75c6e4460d(instance: text, text: text) {
+  view Kit(component: "Text8a75c6e4460d", instance: instance, text: text)
+}
+component Text3d01f16ddc53(instance: text, text: text) {
+  view Kit(component: "Text3d01f16ddc53", instance: instance, text: text)
+}
+
+view root Surface156d085f4ff5(instance: "page") {
+  Surface77131ad4bbf5(instance: "screen") {
+    Vectore0a378fde04f(instance: "status_icons")
+    KitButton870a84d356fb(instance: "back_editor") {
+      Group3d2637879433(instance: "back_editor_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "back_editor_control", enabled: back_editor_control_enabled)
+      Vectore0a378fde04f(instance: "back_editor_icon")
+      Text5794209d5e62(instance: "back_editor_label", text: copy.back_editor_label_text)
+    }
+    KitButton5dc7ea8cd583(instance: "slot_13") {
+      Surfacecd7755cda6bf(instance: "slot_13_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "slot_13_control", enabled: slot_13_control_enabled)
+      Text74c573a54c57(instance: "slot_13_label", text: copy.slot_13_label_text)
+    }
+    KitButton5dc7ea8cd583(instance: "slot_14") {
+      Surface37a3ac8c1a41(instance: "slot_14_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "slot_14_control", enabled: slot_14_control_enabled)
+      Texta300da76d35e(instance: "slot_14_label", text: copy.slot_14_label_text)
+      Text2c5a328c7122(instance: "slot_14_why", text: copy.slot_14_why_text)
+    }
+    KitButton5dc7ea8cd583(instance: "slot_15") {
+      Surfacecd7755cda6bf(instance: "slot_15_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "slot_15_control", enabled: slot_15_control_enabled)
+      Text74c573a54c57(instance: "slot_15_label", text: copy.slot_15_label_text)
+    }
+    KitButton870a84d356fb(instance: "slot_16") {
+      Surfacecd7755cda6bf(instance: "slot_16_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "slot_16_control", enabled: slot_16_control_enabled)
+      Vectore0a378fde04f(instance: "slot_16_check")
+      Text74c573a54c57(instance: "slot_16_label", text: copy.slot_16_label_text)
+    }
+    KitButton5dc7ea8cd583(instance: "slot_17") {
+      Surfacecd7755cda6bf(instance: "slot_17_surface") {
+
+      }
+      NativeButton02f1d1bd99b4(instance: "slot_17_control", enabled: slot_17_control_enabled)
+      Text74c573a54c57(instance: "slot_17_label", text: copy.slot_17_label_text)
+    }
+    Surface92bde3a718b5(instance: "home_indicator") {
+
+    }
+    Text6a37fd0d3c23(instance: "status_time", text: copy.status_time_text)
+    Text59521b4f184a(instance: "picker_title", text: copy.picker_title_text)
+    Text8a75c6e4460d(instance: "picker_sub", text: copy.picker_sub_text)
+    Text3d01f16ddc53(instance: "picker_hint", text: copy.picker_hint_text)
+  }
+}

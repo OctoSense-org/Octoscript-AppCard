@@ -1,0 +1,818 @@
+{
+  "schema_version": 1,
+  "policy_version": "1.1.0",
+  "contract_sha256": "4483f81747a36f6d11d20f648056047558dbd12c07314a642b726d463ed361dd",
+  "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+  "classification_scope": "Authored intent and explicit review candidates; no claim of automatic visual recognition.",
+  "elements": [
+    {
+      "id": "page",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "screen",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "status_icons",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/status_icons.svg",
+        "sha256": "416cbc07c261422b8a0e80634980633e68841fc39b3db3879a8337f85587a1e0",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "back_year",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "back_year_surface",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "back_year_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "back_year_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/back_year_icon.svg",
+        "sha256": "1027440064a9b8cfc64637059559b54eb6408674274992d1ce108ed1365b6875",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "back_year_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "add_event",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "add_event_surface",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "add_event_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "add_event_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/add_event_icon.svg",
+        "sha256": "2e94041b38e4ca076ffbcc668f0674f094a6b8b9dd4e90a3a6fd119d7f81cea7",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "grid_line",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "today_ring",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_today",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_today_surface",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_today_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_today_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "dot_24_0",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "dot_24_1",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "dot_24_2",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "dot_25_0",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "dot_26_0",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "list_line",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dentist",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dentist_surface",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dentist_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dentist_bar",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dentist_chevron",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/open_dentist_chevron.svg",
+        "sha256": "173ecccd4e15dcdca80c6086908e78139e01ce9ec919f593d7b24146601fee9e",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "open_dentist_time",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dentist_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dentist_sub",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_team_sync",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_team_sync_surface",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_team_sync_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_team_sync_bar",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_team_sync_chevron",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/open_team_sync_chevron.svg",
+        "sha256": "173ecccd4e15dcdca80c6086908e78139e01ce9ec919f593d7b24146601fee9e",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "open_team_sync_time",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_team_sync_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_team_sync_sub",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dinner",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dinner_surface",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dinner_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dinner_bar",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dinner_chevron",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/open_dinner_chevron.svg",
+        "sha256": "173ecccd4e15dcdca80c6086908e78139e01ce9ec919f593d7b24146601fee9e",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "open_dinner_time",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dinner_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "open_dinner_sub",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_bar",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_today",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_today_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/tab_today_icon.svg",
+        "sha256": "fae6f2960edcdfc4069a9d562bcec85c0105f25bd880a22ed38f7c911404f57a",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "tab_today_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_today_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_calendars",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_calendars_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/tab_calendars_icon.svg",
+        "sha256": "9ac047537118e5d992c968c85fb465685ef0e60c7661fa49555a95341d0ab2a2",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "tab_calendars_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_calendars_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_inbox",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_inbox_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/tab_inbox_icon.svg",
+        "sha256": "6ac382742f14fe1a62c939d03e6c49e8cbdf27512b0ff336dd758275a70d74e8",
+        "method": "reference_svg",
+        "reference_sha256": "3ec37fbd4dff21c19ece077b1d5e37cde3962afaf554cf353a0e235687fe0980",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "tab_inbox_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "inbox_badge",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_inbox_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "inbox_badge_count",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "tab_line",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "home_indicator",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "status_time",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "month_title",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "weekday_0",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "weekday_1",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "weekday_2",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "weekday_3",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "weekday_4",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "weekday_5",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "weekday_6",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_1",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_2",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_3",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_4",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_5",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_6",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_7",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_8",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_9",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_10",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_11",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_12",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_13",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_14",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_15",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_16",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_17",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_18",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_19",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_20",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_21",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_22",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_23",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_25",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_26",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_27",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_28",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_29",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "day_30",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "list_title",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    }
+  ]
+}

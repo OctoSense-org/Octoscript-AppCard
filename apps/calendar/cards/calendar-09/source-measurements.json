@@ -1,0 +1,367 @@
+{
+  "atlas_sha256": "69e348329f1c8421cba914dd2d55bd8ba99a38868ff47f9f900cb384b3304e70",
+  "reference_sha256": "2726bd46f4cc402772eff0f3b25e2a384c2638ffd27b35abb50789e3f97e58ca",
+  "source_crop": [
+    48,
+    3350,
+    812,
+    1552
+  ],
+  "transform": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      48,
+      3350,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -48.0,
+      0,
+      1.0,
+      -3350.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      48.0,
+      0,
+      1.0,
+      3350.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -24.0,
+      0,
+      0.5,
+      -1675.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      48.0,
+      0,
+      2.0,
+      3350.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "reviewed_source": true,
+  "text": [
+    {
+      "id": "desk_date",
+      "css_box": [
+        24,
+        30,
+        260,
+        22
+      ],
+      "ink_bounds": [
+        24.66,
+        35.66,
+        86.31,
+        13.17
+      ],
+      "copy": {
+        "cn": "9月24日 周四",
+        "en": "Thu, Sep 24"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "desk_time",
+      "css_box": [
+        24,
+        54,
+        200,
+        44
+      ],
+      "ink_bounds": [
+        25.584,
+        64.55199999999999,
+        94.068,
+        27.648
+      ],
+      "copy": {
+        "cn": "09:44",
+        "en": "09:44"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "sync_card_kicker",
+      "css_box": [
+        92,
+        177,
+        250,
+        18
+      ],
+      "ink_bounds": [
+        93.144,
+        180.696,
+        69.134,
+        12.037999999999998
+      ],
+      "copy": {
+        "cn": "同步 · 最新",
+        "en": "Sync · Up to date"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "sync_title",
+      "css_box": [
+        44,
+        218,
+        320,
+        30
+      ],
+      "ink_bounds": [
+        45.254,
+        223.54000000000002,
+        130.306,
+        21.054
+      ],
+      "copy": {
+        "cn": "两台设备一致",
+        "en": "Both devices agree"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "device_phone",
+      "css_box": [
+        44,
+        254,
+        320,
+        20
+      ],
+      "ink_bounds": [
+        44.056,
+        258.344,
+        129.766,
+        12.879999999999999
+      ],
+      "copy": {
+        "cn": "Alex · 手机 · 09:41",
+        "en": "Alex · Phone · 09:41"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "device_desktop",
+      "css_box": [
+        44,
+        276,
+        320,
+        20
+      ],
+      "ink_bounds": [
+        44.672,
+        280.344,
+        131.34799999999998,
+        12.879999999999999
+      ],
+      "copy": {
+        "cn": "Sam · 桌面 · 09:40",
+        "en": "Sam · Desktop · 09:40"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "pending_count",
+      "css_box": [
+        44,
+        300,
+        320,
+        18
+      ],
+      "ink_bounds": [
+        44.65,
+        303.683,
+        177.736,
+        12.077
+      ],
+      "copy": {
+        "cn": "0 项待同步更改 · 第 12 次同步",
+        "en": "0 pending changes · sync #12"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "sync_now_label",
+      "css_box": [
+        44,
+        332,
+        150,
+        40
+      ],
+      "ink_bounds": [
+        89.66,
+        345.62499999999994,
+        58.56,
+        14.28
+      ],
+      "copy": {
+        "cn": "立即同步",
+        "en": "Sync now"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "open_calendar_label",
+      "css_box": [
+        208,
+        332,
+        150,
+        40
+      ],
+      "ink_bounds": [
+        253.585,
+        345.93999999999994,
+        58.62,
+        13.86
+      ],
+      "copy": {
+        "cn": "打开日历",
+        "en": "Open Calendar"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "sync_foot",
+      "css_box": [
+        44,
+        384,
+        320,
+        18
+      ],
+      "ink_bounds": [
+        44.517,
+        388.512,
+        197.076,
+        10.461
+      ],
+      "copy": {
+        "cn": "更改只会在你操作后发送，不会自动排程",
+        "en": "Changes are sent only after you act; nothing is scheduled for you"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "dock_calendar_label",
+      "css_box": [
+        40,
+        734,
+        100,
+        14
+      ],
+      "ink_bounds": [
+        81.76,
+        737.45,
+        17.71,
+        8.68
+      ],
+      "copy": {
+        "cn": "日历",
+        "en": "Calendar"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "dock_mail_label",
+      "css_box": [
+        156,
+        734,
+        100,
+        14
+      ],
+      "ink_bounds": [
+        196.85,
+        736.97,
+        18.68,
+        9.19
+      ],
+      "copy": {
+        "cn": "邮件",
+        "en": "Mail"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "dock_settings_label",
+      "css_box": [
+        272,
+        734,
+        100,
+        14
+      ],
+      "ink_bounds": [
+        312.43,
+        737.14,
+        19.020000000000003,
+        9.049999999999999
+      ],
+      "copy": {
+        "cn": "设置",
+        "en": "Settings"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    }
+  ],
+  "limits": [
+    "The storyboard is authored, so measurement is a consistency check of the render against the spec, not OCR of an unknown image",
+    "No native visual acceptance"
+  ]
+}

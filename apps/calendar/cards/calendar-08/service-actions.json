@@ -1,0 +1,118 @@
+{
+  "frame_id": 8,
+  "source": "calendar-08",
+  "controls": {
+    "done_calendars": {
+      "event": "done_calendars",
+      "text_ids": [
+        "done_calendars_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        306,
+        50,
+        88,
+        36
+      ],
+      "enabled": true
+    },
+    "toggle_family": {
+      "event": "toggle_family",
+      "text_ids": [
+        "toggle_family_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        134,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "toggle_work": {
+      "event": "toggle_work",
+      "text_ids": [
+        "toggle_work_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        186,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "toggle_personal": {
+      "event": "toggle_personal",
+      "text_ids": [
+        "toggle_personal_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        238,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "toggle_birthdays": {
+      "event": "toggle_birthdays",
+      "text_ids": [
+        "toggle_birthdays_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        290,
+        366,
+        50
+      ],
+      "enabled": true
+    },
+    "tab_today": {
+      "event": "tab_today",
+      "text_ids": [
+        "tab_today_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_calendars": {
+      "event": "tab_calendars",
+      "text_ids": [
+        "tab_calendars_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        142,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    },
+    "tab_inbox": {
+      "event": "tab_inbox",
+      "text_ids": [
+        "tab_inbox_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        264,
+        700,
+        122,
+        56
+      ],
+      "enabled": true
+    }
+  }
+}

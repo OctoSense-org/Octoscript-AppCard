@@ -1,0 +1,90 @@
+{
+  "frame_id": 7,
+  "source": "calendar-07",
+  "controls": {
+    "back_editor": {
+      "event": "back_editor",
+      "text_ids": [
+        "back_editor_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        12,
+        50,
+        100,
+        36
+      ],
+      "enabled": true
+    },
+    "slot_13": {
+      "event": "slot_13",
+      "text_ids": [
+        "slot_13_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        168,
+        366,
+        56
+      ],
+      "enabled": true
+    },
+    "slot_14": {
+      "event": "slot_14",
+      "text_ids": [
+        "slot_14_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        234,
+        366,
+        56
+      ],
+      "enabled": false
+    },
+    "slot_15": {
+      "event": "slot_15",
+      "text_ids": [
+        "slot_15_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        300,
+        366,
+        56
+      ],
+      "enabled": true
+    },
+    "slot_16": {
+      "event": "slot_16",
+      "text_ids": [
+        "slot_16_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        366,
+        366,
+        56
+      ],
+      "enabled": true
+    },
+    "slot_17": {
+      "event": "slot_17",
+      "text_ids": [
+        "slot_17_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20,
+        432,
+        366,
+        56
+      ],
+      "enabled": true
+    }
+  }
+}
