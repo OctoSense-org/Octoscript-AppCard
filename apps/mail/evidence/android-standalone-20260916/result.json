@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-09-16",
+  "status": "standalone_pop3_and_feature_video_verified",
+  "device": {
+    "model": "OnePlus 6 (ONEPLUS_A6003)",
+    "android": 15,
+    "backend": "native GLES / Adreno 630",
+    "package": "dev.makepad.octosense.mailpreview",
+    "default_launcher_changed": false
+  },
+  "runtime": {
+    "octoscript-makepad": "b1596d9c2cee6e80cca9d27b1b0c2d57b9d28dd8",
+    "makepad": "d4502ef1e4d196d2829a07aa137740cb0581e9b4",
+    "octoscript": "5430518683462eebb65b56b9b5d0e620006f04f4"
+  },
+  "apk_sha256": "35f67303cedbc6cba4c6dca72e97d2e9fb8102a7b04474c9837ae9acecf43f4f",
+  "gmail_direct": {
+    "mode": "device",
+    "demo": false,
+    "message_count": 122,
+    "available": 3701,
+    "last_connection": {
+      "downloaded": 25,
+      "tls_verified": true,
+      "transport": "device-pop3"
+    },
+    "mac_companion_running": false,
+    "mail_usb_reverse_present": false
+  },
+  "handoff": {
+    "mode": "device",
+    "demo": false,
+    "screen": "inbox",
+    "message_count": 122,
+    "available": 3701,
+    "cache_persisted_after_restart": true,
+    "mail_usb_reverse_present": false,
+    "recording_enabled": false
+  },
+  "list_virtualization": {
+    "screen": "inbox",
+    "message_count": 150,
+    "list_start": 40,
+    "list_scroll": 6570.85993289766,
+    "rendered_message_rows": 60
+  },
+  "video": {
+    "file": "../../../../../.appcard-native/mail-android/mail-android-demo.mp4",
+    "sha256": "e5126b11954fc0f81905d87ef1ffaf9c7b2c460361af5a4eb7e5171f890a54fa",
+    "seconds": 100.9,
+    "size": [
+      1080,
+      1920
+    ],
+    "fps": 10,
+    "fictional_mail_only": true,
+    "external_mail_sent": false,
+    "native_frames": 1008,
+    "capture": "app-owned GPU readback + app-owned WebView CDP snapshots",
+    "presentation_additions": [
+      "chapter captions"
+    ],
+    "system_capture_used": false,
+    "touch_input": "actual Android input at measured native bounds",
+    "chapters": [
+      {
+        "seconds": 0.0,
+        "title": "OctoSense Mail \u00b7 Inbox \u00b7 150 sample messages"
+      },
+      {
+        "seconds": 16.6,
+        "title": "OctoSense Mail \u00b7 Search all subjects"
+      },
+      {
+        "seconds": 26.5,
+        "title": "OctoSense Mail \u00b7 Read the complete message"
+      },
+      {
+        "seconds": 39.5,
+        "title": "OctoSense Mail \u00b7 HTML email \u00b7 platform WebView"
+      },
+      {
+        "seconds": 52.3,
+        "title": "OctoSense Mail \u00b7 Reply and save a draft"
+      },
+      {
+        "seconds": 77.1,
+        "title": "OctoSense Mail \u00b7 Gmail POP3 and SMTP settings"
+      },
+      {
+        "seconds": 97.8,
+        "title": "OctoSense Mail \u00b7 Mail runs on the phone \u00b7 sample mailbox"
+      }
+    ],
+    "readers": [
+      {
+        "kind": "plain",
+        "scroll_min": 0,
+        "scroll_max": 1110.755615234375
+      },
+      {
+        "kind": "html",
+        "scroll_min": 0,
+        "scroll_max": 1211.3778076171875
+      }
+    ],
+    "storage": "local artifact; video is not included in Git"
+  },
+  "checks": {
+    "host_cargo_check": "passed with existing duplicate-target warning",
+    "android_release": "passed with framework unused-import and missing-launcher-icon warnings",
+    "network_unit_tests": {
+      "passed": 2
+    },
+    "final_scene_unit_tests": {
+      "passed": 2
+    },
+    "unified_runtime_graph": "passed; framework working trees clean",
+    "launcher_full_suite": {
+      "passed": 269,
+      "failed": [
+        "mobile_island::tests::hidden_while_the_shade_is_pulled_or_open",
+        "clients::tests::every_registered_app_names_a_real_crate"
+      ],
+      "scope": "unchanged source files; baseline was not separately rerun; full suite is not green"
+    },
+    "native_interactions": [
+      "inbox touch scroll",
+      "subject search across 150 cached messages",
+      "plain reader scroll",
+      "HTML table and reader scroll",
+      "reply text entry",
+      "save and reopen draft",
+      "POP3 security selector",
+      "SMTP settings navigation"
+    ],
+    "cache_restart": "122 messages retained in private Android storage"
+  },
+  "limitations": [
+    "Android SMTP is implemented but external delivery was not tested. Demo Send is disabled.",
+    "Android read/flag/archive state is local; IMAP sync and label moves are not implemented.",
+    "Android attachment metadata is shown; external attachment previews are not implemented.",
+    "Search covers downloaded subjects; POP3 batches are limited to 25 messages, 2 MB per message.",
+    "Legacy desktop/USB-companion evidence does not establish standalone Android feature parity."
+  ],
+  "source_sha256": {
+    "Octosense-Service-AppCards/apps/mail/native/Cargo.toml": "437679b44468a7e81ccd22c1905c10457ecc707aa82089741baf8a9b55bbc055",
+    "Octosense-Service-AppCards/apps/mail/native/resources/mobile-templates.json": "9807bc40c6119fe8725bc3ebb7dfe364bbe0613ade02d16c674b2724ab3520c5",
+    "Octosense-Service-AppCards/apps/mail/native/src/device.rs": "8e87ba46f3b17361476e6c1c3c066936daabaea71281d423c4eb6107cf044624",
+    "Octosense-Service-AppCards/apps/mail/native/src/lib.rs": "1ea6adf9e5e0a420572eaa91fc75011dbeed1cdb1224ebf1807217babaeee884",
+    "Octosense-Service-AppCards/apps/mail/native/src/scenes.rs": "b49736be8aae0766fcf476600ae4ca3bf0b504165c80e3fadd3a19763718e53e",
+    "Octosense-Service-AppCards/apps/mail/native/src/network.rs": "4e131a96789c97c00949a928f05339c7a138fa3d5ff3f684336869c5e9588a2f",
+    "OctoSense-mobile/src/main.rs": "8f84767e8ad8eb81884a7b5e1f7357a19795acb69a6c24325a57e81767c4b507",
+    "OctoSense-mobile/Cargo.lock": "e75360781a9ae7165eb2b5d46b08954852d3438f4fce5aab6135f75e06c4c102",
+    "OctoSense-mobile/Cargo.toml": "505c617ff44b63d9f953fbadac6266007c5c5266f9a30b689f088c469ff07764",
+    "OctoSense-mobile/resources/android/AndroidManifest.xml.template": "a5234158a274e1f41cc32ea8bbb4c57ffa848545aa93a36cf67737d1b57b1821"
+  },
+  "source_state_at_capture": "uncommitted working tree; source_sha256 identifies the tested contents"
+}

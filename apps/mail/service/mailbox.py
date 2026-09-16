@@ -16,7 +16,7 @@ import ssl
 from account import load_account, candidate, account_id
 
 ROOT = Path(__file__).resolve().parents[1]
-PRIVATE = ROOT / 'private'
+PRIVATE = Path(os.environ.get('OCTOS_MAIL_PRIVATE_DIR', ROOT / 'private')).resolve()
 MAX_MESSAGE = 2_000_000
 
 

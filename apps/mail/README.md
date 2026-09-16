@@ -1,7 +1,8 @@
 # Mail
 
 An iOS-style email app authored as Octoscript L0 App Cards and rendered by
-Makepad on macOS. It uses the shared image-to-appcard pipeline and Makepad's
+Makepad on macOS, with an Android module for the OctoSense-mobile launcher.
+It uses the shared image-to-appcard pipeline and Makepad's
 built-in HTTP instrument. iOS device deployment is not implemented.
 
 ![Mail design atlas](output/imagegen/mail-atlas.png)
@@ -48,7 +49,93 @@ root, `OCTOSENSE_WORKSPACE` selects the shared organization workspace,
 `OCTOS_MAIL_NATIVE_ROOT` selects another workspace containing the same locked runtime,
 and `OCTOS_MAIL_PYTHON` overrides the launcher's Python executable.
 
-## Mail features
+## OctoSense-mobile launcher preview on macOS
+
+From the AppCards repository, run:
+
+```sh
+lab/image-to-appcard/.venv/bin/python apps/mail/scripts/run_launcher.py --sample --open-mail
+```
+
+The helper builds the phone shell in release mode, registers a Mail icon in an
+isolated launcher catalog, and keeps the Mail controller running while the
+launcher hosts its native renderer through its normal Cargo app launch path.
+`--sample` isolates account settings and mail storage; omit it to use this
+app's existing local account/cache. `--headless` hides the Metal window for
+Makepad HTTP instrument checks. Closing the launcher stops its controller.
+
+`--runtime-root` selects another clean workspace containing the same locked
+Octoscript-Makepad release. This is useful when the shared workspace already
+has an app running. `--launcher-root` selects the OctoSense-mobile checkout.
+Receipts and logs live under ignored `runtime/launcher/`.
+
+This preview uses the desktop process host and retains Mail's standalone
+screen chrome. Android cannot run the Python controller or this process host;
+an Android Mail module is not provided by this command. Launcher verification
+covers opening Mail, subject search and plain-text reading. Embedded HTML
+WebView composition inside the launcher has not been verified.
+
+## Standalone Android Mail
+
+`native/` is the `octosense-mail` AppModule linked by OctoSense-mobile. Reviewed
+scene templates are exported by `scripts/export_mobile_templates.py`, then run
+through the locked Octoscript-Makepad L0 realization, native kit lowering and
+renderer. Inbox, subject search, a virtualized continuous list, compose and
+settings use native widgets. Full-length plain and HTML messages use Android's
+platform WebView; scripts, forms and remote images are blocked.
+
+The default backend runs entirely on the phone. Long-lived Makepad workers
+perform POP3/TLS downloads and SMTP/TLS delivery, MIME parsing and private local
+storage. Its capability-protected loopback service is inside the Android process;
+it does not connect to a Mac. Gmail POP3 uses `pop.gmail.com:995` with verified
+TLS, downloads 25 unseen messages per batch and never issues `DELE`. Search
+covers downloaded subjects. Credentials, per-account mailboxes and drafts live
+in the app's private data directory; Android backup is disabled.
+
+Keep this repository at `../Octosense-Service-AppCards` beside OctoSense-mobile.
+Use its `native-runtime.lock.json` and an existing Android SDK to build the
+launcher release with package `dev.makepad.octosense.mailpreview` and label
+`OctoSense Mail`. This preserves the installed default launcher. From this repo:
+
+```sh
+# Install and open an isolated 150-message fictional mailbox.
+lab/image-to-appcard/.venv/bin/python apps/mail/scripts/open_android.py \
+  --adb /path/to/existing/platform-tools/adb \
+  --apk ../OctoSense-mobile/target/android/makepad-android-apk/octosense/apk/octo_sensemail.apk \
+  --demo --probe
+# Open the saved real account without a Mac service or USB forwarding.
+lab/image-to-appcard/.venv/bin/python apps/mail/scripts/open_android.py \
+  --adb /path/to/existing/platform-tools/adb
+```
+
+Close the owned preview before installing or launching another test instance.
+Configure the account in **Mailboxes → Settings**, including the masked app
+password input. For automated private provisioning, `--bootstrap /private/account.json`
+imports an account object and deletes the transferred file after moving its
+contents into private app storage. Never commit or print this file. Once
+configured, the phone needs only its own network connection; ADB is a development
+installation/input tool, not the mail transport.
+
+Android currently supports local read/flag/archive changes, draft save/reopen,
+attachment metadata and TLS SMTP with an uncertain-delivery journal. Android
+IMAP flag/label synchronization and external attachment previews are not
+implemented. SMTP delivery is implemented but has not been live-send verified
+on Android; demo mode disables Send. Desktop features below have separate scope.
+
+For legacy Mac-backed testing only, run `scripts/serve_mobile.py --sample` and
+launch with `open_android.py --companion`. This explicit mode retains the USB
+loopback companion and its separate runtime receipt.
+
+The pinned Makepad HTTP instrument is compiled out on Android. `--probe` exposes
+only native bounds and counts; `scripts/device_instrument.py` uses those bounds
+for actual Android touch input. `--capture` enables the app-owned GPU hook;
+`--record --demo` captures a timestamped GPU frame sequence. The separate native
+WebView supplies its own page snapshots. Composite the two app-owned layers at
+the measured bounds, then encode with an existing video encoder. No Studio,
+OS screenshots or system screen recorder are used. See the shared
+[Android instrument workflow](../../lab/core/NATIVE-INSTRUMENT.md#android-launcher-modules).
+
+## Desktop Mail features
 
 - **Inbox:** fixed subject search over downloaded mail, unread/flagged filters,
   continuous scrolling, automatic older-message batches of 25, retry and
@@ -144,6 +231,12 @@ verifying extracted bytes; they do not send external mail.
 
 Included evidence is scoped and contains fictional fixtures or counts only:
 
+- [Standalone Android](evidence/android-standalone-20260916/result.json): direct
+  Gmail POP3/TLS download without a Mac companion; fictional feature video.
+- [Earlier USB companion](evidence/android-20260916/result.json): OnePlus 6 release
+  build, native search and a 150-message list, scrolling plain/HTML readers,
+  settings edits/discard, module tests, and a counts-only Gmail POP3 login.
+  Native GPU and WebView captures contain fictional mail only.
 - [Repository validation](evidence/repository-validation.json): a fresh isolated
   native build, 30 service tests, 20 semantic tests, the bundle stages and both
   hidden native fixture suites passed from this directory.

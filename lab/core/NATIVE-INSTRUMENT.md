@@ -112,6 +112,44 @@ The 2026-09-15 completion fixture passed through the built-in instrument with hi
 
 Keep app source and curated fixture evidence in its dedicated `apps/mail/` directory; generated sessions and personal mail remain ignored. Do not make generic pipeline documentation depend on a developer-specific absolute home directory, copy private email into this repository, or regenerate the original atlas for a code-only settings change.
 
+## Android launcher modules
+
+The pinned Makepad release compiles its HTTP `--remote` instrument out on
+Android. Do not report desktop HTTP probes or Studio captures as Android passes.
+Mail exports the reviewed renderer's scene templates and applies the same L0
+realization, native kit lowering and renderer inside OctoSense-mobile. Its
+standalone Rust workers run mail services on the phone; the internal loopback
+transport carries only the module's local frames/actions/assets. A Mac companion
+is now an explicit legacy mode. See [Mail's Android instructions](../../apps/mail/README.md#standalone-android-mail).
+
+Build the locked runtime's release APK with an existing Android SDK and install
+an explicitly owned preview package. With `open_android.py --demo --probe`,
+observe native widget bounds and inject actual device touch input using
+`device_instrument.py`; convert logical coordinates with the current density.
+Verify resulting state and nonce. Exercise subject search, scrolling across the
+60-row window, full-length plain/HTML reading, compose/drafts and settings.
+A controller-only action is not a touch test. Real network validation must remove
+the mail USB reverse and stop the owned Mac companion before exercising Refresh.
+Record only counts, verified transport and cache persistence for a real account.
+
+Use the launcher's opt-in GPU texture readback hook for app-owned captures.
+`--record --demo` writes timestamped native PNG frames in the preview's external
+files directory. Android WebView is a separate platform surface: capture its own
+page through its inspection endpoint. To make a feature video, align the host
+and device clocks, record actual touch interactions, and composite WebView frames
+at the measured reader bounds relative to the app drawable. Encode with an
+already-installed encoder (the macOS AVFoundation APIs also suffice). Mark any
+chapter captions as presentation additions. Neither raw layer captures the other.
+Use fictional mail for every video frame. Do not use `adb screencap`,
+`adb screenrecord`, MediaProjection or other OS capture methods.
+
+Record device/backend, exact source pins, APK hash, checks and limitations.
+Stop the owned capture process, remove its inspection forwarding and close the
+fixture preview after recording. Retain a real-account session only when the
+user requests an open app. A standalone POP3 pass does not imply Android IMAP
+sync, attachment previews or verified live SMTP delivery. Keep recordings and
+bulk frames local; include only scoped, credential-free evidence in reviews.
+
 ## Existing capture/gate compatibility
 
 The current `lab/image-to-appcard/studio.py` and the flow runner's `capture --launch` stage are still Studio-backed legacy capture adapters. They do **not** switch to direct HTTP because this guide exists. Their saved-round gates expect their existing evidence schema. Preserve prior evidence; do not invent Studio IDs or relabel a direct snapshot as a legacy gate pass.

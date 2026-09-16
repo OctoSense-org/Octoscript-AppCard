@@ -14,7 +14,7 @@ import sys
 import threading
 import time
 import uuid
-from common import ROOT, PIPELINE, IMAGE, NATIVE_ROOT
+from common import ROOT, PIPELINE, IMAGE, NATIVE_ROOT, RUNTIME
 from mailbox import atomic_json, fetch_gmail, save_live, merge_mailbox, fixture, PRIVATE, test_connection
 from account import load_account, public_account, candidate, save_account, account_id, identity
 from model import initial, reduce, visible, has_more
@@ -25,8 +25,8 @@ from mail_actions import MailActions
 from copy import deepcopy
 import gmail_sync
 
-SESSION=ROOT/'runtime/session'
-CURRENT=ROOT/'runtime/current-request.json'
+SESSION=RUNTIME/'session'
+CURRENT=RUNTIME/'current-request.json'
 SCENES={'inbox':1,'mailboxes':2,'read':3,'search':4,'compose':5,'settings':7,'card':8,'drafts':2,'attachments':3,'folders':2,'services':7}
 
 
