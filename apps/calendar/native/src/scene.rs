@@ -76,9 +76,14 @@ impl Scene {
     pub fn scroll(&mut self, id: &str, parent: &str, x: f64, y: f64, w: f64, h: f64) {
         self.push(json!({"t": "stack", "id": id, "x": x, "y": y, "w": w, "h": h, "variant": "scroll_y", "c": []}), parent);
     }
+    /// One line of text centred in the box `y..y+h`. The label keeps the
+    /// font's natural line height (Noto Sans SC: 1.45×) and is offset to the
+    /// box's middle — a taller line box seats the glyphs at its top.
     pub fn text(&mut self, id: &str, parent: &str, text: &str, x: f64, y: f64, w: f64, h: f64, size: f64, bold: bool, color: &str, align: Align) {
         let alignx = match align { Align::Left => 0.0, Align::Center => 0.5, Align::Right => 1.0 };
-        self.push(json!({"t": "text", "id": id, "text": text, "x": x, "y": y, "w": w, "h": h, "size": size, "line_height": h, "weight": if bold { 700 } else { 400 },
+        let line = ((size * 1.45).min(h) * 100.0).round() / 100.0;
+        let top = ((y + (h - line) / 2.0) * 100.0).round() / 100.0;
+        self.push(json!({"t": "text", "id": id, "text": text, "x": x, "y": top, "w": w, "h": line, "size": size, "line_height": line, "weight": if bold { 700 } else { 400 },
                          "color": col(color), "font_src": if bold { BOLD } else { REGULAR }, "variant": "single_line", "alignx": alignx}), parent);
     }
     /// A text field named `id`: a Kit form field wrapping the native input, so edits arrive as KitAction::Changed on `id`.

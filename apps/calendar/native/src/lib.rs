@@ -66,6 +66,8 @@ impl AssetServer {
             while !flag.load(Ordering::Acquire) {
                 match listener.accept() {
                     Ok((mut socket, _)) => {
+                        // macOS hands accepted sockets the listener's non-blocking flag.
+                        socket.set_nonblocking(false).ok();
                         socket.set_read_timeout(Some(Duration::from_secs(2))).ok();
                         // Read until the request head is complete; the first packet may hold only part of it.
                         let mut data = Vec::new();
