@@ -9,7 +9,7 @@
 //! Crate boundary: `OctosUiAgent` is the *only* place inside `app/` that
 //! talks to `octos-app-transport`. UI code goes through the `Agent` trait.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use makepad_ai::{Agent, AgentEvent, PromptId, SessionConfig, SessionId, StopReason};
 use makepad_widgets::*;
@@ -101,7 +101,48 @@ pub struct OctosUiAgent {
     /// rather than WebSocket. Stdio carries no `X-Profile-Id` header, so
     /// `session/open` must name the profile in its params instead.
     stdio_transport: bool,
+    /// Turns whose durable `assistant_persisted` row has already been bridged
+    /// as `TextAuthoritative`. A terminal for one of these can finalize at
+    /// once; a terminal for any other turn must wait (see `finish_turn`).
+    persisted_seen: HashSet<TurnId>,
+    /// Turns that have reached their terminal but whose authoritative text
+    /// has not arrived. Each waits for the durable row on the live lane, or
+    /// for the `session/hydrate` reply requested on its behalf, or for
+    /// [`AUTHORITATIVE_WAIT`] to expire — whichever comes first.
+    pending_completion: HashMap<TurnId, PendingCompletion>,
+    /// `session/hydrate` requests issued on behalf of held turns, per session,
+    /// not yet answered. Their replies are the hold's business even when the
+    /// live row has resolved the hold first — a reply that fell through to
+    /// the resume flow would replace the chat with the session's history
+    /// mid-turn.
+    hold_hydrates: HashMap<SessionKey, u32>,
 }
+
+/// A turn held open at its terminal until the kernel's durable assistant row
+/// is in hand — or the wait expires.
+///
+/// WHY THE WAIT EXISTS. `message/delta` is ephemeral: the kernel drops it on
+/// the floor when its stdio writer backs up (a 1024-frame queue; a fast model
+/// such as DeepSeek V4 Flash at ~200 deltas/s fills it on a phone), and the
+/// live ledger forwarder that carries the durable `assistant_persisted` row
+/// lags behind the DIRECT-sent legacy `turn/completed`. Measured on the
+/// OnePlus: 897 of 1840 text deltas arrived, the persisted row had not, and
+/// the terminal came anyway — so the turn finalized on 3251 of 7194 chars,
+/// an unclosed ```runl0 fence, and the card drew as a code block. The kernel
+/// keeps the whole reply in its ledger the entire time; `session/hydrate`
+/// reads it back. Holding the terminal until that text is here is what makes
+/// the card the model wrote the card that renders.
+#[derive(Debug)]
+struct PendingCompletion {
+    session_id: SessionKey,
+    since: std::time::Instant,
+}
+
+/// Upper bound on how long a completed turn waits for its durable text.
+/// A kernel that never persists a row (an empty reply; a build without the
+/// v2 lane) must not leave the spinner running forever, so after this the
+/// turn completes on the streamed text with a warning in the log.
+const AUTHORITATIVE_WAIT: std::time::Duration = std::time::Duration::from_secs(8);
 
 impl OctosUiAgent {
     /// Construct a new agent. Spawns the WebSocket task immediately so
@@ -165,6 +206,9 @@ impl OctosUiAgent {
             fallback_profile,
             thinking: false,
             stdio_transport,
+            persisted_seen: HashSet::new(),
+            pending_completion: HashMap::new(),
+            hold_hydrates: HashMap::new(),
         }
     }
 
@@ -230,6 +274,165 @@ impl OctosUiAgent {
                 log::warn!("octos-ui-agent: transport task gone; command dropped");
             }
         }
+    }
+
+    /// Forget every routing entry for `turn`. The prompt it mapped to, if
+    /// it was tracked.
+    fn retire_turn(&mut self, turn: &TurnId) -> Option<PromptId> {
+        let pid = self.prompt_ids.remove(turn)?;
+        self.turn_ids.remove(&pid);
+        self.prompt_sessions.remove(&pid);
+        self.generation_started.remove(turn);
+        self.persisted_seen.remove(turn);
+        self.pending_completion.remove(turn);
+        Some(pid)
+    }
+
+    /// A turn reached a successful terminal on `lane`. It completes now if
+    /// its durable assistant row has already been bridged; otherwise it is
+    /// held and the row is fetched with `session/hydrate`, and the turn
+    /// completes when either that reply or the live row lands — see
+    /// [`PendingCompletion`] for why a terminal alone is not enough.
+    fn finish_turn(&mut self, turn: &TurnId, lane: &str) -> Vec<AgentEvent> {
+        let Some(&pid) = self.prompt_ids.get(turn) else {
+            return Vec::new();
+        };
+        if self.persisted_seen.contains(turn) {
+            self.retire_turn(turn);
+            return vec![AgentEvent::TurnComplete {
+                prompt_id: pid,
+                stop_reason: StopReason::EndTurn,
+            }];
+        }
+        if self.pending_completion.contains_key(turn) {
+            // The other lane's terminal for a turn already held.
+            return Vec::new();
+        }
+        let Some(session_id) = self.prompt_sessions.get(&pid).cloned() else {
+            self.retire_turn(turn);
+            return vec![AgentEvent::TurnComplete {
+                prompt_id: pid,
+                stop_reason: StopReason::EndTurn,
+            }];
+        };
+        log::warn!(
+            "octos-ui-agent: {lane} for turn {} arrived before its persisted row; \
+             holding completion and hydrating {}",
+            turn.0,
+            session_id.0
+        );
+        self.pending_completion.insert(
+            turn.clone(),
+            PendingCompletion {
+                session_id: session_id.clone(),
+                since: std::time::Instant::now(),
+            },
+        );
+        *self.hold_hydrates.entry(session_id.clone()).or_insert(0) += 1;
+        self.post(OutboundCommand::HydrateSession {
+            session_id: session_id.0,
+        });
+        Vec::new()
+    }
+
+    /// The durable text for `turn` is in hand. Bridged as authoritative; a
+    /// turn held at its terminal completes right behind it.
+    fn authoritative_arrived(&mut self, turn: &TurnId, text: String) -> Vec<AgentEvent> {
+        let Some(&pid) = self.prompt_ids.get(turn) else {
+            return Vec::new();
+        };
+        self.persisted_seen.insert(turn.clone());
+        let mut out = vec![AgentEvent::TextAuthoritative {
+            prompt_id: pid,
+            text,
+        }];
+        if self.pending_completion.contains_key(turn) {
+            self.retire_turn(turn);
+            out.push(AgentEvent::TurnComplete {
+                prompt_id: pid,
+                stop_reason: StopReason::EndTurn,
+            });
+        }
+        out
+    }
+
+    /// The `session/hydrate` reply requested for a held `turn`. Its
+    /// assistant row for that turn — or, failing a turn-tagged row, the
+    /// newest assistant row — is the text the turn completes on. A reply
+    /// with no assistant text (an empty reply; a decode failure) completes
+    /// the turn on what streamed, so it never hangs on a bad reply.
+    fn complete_from_hydrate(&mut self, turn: &TurnId, result: serde_json::Value) -> Vec<AgentEvent> {
+        let text = match serde_json::from_value::<octos_core::ui_protocol::SessionHydrateResult>(result) {
+            Ok(r) => {
+                let rows = r.messages.unwrap_or_default();
+                let tagged = rows
+                    .iter()
+                    .rev()
+                    .find(|row| row.role == "assistant" && row.turn_id.as_ref() == Some(turn));
+                let row = tagged.or_else(|| {
+                    log::warn!(
+                        "octos-ui-agent: hydrate carries no assistant row tagged for turn {}; \
+                         taking the newest",
+                        turn.0
+                    );
+                    rows.iter().rev().find(|row| row.role == "assistant")
+                });
+                row.map(|row| row.content.clone()).filter(|text| !text.trim().is_empty())
+            }
+            Err(e) => {
+                log::warn!("octos-ui-agent: decode session/hydrate for held turn: {e}");
+                None
+            }
+        };
+        match text {
+            Some(text) => {
+                log::info!(
+                    "octos-ui-agent: held turn {} completes on its hydrated row ({} chars)",
+                    turn.0,
+                    text.chars().count()
+                );
+                self.authoritative_arrived(turn, text)
+            }
+            None => self
+                .retire_turn(turn)
+                .map(|pid| {
+                    log::warn!(
+                        "octos-ui-agent: no assistant text hydrated for turn {}; completing on the streamed text",
+                        turn.0
+                    );
+                    vec![AgentEvent::TurnComplete {
+                        prompt_id: pid,
+                        stop_reason: StopReason::EndTurn,
+                    }]
+                })
+                .unwrap_or_default(),
+        }
+    }
+
+    /// Complete every held turn whose [`AUTHORITATIVE_WAIT`] has run out, on
+    /// whatever text streamed.
+    fn expire_pending_completions(&mut self) -> Vec<AgentEvent> {
+        let expired: Vec<TurnId> = self
+            .pending_completion
+            .iter()
+            .filter(|(_, p)| p.since.elapsed() >= AUTHORITATIVE_WAIT)
+            .map(|(turn, _)| turn.clone())
+            .collect();
+        let mut out = Vec::new();
+        for turn in expired {
+            if let Some(pid) = self.retire_turn(&turn) {
+                log::warn!(
+                    "octos-ui-agent: no persisted row for turn {} within {:?}; completing on the streamed text",
+                    turn.0,
+                    AUTHORITATIVE_WAIT
+                );
+                out.push(AgentEvent::TurnComplete {
+                    prompt_id: pid,
+                    stop_reason: StopReason::EndTurn,
+                });
+            }
+        }
+        out
     }
 
     /// W05 — extract a cheap, send-safe handle for issuing
@@ -342,9 +545,29 @@ impl OctosUiAgent {
                 Vec::new()
             }
             TransportEvent::SessionHydrated { session_id, result } => {
+                let key = SessionKey(session_id);
+                // A turn held at its terminal asked for this reply: the
+                // durable assistant row it carries is the text the turn
+                // finalizes on. Consumed here — it must not replay the whole
+                // session over a chat that is mid-turn — and consumed even
+                // when the live row already resolved the hold.
+                if let Some(outstanding) = self.hold_hydrates.get_mut(&key) {
+                    *outstanding -= 1;
+                    if *outstanding == 0 {
+                        self.hold_hydrates.remove(&key);
+                    }
+                    let held = self
+                        .pending_completion
+                        .iter()
+                        .find(|(_, p)| p.session_id == key)
+                        .map(|(turn, _)| turn.clone());
+                    return match held {
+                        Some(turn) => self.complete_from_hydrate(&turn, result),
+                        None => Vec::new(),
+                    };
+                }
                 // Resume flow: decode the chat rows and hand them to the App
                 // via a posted action (same pattern as `SessionListAction`).
-                let key = SessionKey(session_id);
                 let Some(&sid) = self.session_ids.get(&key) else {
                     log::warn!(
                         "octos-ui-agent: session/hydrate reply for unmapped {}",
@@ -469,22 +692,25 @@ impl OctosUiAgent {
                 let turn = self.prompt_ids.keys()
                     .find(|turn| turn.0.to_string() == ev.envelope.turn_id).cloned();
                 if let Some(turn) = turn {
-                    let pid = self.prompt_ids.remove(&turn).unwrap();
-                    self.turn_ids.remove(&pid);
-                    self.prompt_sessions.remove(&pid);
-                    let elapsed = self.generation_started.remove(&turn)
-                        .map(|(started, _)| started.elapsed().as_millis());
                     let success = matches!(outcome, octos_core::ui_protocol::TurnTerminalOutcome::Completed);
-                    self.app_prompt_cache.complete(&turn, success,
-                        token_usage.as_ref().map(|usage| usage.output_tokens as usize));
-                    log::info!("generation-metric {}", serde_json::json!({
-                        "event": if success { "completed" } else { "failed" },
-                        "turn_id": turn, "elapsed_ms": elapsed,
-                        "outcome": outcome, "token_usage": token_usage
-                    }));
+                    // The legacy `turn/completed` may already have reached
+                    // this turn and be holding it for its durable text; its
+                    // metrics were recorded then. Record them once.
+                    if !self.pending_completion.contains_key(&turn) {
+                        let elapsed = self.generation_started.remove(&turn)
+                            .map(|(started, _)| started.elapsed().as_millis());
+                        self.app_prompt_cache.complete(&turn, success,
+                            token_usage.as_ref().map(|usage| usage.output_tokens as usize));
+                        log::info!("generation-metric {}", serde_json::json!({
+                            "event": if success { "completed" } else { "failed" },
+                            "turn_id": turn, "elapsed_ms": elapsed,
+                            "outcome": outcome, "token_usage": token_usage
+                        }));
+                    }
                     return if success {
-                        vec![AgentEvent::TurnComplete { prompt_id: pid, stop_reason: StopReason::EndTurn }]
+                        self.finish_turn(&turn, "v2 terminal")
                     } else {
+                        let pid = self.retire_turn(&turn).expect("turn was tracked above");
                         vec![AgentEvent::PromptError { prompt_id: pid,
                             error: error.as_ref().map(|e| e.message.clone())
                                 .unwrap_or_else(|| format!("Generation ended: {outcome:?}")) }]
@@ -537,7 +763,9 @@ impl OctosUiAgent {
                     }
                 }
             }
-            UiNotification::TurnCompleted(ev) => {
+            // A turn the v2 terminal already reached (and is holding for its
+            // durable text) has had its metrics recorded; do not record twice.
+            UiNotification::TurnCompleted(ev) if !self.pending_completion.contains_key(&ev.turn_id) => {
                 self.app_prompt_cache.complete(&ev.turn_id, true, ev.tokens_out.map(|tokens| tokens as usize));
                 if let Some((started, _)) = self.generation_started.remove(&ev.turn_id) {
                     log::info!("generation-metric {}", serde_json::json!({
@@ -621,42 +849,36 @@ impl OctosUiAgent {
             // bridging them here would double every one.
             UiNotification::EnvelopeV2(ev) => match ev.envelope.payload {
                 PayloadV2::AssistantPersisted { text, .. } if !text.trim().is_empty() => {
-                    // Route by SESSION, not turn. The envelope does carry a
-                    // `turn_id`, but as a bare String against our `TurnId(Uuid)`
-                    // keys; `prompt_sessions` holds exactly the prompts still in
-                    // flight, so the session's entry is the turn this row
-                    // belongs to — the same routing the old lane used.
-                    self.prompt_sessions
-                        .iter()
-                        .find(|(_, sess)| **sess == ev.session_id)
-                        .map(|(prompt_id, _)| {
-                            vec![AgentEvent::TextAuthoritative {
-                                prompt_id: *prompt_id,
-                                text,
-                            }]
-                        })
+                    // Route by the envelope's turn when it names one we track
+                    // (the wire carries it as a bare String against our
+                    // `TurnId(Uuid)` keys, so compare the rendering), else by
+                    // SESSION: `prompt_sessions` holds exactly the prompts
+                    // still in flight, so the session's entry is the turn this
+                    // row belongs to — the routing the old lane used.
+                    let turn = self
+                        .prompt_ids
+                        .keys()
+                        .find(|turn| turn.0.to_string() == ev.envelope.turn_id)
+                        .cloned()
+                        .or_else(|| {
+                            self.prompt_sessions
+                                .iter()
+                                .find(|(_, sess)| **sess == ev.session_id)
+                                .and_then(|(pid, _)| self.turn_ids.get(pid).cloned())
+                        });
+                    turn.map(|turn| self.authoritative_arrived(&turn, text))
                         .unwrap_or_default()
                 }
                 _ => Vec::new(),
             },
-            UiNotification::TurnCompleted(ev) => self
-                .prompt_ids
-                .remove(&ev.turn_id)
-                .map(|pid| {
-                    self.turn_ids.remove(&pid);
-                    self.prompt_sessions.remove(&pid);
-                    vec![AgentEvent::TurnComplete {
-                        prompt_id: pid,
-                        stop_reason: StopReason::EndTurn,
-                    }]
-                })
-                .unwrap_or_default(),
+            // The legacy terminal is DIRECT-sent and can overtake the ledger
+            // lane carrying the durable row (the kernel says so itself, in
+            // `send_notification_lifecycle`); `finish_turn` holds it until
+            // that row — or its `session/hydrate` stand-in — has landed.
+            UiNotification::TurnCompleted(ev) => self.finish_turn(&ev.turn_id, "legacy turn/completed"),
             UiNotification::TurnError(ev) => self
-                .prompt_ids
-                .remove(&ev.turn_id)
+                .retire_turn(&ev.turn_id)
                 .map(|pid| {
-                    self.turn_ids.remove(&pid);
-                    self.prompt_sessions.remove(&pid);
                     vec![AgentEvent::PromptError {
                         prompt_id: pid,
                         error: format!("{}: {}", ev.code, ev.message),
@@ -895,6 +1117,10 @@ impl Agent for OctosUiAgent {
                 }
             }
         }
+        // A held terminal whose durable text never came completes on what
+        // streamed. Swept here because this runs on every UI event — the
+        // stream tick keeps them coming while a turn is open.
+        out.extend(self.expire_pending_completions());
         out
     }
 
@@ -1053,6 +1279,8 @@ mod generation_terminal_tests {
             app_prompt_cache: Default::default(),
             capabilities: None, workspace_cwd: None, fallback_profile: "_main".into(),
             thinking: false, stdio_transport: true,
+            persisted_seen: HashSet::new(), pending_completion: HashMap::new(),
+            hold_hydrates: HashMap::new(),
         }
     }
 
@@ -1065,6 +1293,142 @@ mod generation_terminal_tests {
                 payload: PayloadV2::TurnTerminal { outcome, error: None, token_usage: None },
             },
         })
+    }
+
+    /// The durable assistant row, as the ledger forwarder delivers it.
+    fn persisted(turn: &TurnId, text: &str) -> UiNotification {
+        UiNotification::EnvelopeV2(EnvelopeV2Notification {
+            session_id: SessionKey("_main:test".into()), topic: None,
+            envelope: EnvelopeV2 {
+                thread_id: "shared-thread".into(), seq: 2, cursor: None,
+                turn_id: turn.0.to_string(), client_message_id: None,
+                payload: PayloadV2::AssistantPersisted {
+                    text: text.into(),
+                    assistant_segment_id: format!("{}:assistant:iteration:1", turn.0),
+                    meta: octos_core::ui_protocol::MessageMeta {
+                        message_id: "row-1".into(),
+                        persisted_at: chrono::Utc::now(),
+                        media: Vec::new(),
+                    },
+                },
+            },
+        })
+    }
+
+    /// The direct-sent legacy terminal — the one that overtakes the ledger lane.
+    fn legacy_completed(turn: &TurnId) -> UiNotification {
+        UiNotification::TurnCompleted(TurnCompletedEvent {
+            session_id: SessionKey("_main:test".into()), topic: None, turn_id: turn.clone(),
+            cursor: None, tokens_in: None, tokens_out: None, session_result: None,
+        })
+    }
+
+    /// A `session/hydrate` reply carrying the turn's assistant row.
+    fn hydrated(turn: &TurnId, text: &str) -> TransportEvent {
+        TransportEvent::SessionHydrated {
+            session_id: "_main:test".into(),
+            result: serde_json::json!({
+                "session_id": "_main:test",
+                "cursor": {"stream": "_main:test", "seq": 3},
+                "messages": [
+                    {"seq": 1, "role": "user", "content": "tokyo weather",
+                     "turn_id": turn, "persisted_at": "2026-09-14T09:28:19Z"},
+                    {"seq": 2, "role": "assistant", "content": text,
+                     "turn_id": turn, "persisted_at": "2026-09-14T09:28:36Z"}
+                ]
+            }),
+        }
+    }
+
+    const CARD: &str = "```runl0\n# level: L0\n# model: weather\nview root Col {}\n```";
+
+    /// The failure as measured: 897 of 1840 deltas, then the legacy
+    /// terminal, then (late) the persisted row. The terminal alone must not
+    /// finalize; the row does, as authoritative text.
+    #[test]
+    fn legacy_terminal_waits_for_the_persisted_row() {
+        let mut agent = agent();
+        let (turn, prompt) = track(&mut agent);
+        assert!(agent.translate_notification(legacy_completed(&turn)).is_empty(),
+            "a terminal without the durable row must hold the turn");
+        assert!(agent.prompt_ids.contains_key(&turn), "a held turn keeps routing late frames");
+        assert!(agent.pending_completion.contains_key(&turn));
+        let events = agent.translate_notification(persisted(&turn, CARD));
+        assert!(matches!(events.as_slice(),
+            [AgentEvent::TextAuthoritative { prompt_id: p1, text }, AgentEvent::TurnComplete { prompt_id: p2, .. }]
+            if *p1 == prompt && *p2 == prompt && text == CARD), "{events:?}");
+        assert!(agent.prompt_ids.is_empty() && agent.pending_completion.is_empty()
+            && agent.persisted_seen.is_empty());
+        assert!(agent.translate_notification(terminal(&turn, TurnTerminalOutcome::Completed)).is_empty(),
+            "the ledger lane's own terminal, arriving after, does nothing");
+    }
+
+    /// When even the live row is lost (the ledger forwarder lagged), the
+    /// `session/hydrate` reply the hold requested completes the turn.
+    #[test]
+    fn held_turn_completes_on_the_hydrated_row() {
+        let mut agent = agent();
+        let (turn, prompt) = track(&mut agent);
+        assert!(agent.translate_notification(legacy_completed(&turn)).is_empty());
+        let events = agent.translate(hydrated(&turn, CARD));
+        assert!(matches!(events.as_slice(),
+            [AgentEvent::TextAuthoritative { text, .. }, AgentEvent::TurnComplete { prompt_id, .. }]
+            if *prompt_id == prompt && text == CARD), "{events:?}");
+        assert!(agent.pending_completion.is_empty());
+    }
+
+    /// The hydrate reply for a held turn is consumed by it and never replays
+    /// the session over the chat (no `SessionResumeHydrated`); a reply whose
+    /// assistant text is empty still completes the turn.
+    #[test]
+    fn empty_hydrated_row_completes_on_the_streamed_text() {
+        let mut agent = agent();
+        let (turn, prompt) = track(&mut agent);
+        assert!(agent.translate_notification(legacy_completed(&turn)).is_empty());
+        let events = agent.translate(hydrated(&turn, "   "));
+        assert!(matches!(events.as_slice(), [AgentEvent::TurnComplete { prompt_id, .. }] if *prompt_id == prompt),
+            "{events:?}");
+    }
+
+    /// The hydrate a hold requested still belongs to the hold when the live
+    /// row resolved it first: its reply is swallowed, never replayed over the
+    /// chat as a session resume.
+    #[test]
+    fn a_late_hold_hydrate_reply_is_swallowed() {
+        let mut agent = agent();
+        let (turn, _) = track(&mut agent);
+        assert!(agent.translate_notification(legacy_completed(&turn)).is_empty());
+        assert_eq!(agent.hold_hydrates.get(&SessionKey("_main:test".into())), Some(&1));
+        assert!(matches!(agent.translate_notification(persisted(&turn, CARD)).as_slice(),
+            [AgentEvent::TextAuthoritative { .. }, AgentEvent::TurnComplete { .. }]));
+        assert!(agent.translate(hydrated(&turn, CARD)).is_empty());
+        assert!(agent.hold_hydrates.is_empty());
+    }
+
+    /// The ordered lane: row, then terminal — completes at the terminal.
+    #[test]
+    fn persisted_row_first_completes_at_the_terminal() {
+        let mut agent = agent();
+        let (turn, prompt) = track(&mut agent);
+        let events = agent.translate_notification(persisted(&turn, CARD));
+        assert!(matches!(events.as_slice(), [AgentEvent::TextAuthoritative { .. }]));
+        let events = agent.translate_notification(legacy_completed(&turn));
+        assert!(matches!(events.as_slice(), [AgentEvent::TurnComplete { prompt_id, .. }] if *prompt_id == prompt));
+        assert!(agent.prompt_ids.is_empty());
+    }
+
+    /// A kernel that never persists a row must not hang the turn.
+    #[test]
+    fn held_turn_expires_onto_the_streamed_text() {
+        let mut agent = agent();
+        let (turn, prompt) = track(&mut agent);
+        assert!(agent.translate_notification(legacy_completed(&turn)).is_empty());
+        assert!(agent.expire_pending_completions().is_empty(), "not yet");
+        agent.pending_completion.get_mut(&turn).unwrap().since =
+            std::time::Instant::now() - AUTHORITATIVE_WAIT;
+        let events = agent.expire_pending_completions();
+        assert!(matches!(events.as_slice(), [AgentEvent::TurnComplete { prompt_id, .. }] if *prompt_id == prompt));
+        assert!(agent.prompt_ids.is_empty() && agent.pending_completion.is_empty());
     }
 
     #[test]
@@ -1118,6 +1482,9 @@ mod generation_terminal_tests {
         let (turn, prompt) = track(&mut agent);
         assert!(agent.translate_notification(terminal(&TurnId::new(), TurnTerminalOutcome::Completed)).is_empty());
         assert!(agent.prompt_ids.contains_key(&turn));
+        // The ledger lane is ordered: the durable row precedes its terminal.
+        assert!(matches!(agent.translate_notification(persisted(&turn, CARD)).as_slice(),
+            [AgentEvent::TextAuthoritative { .. }]));
         let events = agent.translate_notification(terminal(&turn, TurnTerminalOutcome::Completed));
         assert!(matches!(events.as_slice(), [AgentEvent::TurnComplete { prompt_id, .. }] if *prompt_id == prompt));
         assert!(agent.prompt_ids.is_empty() && agent.turn_ids.is_empty()
