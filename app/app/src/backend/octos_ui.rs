@@ -58,6 +58,8 @@ pub struct OctosUiAgent {
     cmd_tx: Sender<OutboundCommand>,
     /// Inbound side; drained each tick on `handle_event`.
     evt_rx: Receiver<TransportEvent>,
+    /// The transport's channel has closed: said once, not once per event.
+    transport_gone: bool,
     /// Makepad SessionId → octos-core SessionKey.
     session_keys: HashMap<SessionId, SessionKey>,
     /// octos-core SessionKey → Makepad SessionId (reverse lookup for
@@ -151,6 +153,7 @@ impl OctosUiAgent {
             _runtime: runtime,
             cmd_tx,
             evt_rx,
+            transport_gone: false,
             session_keys: HashMap::new(),
             session_ids: HashMap::new(),
             ready_sessions: std::collections::HashSet::new(),
@@ -890,7 +893,12 @@ impl Agent for OctosUiAgent {
                 Ok(evt) => out.extend(self.translate(evt)),
                 Err(TryRecvError::Empty) => break,
                 Err(TryRecvError::Disconnected) => {
-                    log::warn!("octos-ui-agent: transport channel disconnected");
+                    // Every event polls this channel; a dead transport is
+                    // reported once, not thousands of times per minute.
+                    if !self.transport_gone {
+                        self.transport_gone = true;
+                        log::warn!("octos-ui-agent: transport channel disconnected");
+                    }
                     break;
                 }
             }
