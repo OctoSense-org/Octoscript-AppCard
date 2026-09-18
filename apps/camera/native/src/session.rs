@@ -70,6 +70,8 @@ pub enum Overlay {
     /// A ruler for the named parameter (beauty, aperture, night shutter, …).
     Ruler(Ruler),
     Focus(f64, f64),
+    /// The roulette zoom dial (press-and-slide on the quick-zoom bar).
+    ZoomDial,
     Settings(usize),
     BeautyDialog(bool),
     Gallery,
@@ -134,6 +136,8 @@ pub struct Session {
     pub placeholder: bool,
     /// Asset name of the latest still (served by the module), shown in the gallery corner.
     pub last_photo: Option<String>,
+    /// A continuous zoom set with the dial or a pinch (shown on the selected chip), until a chip is tapped.
+    pub zoom_live: Option<f32>,
     pub now: f64,
     pub panel_until: Option<f64>,
     controls: HashMap<String, Action>,
@@ -141,6 +145,17 @@ pub struct Session {
 }
 
 pub const FILTERS: [(&str, &str, &str); 8] = [("原色", "Original", "film"), ("鲜艳", "Vivid", "film_solid"), ("明快", "Bright", "film_solid"), ("黑白", "Mono", "film"), ("自然", "Natural", "petal"), ("胶片", "Film", "petal"), ("电影", "Cinema", "petal"), ("动漫", "Anime", "petal")];
+/// Roulette zoom dial geometry (artboard units), measured on the phone.
+pub const DIAL_CX: f64 = 203.0;
+pub const DIAL_CY: f64 = 747.0;
+pub const DIAL_R: f64 = 270.0;
+pub const DEG_PER_OCTAVE: f32 = 17.0;
+/// Top-left of a stop label's strip for a stop `octaves` away from the dial's current zoom.
+pub fn dial_stop_pos(octaves: f32) -> (f64, f64) {
+    let a = (octaves * DEG_PER_OCTAVE).to_radians() as f64;
+    let r = DIAL_R - 20.0;
+    (DIAL_CX + r * a.sin(), DIAL_CY - r * a.cos())
+}
 pub const APERTURES: [&str; 10] = ["F0.95", "F1.2", "F1.4", "F2.0", "F2.4", "F2.8", "F4.0", "F5.6", "F8.0", "F16"];
 pub const NIGHT_SHUTTERS: [&str; 7] = ["自动", "1s", "2s", "4s", "8s", "15s", "30s"];
 pub const SLOW_RATES: [&str; 3] = ["4x", "8x", "32x"];
@@ -159,12 +174,14 @@ impl Session {
         for m in Mode::BAR.iter().chain(Mode::MORE.iter()) { zoom.insert(*m, if m.zooms(false).first() == Some(&"W") { 1 } else { 0 }); }
         Session { locale: locale.into(), mode: Mode::Photo, front: false, flash: Flash::Off, live_photo: false, ai_compose: false, stabilise: false, grid: false, watermark: false, ratio: 0, filter: 0, zoom,
             beauty: 5, beauty_on: true, aperture: 4, night_shutter: 0, night_sub: 0, slow_rate: 1, timelapse: 0, macro_focus: 0, video_res: 2, video_fps: 0, pro: [0, 0, 4, 4, 1, 0], pro_locked: [false; 6], pro_raw: false, pro_video: false,
-            pano_vertical: false, light_paint: 0, overlay: Overlay::None, toast: None, recording: Recording::Off, intro_seen: HashSet::new(), shots: 0, settings: [false, false, false, true, false, false, true, true], low_light: false, placeholder: true, last_photo: None, now: 0.0, panel_until: None,
+            pano_vertical: false, light_paint: 0, overlay: Overlay::None, toast: None, recording: Recording::Off, intro_seen: HashSet::new(), shots: 0, settings: [false, false, false, true, false, false, true, true], low_light: false, placeholder: true, last_photo: None, zoom_live: None, now: 0.0, panel_until: None,
             controls: HashMap::new(), revision: 0 }
     }
     pub fn zoom_index(&self) -> usize { *self.zoom.get(&self.mode).unwrap_or(&0) }
-    /// The selected quick-zoom chip as a lens ratio (`W` is the ultra-wide, 0.5×).
+    /// The selected quick-zoom chip as a lens ratio (`W` is the ultra-wide, 0.5×),
+    /// or the continuous value the dial / a pinch set.
     pub fn zoom_ratio(&self) -> f32 {
+        if let Some(live) = self.zoom_live { return live; }
         let items = self.mode.zooms(self.front);
         match items.get(self.zoom_index().min(items.len().saturating_sub(1))) {
             Some(&"W") => 0.5,
@@ -229,7 +246,7 @@ impl Session {
             Action::ToggleStab => { self.stabilise = !self.stabilise; self.set_toast(t(&locale, if self.stabilise { "视频防抖已开启" } else { "视频防抖已关闭" }, if self.stabilise { "Stabilisation on" } else { "Stabilisation off" }).into()); }
             Action::OpenFilter => self.overlay = Overlay::FilterMenu,
             Action::SetFilter(i) => { self.filter = i; self.overlay = Overlay::None; }
-            Action::Zoom(i) => { self.zoom.insert(self.mode, i); }
+            Action::Zoom(i) => { self.zoom.insert(self.mode, i); self.zoom_live = None; }
             Action::ToggleBox => self.overlay = if matches!(self.overlay, Overlay::Box(_)) { Overlay::None } else { Overlay::Box(0) },
             Action::BoxPage(p) => self.overlay = Overlay::Box(p),
             Action::BoxSettings => self.overlay = Overlay::Settings(0),
@@ -386,6 +403,7 @@ impl Session {
             Overlay::Intro(m) => self.render_intro(&mut s, m),
             Overlay::Ruler(r) => self.render_ruler(&mut s, r),
             Overlay::Focus(x, y) => self.render_focus(&mut s, x, y),
+            Overlay::ZoomDial => {}
             Overlay::Settings(page) => self.render_settings(&mut s, page),
             Overlay::BeautyDialog(on) => self.render_beauty_dialog(&mut s, on),
             Overlay::Gallery => self.render_gallery(&mut s),
@@ -502,6 +520,7 @@ impl Session {
         let y = if self.mode == Mode::Pro { 441.5 } else { 517.5 };
         let w = 40.0 * items.len() as f64; let x0 = 203.0 - w / 2.0;
         let sel = self.zoom_index().min(items.len() - 1);
+        if self.overlay == Overlay::ZoomDial { self.render_zoom_dial(s); return; }
         s.stack("zoom_pill", "page", x0, y, w, 40.0, Some(ZOOM_PILL), 20.0, None);
         // The selected chip lives in its own strip so the module can slide it
         // between labels (the phone's selection glides with a spring).
@@ -511,8 +530,74 @@ impl Session {
             let id = self.ctl(&format!("zoom_{}", label.trim_end_matches('x').to_lowercase()), Action::Zoom(i));
             let x = x0 + i as f64 * 40.0;
             s.button(&id, "page", x, y, 40.0, 40.0, true);
-            s.text(&format!("{id}_label"), &id, label, x, y, 40.0, 40.0, 13.0, true, if i == sel { CHIP_TEXT } else { WHITE }, Align::Center);
+            let live = if i == sel { self.zoom_live.map(|z| format!("{z:.1}x")) } else { None };
+            s.text(&format!("{id}_label"), &id, live.as_deref().unwrap_or(label), x, y, 40.0, 40.0, 13.0, true, if i == sel { CHIP_TEXT } else { WHITE }, Align::Center);
         }
+    }
+
+    /// The roulette dial: a ring of radius 270 centred below the viewfinder whose
+    /// top point is the current zoom; ticks every 0.1 octave at 17° per octave,
+    /// labelled stops with their focal length. The module rotates the ring in
+    /// place and rewrites the two readouts while the finger slides.
+    fn render_zoom_dial(&mut self, s: &mut Scene) {
+        let z = self.zoom_ratio();
+        let svg = self.zoom_dial_svg();
+        let file = format!("zoom_dial_{}_{}.svg", self.mode.id(), if self.front { "front" } else { "rear" });
+        s.svg_asset("zoom_dial", "page", &file, svg, DIAL_CX - DIAL_R, DIAL_CY - DIAL_R, DIAL_R * 2.0, DIAL_R * 2.0);
+        s.stack("dial_dot", "page", DIAL_CX - 3.0, DIAL_CY - DIAL_R - 3.0, 6.0, 6.0, Some(WHITE), 3.0, None);
+        s.stack("dial_needle", "page", DIAL_CX - 1.0, DIAL_CY - DIAL_R + 8.0, 2.0, 9.0, Some(RED), 0.0, None);
+        s.text_w("dial_value", "page", &format!("{z:.1}x"), DIAL_CX - 40.0, DIAL_CY - DIAL_R + 19.0, 80.0, 18.0, 11.0, 700, RED, Align::Center);
+        s.text_w("dial_big", "page", &format!("{z:.1}x"), 103.0, 401.0, 200.0, 40.0, 28.0, 500, WHITE, Align::Center);
+        // The stop labels are native text in strips the module slides along the ring
+        // (the SVG renderer draws geometry only); laid out here at the current zoom.
+        let current = z.log2();
+        for (label, stop, mm) in self.zoom_stops() {
+            let (x, y) = dial_stop_pos(stop.log2() - current);
+            let id = format!("dial_stop_{}", label.trim_end_matches('x').to_lowercase());
+            s.scroll(&id, "page", x - 30.0, y, 60.0, 34.0);
+            s.text_w(&format!("{id}_label"), &id, label, 0.0, 0.0, 60.0, 16.0, 12.0, 700, WHITE, Align::Center);
+            s.text_w(&format!("{id}_mm"), &id, mm, 0.0, 16.0, 60.0, 14.0, 9.5, 500, "ffffffd9", Align::Center);
+        }
+    }
+
+    /// The dial went away: select the chip nearest to the live zoom; the chip keeps the exact value when it differs.
+    pub fn snap_zoom_to_chip(&mut self) {
+        let live = self.zoom_ratio();
+        let stops = self.zoom_stops();
+        if stops.is_empty() { return; }
+        let (i, (_, stop, _)) = stops.iter().enumerate().min_by(|a, b| (a.1 .1.log2() - live.log2()).abs().partial_cmp(&(b.1 .1.log2() - live.log2()).abs()).unwrap()).unwrap();
+        self.zoom.insert(self.mode, i);
+        self.zoom_live = if (stop.log2() - live.log2()).abs() < 0.02 { None } else { Some(live) };
+        self.revision += 1;
+    }
+
+    /// Focal lengths of the quick-zoom stops on the Mate 70 Air (24 mm main lens).
+    pub fn zoom_stops(&self) -> Vec<(&'static str, f32, &'static str)> {
+        self.mode.zooms(self.front).iter().map(|l| match *l {
+            "W" => ("W", 0.67, "16mm"), "1x" => ("1x", 1.0, "24mm"), "2x" => ("2x", 2.0, "48mm"), "3x" => ("3x", 3.0, "72mm"),
+            "4x" => ("4x", 4.0, "96mm"), "5x" => ("5x", 5.0, "120mm"), _ => ("1x", 1.0, "24mm"),
+        }).collect()
+    }
+    pub fn zoom_range(&self) -> (f32, f32) { (if self.front { 0.8 } else { 0.67 }, if self.front { 5.0 } else { 20.0 }) }
+
+    pub fn zoom_dial_svg(&self) -> String {
+        let (lo, hi) = self.zoom_range();
+        let c = DIAL_R;
+        let mut out = format!("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 {d} {d}\" width=\"{d}\" height=\"{d}\">", d = c * 2.0);
+        out.push_str(&format!("<circle cx=\"{c}\" cy=\"{c}\" r=\"{r}\" fill=\"#000000\" fill-opacity=\"0.78\"/>", r = c - 1.0));
+        out.push_str(&format!("<circle cx=\"{c}\" cy=\"{c}\" r=\"{r}\" fill=\"none\" stroke=\"#ffffff\" stroke-opacity=\"0.9\" stroke-width=\"1.4\"/>", r = c - 1.0));
+        let stops = self.zoom_stops();
+        let (mut k, top) = ((lo.log2() * 10.0).ceil() as i32, (hi.log2() * 10.0).floor() as i32);
+        while k <= top {
+            let octave = k as f32 / 10.0;
+            let angle = octave * DEG_PER_OCTAVE;
+            let major = stops.iter().any(|(_, z, _)| (z.log2() - octave).abs() < 0.02);
+            let (len, width, alpha) = if major { (8.0, 1.2, 1.0) } else { (4.0, 0.7, 0.45) };
+            out.push_str(&format!("<line x1=\"{c}\" y1=\"{y1}\" x2=\"{c}\" y2=\"{y2}\" stroke=\"#ffffff\" stroke-opacity=\"{alpha}\" stroke-width=\"{width}\" transform=\"rotate({angle:.2} {c} {c})\"/>", y1 = 5.0, y2 = 5.0 + len));
+            k += 1;
+        }
+        out.push_str("</svg>");
+        out
     }
     fn param(&mut self, s: &mut Scene, id: &str, action: Action, icon: &str, label: &str, right: bool, x_override: Option<f64>) {
         let x = x_override.unwrap_or(if right { 340.0 } else { 0.0 });
@@ -1022,7 +1107,7 @@ mod tests {
             while s.overlay != Overlay::None { assert!(s.back()); render_ok(&mut s); }
         }
         s.go(Mode::Photo);
-        for overlay in [Overlay::FlashPanel, Overlay::FilterMenu, Overlay::Box(0), Overlay::Box(1), Overlay::Box(2), Overlay::Box(3), Overlay::Focus(200.0, 300.0), Overlay::Settings(0), Overlay::Gallery, Overlay::Ruler(Ruler::Beauty), Overlay::Exposing { until: 4.0 }, Overlay::Vision] {
+        for overlay in [Overlay::FlashPanel, Overlay::FilterMenu, Overlay::Box(0), Overlay::Box(1), Overlay::Box(2), Overlay::Box(3), Overlay::Focus(200.0, 300.0), Overlay::Settings(0), Overlay::Gallery, Overlay::Ruler(Ruler::Beauty), Overlay::Exposing { until: 4.0 }, Overlay::Vision, Overlay::ZoomDial] {
             s.overlay = overlay; render_ok(&mut s);
         }
         s.go(Mode::Video); s.overlay = Overlay::ResPanel; render_ok(&mut s);

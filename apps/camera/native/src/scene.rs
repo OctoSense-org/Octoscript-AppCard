@@ -117,6 +117,11 @@ impl Scene {
                          "color": col(WHITE), "font_src": REGULAR, "variant": "single_line", "alignx": 0, "focused": if focused { 1 } else { 0 }}), id);
         self.controls.insert(id.into(), json!({"event": id, "input": true, "enabled": true}));
     }
+    /// A generated SVG (`file` ends in .svg) served from the loopback asset server.
+    pub fn svg_asset(&mut self, id: &str, parent: &str, file: &str, svg: String, x: f64, y: f64, w: f64, h: f64) {
+        self.assets.insert(file.to_owned(), svg);
+        self.push(json!({"t": "svg", "id": id, "x": x, "y": y, "w": w, "h": h, "src": format!("{}/assets/{file}", self.asset_base)}), parent);
+    }
     /// A raster image served from the loopback asset server (`name` is the asset file).
     pub fn image(&mut self, id: &str, parent: &str, name: &str, x: f64, y: f64, w: f64, h: f64) {
         self.push(json!({"t": "image", "id": id, "x": x, "y": y, "w": w, "h": h, "src": format!("{}/assets/{name}", self.asset_base)}), parent);

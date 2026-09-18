@@ -197,6 +197,13 @@ pub struct CameraView {
     // a finger dragging the focus box: when the real focus point was last sent
     #[rust] focus_drag: bool,
     #[rust] focus_sent_at: f64,
+    // the roulette zoom dial: a press on the quick-zoom bar, the finger's slide, the fling after release
+    #[rust] pill_press: Option<(f64, f64, f64)>,
+    #[rust] dial_drag: Option<(f64, f64, f64)>,
+    #[rust] dial_log2: f64,
+    #[rust] dial_vel: f64,
+    #[rust] dial_hide_at: Option<f64>,
+    #[rust] dial_sent_at: f64,
 }
 
 fn retire(cx: &mut Cx, widget: &WidgetRef) {
@@ -456,6 +463,85 @@ impl CameraView {
         }
     }
 
+    /// The quick-zoom pill's rectangle in artboard units, when a mode shows one.
+    fn zoom_pill_rect(&mut self) -> Option<(f64, f64, f64, f64)> {
+        let s = self.session();
+        let n = s.mode.zooms(s.front).len();
+        if n == 0 || s.overlay != session::Overlay::None || s.recording != session::Recording::Off { return None; }
+        let w = 40.0 * n as f64;
+        Some((203.0 - w / 2.0, if s.mode == session::Mode::Pro { 441.5 } else { 517.5 }, w, 40.0))
+    }
+    fn on_zoom_pill(&mut self, x: f64, y: f64) -> bool {
+        self.zoom_pill_rect().map_or(false, |(px, py, pw, ph)| x >= px && x <= px + pw && y >= py && y <= py + ph)
+    }
+
+    /// Show the roulette dial at the current zoom.
+    fn open_dial(&mut self, cx: &mut Cx) {
+        if self.session().overlay == session::Overlay::ZoomDial { return; }
+        self.dial_log2 = (self.session().zoom_ratio() as f64).log2();
+        self.dial_vel = 0.0;
+        self.session().overlay = session::Overlay::ZoomDial;
+        self.session().revision += 1;
+        self.suppress_activation = true;
+        self.remount_now(cx);
+        self.apply_dial(cx, true);
+    }
+
+    /// Turn the ring so the current zoom sits under the dot, rewrite the readouts, aim the lens.
+    fn apply_dial(&mut self, cx: &mut Cx, force: bool) {
+        let (lo, hi) = self.session().zoom_range();
+        self.dial_log2 = self.dial_log2.clamp((lo as f64).log2(), (hi as f64).log2());
+        let zoom = 2f64.powf(self.dial_log2) as f32;
+        if let Some(native) = self.mapping.get("zoom_dial").cloned() {
+            let widget = self.view.widget(cx, &[LiveId::from_str(&native)]);
+            if let Some(mut svg) = widget.borrow_mut::<makepad_widgets::Svg>() {
+                svg.draw_svg.rotation = (-self.dial_log2 * session::DEG_PER_OCTAVE as f64).to_radians() as f32;
+            }
+            widget.redraw(cx);
+        }
+        let text = format!("{zoom:.1}x");
+        for id in ["dial_value", "dial_big"] {
+            if let Some(native) = self.mapping.get(id).cloned() { self.view.widget(cx, &[LiveId::from_str(&native)]).set_text(cx, &text); }
+        }
+        // the stop labels ride along the ring
+        let stops = self.session().zoom_stops();
+        let current = self.dial_log2 as f32;
+        for (label, stop, _) in stops {
+            let id = format!("dial_stop_{}", label.trim_end_matches('x').to_lowercase());
+            let (Some(&(_, _, w, h)), Some(native)) = (self.strips.get(&id), self.mapping.get(&id).cloned()) else { continue };
+            let octaves = stop.log2() - current;
+            let (x, y) = session::dial_stop_pos(octaves);
+            let pos = dvec2(self.art_origin.x + (x - 30.0) * self.scale, self.art_origin.y + y * self.scale);
+            let strip = self.view.view(cx, &[LiveId::from_str(&native)]);
+            strip.set_walk(cx, Walk { abs_pos: Some(pos), width: Size::Fixed(w * self.scale), height: Size::Fixed(h * self.scale), ..Default::default() });
+            // a stop right under the readout gives way to it, as on the phone
+            strip.set_visible(cx, octaves.abs() > 0.22);
+        }
+        self.session().zoom_live = Some(zoom);
+        self.zoom_ratio = zoom;
+        let now = self.now();
+        if force || now - self.dial_sent_at > 0.06 {
+            self.dial_sent_at = now;
+            if let Some(input) = self.camera_input { cx.camera_control(input, CameraControl::ZoomRatio(zoom)); self.sent_zoom = Some(zoom); }
+        }
+        self.view.redraw(cx);
+    }
+
+    /// The dial goes away: the chips come back with the live value on the selected one.
+    fn close_dial(&mut self, cx: &mut Cx) {
+        if self.session().overlay != session::Overlay::ZoomDial { return; }
+        self.dial_hide_at = None;
+        self.dial_vel = 0.0;
+        self.session().overlay = session::Overlay::None;
+        self.session().snap_zoom_to_chip();
+        self.remount_now(cx);
+        self.apply_dial_end(cx);
+    }
+    fn apply_dial_end(&mut self, cx: &mut Cx) {
+        let zoom = 2f64.powf(self.dial_log2) as f32;
+        if let Some(input) = self.camera_input { cx.camera_control(input, CameraControl::ZoomRatio(zoom)); self.sent_zoom = Some(zoom); }
+    }
+
     fn on_mode_bar(&mut self, x: f64, y: f64) -> bool {
         let s = self.session();
         (576.6..=632.6).contains(&y) && (0.0..=406.0).contains(&x) && s.overlay == session::Overlay::None && s.mode_bar_index().is_some() && s.recording == session::Recording::Off
@@ -599,11 +685,24 @@ impl Widget for CameraView {
         if let Some(frame) = self.next_frame.is_event(event) {
             if self.bar_drag.is_none() { self.bar.step(frame.time); }
             self.chip.step(frame.time);
+            if self.dial_drag.is_none() && self.dial_vel.abs() > 0.02 && self.session().overlay == session::Overlay::ZoomDial {
+                // the ring coasts after a flick and slows exponentially (about a quarter second)
+                let dt = 1.0 / 60.0;
+                self.dial_log2 += self.dial_vel * dt;
+                self.dial_vel *= (-dt / 0.22f64).exp();
+                let (lo, hi) = self.session().zoom_range();
+                if self.dial_log2 <= (lo as f64).log2() || self.dial_log2 >= (hi as f64).log2() { self.dial_vel = 0.0; }
+                self.apply_dial(cx, false);
+                self.dial_hide_at = Some(self.now() + 1.2);
+                self.next_frame = cx.new_next_frame();
+            }
             self.apply_motion(cx);
         }
         if self.timer.is_event(event).is_some() {
             self.suppress_activation = false;
             let now = self.now();
+            if let Some((_, _, t0)) = self.pill_press { if now - t0 > 0.35 && self.session().overlay == session::Overlay::None { self.open_dial(cx); } }
+            if let Some(at) = self.dial_hide_at { if now > at && self.dial_drag.is_none() { self.close_dial(cx); } }
             if self.session().tick(now) { self.mounted_revision = None; }
             let revision = self.session().revision;
             if self.mounted_revision != Some(revision) && self.viewport.x > 0. {
@@ -618,7 +717,13 @@ impl Widget for CameraView {
         let mut ended: Option<DVec2> = None;
         let mut moved: Option<DVec2> = None;
         match event {
-            Event::MouseDown(e) => { if std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer down at {:?}", e.abs); } self.finger_start = Some(e.abs); self.finger_last = Some(e.abs); self.suppress_activation = false; }
+            Event::MouseDown(e) => {
+                if std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer down at {:?}", e.abs); }
+                self.finger_start = Some(e.abs); self.finger_last = Some(e.abs); self.suppress_activation = false;
+                let (x, y) = self.to_artboard(e.abs);
+                if self.on_zoom_pill(x, y) { self.pill_press = Some((x, y, self.now())); }
+                if self.session().overlay == session::Overlay::ZoomDial { self.dial_hide_at = None; self.dial_vel = 0.0; }
+            }
             Event::MouseMove(e) if self.finger_start.is_some() => moved = Some(e.abs),
             Event::MouseUp(e) => ended = Some(e.abs),
             Event::TouchUpdate(t) => {
@@ -647,7 +752,12 @@ impl Widget for CameraView {
                 } else {
                     for touch in &t.touches {
                         match touch.state {
-                            TouchState::Start => { self.finger_start = Some(touch.abs); self.finger_last = Some(touch.abs); self.suppress_activation = false; }
+                            TouchState::Start => {
+                                self.finger_start = Some(touch.abs); self.finger_last = Some(touch.abs); self.suppress_activation = false;
+                                let (x, y) = self.to_artboard(touch.abs);
+                                if self.on_zoom_pill(x, y) { self.pill_press = Some((x, y, self.now())); }
+                                if self.session().overlay == session::Overlay::ZoomDial { self.dial_hide_at = None; self.dial_vel = 0.0; }
+                            }
                             TouchState::Move => moved = Some(touch.abs),
                             TouchState::Stop => { ended = Some(touch.abs); self.pinch = None; }
                             _ => {}
@@ -662,6 +772,23 @@ impl Widget for CameraView {
             let (x, y) = self.to_artboard(p);
             let (x0, y0) = self.to_artboard(start);
             let t = self.now();
+            // A sideways slide on the quick-zoom bar opens the roulette dial; with the dial up any slide turns it.
+            if self.dial_drag.is_none() && self.pill_press.is_some() && (x - x0).abs() > 6.0 && self.session().overlay == session::Overlay::None { self.open_dial(cx); }
+            if self.session().overlay == session::Overlay::ZoomDial {
+                let t = self.now();
+                let (last_x, last_t, vel) = self.dial_drag.unwrap_or((x, t, 0.0));
+                let dx = x - last_x;
+                // the ring turns with the finger: an arc length of dx at radius R, 17° per octave
+                let dlog2 = -(dx / session::DIAL_R).to_degrees() / session::DEG_PER_OCTAVE as f64;
+                let dt = (t - last_t).max(1e-3);
+                self.dial_drag = Some((x, t, 0.5 * vel + 0.5 * dlog2 / dt));
+                self.dial_log2 += dlog2;
+                self.suppress_activation = true;
+                self.apply_dial(cx, false);
+                self.finger_last = Some(p);
+                self.view.handle_event(cx, event, scope);
+                return;
+            }
             // With the focus box up, the finger drags it (and the camera's focus point) instead of swiping modes.
             let focus_up = matches!(self.session().overlay, session::Overlay::Focus(..));
             if self.bar_drag.is_none() && focus_up && !self.on_small_control(x0, y0) && (self.focus_drag || (x - x0).hypot(y - y0) > 6.0) {
@@ -688,6 +815,17 @@ impl Widget for CameraView {
         }
         if ended.is_some() && std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer up at {:?} start {:?}", ended, self.finger_start); }
         if let Some(end) = ended {
+            self.pill_press = None;
+            if let Some((_, _, vel)) = self.dial_drag.take() {
+                let _ = end;
+                self.dial_vel = vel.clamp(-12.0, 12.0);
+                self.dial_hide_at = Some(self.now() + 1.2);
+                if self.dial_vel.abs() > 0.02 { self.next_frame = cx.new_next_frame(); } else { self.apply_dial(cx, true); }
+                self.finger_start = None;
+            } else if self.session().overlay == session::Overlay::ZoomDial {
+                self.dial_hide_at = Some(self.now() + 1.2);
+                self.finger_start = None;
+            }
             if self.focus_drag {
                 self.focus_drag = false;
                 let (x, y) = self.to_artboard(end);

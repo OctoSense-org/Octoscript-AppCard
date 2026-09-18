@@ -91,10 +91,18 @@ cargo test --release --manifest-path ../Octoscript-AppCard/apps/camera/native/Ca
   90 ms apart on the phone). Measured through the instrument on the Mate:
   a mode tap settles in about 0.4 s without overshoot.
 - Real camera controls on OpenHarmony: tap-to-focus sets the focus and
-  metering point, the quick-zoom chips and a two-finger pinch set the lens
-  ratio (the selected chip shows the live value), the flash menu sets the
+  metering point and the box follows a dragging finger, the quick-zoom chips
+  and a two-finger pinch set the lens ratio, the flash menu sets the
   flash/torch mode and the Pro EV value sets exposure compensation, all
   through Makepad's `camera_control`.
+- The roulette zoom dial (`docs/evidence/mate-zoom-dial.jpeg`): a press-and-hold
+  or a sideways slide on the quick-zoom bar opens the phone's ring (radius 270
+  centred below the viewfinder, ticks every 0.1 octave at 17° per octave,
+  labelled stops with focal lengths, red readout under the dot and the large
+  readout in the viewfinder). The ring is one SVG the module rotates in place
+  as the finger slides, the lens follows continuously, a flick coasts with
+  exponential decay, and after 1.2 s the chips return with the live value on
+  the nearest stop.
 
 ## Evidence
 
