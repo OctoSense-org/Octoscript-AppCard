@@ -11,7 +11,7 @@ use makepad_app_module::{
 pub use makepad_widgets;
 use makepad_widgets::makepad_platform::permission::{Permission, PermissionStatus};
 use makepad_widgets::makepad_platform::event::TouchState;
-use makepad_widgets::makepad_platform::video::{VideoFormatId, VideoInputId, VideoInputsEvent, VideoPixelFormat};
+use makepad_widgets::makepad_platform::video::{CameraControl, CameraFlashMode, VideoFormatId, VideoInputId, VideoInputsEvent, VideoPixelFormat};
 use makepad_widgets::*;
 use serde_json::Value;
 use std::collections::{HashMap, HashSet};
@@ -101,6 +101,32 @@ struct CameraChoice { input_id: VideoInputId, format_id: VideoFormatId, name: St
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
 enum PreviewState { #[default] Idle, Starting, Running, Stopping }
 
+/// A critically-damped-ish spring in artboard units (HarmonyOS-style
+/// `springMotion`: ~0.42 s response, 0.9 damping fraction), stepped per frame.
+#[derive(Default, Clone, Copy)]
+struct Spring { pos: f64, vel: f64, last_t: Option<f64> }
+impl Spring {
+    fn active(&self) -> bool { self.pos.abs() > 0.05 || self.vel.abs() > 1.0 }
+    /// Start from `from` and settle at 0.
+    fn kick(&mut self, from: f64) { self.pos = from; self.last_t = None; }
+    fn hold(&mut self, at: f64) { self.pos = at; self.vel = 0.0; self.last_t = None; }
+    fn step(&mut self, t: f64) {
+        let dt = self.last_t.map(|l| (t - l).clamp(0.0, 0.05)).unwrap_or(0.0);
+        self.last_t = Some(t);
+        let w = std::f64::consts::TAU / 0.42; let z = 0.9; let (k, c) = (w * w, 2.0 * z * w);
+        let h = dt / 4.0;
+        for _ in 0..4 { let a = -k * self.pos - c * self.vel; self.vel += a * h; self.pos += self.vel * h; }
+        if !self.active() { self.pos = 0.0; self.vel = 0.0; }
+    }
+}
+
+/// A finger sliding the mode bar: where it started, the bar index at that time and the last velocity sample.
+#[derive(Clone, Copy)]
+struct BarDrag { start_x: f64, index0: usize, last_x: f64, last_t: f64, velocity: f64, moved: bool }
+
+const MODE_PITCH: f64 = 52.3;
+const CHIP_PITCH: f64 = 40.0;
+
 #[derive(Script, ScriptHook, Widget)]
 pub struct CameraView {
     #[deref] view: View,
@@ -128,6 +154,20 @@ pub struct CameraView {
     #[rust] preview_front: bool,
     #[rust] preview_seen: HashSet<String>,
     #[rust] started_at: f64,
+    // motion: the mode strip and the zoom chip slide with a spring; a finger can drag the bar
+    #[rust] next_frame: NextFrame,
+    #[rust] bar: Spring,
+    #[rust] chip: Spring,
+    #[rust] bar_drag: Option<BarDrag>,
+    #[rust] strips: HashMap<String, (f64, f64, f64, f64)>,
+    #[rust] pinch: Option<(f64, f32)>,
+    #[rust] finger_last: Option<DVec2>,
+    // the real camera: the open input and what was last sent to it
+    #[rust] camera_input: Option<VideoInputId>,
+    #[rust] zoom_ratio: f32,
+    #[rust] sent_zoom: Option<f32>,
+    #[rust] sent_flash: Option<session::Flash>,
+    #[rust] sent_ev: Option<f32>,
 }
 
 fn retire(cx: &mut Cx, widget: &WidgetRef) {
@@ -190,6 +230,8 @@ impl CameraView {
                 video.begin_playback(cx);
                 self.preview = PreviewState::Starting;
                 self.preview_front = choice.front;
+                self.camera_input = Some(choice.input_id);
+                self.sent_zoom = None; self.sent_flash = None; self.sent_ev = None;
                 if self.preview_seen.insert(choice.name.clone()) { log!("camera: opening {} ({})", choice.name, if choice.front { "front" } else { "rear" }); }
             }
             _ => {}
@@ -222,7 +264,8 @@ impl CameraView {
         self.scale = scale;
         self.art_origin = origin;
         self.mounted_viewport = self.viewport;
-        self.hit_rects = scene.nodes.iter().filter(|n| n["t"] == "button").filter_map(|n| Some((n["x"].as_f64()?, n["y"].as_f64()?, n["w"].as_f64()?, n["h"].as_f64()?))).collect();
+        self.hit_rects = scene.button_rects();
+        self.strips = scene.nodes.iter().filter(|n| n["variant"] == "scroll_y").filter_map(|n| Some((n["id"].as_str()?.to_owned(), (n["x"].as_f64()?, n["y"].as_f64()?, n["w"].as_f64()?, n["h"].as_f64()?)))).collect();
         fn fit(node: &mut octoscript_node::UiNode, scale: f64, origin: DVec2) {
             let a = &mut node.attrs;
             if let Some(v) = &mut a.x { *v = *v * scale + origin.x; }
@@ -235,7 +278,15 @@ impl CameraView {
         tree.attrs.y = Some(self.origin.y);
         tree.attrs.w = Some(self.viewport.x as f32);
         tree.attrs.h = Some(self.viewport.y as f32);
-        let ui = octoscript_makepad::design::to_makepad_ui(&tree)?;
+        let mut ui = octoscript_makepad::design::to_makepad_ui(&tree)?;
+        // The sliding strips are scroll nodes only so their children are laid out
+        // relative to them; as widgets they are plain clipped overlays that the
+        // module moves as a whole (a scrolling view would stack the labels).
+        for strip in ["mode_strip", "zoom_chip_strip"] {
+            if let Some(native) = frame.mapping.get(strip) {
+                ui = ui.replace(&format!("{native} := ScrollYView {{"), &format!("{native} := View {{\nflow: Overlay clip_x: true clip_y: true"));
+            }
+        }
         let sm = ScriptMod {
             cargo_manifest_path: env!("CARGO_MANIFEST_DIR").into(), module_path: module_path!().into(), file: file!().into(), line: 1, column: 0, values: Vec::new(),
             code: format!("use mod.prelude.widgets.*\nreturn View{{width:Fill height:Fill flow:Overlay {ui}}}"),
@@ -263,8 +314,77 @@ impl CameraView {
         self.mounted_revision = Some(self.session().revision);
         self.suppress_activation = true;
         self.place_preview(cx);
+        self.apply_motion(cx);
         self.view.redraw(cx);
         Ok(())
+    }
+
+    /// Put the sliding strips where the springs (or the finger) say, in place, without a remount.
+    fn apply_motion(&mut self, cx: &mut Cx) {
+        for (strip, offset) in [("mode_strip", self.bar.pos), ("zoom_chip_strip", self.chip.pos)] {
+            let (Some(&(x, y, w, h)), Some(native)) = (self.strips.get(strip), self.mapping.get(strip).cloned()) else { continue };
+            let pos = dvec2(self.art_origin.x + (x + offset) * self.scale, self.art_origin.y + y * self.scale);
+            self.view.view(cx, &[LiveId::from_str(&native)]).set_walk(cx, Walk { abs_pos: Some(pos), width: Size::Fixed(w * self.scale), height: Size::Fixed(h * self.scale), ..Default::default() });
+        }
+        if self.bar.active() || self.chip.active() || self.bar_drag.is_some() { self.next_frame = cx.new_next_frame(); }
+        self.view.redraw(cx);
+    }
+
+    /// The session changed: animate the bar/chip from where they were and push the new lens, flash and EV to the camera.
+    fn after_change(&mut self, cx: &mut Cx, before: (Option<usize>, usize, f64)) {
+        let (old_bar, old_zoom, drag_offset) = before;
+        let (new_bar, new_zoom) = { let s = self.session(); (s.mode_bar_index(), s.zoom_index()) };
+        match (old_bar, new_bar) {
+            (Some(a), Some(b)) if a != b => self.bar.kick((b as f64 - a as f64) * MODE_PITCH + drag_offset),
+            (Some(_), Some(_)) if drag_offset != 0.0 => self.bar.kick(drag_offset),
+            _ => self.bar.hold(0.0),
+        }
+        if old_bar == new_bar && old_zoom != new_zoom { self.chip.kick((old_zoom as f64 - new_zoom as f64) * CHIP_PITCH); } else if old_bar != new_bar { self.chip.hold(0.0); }
+        self.zoom_ratio = self.session().zoom_ratio();
+        self.sync_camera(cx);
+    }
+
+    /// Send what the UI state asks of the real camera, only when it changed.
+    fn sync_camera(&mut self, cx: &mut Cx) {
+        let Some(input) = self.camera_input else { return };
+        if self.preview != PreviewState::Running { return; }
+        let (flash, ev) = { let s = self.session(); (s.flash, s.ev_bias()) };
+        if self.sent_zoom != Some(self.zoom_ratio) { self.sent_zoom = Some(self.zoom_ratio); cx.camera_control(input, CameraControl::ZoomRatio(self.zoom_ratio)); }
+        if self.sent_flash != Some(flash) {
+            self.sent_flash = Some(flash);
+            let mode = match flash { session::Flash::Off => CameraFlashMode::Off, session::Flash::On => CameraFlashMode::On, session::Flash::Auto => CameraFlashMode::Auto, session::Flash::Torch => CameraFlashMode::Torch };
+            cx.camera_control(input, CameraControl::Flash(mode));
+        }
+        if self.sent_ev != Some(ev) { self.sent_ev = Some(ev); cx.camera_control(input, CameraControl::ExposureBias(ev)); }
+    }
+
+    fn on_mode_bar(&mut self, x: f64, y: f64) -> bool {
+        let s = self.session();
+        (576.6..=632.6).contains(&y) && (0.0..=406.0).contains(&x) && s.overlay == session::Overlay::None && s.mode_bar_index().is_some() && s.recording == session::Recording::Off
+    }
+
+    /// The finger left the mode bar: pick the entry it points at (with a little fling) and let the spring settle.
+    fn end_bar_drag(&mut self, cx: &mut Cx, drag: BarDrag, x: f64) {
+        let offset = self.bar.pos;
+        if !drag.moved { self.bar.hold(0.0); return; }
+        let _ = x;
+        let projected = offset + drag.velocity * 0.12;
+        let target = (drag.index0 as f64 - projected / MODE_PITCH).round().clamp(0.0, (session::Mode::BAR.len() - 1) as f64) as usize;
+        let before = (Some(drag.index0), self.session().zoom_index(), offset);
+        let now = self.now(); self.session().now = now;
+        self.suppress_activation = true;
+        let selected = self.session().select_mode_index(target);
+        self.after_change(cx, before);
+        if selected { self.remount_now(cx); } else { self.apply_motion(cx); }
+    }
+
+    /// Mount the new scene right away (instead of at the next 0.1 s tick) so a
+    /// spring starts from the new layout rather than sliding the old one first.
+    fn remount_now(&mut self, cx: &mut Cx) {
+        self.mounted_revision = None;
+        if self.viewport.x > 0. {
+            if let Err(error) = self.mount(cx) { log!("camera: cannot mount: {error}"); self.mounted_revision = Some(self.session().revision); }
+        }
     }
 
     /// The recording timer ticks without remounting the scene.
@@ -321,7 +441,10 @@ impl Widget for CameraView {
                     let Some(id) = control["event"].as_str().map(str::to_owned) else { continue };
                     let now = self.now();
                     self.session().now = now;
-                    if self.session().activate(&id) { self.mounted_revision = None; }
+                    let before = { let s = self.session(); (s.mode_bar_index(), s.zoom_index(), 0.0) };
+                    let changed = self.session().activate(&id);
+                    self.after_change(cx, before);
+                    if changed { self.remount_now(cx); }
                 }
             }
             Event::PermissionResult(result) if result.permission == Permission::Camera => {
@@ -340,7 +463,12 @@ impl Widget for CameraView {
                 if self.cameras.is_empty() { log!("camera: no usable camera; the viewfinder stays a placeholder"); }
                 self.drive_preview(cx);
             }
-            Event::VideoPlaybackPrepared(e) => { log!("camera: preview prepared {}x{}", e.video_width, e.video_height); if self.preview == PreviewState::Starting { self.preview = PreviewState::Running; } }
+            Event::VideoPlaybackPrepared(e) => {
+                log!("camera: preview prepared {}x{}", e.video_width, e.video_height);
+                if self.preview == PreviewState::Starting { self.preview = PreviewState::Running; }
+                self.zoom_ratio = self.session().zoom_ratio();
+                self.sync_camera(cx);
+            }
             Event::VideoTextureUpdated(_) => { if self.session().placeholder { self.session().placeholder = false; self.session().revision += 1; self.mounted_revision = None; } }
             // The Video widget sees this event after us and only then leaves CleaningUp, so the
             // next preview is opened from the timer tick rather than here (front/rear switch on OHOS).
@@ -350,6 +478,11 @@ impl Widget for CameraView {
                 if self.session().back() { self.session().revision += 1; self.mounted_revision = None; }
             }
             _ => {}
+        }
+        if let Some(frame) = self.next_frame.is_event(event) {
+            if self.bar_drag.is_none() { self.bar.step(frame.time); }
+            self.chip.step(frame.time);
+            self.apply_motion(cx);
         }
         if self.timer.is_event(event).is_some() {
             self.suppress_activation = false;
@@ -366,21 +499,79 @@ impl Widget for CameraView {
         // widget or a Kit button — may have captured the digit): a swipe changes
         // mode / opens the toolbox, a tap that hits no control focuses.
         let mut ended: Option<DVec2> = None;
+        let mut moved: Option<DVec2> = None;
         match event {
-            Event::MouseDown(e) => { if std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer down at {:?}", e.abs); } self.finger_start = Some(e.abs); self.suppress_activation = false; }
+            Event::MouseDown(e) => { if std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer down at {:?}", e.abs); } self.finger_start = Some(e.abs); self.finger_last = Some(e.abs); self.suppress_activation = false; }
+            Event::MouseMove(e) if self.finger_start.is_some() => moved = Some(e.abs),
             Event::MouseUp(e) => ended = Some(e.abs),
             Event::TouchUpdate(t) => {
-                for touch in &t.touches {
-                    match touch.state {
-                        TouchState::Start => { self.finger_start = Some(touch.abs); self.suppress_activation = false; }
-                        TouchState::Stop => ended = Some(touch.abs),
-                        _ => {}
+                // Two fingers on the viewfinder: pinch to zoom the real lens; the selected chip shows the live value.
+                if t.touches.len() >= 2 && self.preview == PreviewState::Running {
+                    let (a, b) = (t.touches[0].abs, t.touches[1].abs);
+                    let dist = (a - b).length().max(1.0);
+                    if t.touches.iter().any(|p| p.state == TouchState::Stop) { self.pinch = None; }
+                    else {
+                        let (d0, r0) = *self.pinch.get_or_insert((dist, self.zoom_ratio));
+                        let ratio = (r0 * (dist / d0) as f32).clamp(0.5, 10.0);
+                        if (ratio - self.zoom_ratio).abs() > 0.02 {
+                            self.zoom_ratio = ratio;
+                            if let Some(input) = self.camera_input { cx.camera_control(input, CameraControl::ZoomRatio(ratio)); self.sent_zoom = Some(ratio); }
+                            let items = { let s = self.session(); s.mode.zooms(s.front) };
+                            let sel = self.session().zoom_index().min(items.len().saturating_sub(1));
+                            if let Some(label) = items.get(sel) {
+                                if let Some(native) = self.mapping.get(&format!("zoom_{}_label", label.trim_end_matches('x').to_lowercase())).cloned() {
+                                    self.view.widget(cx, &[LiveId::from_str(&native)]).set_text(cx, &format!("{ratio:.1}x"));
+                                    self.view.redraw(cx);
+                                }
+                            }
+                        }
+                    }
+                    self.finger_start = None; self.bar_drag = None;
+                } else {
+                    for touch in &t.touches {
+                        match touch.state {
+                            TouchState::Start => { self.finger_start = Some(touch.abs); self.finger_last = Some(touch.abs); self.suppress_activation = false; }
+                            TouchState::Move => moved = Some(touch.abs),
+                            TouchState::Stop => { ended = Some(touch.abs); self.pinch = None; }
+                            _ => {}
+                        }
                     }
                 }
             }
             _ => {}
         }
+        // A finger on the mode bar drags the strip; it snaps to an entry on release.
+        if let (Some(p), Some(start)) = (moved, self.finger_start) {
+            let (x, y) = self.to_artboard(p);
+            let (x0, y0) = self.to_artboard(start);
+            let t = self.now();
+            if self.bar_drag.is_none() && self.on_mode_bar(x0, y0) && (x - x0).abs() > 4.0 && (x - x0).abs() > (y - y0).abs() {
+                let index0 = self.session().mode_bar_index().unwrap_or(3);
+                self.bar_drag = Some(BarDrag { start_x: x0, index0, last_x: x, last_t: t, velocity: 0.0, moved: false });
+            }
+            if let Some(mut drag) = self.bar_drag {
+                let raw = x - drag.start_x;
+                let (lo, hi) = ((drag.index0 as f64 - (session::Mode::BAR.len() - 1) as f64) * MODE_PITCH, drag.index0 as f64 * MODE_PITCH);
+                let offset = if raw < lo { lo + (raw - lo) * 0.3 } else if raw > hi { hi + (raw - hi) * 0.3 } else { raw };
+                let dt = (t - drag.last_t).max(1e-3);
+                drag.velocity = 0.6 * drag.velocity + 0.4 * (x - drag.last_x) / dt;
+                drag.last_x = x; drag.last_t = t; drag.moved = drag.moved || raw.abs() > 8.0;
+                if drag.moved { self.suppress_activation = true; }
+                self.bar_drag = Some(drag);
+                self.bar.hold(offset);
+                self.apply_motion(cx);
+            }
+            self.finger_last = Some(p);
+        }
         if ended.is_some() && std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer up at {:?} start {:?}", ended, self.finger_start); }
+        if let Some(end) = ended {
+            // (only take the drag on a release: evaluating it for every event would drop it mid-drag)
+            if let Some(drag) = self.bar_drag.take() {
+                let (x, _) = self.to_artboard(end);
+                self.finger_start = None;
+                self.end_bar_drag(cx, drag, x);
+            }
+        }
         if let (Some(end), Some(start)) = (ended, ended.and_then(|_| self.finger_start.take())) {
             let (x0, y0) = self.to_artboard(start);
             let (x1, y1) = self.to_artboard(end);
@@ -388,10 +579,16 @@ impl Widget for CameraView {
             if std::env::var("CAMERA_TRACE").is_ok() { let (overlay, mode) = { let s = self.session(); (s.overlay.clone(), s.mode) }; log!("camera: gesture dx={dx:.0} dy={dy:.0} from ({x0:.0},{y0:.0}) overlay={overlay:?} mode={mode:?}"); }
             let now = self.now();
             self.session().now = now;
+            let before = { let s = self.session(); (s.mode_bar_index(), s.zoom_index(), 0.0) };
             if dx.abs() > 40.0 || dy.abs() > 40.0 {
                 let from_bottom = y0 > 600.0;
                 if self.session().swipe(dx, dy, from_bottom) { self.mounted_revision = None; }
-            } else if !self.on_control(x1, y1) && self.session().focus_tap(x1, y1) { self.mounted_revision = None; }
+                self.after_change(cx, before);
+            } else if !self.on_control(x1, y1) && self.session().focus_tap(x1, y1) {
+                self.mounted_revision = None;
+                let (_, vy, vw, vh) = self.session().viewfinder();
+                if let Some(input) = self.camera_input { cx.camera_control(input, CameraControl::FocusPoint { x: (x1 / vw).clamp(0.0, 1.0), y: ((y1 - vy) / vh).clamp(0.0, 1.0) }); }
+            }
         }
     }
 }

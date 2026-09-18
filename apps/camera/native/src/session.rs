@@ -161,6 +161,28 @@ impl Session {
             controls: HashMap::new(), revision: 0 }
     }
     pub fn zoom_index(&self) -> usize { *self.zoom.get(&self.mode).unwrap_or(&0) }
+    /// The selected quick-zoom chip as a lens ratio (`W` is the ultra-wide, 0.5×).
+    pub fn zoom_ratio(&self) -> f32 {
+        let items = self.mode.zooms(self.front);
+        match items.get(self.zoom_index().min(items.len().saturating_sub(1))) {
+            Some(&"W") => 0.5,
+            Some(label) => label.trim_end_matches('x').parse().unwrap_or(1.0),
+            None => 1.0,
+        }
+    }
+    /// Exposure compensation the Pro strip asks for (EV steps), 0 elsewhere.
+    pub fn ev_bias(&self) -> f32 {
+        if self.mode != Mode::Pro { return 0.0; }
+        PRO_VALUES[3].get(self.pro[3]).and_then(|v| v.trim_start_matches('+').parse().ok()).unwrap_or(0.0)
+    }
+    /// Where the current mode sits in the mode bar (None for the More sub-modes).
+    pub fn mode_bar_index(&self) -> Option<usize> { Mode::BAR.iter().position(|m| *m == self.mode) }
+    /// Select a mode-bar entry by index (a finger drag on the bar landed there).
+    pub fn select_mode_index(&mut self, i: usize) -> bool {
+        let Some(&m) = Mode::BAR.get(i) else { return false };
+        if m == self.mode || self.overlay != Overlay::None { return false; }
+        self.go(m); self.revision += 1; true
+    }
     fn set_toast(&mut self, text: String) { self.toast = Some((text, self.now + 1.8)); }
     /// Time passes: toasts expire, the recording timer runs. Returns true when the screen changed.
     pub fn tick(&mut self, now: f64) -> bool {
@@ -469,11 +491,14 @@ impl Session {
         let w = 40.0 * items.len() as f64; let x0 = 203.0 - w / 2.0;
         let sel = self.zoom_index().min(items.len() - 1);
         s.stack("zoom_pill", "page", x0, y, w, 40.0, Some(ZOOM_PILL), 20.0, None);
+        // The selected chip lives in its own strip so the module can slide it
+        // between labels (the phone's selection glides with a spring).
+        s.scroll("zoom_chip_strip", "page", x0, y, w, 40.0);
+        s.stack("zoom_chip", "zoom_chip_strip", sel as f64 * 40.0, 0.0, 40.0, 40.0, Some(CHIP), 20.0, None);
         for (i, label) in items.iter().enumerate() {
             let id = self.ctl(&format!("zoom_{}", label.trim_end_matches('x').to_lowercase()), Action::Zoom(i));
             let x = x0 + i as f64 * 40.0;
             s.button(&id, "page", x, y, 40.0, 40.0, true);
-            if i == sel { s.stack(&format!("{id}_chip"), &id, x, y, 40.0, 40.0, Some(CHIP), 20.0, None); }
             s.text(&format!("{id}_label"), &id, label, x, y, 40.0, 40.0, 13.0, true, if i == sel { CHIP_TEXT } else { WHITE }, Align::Center);
         }
     }
@@ -550,15 +575,19 @@ impl Session {
             return;
         }
         let i0 = Mode::BAR.iter().position(|m| *m == self.mode).unwrap_or(3) as i32;
+        // All seven labels sit in one strip that the module slides (finger
+        // tracking and the spring settle of the phone's mode bar); the ones
+        // beyond the edges are clipped by the strip.
+        // (coordinates inside the strip are relative to its top-left corner)
+        s.scroll("mode_strip", "page", 0.0, 576.6, 406.0, 56.0);
         for (i, m) in Mode::BAR.iter().enumerate() {
             let cx = 203.0 + (i as i32 - i0) as f64 * 52.3;
-            if !(0.0..=406.0).contains(&cx) { continue; }
             let x = cx - 26.0;
             let id = self.ctl(&format!("mode_{}", m.id()), Action::SetMode(*m));
-            s.button(&id, "page", x, 576.6, 52.0, 56.0, true);
+            s.button(&id, "mode_strip", x, 0.0, 52.0, 56.0, true);
             let dist = (i as i32 - i0).abs();
             let color = if dist <= 2 { WHITE } else if dist == 3 { GREY } else { "3c3c3c" };
-            s.text_w(&format!("{id}_label"), &id, m.label(&locale), x, 588.6, 52.0, 24.0, 16.0, if dist == 0 { 700 } else { 500 }, color, Align::Center);
+            s.text_w(&format!("{id}_label"), &id, m.label(&locale), x, 12.0, 52.0, 24.0, 16.0, if dist == 0 { 700 } else { 500 }, color, Align::Center);
         }
         s.stack("mode_dot", "page", 199.0, 618.5, 8.0, 8.0, Some(RED), 4.0, None);
     }
@@ -1046,5 +1075,37 @@ mod tests {
         assert!(!s.back(), "nothing left to close: the host exits");
         assert!(s.swipe(-100.0, 5.0, false)); assert_eq!(s.mode, Mode::Video);
         assert!(s.swipe(0.0, -80.0, true)); assert_eq!(s.overlay, Overlay::Box(0));
+    }
+}
+
+#[cfg(test)]
+mod strips {
+    use super::*;
+    /// The sliding strips are scroll containers whose children are stored
+    /// relative to them; after lowering they must land on the bar (the
+    /// lowering adds the container origin once) and the module's hit
+    /// rectangles must be absolute again.
+    #[test]
+    fn mode_strip_children_land_on_the_bar() {
+        let mut s = Session::new("cn");
+        let scene = s.render("http://127.0.0.1:1/t");
+        let frame = crate::scene::compile(&scene, "camera-test");
+        let report = octoscript_ui_l0::realize(&frame.card, &frame.data, Default::default());
+        let root = report.complete_root().expect("complete root");
+        let source = octoscript_ui_l0::kit_pack::lower(root, &frame.pack, &frame.data).expect("lower");
+        let mut tree = octoscript_makepad::design::prepare(&source).expect("prepare");
+        octoscript_makepad::l0::inspectable(&mut tree);
+        fn find<'a>(n: &'a octoscript_node::UiNode, id: &str) -> Option<&'a octoscript_node::UiNode> {
+            if n.attrs.id.as_deref() == Some(id) { return Some(n); }
+            n.children.iter().find_map(|c| find(c, id))
+        }
+        let strip = find(&tree, frame.mapping.get("mode_strip").unwrap()).expect("mode strip lowered");
+        assert_eq!(strip.children.len(), Mode::BAR.len());
+        for child in &strip.children { assert_eq!(child.attrs.y, Some(576.6)); }
+        let photo = find(&tree, frame.mapping.get("mode_photo").unwrap()).unwrap();
+        assert!((photo.attrs.x.unwrap() - 177.0).abs() < 0.01, "the selected mode is centred");
+        let chip = find(&tree, frame.mapping.get("zoom_chip").unwrap()).unwrap();
+        assert_eq!((chip.attrs.x, chip.attrs.y), (Some(143.0), Some(517.5)));
+        assert!(scene.button_rects().iter().any(|r| (r.0 - 177.0).abs() < 0.01 && (r.1 - 576.6).abs() < 0.01), "hit rectangles are absolute");
     }
 }

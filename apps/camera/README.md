@@ -78,6 +78,18 @@ cargo test --release --manifest-path ../Octoscript-AppCard/apps/camera/native/Ca
   states on the phone via the remote instrument (`hdc fport tcp:7891`);
   `mate-on-device-vs-real.jpg` puts the phone's camera app and the replica side
   by side on the same scene. Front-preview mirroring is not done yet.
+- Motion: the mode bar and the quick-zoom selection are sliding strips the
+  module moves in place every frame with a critically damped spring
+  (0.42 s response, 0.9 damping): taps glide, a finger drags the bar and it
+  snaps to the nearest entry with a little fling, and the zoom chip slides
+  between labels (`docs/evidence/mate-motion-zoom-chip.png`, four frames
+  90 ms apart on the phone). Measured through the instrument on the Mate:
+  a mode tap settles in about 0.4 s without overshoot.
+- Real camera controls on OpenHarmony: tap-to-focus sets the focus and
+  metering point, the quick-zoom chips and a two-finger pinch set the lens
+  ratio (the selected chip shows the live value), the flash menu sets the
+  flash/torch mode and the Pro EV value sets exposure compensation, all
+  through Makepad's `camera_control`.
 
 ## Evidence
 

@@ -146,6 +146,11 @@ impl Scene {
         if let Some(n) = self.nodes.iter_mut().find(|n| n["id"] == id) { n["color"] = json!(col(color)); }
     }
     /// Assemble the flat node list into the page tree.
+    /// Every button's rectangle in artboard coordinates (`push` already
+    /// resolved scroll-relative children to absolute positions).
+    pub fn button_rects(&self) -> Vec<(f64, f64, f64, f64)> {
+        self.nodes.iter().filter(|n| n["t"] == "button").filter_map(|n| Some((n["x"].as_f64()?, n["y"].as_f64()?, n["w"].as_f64()?, n["h"].as_f64()?))).collect()
+    }
     pub fn tree(&self) -> Value {
         let mut children: BTreeMap<String, Vec<Value>> = BTreeMap::new();
         fn build(id: &str, nodes: &[Value], parents: &[String], children: &mut BTreeMap<String, Vec<Value>>, controls: &Map<String, Value>) -> Value {
