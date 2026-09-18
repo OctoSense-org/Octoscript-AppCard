@@ -342,7 +342,9 @@ impl Widget for CameraView {
             }
             Event::VideoPlaybackPrepared(e) => { log!("camera: preview prepared {}x{}", e.video_width, e.video_height); if self.preview == PreviewState::Starting { self.preview = PreviewState::Running; } }
             Event::VideoTextureUpdated(_) => { if self.session().placeholder { self.session().placeholder = false; self.session().revision += 1; self.mounted_revision = None; } }
-            Event::VideoPlaybackResourcesReleased(_) => { self.preview = PreviewState::Idle; self.session().placeholder = true; self.session().revision += 1; self.mounted_revision = None; self.drive_preview(cx); }
+            // The Video widget sees this event after us and only then leaves CleaningUp, so the
+            // next preview is opened from the timer tick rather than here (front/rear switch on OHOS).
+            Event::VideoPlaybackResourcesReleased(_) => { self.preview = PreviewState::Idle; self.session().placeholder = true; self.session().revision += 1; self.mounted_revision = None; }
             Event::VideoDecodingError(e) => { log!("camera: preview error: {}", e.error); self.preview = PreviewState::Idle; }
             Event::KeyDown(KeyEvent { key_code: KeyCode::Escape, .. }) | Event::KeyDown(KeyEvent { key_code: KeyCode::Back, .. }) => {
                 if self.session().back() { self.session().revision += 1; self.mounted_revision = None; }

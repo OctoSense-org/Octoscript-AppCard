@@ -67,9 +67,17 @@ cargo test --release --manifest-path ../Octoscript-AppCard/apps/camera/native/Ca
   receive the camera permission prompt; the module then opens the device after
   2 s anyway and keeps the placeholder if no frames arrive. Photo/video
   capture, zoom lenses, XMAGE styles, 小艺视觉 and the gallery are mock-ups.
-- OpenHarmony: Makepad's OHOS backend has no video input yet; the Octoscript-OH
-  camera bridge (`libohcamera.so` preview into an XComponent) is the path to
-  port. Packaging a HAP for the Mate needs DevEco Studio and a signing profile.
+- OpenHarmony (on the Mate 70 Air itself): Makepad's OHOS backend now drives
+  the camera NDK (preview into an ImageReceiver, frames read back and
+  uploaded as Y/U/V planes), asks for `ohos.permission.CAMERA` through the
+  ArkTS bridge and serves the icons over loopback HTTP, so the module runs on
+  the phone with the real rear/front viewfinder. Build with cargo-makepad's
+  `ohos` backend (`deveco -p octosense --release --features app-camera`,
+  DevEco Studio 26, API 24 device) and sign with a DevEco profile.
+  `docs/evidence/mate-on-device-tour.jpg` is the replica driven through 24
+  states on the phone via the remote instrument (`hdc fport tcp:7891`);
+  `mate-on-device-vs-real.jpg` puts the phone's camera app and the replica side
+  by side on the same scene. Front-preview mirroring is not done yet.
 
 ## Evidence
 
