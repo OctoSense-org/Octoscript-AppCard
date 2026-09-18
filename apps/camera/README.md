@@ -70,3 +70,9 @@ cargo test --release --manifest-path ../Octoscript-AppCard/apps/camera/native/Ca
 - OpenHarmony: Makepad's OHOS backend has no video input yet; the Octoscript-OH
   camera bridge (`libohcamera.so` preview into an XComponent) is the path to
   port. Packaging a HAP for the Mate needs DevEco Studio and a signing profile.
+
+## Evidence
+
+`docs/evidence/` holds the phone-vs-replica sheets produced by driving the
+module through the remote instrument (left: the Mate 70 Air capture cropped to
+the artboard; right: the Makepad replica at the same state).
