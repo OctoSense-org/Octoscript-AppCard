@@ -563,7 +563,7 @@ impl Session {
     /// The dial went away: select the chip nearest to the live zoom; the chip keeps the exact value when it differs.
     pub fn snap_zoom_to_chip(&mut self) {
         let live = self.zoom_ratio();
-        let stops = self.zoom_stops();
+        let stops = self.chip_stops();
         if stops.is_empty() { return; }
         let (i, (_, stop, _)) = stops.iter().enumerate().min_by(|a, b| (a.1 .1.log2() - live.log2()).abs().partial_cmp(&(b.1 .1.log2() - live.log2()).abs()).unwrap()).unwrap();
         self.zoom.insert(self.mode, i);
@@ -571,14 +571,26 @@ impl Session {
         self.revision += 1;
     }
 
-    /// Focal lengths of the quick-zoom stops on the Mate 70 Air (24 mm main lens).
-    pub fn zoom_stops(&self) -> Vec<(&'static str, f32, &'static str)> {
+    /// Focal lengths of the quick-zoom chips on the Mate 70 Air (24 mm main lens).
+    pub fn chip_stops(&self) -> Vec<(&'static str, f32, &'static str)> {
         self.mode.zooms(self.front).iter().map(|l| match *l {
             "W" => ("W", 0.67, "16mm"), "1x" => ("1x", 1.0, "24mm"), "2x" => ("2x", 2.0, "48mm"), "3x" => ("3x", 3.0, "72mm"),
             "4x" => ("4x", 4.0, "96mm"), "5x" => ("5x", 5.0, "120mm"), _ => ("1x", 1.0, "24mm"),
         }).collect()
     }
-    pub fn zoom_range(&self) -> (f32, f32) { (if self.front { 0.8 } else { 0.67 }, if self.front { 5.0 } else { 20.0 }) }
+    /// The labelled stops on the roulette dial: the chips plus the digital reach beyond them.
+    pub fn zoom_stops(&self) -> Vec<(&'static str, f32, &'static str)> {
+        let mut stops = self.chip_stops();
+        let (_, hi) = self.zoom_range();
+        for stop in [("10x", 10.0, "240mm"), ("30x", 30.0, "720mm")] {
+            if stop.1 <= hi && !stops.iter().any(|s| (s.1 - stop.1).abs() < 0.01) { stops.push(stop); }
+        }
+        stops
+    }
+    /// Zoom reach: 30× in the photo modes, 10× while filming, 5× on the front camera.
+    pub fn zoom_range(&self) -> (f32, f32) {
+        if self.front { (0.8, 5.0) } else if self.mode.is_video() { (0.67, 10.0) } else { (0.67, 30.0) }
+    }
 
     pub fn zoom_dial_svg(&self) -> String {
         let (lo, hi) = self.zoom_range();
