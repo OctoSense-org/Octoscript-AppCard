@@ -281,9 +281,17 @@ impl CameraView {
     }
 
     fn mount(&mut self, cx: &mut Cx) -> Result<(), String> {
+        let started = std::time::Instant::now();
+        let result = self.mount_inner(cx);
+        if std::env::var("CAMERA_TRACE").is_ok() || cfg!(target_env = "ohos") { log!("camera: mount took {:.1} ms", started.elapsed().as_secs_f64() * 1000.0); }
+        result
+    }
+    fn mount_inner(&mut self, cx: &mut Cx) -> Result<(), String> {
         let base = self.assets.as_ref().map(|a| a.endpoint.clone()).unwrap_or_else(|| "http://127.0.0.1:1/none".into());
+        let t0 = std::time::Instant::now();
         let scene = self.session().render(&base);
         let frame = scene::compile(&scene, "camera-native");
+        let t_compile = t0.elapsed();
         if let Some(server) = &self.assets { if let Ok(mut map) = server.assets.lock() { map.extend(frame.assets.iter().map(|(k, v)| (k.clone(), ("image/svg+xml", v.clone().into_bytes())))); } }
         let report = octoscript_ui_l0::realize(&frame.card, &frame.data, Default::default());
         let root = report.complete_root()?;
@@ -310,6 +318,7 @@ impl CameraView {
         tree.attrs.y = Some(self.origin.y);
         tree.attrs.w = Some(self.viewport.x as f32);
         tree.attrs.h = Some(self.viewport.y as f32);
+        let t_lower = t0.elapsed();
         let mut ui = octoscript_makepad::design::to_makepad_ui(&tree)?;
         // The sliding strips are scroll nodes only so their children are laid out
         // relative to them; as widgets they are plain clipped overlays that the
@@ -324,7 +333,10 @@ impl CameraView {
             code: format!("use mod.prelude.widgets.*\nreturn View{{width:Fill height:Fill flow:Overlay {ui}}}"),
         };
         cx.set_key_focus(Area::Empty);
+        let t_ui = t0.elapsed();
         let view = cx.with_vm(|vm| vm.eval_checked(sm, 2_000_000).map(|value| View::script_from_value(vm, value)).ok_or_else(|| "Camera widget tree rejected".to_owned()))?;
+        let t_eval = t0.elapsed();
+        if std::env::var("CAMERA_TRACE").is_ok() { log!("camera: mount stages compile {:.1} lower {:.1} ui {:.1} eval {:.1} ms, {} nodes", t_compile.as_secs_f64()*1e3, (t_lower - t_compile).as_secs_f64()*1e3, (t_ui - t_lower).as_secs_f64()*1e3, (t_eval - t_ui).as_secs_f64()*1e3, scene.nodes.len()); }
         let host = self.view.widget(cx, ids!(host));
         let mut host = host.borrow_mut::<Splash>().ok_or("Camera host missing")?;
         self.retired = Some(std::mem::replace(&mut host.view, view));
