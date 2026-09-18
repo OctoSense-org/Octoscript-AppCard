@@ -194,6 +194,9 @@ pub struct CameraView {
     #[rust] mic: Option<PermissionStatus>,
     #[rust] mic_asked: bool,
     #[rust] recording_path: Option<String>,
+    // a finger dragging the focus box: when the real focus point was last sent
+    #[rust] focus_drag: bool,
+    #[rust] focus_sent_at: f64,
 }
 
 fn retire(cx: &mut Cx, widget: &WidgetRef) {
@@ -436,6 +439,23 @@ impl CameraView {
         }
     }
 
+    /// Slide the focus reticle under the finger and re-aim the real camera (throttled).
+    fn drag_focus(&mut self, cx: &mut Cx, x: f64, y: f64, done: bool) {
+        if !self.session().move_focus(x, y) { return; }
+        let (bx, by) = self.session().focus_box(x, y);
+        if let (Some(&(_, _, w, h)), Some(native)) = (self.strips.get("focus_strip"), self.mapping.get("focus_strip").cloned()) {
+            let pos = dvec2(self.art_origin.x + (bx - 32.0) * self.scale, self.art_origin.y + by * self.scale);
+            self.view.view(cx, &[LiveId::from_str(&native)]).set_walk(cx, Walk { abs_pos: Some(pos), width: Size::Fixed(w * self.scale), height: Size::Fixed(h * self.scale), ..Default::default() });
+            self.view.redraw(cx);
+        }
+        let now = self.now();
+        if done || now - self.focus_sent_at > 0.08 {
+            self.focus_sent_at = now;
+            let (_, vy, vw, vh) = self.session().viewfinder();
+            if let Some(input) = self.camera_input { cx.camera_control(input, CameraControl::FocusPoint { x: (x / vw).clamp(0.0, 1.0), y: ((y - vy) / vh).clamp(0.0, 1.0) }); }
+        }
+    }
+
     fn on_mode_bar(&mut self, x: f64, y: f64) -> bool {
         let s = self.session();
         (576.6..=632.6).contains(&y) && (0.0..=406.0).contains(&x) && s.overlay == session::Overlay::None && s.mode_bar_index().is_some() && s.recording == session::Recording::Off
@@ -482,6 +502,8 @@ impl CameraView {
         ((p.x - self.art_origin.x) / scale, (p.y - self.art_origin.y) / scale)
     }
     fn on_control(&self, x: f64, y: f64) -> bool { self.hit_rects.iter().any(|(rx, ry, rw, rh)| x >= *rx && x <= rx + rw && y >= *ry && y <= ry + rh) }
+    /// Like `on_control`, ignoring the viewfinder-wide scrims some overlays put under their chrome.
+    fn on_small_control(&self, x: f64, y: f64) -> bool { self.hit_rects.iter().any(|(rx, ry, rw, rh)| *rw < 300.0 && x >= *rx && x <= rx + rw && y >= *ry && y <= ry + rh) }
 
     fn shutdown(&mut self, cx: &mut Cx) {
         cx.stop_timer(self.timer);
@@ -640,7 +662,13 @@ impl Widget for CameraView {
             let (x, y) = self.to_artboard(p);
             let (x0, y0) = self.to_artboard(start);
             let t = self.now();
-            if self.bar_drag.is_none() && self.on_mode_bar(x0, y0) && (x - x0).abs() > 4.0 && (x - x0).abs() > (y - y0).abs() {
+            // With the focus box up, the finger drags it (and the camera's focus point) instead of swiping modes.
+            let focus_up = matches!(self.session().overlay, session::Overlay::Focus(..));
+            if self.bar_drag.is_none() && focus_up && !self.on_small_control(x0, y0) && (self.focus_drag || (x - x0).hypot(y - y0) > 6.0) {
+                self.focus_drag = true;
+                self.drag_focus(cx, x, y, false);
+            }
+            if self.bar_drag.is_none() && !self.focus_drag && self.on_mode_bar(x0, y0) && (x - x0).abs() > 4.0 && (x - x0).abs() > (y - y0).abs() {
                 let index0 = self.session().mode_bar_index().unwrap_or(3);
                 self.bar_drag = Some(BarDrag { start_x: x0, index0, last_x: x, last_t: t, velocity: 0.0, moved: false });
             }
@@ -660,6 +688,12 @@ impl Widget for CameraView {
         }
         if ended.is_some() && std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer up at {:?} start {:?}", ended, self.finger_start); }
         if let Some(end) = ended {
+            if self.focus_drag {
+                self.focus_drag = false;
+                let (x, y) = self.to_artboard(end);
+                self.drag_focus(cx, x, y, true);
+                self.finger_start = None;
+            }
             // (only take the drag on a release: evaluating it for every event would drop it mid-drag)
             if let Some(drag) = self.bar_drag.take() {
                 let (x, _) = self.to_artboard(end);

@@ -327,6 +327,16 @@ impl Session {
         else if dy > 40.0 && matches!(self.overlay, Overlay::Box(_)) { self.overlay = Overlay::None; self.revision += 1; return true; }
         false
     }
+    /// Where the focus reticle's box sits for a finger at (x, y): centred, kept inside the viewfinder.
+    pub fn focus_box(&self, x: f64, y: f64) -> (f64, f64) {
+        ((x - 40.0).clamp(4.0, 362.0), (y - 40.0).clamp(43.0, self.preview_bottom() - 84.0))
+    }
+    /// The finger moved the focus box (no re-render: the module slides the strip).
+    pub fn move_focus(&mut self, x: f64, y: f64) -> bool {
+        if !matches!(self.overlay, Overlay::Focus(..)) || y < 39.4 || y > self.preview_bottom() { return false; }
+        self.overlay = Overlay::Focus(x, y);
+        true
+    }
     /// A tap on the preview that no control took: focus + exposure UI.
     pub fn focus_tap(&mut self, x: f64, y: f64) -> bool {
         if self.overlay != Overlay::None || y < 39.4 || y > self.preview_bottom() { return false; }
@@ -882,11 +892,14 @@ impl Session {
     fn render_focus(&mut self, s: &mut Scene, x: f64, y: f64) {
         let scrim = self.ctl("scrim", Action::ClosePanel);
         s.button(&scrim, "page", 0.0, 36.0, 406.0, 540.0, true);
-        let (bx, by) = ((x - 40.0).clamp(4.0, 362.0), (y - 40.0).clamp(43.0, self.preview_bottom() - 84.0));
+        let (bx, by) = self.focus_box(x, y);
+        // The reticle and its sun sit in one strip the module slides under a moving finger.
+        let (sx, sy) = (bx - 32.0, by);
+        s.scroll("focus_strip", "page", sx, sy, 112.0, 80.0);
         for (k, (dx, dy, w, h)) in [(0.0, 0.0, 20.0, 1.5), (0.0, 0.0, 1.5, 20.0), (60.0, 0.0, 20.0, 1.5), (78.5, 0.0, 1.5, 20.0), (0.0, 78.5, 20.0, 1.5), (0.0, 60.0, 1.5, 20.0), (60.0, 78.5, 20.0, 1.5), (78.5, 60.0, 1.5, 20.0)].iter().enumerate() {
-            s.stack(&format!("focus_{k}"), "page", bx + dx, by + dy, *w, *h, Some(WHITE), 0.0, None);
+            s.stack(&format!("focus_{k}"), "focus_strip", 32.0 + dx, *dy, *w, *h, Some(WHITE), 0.0, None);
         }
-        s.icon("focus_sun", "page", "sun", (bx - 30.0).max(4.0), by + 30.0, 20.0, 20.0, WHITE);
+        s.icon("focus_sun", "focus_strip", "sun", 2.0, 30.0, 20.0, 20.0, WHITE);
         s.stack("ev_track", "page", 398.0, by - 20.0, 2.0, 120.0, Some("ffffff99"), 1.0, None);
         s.stack("smart_tip", "page", 225.5, 257.8, 160.0, 62.0, Some(TOAST), 12.0, None);
         s.text("smart_tip_text", "page", t(&self.locale, "开启相机智控，可通过", "Turn on smart control to"), 233.5, 261.8, 150.0, 20.0, 12.0, false, WHITE, Align::Left);
