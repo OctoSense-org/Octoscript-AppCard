@@ -365,7 +365,7 @@ impl Widget for CameraView {
         // mode / opens the toolbox, a tap that hits no control focuses.
         let mut ended: Option<DVec2> = None;
         match event {
-            Event::MouseDown(e) => { self.finger_start = Some(e.abs); self.suppress_activation = false; }
+            Event::MouseDown(e) => { if std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer down at {:?}", e.abs); } self.finger_start = Some(e.abs); self.suppress_activation = false; }
             Event::MouseUp(e) => ended = Some(e.abs),
             Event::TouchUpdate(t) => {
                 for touch in &t.touches {
@@ -378,10 +378,12 @@ impl Widget for CameraView {
             }
             _ => {}
         }
-        if let (Some(end), Some(start)) = (ended, self.finger_start.take()) {
+        if ended.is_some() && std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer up at {:?} start {:?}", ended, self.finger_start); }
+        if let (Some(end), Some(start)) = (ended, ended.and_then(|_| self.finger_start.take())) {
             let (x0, y0) = self.to_artboard(start);
             let (x1, y1) = self.to_artboard(end);
             let (dx, dy) = (x1 - x0, y1 - y0);
+            if std::env::var("CAMERA_TRACE").is_ok() { let (overlay, mode) = { let s = self.session(); (s.overlay.clone(), s.mode) }; log!("camera: gesture dx={dx:.0} dy={dy:.0} from ({x0:.0},{y0:.0}) overlay={overlay:?} mode={mode:?}"); }
             let now = self.now();
             self.session().now = now;
             if dx.abs() > 40.0 || dy.abs() > 40.0 {
