@@ -1,4 +1,4 @@
-# Camera — the Mate 70 Air camera, replicated in Makepad
+# Camera — the Mate 70 Air camera, replicated in Makepad and in native ArkUI
 
 The HUAWEI Mate 70 Air camera app (HarmonyOS 6.1, app 6.1.6.152) rebuilt with
 the [image-to-appcard flow](../../lab/image-to-appcard-flow/README.md) and
@@ -7,6 +7,10 @@ the device over `hdc` (screenshot + `uitest` layout dump), measured into the
 406 × 776 artboard, and written up as an interaction map; the storyboard, the
 pipeline contracts and the native module are all derived from those numbers.
 
+The app logic (`logic/`) is one Rust crate with two hosts: `native/` draws it
+with Makepad (macOS, Android, OpenHarmony) and `oh/` draws it with the phone's
+own ArkUI widgets through Octoscript-OH's C-API binding. Both run on the Mate.
+
 ## What is here
 
 | Part | Files | What it does |
@@ -14,9 +18,11 @@ pipeline contracts and the native module are all derived from those numbers.
 | UX map | `docs/ux-map.md` | The measured anatomy of every screen (geometry in vp, colours, fonts), the mode table, every top-chrome control, preview gestures, panels, the intro card, mode-specific overlays, capture states and the state model. |
 | Storyboard | `scripts/design.py`, `source/storyboard.html`, `source/atlas.png`, `source/prompt.txt` | 12 scenes at the phone's own geometry: 拍照 · 闪光灯 panel · 色彩风格 menu · 人像 · 录像 · 录像中 · 专业 · 夜景 · 更多 · 百宝箱 · 美肤 ruler · 超清全景. Rendered by headless Chromium at 2× (`source/render_atlas.mjs`); no image model. |
 | Pipeline | `image-to-appcard-flow.json`, `scripts/author_camera.py`, `scripts/build_camera.py`, `cards/camera-01..12`, `artwork/`, `wizard/card-bundle/` | intake → prepare → contracts + reviewed semantic maps → compile (L0 + kit) → extract two cards (`camera-flash-02`, `camera-toolbox-10`) → bundle. Receipts under `pipeline-output/runs/`. |
-| Icons | `scripts/gen_icons.py` → `native/src/icons.rs` | One SVG dictionary feeds both the atlas and the runtime. |
-| Tests | `service/test_storyboard.py` (`checks.service-test`), `native` unit tests | Storyboard geometry anchors (shutter 64 ⌀ at (203, 691.7), 52.3 vp mode pitch, 4:3 / 16:9 viewfinders); every mode and overlay renders and lowers through the shared L0 pipeline; mode bar, More grid, flash/filter/zoom, recording timer and pause, toolbox pages, settings and Back behave like the phone. |
-| **Native app** | `native/` (crate `octosense-camera`) | An OctoSense `AppModule`. `session.rs` is the camera's state machine and draws each state as a scene; `scene.rs` compiles it to L0 and Kit widgets; `lib.rs` mounts it over a live preview (Makepad video input: the MacBook / Android camera) and handles swipes, taps and Back. Capture, XMAGE, AI composition etc. are mocked with the phone's exact UX. |
+| Icons | `scripts/gen_icons.py` → `logic/src/icons.rs` | One SVG dictionary feeds both the atlas and the runtime. |
+| Tests | `service/test_storyboard.py` (`checks.service-test`), `logic` unit tests | Storyboard geometry anchors (shutter 64 ⌀ at (203, 691.7), 52.3 vp mode pitch, 4:3 / 16:9 viewfinders); every mode and overlay renders and lowers through the shared L0 pipeline; mode bar, More grid, flash/filter/zoom, recording timer and pause, toolbox pages, settings and Back behave like the phone. |
+| **App logic** | `logic/` (crate `octosense-camera-logic`) | Host-independent. `session.rs` is the camera's state machine and draws each state as a scene (absolute artboard coordinates, controls, SVG assets); `scene.rs` is that scene format; `icons.rs` the glyphs. Both hosts below consume it unchanged. |
+| **Makepad host** | `native/` (crate `octosense-camera`) | An OctoSense `AppModule`: lowers each scene through L0 to Kit widgets, mounts it over a live preview (Makepad video input) and handles swipes, taps, springs, the dial and Back; real capture on OpenHarmony through Makepad's `camera_capture`. |
+| **ArkUI host** | `oh/` (crate `octosense-camera-oh`, `oh/deveco/` shell, `oh/build.sh`) | The same scenes as native ArkUI nodes (Stack / Text / Image / XComponent) built from Rust through the ArkUI C API (Octoscript-OH's `octoscript-oh-arkui`); the preview streams straight into an XComponent surface; capture, zoom, focus, flash and EV go to the camera NDK from the same crate; ArkTS is only the ability shell, the permission prompts and the gallery hand-off. |
 
 ## Run it
 
@@ -50,6 +56,22 @@ cargo test --release --manifest-path ../Octoscript-AppCard/apps/camera/native/Ca
 ```
 
 `CAMERA_LOCALE=en` switches the copy; `CAMERA_NO_PREVIEW=1` skips the camera.
+
+The ArkUI host on the Mate 70 Air (DevEco Studio 26 with its OpenHarmony SDK
+and `aarch64-unknown-linux-ohos` Rust target; the device on `hdc`):
+
+```sh
+cd apps/camera/oh
+sh build.sh              # cargo → libcamera_oh.so → hvigor HAP → install → launch → hilog
+sh build.sh --build-only
+```
+
+`oh/Cargo.toml` expects sibling checkouts of `Octoscript-OH` (branch
+`feat/raw-touch-rotate`: the ArkUI shim's raw-touch stream and `NODE_ROTATE`),
+`octoscript` and `makepad`; `build.sh` signs with the DevEco auto-signing
+profile of `~/DevEcoStudioProjects/MyApplication` (bundle
+`com.example.myapplication`, with the `WRITE_IMAGEVIDEO` ACL for silent
+gallery saves) and replaces whichever host is installed under that bundle.
 
 ## Status and limits
 
@@ -104,8 +126,25 @@ cargo test --release --manifest-path ../Octoscript-AppCard/apps/camera/native/Ca
   exponential decay, and after 1.2 s the chips return with the live value on
   the nearest stop.
 
+- The ArkUI host (`docs/evidence/mate-oh-native-tour.jpg`, twelve states on
+  the phone): the whole chrome is native nodes (a mount is 4 ms for 78 nodes
+  against 11–34 ms for the Makepad remount), text is ArkUI Text in the system
+  font, icons are the same SVGs served as files, the viewfinder is an
+  XComponent the camera NDK renders into with no frame readback, and the
+  window is edge to edge under a transparent status bar. Taps come back as
+  node click events; every continuous gesture (mode-bar drag and fling,
+  focus-box drag, pinch, the dial's slide and coast, the chip and bar springs)
+  runs on the raw touch stream Octoscript-OH's shim now forwards, with the
+  same spring and dial numbers as the Makepad host, stepped from a 16 ms
+  ArkTS timer. Photo and video capture, pause/resume, the front camera and
+  the silent gallery save are all verified on the device. Not there: the
+  Makepad remote instrument (this host was driven with `uitest` and Hypium
+  instead), the intro-card artwork is a flat colour as on the Makepad host,
+  and the mode strip is not clipped at the artboard edge.
+
 ## Evidence
 
 `docs/evidence/` holds the phone-vs-replica sheets produced by driving the
 module through the remote instrument (left: the Mate 70 Air capture cropped to
-the artboard; right: the Makepad replica at the same state).
+the artboard; right: the Makepad replica at the same state), and
+`mate-oh-native-tour.jpg` for the ArkUI host.

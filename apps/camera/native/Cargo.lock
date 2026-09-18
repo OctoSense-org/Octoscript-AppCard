@@ -916,7 +916,15 @@ dependencies = [
  "octoscript-node",
  "octoscript-ui-l0",
  "octoscript-widgets",
+ "octosense-camera-logic",
  "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "octosense-camera-logic"
+version = "0.1.0"
+dependencies = [
  "serde_json",
  "sha2",
 ]

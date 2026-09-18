@@ -21,9 +21,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
-pub mod icons;
-pub mod scene;
-pub mod session;
+pub use octosense_camera_logic::{icons, scene, session};
 
 script_mod! {
     use mod.prelude.widgets.*

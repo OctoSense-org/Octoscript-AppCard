@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Camera"
+    },
+    {
+      "name": "camera_reason",
+      "value": "Camera preview"
+    },
+    {
+      "name": "microphone_reason",
+      "value": "Sound for video recordings"
+    },
+    {
+      "name": "gallery_reason",
+      "value": "Save photos and videos to the gallery"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/ychen/.ohos/config/default_MyApplication_pLN6cN8pxWeo4DuDGokx_c-LOmebttDZj3LWngb43C4=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A24CD6CCE92B062C7732595F28DE0EC68601103379E49C21899FE4390CEF62FA1B7A4FE36B61D",
+          "profile": "/Users/ychen/.ohos/config/default_MyApplication_pLN6cN8pxWeo4DuDGokx_c-LOmebttDZj3LWngb43C4=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/ychen/.ohos/config/default_MyApplication_pLN6cN8pxWeo4DuDGokx_c-LOmebttDZj3LWngb43C4=.p12",
+          "storePassword": "0000001A5927BA6F96AAE2880C9B185895DCBEE87EC3806BCDDED0AF0F988AA900D07E59639D3F4155FC"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "6.0.1(21)",
+        "runtimeOS": "HarmonyOS",
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "camera",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

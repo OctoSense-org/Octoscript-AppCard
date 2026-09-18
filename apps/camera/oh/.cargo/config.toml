@@ -1,0 +1,10 @@
+# Cross-compiling for the phone with DevEco Studio's bundled LLVM. The
+# `aarch64-unknown-linux-ohos-clang` wrappers add the target and sysroot.
+[target.aarch64-unknown-linux-ohos]
+linker = "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang"
+
+[env]
+OHOS_SDK_NATIVE = "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/native"
+CC_aarch64_unknown_linux_ohos = "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang"
+CXX_aarch64_unknown_linux_ohos = "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang++"
+AR_aarch64_unknown_linux_ohos = "/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/native/llvm/bin/llvm-ar"
