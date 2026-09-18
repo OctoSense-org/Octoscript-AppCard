@@ -1,0 +1,3662 @@
+{
+  "1": {
+    "text": {
+      "filter_label": {
+        "cn": "原色",
+        "en": "原色"
+      },
+      "zoom_w_label": {
+        "cn": "W",
+        "en": "W"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "zoom_5_label": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "mode_night_label": {
+        "cn": "夜景",
+        "en": "Night"
+      },
+      "mode_snapshot_label": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      },
+      "mode_more_label": {
+        "cn": "更多",
+        "en": "More"
+      }
+    },
+    "controls": {
+      "ai_compose": {
+        "event": "ai_compose",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          16.0,
+          0.0,
+          36,
+          36
+        ],
+        "enabled": true
+      },
+      "flash": {
+        "event": "flash",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          202,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "live_photo": {
+        "event": "live_photo",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          254,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [
+          "filter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          306,
+          0,
+          68,
+          36
+        ],
+        "enabled": true
+      },
+      "zoom_w": {
+        "event": "zoom_w",
+        "text_ids": [
+          "zoom_w_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          103.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_5": {
+        "event": "zoom_5",
+        "text_ids": [
+          "zoom_5_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          263.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "mode_night": {
+        "event": "mode_night",
+        "text_ids": [
+          "mode_night_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          20.100000000000023,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_snapshot": {
+        "event": "mode_snapshot",
+        "text_ids": [
+          "mode_snapshot_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          281.6,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_more": {
+        "event": "mode_more",
+        "text_ids": [
+          "mode_more_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          333.9,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "拍照",
+      "en": "Photo"
+    }
+  },
+  "2": {
+    "text": {
+      "filter_label": {
+        "cn": "原色",
+        "en": "原色"
+      },
+      "flash_title": {
+        "cn": "闪光灯",
+        "en": "Flash"
+      },
+      "flash_auto_label": {
+        "cn": "自动",
+        "en": "Auto"
+      },
+      "flash_off_opt_label": {
+        "cn": "关闭",
+        "en": "Off"
+      },
+      "flash_on_label": {
+        "cn": "打开",
+        "en": "On"
+      },
+      "flash_torch_label": {
+        "cn": "常亮",
+        "en": "Torch"
+      },
+      "zoom_w_label": {
+        "cn": "W",
+        "en": "W"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "zoom_5_label": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "mode_night_label": {
+        "cn": "夜景",
+        "en": "Night"
+      },
+      "mode_snapshot_label": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      },
+      "mode_more_label": {
+        "cn": "更多",
+        "en": "More"
+      }
+    },
+    "controls": {
+      "ai_compose": {
+        "event": "ai_compose",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          16.0,
+          0.0,
+          36,
+          36
+        ],
+        "enabled": true
+      },
+      "flash": {
+        "event": "flash",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          202,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "live_photo": {
+        "event": "live_photo",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          254,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [
+          "filter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          306,
+          0,
+          68,
+          36
+        ],
+        "enabled": true
+      },
+      "flash_auto": {
+        "event": "flash_auto",
+        "text_ids": [
+          "flash_auto_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          28.0,
+          94.5,
+          87.5,
+          50
+        ],
+        "enabled": true
+      },
+      "flash_off_opt": {
+        "event": "flash_off_opt",
+        "text_ids": [
+          "flash_off_opt_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          115.5,
+          94.5,
+          87.5,
+          50
+        ],
+        "enabled": true
+      },
+      "flash_on": {
+        "event": "flash_on",
+        "text_ids": [
+          "flash_on_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          203.0,
+          94.5,
+          87.5,
+          50
+        ],
+        "enabled": true
+      },
+      "flash_torch": {
+        "event": "flash_torch",
+        "text_ids": [
+          "flash_torch_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          290.5,
+          94.5,
+          87.5,
+          50
+        ],
+        "enabled": true
+      },
+      "zoom_w": {
+        "event": "zoom_w",
+        "text_ids": [
+          "zoom_w_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          103.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_5": {
+        "event": "zoom_5",
+        "text_ids": [
+          "zoom_5_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          263.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "mode_night": {
+        "event": "mode_night",
+        "text_ids": [
+          "mode_night_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          20.100000000000023,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_snapshot": {
+        "event": "mode_snapshot",
+        "text_ids": [
+          "mode_snapshot_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          281.6,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_more": {
+        "event": "mode_more",
+        "text_ids": [
+          "mode_more_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          333.9,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "闪光灯",
+      "en": "Flash"
+    }
+  },
+  "3": {
+    "text": {
+      "filter_label": {
+        "cn": "原色",
+        "en": "原色"
+      },
+      "style_original_label": {
+        "cn": "原色",
+        "en": "Original"
+      },
+      "style_vivid_label": {
+        "cn": "鲜艳",
+        "en": "Vivid"
+      },
+      "style_bright_label": {
+        "cn": "明快",
+        "en": "Bright"
+      },
+      "style_mono_label": {
+        "cn": "黑白",
+        "en": "Mono"
+      },
+      "style_natural_label": {
+        "cn": "自然",
+        "en": "Natural"
+      },
+      "style_filmic_label": {
+        "cn": "胶片",
+        "en": "Film"
+      },
+      "style_cinema_label": {
+        "cn": "电影",
+        "en": "Cinema"
+      },
+      "style_anime_label": {
+        "cn": "动漫",
+        "en": "Anime"
+      },
+      "zoom_w_label": {
+        "cn": "W",
+        "en": "W"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "zoom_5_label": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "mode_night_label": {
+        "cn": "夜景",
+        "en": "Night"
+      },
+      "mode_snapshot_label": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      },
+      "mode_more_label": {
+        "cn": "更多",
+        "en": "More"
+      }
+    },
+    "controls": {
+      "ai_compose": {
+        "event": "ai_compose",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          16.0,
+          0.0,
+          36,
+          36
+        ],
+        "enabled": true
+      },
+      "flash": {
+        "event": "flash",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          202,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "live_photo": {
+        "event": "live_photo",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          254,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [
+          "filter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          306,
+          0,
+          68,
+          36
+        ],
+        "enabled": true
+      },
+      "style_original": {
+        "event": "style_original",
+        "text_ids": [
+          "style_original_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          48.0,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "style_vivid": {
+        "event": "style_vivid",
+        "text_ids": [
+          "style_vivid_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          98.5,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "style_bright": {
+        "event": "style_bright",
+        "text_ids": [
+          "style_bright_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          149.0,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "style_mono": {
+        "event": "style_mono",
+        "text_ids": [
+          "style_mono_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          199.5,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "style_natural": {
+        "event": "style_natural",
+        "text_ids": [
+          "style_natural_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          250.0,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "style_filmic": {
+        "event": "style_filmic",
+        "text_ids": [
+          "style_filmic_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          300.5,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "style_cinema": {
+        "event": "style_cinema",
+        "text_ids": [
+          "style_cinema_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          351.0,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "style_anime": {
+        "event": "style_anime",
+        "text_ids": [
+          "style_anime_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          190,
+          401.5,
+          196,
+          50.5
+        ],
+        "enabled": true
+      },
+      "zoom_w": {
+        "event": "zoom_w",
+        "text_ids": [
+          "zoom_w_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          103.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_5": {
+        "event": "zoom_5",
+        "text_ids": [
+          "zoom_5_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          263.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "mode_night": {
+        "event": "mode_night",
+        "text_ids": [
+          "mode_night_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          20.100000000000023,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_snapshot": {
+        "event": "mode_snapshot",
+        "text_ids": [
+          "mode_snapshot_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          281.6,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_more": {
+        "event": "mode_more",
+        "text_ids": [
+          "mode_more_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          333.9,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "色彩风格",
+      "en": "Color style"
+    }
+  },
+  "4": {
+    "text": {
+      "filter_label": {
+        "cn": "原色",
+        "en": "原色"
+      },
+      "beauty_label": {
+        "cn": "美肤 5",
+        "en": "Skin 5"
+      },
+      "aperture_label": {
+        "cn": "F2.4",
+        "en": "F2.4"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "mode_night_label": {
+        "cn": "夜景",
+        "en": "Night"
+      },
+      "mode_snapshot_label": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      }
+    },
+    "controls": {
+      "ai_compose": {
+        "event": "ai_compose",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          16.0,
+          0.0,
+          36,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [
+          "filter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          306,
+          0,
+          68,
+          36
+        ],
+        "enabled": true
+      },
+      "info": {
+        "event": "info",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          352,
+          55.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "beauty": {
+        "event": "beauty",
+        "text_ids": [
+          "beauty_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          0,
+          513.5,
+          60,
+          48
+        ],
+        "enabled": true
+      },
+      "aperture": {
+        "event": "aperture",
+        "text_ids": [
+          "aperture_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          340,
+          513.5,
+          60,
+          48
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "mode_night": {
+        "event": "mode_night",
+        "text_ids": [
+          "mode_night_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_snapshot": {
+        "event": "mode_snapshot",
+        "text_ids": [
+          "mode_snapshot_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          281.6,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          333.9,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "人像",
+      "en": "Portrait"
+    }
+  },
+  "5": {
+    "text": {
+      "video_res_label": {
+        "cn": "1080p",
+        "en": "1080p"
+      },
+      "video_fps_label": {
+        "cn": "30 fps",
+        "en": "30 fps"
+      },
+      "beauty_label": {
+        "cn": "美肤 0",
+        "en": "Skin 0"
+      },
+      "zoom_w_label": {
+        "cn": "W",
+        "en": "W"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "zoom_5_label": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "mode_snapshot_label": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      },
+      "mode_more_label": {
+        "cn": "更多",
+        "en": "More"
+      }
+    },
+    "controls": {
+      "video_res": {
+        "event": "video_res",
+        "text_ids": [
+          "video_res_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          12,
+          0,
+          56,
+          36
+        ],
+        "enabled": true
+      },
+      "video_fps": {
+        "event": "video_fps",
+        "text_ids": [
+          "video_fps_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          70,
+          0,
+          46,
+          36
+        ],
+        "enabled": true
+      },
+      "stabilise": {
+        "event": "stabilise",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          228,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "flash": {
+        "event": "flash",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          280,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          332,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "beauty": {
+        "event": "beauty",
+        "text_ids": [
+          "beauty_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          0,
+          513.5,
+          60,
+          48
+        ],
+        "enabled": true
+      },
+      "zoom_w": {
+        "event": "zoom_w",
+        "text_ids": [
+          "zoom_w_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          103.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_5": {
+        "event": "zoom_5",
+        "text_ids": [
+          "zoom_5_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          263.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "mode_snapshot": {
+        "event": "mode_snapshot",
+        "text_ids": [
+          "mode_snapshot_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          20.100000000000023,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_more": {
+        "event": "mode_more",
+        "text_ids": [
+          "mode_more_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          281.6,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "录像",
+      "en": "Video"
+    }
+  },
+  "6": {
+    "text": {
+      "rec_timer": {
+        "cn": "00:07",
+        "en": "00:07"
+      },
+      "zoom_w_label": {
+        "cn": "W",
+        "en": "W"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "zoom_5_label": {
+        "cn": "5x",
+        "en": "5x"
+      }
+    },
+    "controls": {
+      "flash": {
+        "event": "flash",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          332,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "zoom_w": {
+        "event": "zoom_w",
+        "text_ids": [
+          "zoom_w_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          103.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_5": {
+        "event": "zoom_5",
+        "text_ids": [
+          "zoom_5_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          263.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "rec_still": {
+        "event": "rec_still",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "rec_pause": {
+        "event": "rec_pause",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "录像中",
+      "en": "Recording"
+    }
+  },
+  "7": {
+    "text": {
+      "pro_format_label": {
+        "cn": "JPG",
+        "en": "JPG"
+      },
+      "zoom_w_label": {
+        "cn": "W",
+        "en": "W"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "zoom_5_label": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "pro_metering_label": {
+        "cn": "M",
+        "en": "M"
+      },
+      "pro_iso_label": {
+        "cn": "ISO",
+        "en": "ISO"
+      },
+      "pro_iso_value": {
+        "cn": "50",
+        "en": "50"
+      },
+      "pro_shutter_label": {
+        "cn": "S",
+        "en": "S"
+      },
+      "pro_shutter_value": {
+        "cn": "1/125",
+        "en": "1/125"
+      },
+      "pro_ev_label": {
+        "cn": "EV•",
+        "en": "EV•"
+      },
+      "pro_ev_value": {
+        "cn": "0",
+        "en": "0"
+      },
+      "pro_af_label": {
+        "cn": "AF•",
+        "en": "AF•"
+      },
+      "pro_af_value": {
+        "cn": "AF-C",
+        "en": "AF-C"
+      },
+      "pro_wb_label": {
+        "cn": "WB•",
+        "en": "WB•"
+      },
+      "pro_wb_value": {
+        "cn": "AWB",
+        "en": "AWB"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      },
+      "mode_more_label": {
+        "cn": "更多",
+        "en": "More"
+      }
+    },
+    "controls": {
+      "pro_format": {
+        "event": "pro_format",
+        "text_ids": [
+          "pro_format_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          12,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "flash": {
+        "event": "flash",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          280,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          332,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "info": {
+        "event": "info",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          352,
+          55.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "pro_exposure_effect": {
+        "event": "pro_exposure_effect",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          352,
+          99.2,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_w": {
+        "event": "zoom_w",
+        "text_ids": [
+          "zoom_w_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          103.0,
+          441.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          441.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          441.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          441.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_5": {
+        "event": "zoom_5",
+        "text_ids": [
+          "zoom_5_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          263.0,
+          441.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "pro_metering": {
+        "event": "pro_metering",
+        "text_ids": [
+          "pro_metering_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          12.0,
+          506.8,
+          48,
+          50.2
+        ],
+        "enabled": true
+      },
+      "pro_iso": {
+        "event": "pro_iso",
+        "text_ids": [
+          "pro_iso_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          78.7,
+          506.8,
+          48,
+          50.2
+        ],
+        "enabled": true
+      },
+      "pro_shutter": {
+        "event": "pro_shutter",
+        "text_ids": [
+          "pro_shutter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          145.4,
+          506.8,
+          48,
+          50.2
+        ],
+        "enabled": true
+      },
+      "pro_ev": {
+        "event": "pro_ev",
+        "text_ids": [
+          "pro_ev_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          212.10000000000002,
+          506.8,
+          48,
+          50.2
+        ],
+        "enabled": true
+      },
+      "pro_af": {
+        "event": "pro_af",
+        "text_ids": [
+          "pro_af_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          278.8,
+          506.8,
+          48,
+          50.2
+        ],
+        "enabled": true
+      },
+      "pro_wb": {
+        "event": "pro_wb",
+        "text_ids": [
+          "pro_wb_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          345.5,
+          506.8,
+          48,
+          50.2
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          20.100000000000023,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_more": {
+        "event": "mode_more",
+        "text_ids": [
+          "mode_more_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "pro_video": {
+        "event": "pro_video",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "专业",
+      "en": "Pro"
+    }
+  },
+  "8": {
+    "text": {
+      "night_shutter_label": {
+        "cn": "自动",
+        "en": "Auto"
+      },
+      "night_sub_mode_label": {
+        "cn": "超级夜景",
+        "en": "Super night"
+      },
+      "zoom_w_label": {
+        "cn": "W",
+        "en": "W"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_3_label": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "zoom_5_label": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "mode_night_label": {
+        "cn": "夜景",
+        "en": "Night"
+      },
+      "mode_snapshot_label": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      }
+    },
+    "controls": {
+      "ai_compose": {
+        "event": "ai_compose",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          16.0,
+          0.0,
+          36,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          332,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "info": {
+        "event": "info",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          352,
+          55.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "night_shutter": {
+        "event": "night_shutter",
+        "text_ids": [
+          "night_shutter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          0,
+          513.5,
+          60,
+          48
+        ],
+        "enabled": true
+      },
+      "night_sub_mode": {
+        "event": "night_sub_mode",
+        "text_ids": [
+          "night_sub_mode_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          340,
+          513.5,
+          60,
+          48
+        ],
+        "enabled": true
+      },
+      "zoom_w": {
+        "event": "zoom_w",
+        "text_ids": [
+          "zoom_w_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          103.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_3": {
+        "event": "zoom_3",
+        "text_ids": [
+          "zoom_3_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_5": {
+        "event": "zoom_5",
+        "text_ids": [
+          "zoom_5_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          263.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "mode_night": {
+        "event": "mode_night",
+        "text_ids": [
+          "mode_night_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_snapshot": {
+        "event": "mode_snapshot",
+        "text_ids": [
+          "mode_snapshot_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          281.6,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          333.9,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "夜景",
+      "en": "Night"
+    }
+  },
+  "9": {
+    "text": {
+      "more_supermacro_label": {
+        "cn": "超级微距",
+        "en": "Super macro"
+      },
+      "more_highres_label": {
+        "cn": "高像素",
+        "en": "High-res"
+      },
+      "more_slowmo_label": {
+        "cn": "慢动作",
+        "en": "Slow-mo"
+      },
+      "more_aperture_mode_label": {
+        "cn": "大光圈",
+        "en": "Aperture"
+      },
+      "more_timelapse_label": {
+        "cn": "延时摄影",
+        "en": "Time-lapse"
+      },
+      "more_lightpaint_label": {
+        "cn": "流光快门",
+        "en": "Light painting"
+      },
+      "more_panorama_label": {
+        "cn": "超清全景",
+        "en": "Panorama"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      },
+      "mode_more_label": {
+        "cn": "更多",
+        "en": "More"
+      }
+    },
+    "controls": {
+      "more_edit": {
+        "event": "more_edit",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          28.9,
+          248.9,
+          32,
+          32
+        ],
+        "enabled": true
+      },
+      "more_info": {
+        "event": "more_info",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          345.1,
+          248.9,
+          32,
+          32
+        ],
+        "enabled": true
+      },
+      "more_supermacro": {
+        "event": "more_supermacro",
+        "text_ids": [
+          "more_supermacro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          30.4,
+          292.9,
+          107,
+          77
+        ],
+        "enabled": true
+      },
+      "more_highres": {
+        "event": "more_highres",
+        "text_ids": [
+          "more_highres_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          149.4,
+          292.9,
+          107,
+          77
+        ],
+        "enabled": true
+      },
+      "more_slowmo": {
+        "event": "more_slowmo",
+        "text_ids": [
+          "more_slowmo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          268.4,
+          292.9,
+          107,
+          77
+        ],
+        "enabled": true
+      },
+      "more_aperture_mode": {
+        "event": "more_aperture_mode",
+        "text_ids": [
+          "more_aperture_mode_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          30.4,
+          381.9,
+          107,
+          77
+        ],
+        "enabled": true
+      },
+      "more_timelapse": {
+        "event": "more_timelapse",
+        "text_ids": [
+          "more_timelapse_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          149.4,
+          381.9,
+          107,
+          77
+        ],
+        "enabled": true
+      },
+      "more_lightpaint": {
+        "event": "more_lightpaint",
+        "text_ids": [
+          "more_lightpaint_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          268.4,
+          381.9,
+          107,
+          77
+        ],
+        "enabled": true
+      },
+      "more_panorama": {
+        "event": "more_panorama",
+        "text_ids": [
+          "more_panorama_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          30.4,
+          470.9,
+          107,
+          77
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          20.100000000000023,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_more": {
+        "event": "mode_more",
+        "text_ids": [
+          "mode_more_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "更多",
+      "en": "More"
+    }
+  },
+  "10": {
+    "text": {
+      "filter_label": {
+        "cn": "原色",
+        "en": "原色"
+      },
+      "box_settings_label": {
+        "cn": "设置",
+        "en": "Settings"
+      },
+      "box_vision_label": {
+        "cn": "小艺视觉",
+        "en": "Celia vision"
+      },
+      "box_xmage_label": {
+        "cn": "XMAGE 风格",
+        "en": "XMAGE style"
+      },
+      "box_exposure_label": {
+        "cn": "曝光",
+        "en": "Exposure"
+      },
+      "box_ai_label": {
+        "cn": "AI 辅助构图",
+        "en": "AI composition"
+      },
+      "box_watermark_label": {
+        "cn": "水印",
+        "en": "Watermark"
+      },
+      "box_ratio_glyph": {
+        "cn": "4:3",
+        "en": "4:3"
+      },
+      "box_ratio_label": {
+        "cn": "照片比例",
+        "en": "Aspect ratio"
+      },
+      "box_flash_label": {
+        "cn": "闪光灯",
+        "en": "Flash"
+      }
+    },
+    "controls": {
+      "ai_compose": {
+        "event": "ai_compose",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          16.0,
+          0.0,
+          36,
+          36
+        ],
+        "enabled": true
+      },
+      "flash": {
+        "event": "flash",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          202,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "live_photo": {
+        "event": "live_photo",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          254,
+          0,
+          52,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [
+          "filter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          306,
+          0,
+          68,
+          36
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          77,
+          533,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          526.8,
+          52,
+          52
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          289.0,
+          533.0,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          586.5,
+          60,
+          32
+        ],
+        "enabled": true
+      },
+      "box_settings": {
+        "event": "box_settings",
+        "text_ids": [
+          "box_settings_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          32.0,
+          622.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      },
+      "box_vision": {
+        "event": "box_vision",
+        "text_ids": [
+          "box_vision_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          117.5,
+          622.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      },
+      "box_xmage": {
+        "event": "box_xmage",
+        "text_ids": [
+          "box_xmage_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          203.0,
+          622.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      },
+      "box_exposure": {
+        "event": "box_exposure",
+        "text_ids": [
+          "box_exposure_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          288.5,
+          622.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      },
+      "box_ai": {
+        "event": "box_ai",
+        "text_ids": [
+          "box_ai_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          32.0,
+          694.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      },
+      "box_watermark": {
+        "event": "box_watermark",
+        "text_ids": [
+          "box_watermark_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          117.5,
+          694.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      },
+      "box_ratio": {
+        "event": "box_ratio",
+        "text_ids": [
+          "box_ratio_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          203.0,
+          694.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      },
+      "box_flash": {
+        "event": "box_flash",
+        "text_ids": [
+          "box_flash_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          288.5,
+          694.5,
+          85.5,
+          72
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "百宝箱",
+      "en": "Toolbox"
+    }
+  },
+  "11": {
+    "text": {
+      "filter_label": {
+        "cn": "原色",
+        "en": "原色"
+      },
+      "ruler_title": {
+        "cn": "美肤",
+        "en": "Skin"
+      },
+      "ruler_min": {
+        "cn": "0",
+        "en": "0"
+      },
+      "ruler_mid": {
+        "cn": "5",
+        "en": "5"
+      },
+      "ruler_max": {
+        "cn": "10",
+        "en": "10"
+      },
+      "mode_night_label": {
+        "cn": "夜景",
+        "en": "Night"
+      },
+      "mode_snapshot_label": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "mode_portrait_label": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "mode_photo_label": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "mode_video_label": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "mode_pro_label": {
+        "cn": "专业",
+        "en": "Pro"
+      }
+    },
+    "controls": {
+      "ai_compose": {
+        "event": "ai_compose",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          16.0,
+          0.0,
+          36,
+          36
+        ],
+        "enabled": true
+      },
+      "filter": {
+        "event": "filter",
+        "text_ids": [
+          "filter_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          306,
+          0,
+          68,
+          36
+        ],
+        "enabled": true
+      },
+      "info": {
+        "event": "info",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          352,
+          55.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "ruler": {
+        "event": "ruler",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          23,
+          494.8,
+          360,
+          80
+        ],
+        "enabled": true
+      },
+      "mode_night": {
+        "event": "mode_night",
+        "text_ids": [
+          "mode_night_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          72.4,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_snapshot": {
+        "event": "mode_snapshot",
+        "text_ids": [
+          "mode_snapshot_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          124.69999999999999,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_portrait": {
+        "event": "mode_portrait",
+        "text_ids": [
+          "mode_portrait_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          177.0,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_photo": {
+        "event": "mode_photo",
+        "text_ids": [
+          "mode_photo_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          229.3,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_video": {
+        "event": "mode_video",
+        "text_ids": [
+          "mode_video_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          281.6,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "mode_pro": {
+        "event": "mode_pro",
+        "text_ids": [
+          "mode_pro_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          333.9,
+          576.6,
+          52,
+          56
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "switch_camera": {
+        "event": "switch_camera",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          308.8,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "美肤",
+      "en": "Skin smoothing"
+    }
+  },
+  "12": {
+    "text": {
+      "pano_dir_label": {
+        "cn": "横向",
+        "en": "Horizontal"
+      },
+      "zoom_1_label": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "zoom_2_label": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "zoom_4_label": {
+        "cn": "4x",
+        "en": "4x"
+      },
+      "sub_mode_label": {
+        "cn": "超清全景",
+        "en": "Panorama"
+      }
+    },
+    "controls": {
+      "info": {
+        "event": "info",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          352,
+          55.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "pano_dir": {
+        "event": "pano_dir",
+        "text_ids": [
+          "pano_dir_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          340,
+          513.5,
+          60,
+          48
+        ],
+        "enabled": true
+      },
+      "zoom_1": {
+        "event": "zoom_1",
+        "text_ids": [
+          "zoom_1_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          143.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_2": {
+        "event": "zoom_2",
+        "text_ids": [
+          "zoom_2_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          183.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "zoom_4": {
+        "event": "zoom_4",
+        "text_ids": [
+          "zoom_4_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          223.0,
+          517.5,
+          40,
+          40
+        ],
+        "enabled": true
+      },
+      "sub_mode_close": {
+        "event": "sub_mode_close",
+        "text_ids": [
+          "sub_mode_label"
+        ],
+        "ocr_ids": [],
+        "source_bounds": [
+          151.0,
+          589.8,
+          104,
+          30
+        ],
+        "enabled": true
+      },
+      "thumbnail": {
+        "event": "thumbnail",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          53.2,
+          669.8,
+          44,
+          44
+        ],
+        "enabled": true
+      },
+      "shutter": {
+        "event": "shutter",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          171.0,
+          659.7,
+          64,
+          64
+        ],
+        "enabled": true
+      },
+      "treasure_handle": {
+        "event": "treasure_handle",
+        "text_ids": [],
+        "ocr_ids": [],
+        "source_bounds": [
+          172.9,
+          724.6,
+          60,
+          32
+        ],
+        "enabled": true
+      }
+    },
+    "surface": "app",
+    "title": {
+      "cn": "超清全景",
+      "en": "Panorama"
+    }
+  }
+}

@@ -1,0 +1,695 @@
+{
+  "schema_version": 1,
+  "policy_version": "1.1.0",
+  "contract_sha256": "ef3ac3900307444a4e5bbb7b4ce443f52d68a0ffcac07848b640045c0d2a50d5",
+  "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+  "classification_scope": "Authored intent and explicit review candidates; no claim of automatic visual recognition.",
+  "elements": [
+    {
+      "id": "page",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "screen",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "viewfinder",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "ai_compose",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "ai_compose_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "ai_compose_bg",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "ai_compose_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/ai_compose_icon.svg",
+        "sha256": "1d3b9e87f8b9032632f7522284e4a565b23f7ecae193757ad790b5249ad10072",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "top_pill",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "flash",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "flash_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "flash_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/flash_icon.svg",
+        "sha256": "5211f51b665e15c3bfee8ce90c3b06e1f48e558fb05c03814f4ac48c2ca59fae",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "live_photo",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "live_photo_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "live_photo_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/live_photo_icon.svg",
+        "sha256": "aef383e35f6c947c95bea76f56b18309dcd686417107a5441c2030383dbb7f0d",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "filter",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "filter_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "filter_frame",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "filter_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/filter_icon.svg",
+        "sha256": "6eee1ff89ed03065ba6ae219e4d934625e55c610c272be5d38274a4f781b3d5b",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "filter_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "thumbnail",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "thumbnail_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "thumbnail_ring",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "thumbnail_img",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "thumbnail_line",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "shutter",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "shutter_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "shutter_ring",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "shutter_gap",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "shutter_disc",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "switch_camera",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "switch_camera_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "switch_camera_bg",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "switch_camera_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/switch_camera_icon.svg",
+        "sha256": "81bb2e5a07e63fd6049f90fbf8a98ede7bdd3b6ff515067fe7bcc17a7a3e1221",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box",
+      "role": "card",
+      "basis": "Explicit independently owned panel surface, native Label/Button children",
+      "confidence": 1.0,
+      "decision": "reviewed"
+    },
+    {
+      "id": "box_settings",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_settings_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_settings_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_settings_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_settings_icon.svg",
+        "sha256": "4c72eea96210c3fd68d69f1266fb739d6c021dd63aafdef935ec5e1f5ff3dd78",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_settings_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_vision",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_vision_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_vision_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_vision_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_vision_icon.svg",
+        "sha256": "41eb0602af4400103ccdd98985f67757b38dbb87df5f36c36b5fc5b8976177eb",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_vision_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_xmage",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_xmage_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_xmage_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_xmage_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_xmage_icon.svg",
+        "sha256": "6eee1ff89ed03065ba6ae219e4d934625e55c610c272be5d38274a4f781b3d5b",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_xmage_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_exposure",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_exposure_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_exposure_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_exposure_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_exposure_icon.svg",
+        "sha256": "ed0158cf3e2557b5241243435b91ae39167457fbe3bf0f031b367f62bde90113",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_exposure_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ai",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ai_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ai_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ai_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_ai_icon.svg",
+        "sha256": "1d3b9e87f8b9032632f7522284e4a565b23f7ecae193757ad790b5249ad10072",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_ai_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_watermark",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_watermark_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_watermark_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_watermark_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_watermark_icon.svg",
+        "sha256": "cf6bff5bf8bf2acc659e75f53dbca1d02dcde623e20f05ff576c97293c5ec2a7",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_watermark_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ratio",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ratio_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ratio_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ratio_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_ratio_icon.svg",
+        "sha256": "b6a11884bf0e04da9e54ef35a2cb0808a1d6a75152f3bcee7557048fc60ec9b4",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_ratio_glyph",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_ratio_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_flash",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_flash_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_flash_circle",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_flash_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/box_flash_icon.svg",
+        "sha256": "5211f51b665e15c3bfee8ce90c3b06e1f48e558fb05c03814f4ac48c2ca59fae",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    },
+    {
+      "id": "box_flash_label",
+      "role": "text",
+      "basis": "authored text node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_page_active",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "box_page_other",
+      "role": "layout",
+      "basis": "authored stack node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "treasure_handle",
+      "role": "button",
+      "basis": "authored KitButton composition",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "treasure_handle_control",
+      "role": "button",
+      "basis": "authored button node",
+      "confidence": 1.0,
+      "decision": "declared"
+    },
+    {
+      "id": "treasure_handle_icon",
+      "role": "icon",
+      "basis": "Storyboard vector icon; native SVG paths without raster or text",
+      "confidence": 1,
+      "decision": "reviewed",
+      "asset": {
+        "path": "assets/treasure_handle_icon.svg",
+        "sha256": "875dc18ee517b8c015e93096c88e45ff05c816e17c0f5129cf6005eb848b30ff",
+        "method": "reference_svg",
+        "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+        "fit": "stretch",
+        "clip": true,
+        "notes": "Storyboard icon: the same vector paths the reference was rendered from; no text or raster"
+      }
+    }
+  ]
+}

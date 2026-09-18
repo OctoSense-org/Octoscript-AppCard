@@ -1,0 +1,387 @@
+{
+  "atlas_sha256": "b60d54c5c5157a7f4580d5053637d6d698ce451f0505d7f4c36c2d7cdef1969f",
+  "reference_sha256": "6ddf7526e96bcb2eda6861410a1cdd00f89a3af849c94511bcea0e11b4ab7777",
+  "source_crop": [
+    48,
+    1716,
+    812,
+    1552
+  ],
+  "transform": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      48,
+      1716,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -48.0,
+      0,
+      1.0,
+      -1716.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      48.0,
+      0,
+      1.0,
+      1716.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -24.0,
+      0,
+      0.5,
+      -858.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      48.0,
+      0,
+      2.0,
+      1716.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "reviewed_source": true,
+  "text": [
+    {
+      "id": "video_res_label",
+      "css_box": [
+        24,
+        0,
+        42,
+        36
+      ],
+      "ink_bounds": [
+        25.105,
+        13.918,
+        36.074999999999996,
+        12.649
+      ],
+      "copy": {
+        "cn": "1080p",
+        "en": "1080p"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "video_fps_label",
+      "css_box": [
+        76,
+        0,
+        40,
+        36
+      ],
+      "ink_bounds": [
+        76.364,
+        13.137999999999998,
+        35.854,
+        13.429000000000002
+      ],
+      "copy": {
+        "cn": "30 fps",
+        "en": "30 fps"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "beauty_label",
+      "css_box": [
+        0,
+        541.5,
+        60,
+        20
+      ],
+      "ink_bounds": [
+        13.662,
+        546.544,
+        32.544000000000004,
+        11.219999999999999
+      ],
+      "copy": {
+        "cn": "美肤 0",
+        "en": "Skin 0"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_w_label",
+      "css_box": [
+        103.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        117.2995,
+        533.535,
+        11.388,
+        9.633
+      ],
+      "copy": {
+        "cn": "W",
+        "en": "W"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_1_label",
+      "css_box": [
+        143.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        156.578,
+        533.535,
+        13.701999999999998,
+        9.633
+      ],
+      "copy": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_2_label",
+      "css_box": [
+        183.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        195.967,
+        533.366,
+        14.312999999999999,
+        9.802
+      ],
+      "copy": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_3_label",
+      "css_box": [
+        223.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        235.85,
+        533.366,
+        14.429999999999998,
+        9.984
+      ],
+      "copy": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_5_label",
+      "css_box": [
+        263.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        275.85,
+        533.535,
+        14.429999999999998,
+        9.815
+      ],
+      "copy": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "mode_snapshot_label",
+      "css_box": [
+        20.100000000000023,
+        588.6,
+        52,
+        24
+      ],
+      "ink_bounds": [
+        31.300000000000022,
+        594.072,
+        29.472,
+        14.847999999999999
+      ],
+      "copy": {
+        "cn": "闪拍",
+        "en": "Snapshot"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "mode_portrait_label",
+      "css_box": [
+        72.4,
+        588.6,
+        52,
+        24
+      ],
+      "ink_bounds": [
+        82.976,
+        594.088,
+        31.024,
+        14.836
+      ],
+      "copy": {
+        "cn": "人像",
+        "en": "Portrait"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "mode_photo_label",
+      "css_box": [
+        124.69999999999999,
+        588.6,
+        52,
+        24
+      ],
+      "ink_bounds": [
+        135.164,
+        594.072,
+        30.912000000000003,
+        14.927999999999999
+      ],
+      "copy": {
+        "cn": "拍照",
+        "en": "Photo"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "mode_video_label",
+      "css_box": [
+        177.0,
+        588.6,
+        52,
+        24
+      ],
+      "ink_bounds": [
+        187.832,
+        593.9920000000001,
+        30.88,
+        15.076
+      ],
+      "copy": {
+        "cn": "录像",
+        "en": "Video"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "mode_pro_label",
+      "css_box": [
+        229.3,
+        588.6,
+        52,
+        24
+      ],
+      "ink_bounds": [
+        240.14800000000002,
+        594.008,
+        30.288,
+        14.959999999999999
+      ],
+      "copy": {
+        "cn": "专业",
+        "en": "Pro"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "mode_more_label",
+      "css_box": [
+        281.6,
+        588.6,
+        52,
+        24
+      ],
+      "ink_bounds": [
+        292.288,
+        594.024,
+        30.496000000000002,
+        14.927999999999999
+      ],
+      "copy": {
+        "cn": "更多",
+        "en": "More"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    }
+  ],
+  "limits": [
+    "The storyboard is authored from device measurements, so measurement is a consistency check of the render against the spec, not OCR of an unknown image",
+    "No native visual acceptance"
+  ]
+}

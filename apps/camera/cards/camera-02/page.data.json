@@ -1,0 +1,873 @@
+{
+  "$kit": {
+    "theme": "light",
+    "placements": {
+      "page": {
+        "component": "Surfacee138f8831782",
+        "layout": {
+          "x": 0,
+          "y": 0,
+          "w": 406,
+          "h": 776
+        }
+      },
+      "screen": {
+        "component": "Surfacefba83cd594ba",
+        "layout": {
+          "x": 0.0,
+          "y": 0.0,
+          "w": 203.0,
+          "h": 388.0
+        }
+      },
+      "viewfinder": {
+        "component": "Surfacef88ef6b699d9",
+        "layout": {
+          "x": 0.0,
+          "y": 19.7,
+          "w": 203.0,
+          "h": 270.5
+        }
+      },
+      "ai_compose": {
+        "component": "KitButtonc46f1658a77f",
+        "layout": {
+          "x": 8.0,
+          "y": 0.0,
+          "w": 18.0,
+          "h": 18.0
+        }
+      },
+      "ai_compose_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 8.0,
+          "y": 0.0,
+          "w": 18.0,
+          "h": 18.0
+        }
+      },
+      "ai_compose_bg": {
+        "component": "Surface7e280dacf378",
+        "layout": {
+          "x": 8.0,
+          "y": 0.0,
+          "w": 18.0,
+          "h": 18.0
+        }
+      },
+      "ai_compose_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 12.0,
+          "y": 4.0,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/ai_compose_icon-1d3b9e87f8b9.svg"
+        }
+      },
+      "top_pill": {
+        "component": "Surface98f55d464158",
+        "layout": {
+          "x": 96.0,
+          "y": 0.0,
+          "w": 101.0,
+          "h": 18.0
+        }
+      },
+      "flash": {
+        "component": "KitButtonc46f1658a77f",
+        "layout": {
+          "x": 101.0,
+          "y": 0.0,
+          "w": 26.0,
+          "h": 18.0
+        }
+      },
+      "flash_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 101.0,
+          "y": 0.0,
+          "w": 26.0,
+          "h": 18.0
+        }
+      },
+      "flash_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 109.0,
+          "y": 4.0,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/flash_icon-5211f51b665e.svg"
+        }
+      },
+      "live_photo": {
+        "component": "KitButtonc46f1658a77f",
+        "layout": {
+          "x": 127.0,
+          "y": 0.0,
+          "w": 26.0,
+          "h": 18.0
+        }
+      },
+      "live_photo_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 127.0,
+          "y": 0.0,
+          "w": 26.0,
+          "h": 18.0
+        }
+      },
+      "live_photo_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 135.0,
+          "y": 4.0,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/live_photo_icon-aef383e35f6c.svg"
+        }
+      },
+      "filter": {
+        "component": "KitButton5cf8a148faf2",
+        "layout": {
+          "x": 153.0,
+          "y": 0.0,
+          "w": 34.0,
+          "h": 18.0
+        }
+      },
+      "filter_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 153.0,
+          "y": 0.0,
+          "w": 34.0,
+          "h": 18.0
+        }
+      },
+      "filter_frame": {
+        "component": "Group0e9585cd3264",
+        "layout": {
+          "x": 155.0,
+          "y": 2.5,
+          "w": 30.0,
+          "h": 13.0
+        }
+      },
+      "filter_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 158.0,
+          "y": 4.0,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/filter_icon-6eee1ff89ed0.svg"
+        }
+      },
+      "filter_label": {
+        "component": "Textea52b1f49bc3",
+        "layout": {
+          "x": 168.5,
+          "y": 4.78975,
+          "w": 14.5,
+          "h": 8.9665
+        }
+      },
+      "flash_panel": {
+        "component": "Surface9737ade1d6ef",
+        "layout": {
+          "x": 8.0,
+          "y": 26.0,
+          "w": 187.0,
+          "h": 52.0
+        }
+      },
+      "flash_seg_track": {
+        "component": "Surface168236225b91",
+        "layout": {
+          "x": 14.0,
+          "y": 47.25,
+          "w": 175.0,
+          "h": 25.0
+        }
+      },
+      "flash_auto": {
+        "component": "KitButton77197ce2bc6e",
+        "layout": {
+          "x": 14.0,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_auto_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 14.0,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_auto_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 30.875,
+          "y": 50.25,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/flash_auto_icon-a875145d1472.svg"
+        }
+      },
+      "flash_auto_label": {
+        "component": "Text555df3e388a9",
+        "layout": {
+          "x": 29.375,
+          "y": 61.085,
+          "w": 17.0,
+          "h": 10.045
+        }
+      },
+      "flash_off_opt": {
+        "component": "KitButton5cf8a148faf2",
+        "layout": {
+          "x": 57.75,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_off_opt_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 57.75,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_off_opt_chip": {
+        "component": "Surface82d7faa785b8",
+        "layout": {
+          "x": 58.75,
+          "y": 48.25,
+          "w": 41.75,
+          "h": 23.0
+        }
+      },
+      "flash_off_opt_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 74.625,
+          "y": 50.25,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/flash_off_opt_icon-a12155eadfd7.svg"
+        }
+      },
+      "flash_off_opt_label": {
+        "component": "Texta11dd818a728",
+        "layout": {
+          "x": 73.125,
+          "y": 61.111000000000004,
+          "w": 17.0,
+          "h": 10.018999999999998
+        }
+      },
+      "flash_on": {
+        "component": "KitButton77197ce2bc6e",
+        "layout": {
+          "x": 101.5,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_on_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 101.5,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_on_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 118.375,
+          "y": 50.25,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/flash_on_icon-e4d3b2f500df.svg"
+        }
+      },
+      "flash_on_label": {
+        "component": "Text72b617de98f2",
+        "layout": {
+          "x": 116.875,
+          "y": 61.098000000000006,
+          "w": 17.0,
+          "h": 10.058
+        }
+      },
+      "flash_torch": {
+        "component": "KitButton77197ce2bc6e",
+        "layout": {
+          "x": 145.25,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_torch_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 145.25,
+          "y": 47.25,
+          "w": 43.75,
+          "h": 25.0
+        }
+      },
+      "flash_torch_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 162.125,
+          "y": 50.25,
+          "w": 10.0,
+          "h": 10.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/flash_torch_icon-335e788a39cb.svg"
+        }
+      },
+      "flash_torch_label": {
+        "component": "Texte5a5ba29aba9",
+        "layout": {
+          "x": 160.625,
+          "y": 61.04600000000001,
+          "w": 17.0,
+          "h": 10.084
+        }
+      },
+      "flash_title": {
+        "component": "Texta0fd66f01a0b",
+        "layout": {
+          "x": 14.0,
+          "y": 33.736,
+          "w": 28.0,
+          "h": 11.431999999999999
+        }
+      },
+      "zoom_pill": {
+        "component": "Surface74c49ba91f4b",
+        "layout": {
+          "x": 51.5,
+          "y": 258.75,
+          "w": 100.0,
+          "h": 20.0
+        }
+      },
+      "zoom_w": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 51.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_w_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 51.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_w_label": {
+        "component": "Text201c5a6de8e1",
+        "layout": {
+          "x": 58.52625,
+          "y": 264.7675,
+          "w": 9.9475,
+          "h": 8.8165
+        }
+      },
+      "zoom_1": {
+        "component": "KitButton77197ce2bc6e",
+        "layout": {
+          "x": 71.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_1_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 71.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_1_chip": {
+        "component": "Surface53080be9103a",
+        "layout": {
+          "x": 71.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_1_label": {
+        "component": "Texteebda5bc600e",
+        "layout": {
+          "x": 77.756,
+          "y": 264.7675,
+          "w": 11.488,
+          "h": 8.8165
+        }
+      },
+      "zoom_2": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 91.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_2_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 91.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_2_label": {
+        "component": "Text6ab2489037ae",
+        "layout": {
+          "x": 97.756,
+          "y": 264.683,
+          "w": 11.488,
+          "h": 8.901
+        }
+      },
+      "zoom_3": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 111.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_3_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 111.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_3_label": {
+        "component": "Textcf2ec707b39f",
+        "layout": {
+          "x": 117.756,
+          "y": 264.683,
+          "w": 11.488,
+          "h": 8.992
+        }
+      },
+      "zoom_5": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 131.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_5_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 131.5,
+          "y": 258.75,
+          "w": 20.0,
+          "h": 20.0
+        }
+      },
+      "zoom_5_label": {
+        "component": "Text028f263a7813",
+        "layout": {
+          "x": 137.756,
+          "y": 264.7675,
+          "w": 11.488,
+          "h": 8.907499999999999
+        }
+      },
+      "mode_night": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 10.050000000000011,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_night_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 10.050000000000011,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_night_label": {
+        "component": "Text12cdbe0d5723",
+        "layout": {
+          "x": 15.050000000000011,
+          "y": 294.97200000000004,
+          "w": 20.0,
+          "h": 11.504
+        }
+      },
+      "mode_snapshot": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 36.2,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_snapshot_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 36.2,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_snapshot_label": {
+        "component": "Textbd109cbe523a",
+        "layout": {
+          "x": 41.2,
+          "y": 295.036,
+          "w": 20.0,
+          "h": 11.424
+        }
+      },
+      "mode_portrait": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 62.349999999999994,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_portrait_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 62.349999999999994,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_portrait_label": {
+        "component": "Textccee030727dc",
+        "layout": {
+          "x": 67.35,
+          "y": 295.044,
+          "w": 20.0,
+          "h": 11.418
+        }
+      },
+      "mode_photo": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 88.5,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_photo_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 88.5,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_photo_label": {
+        "component": "Text256cea74bf10",
+        "layout": {
+          "x": 93.5,
+          "y": 294.988,
+          "w": 20.0,
+          "h": 11.559999999999999
+        }
+      },
+      "mode_video": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 114.65,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_video_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 114.65,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_video_label": {
+        "component": "Texte11a8fd6f5bf",
+        "layout": {
+          "x": 119.65,
+          "y": 295.044,
+          "w": 20.0,
+          "h": 11.44
+        }
+      },
+      "mode_pro": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 140.8,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_pro_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 140.8,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_pro_label": {
+        "component": "Text330c40313812",
+        "layout": {
+          "x": 145.8,
+          "y": 295.004,
+          "w": 20.0,
+          "h": 11.48
+        }
+      },
+      "mode_more": {
+        "component": "KitButton22c14d908dc3",
+        "layout": {
+          "x": 166.95,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_more_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 166.95,
+          "y": 288.3,
+          "w": 26.0,
+          "h": 28.0
+        }
+      },
+      "mode_more_label": {
+        "component": "Textbee30ce82131",
+        "layout": {
+          "x": 171.95,
+          "y": 295.012,
+          "w": 20.0,
+          "h": 11.463999999999999
+        }
+      },
+      "mode_dot": {
+        "component": "Surfaceb74e779133a7",
+        "layout": {
+          "x": 99.5,
+          "y": 309.25,
+          "w": 4.0,
+          "h": 4.0
+        }
+      },
+      "thumbnail": {
+        "component": "KitButtonc46f1658a77f",
+        "layout": {
+          "x": 26.6,
+          "y": 334.9,
+          "w": 22.0,
+          "h": 22.0
+        }
+      },
+      "thumbnail_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 26.6,
+          "y": 334.9,
+          "w": 22.0,
+          "h": 22.0
+        }
+      },
+      "thumbnail_ring": {
+        "component": "Surfacec7d8357fd026",
+        "layout": {
+          "x": 26.6,
+          "y": 334.9,
+          "w": 22.0,
+          "h": 22.0
+        }
+      },
+      "thumbnail_img": {
+        "component": "Surfaceee578bd61a2d",
+        "layout": {
+          "x": 27.35,
+          "y": 335.65,
+          "w": 20.5,
+          "h": 20.5
+        }
+      },
+      "thumbnail_line": {
+        "component": "Surface55474c1c8b64",
+        "layout": {
+          "x": 28.1,
+          "y": 345.4,
+          "w": 19.0,
+          "h": 1.0
+        }
+      },
+      "shutter": {
+        "component": "KitButtonc46f1658a77f",
+        "layout": {
+          "x": 85.5,
+          "y": 329.85,
+          "w": 32.0,
+          "h": 32.0
+        }
+      },
+      "shutter_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 85.5,
+          "y": 329.85,
+          "w": 32.0,
+          "h": 32.0
+        }
+      },
+      "shutter_ring": {
+        "component": "Surface764cb33a2909",
+        "layout": {
+          "x": 85.5,
+          "y": 329.85,
+          "w": 32.0,
+          "h": 32.0
+        }
+      },
+      "shutter_gap": {
+        "component": "Surfaceb137b1b7c715",
+        "layout": {
+          "x": 87.0,
+          "y": 331.35,
+          "w": 29.0,
+          "h": 29.0
+        }
+      },
+      "shutter_disc": {
+        "component": "Surface418308a71490",
+        "layout": {
+          "x": 89.5,
+          "y": 333.85,
+          "w": 24.0,
+          "h": 24.0
+        }
+      },
+      "switch_camera": {
+        "component": "KitButtonc46f1658a77f",
+        "layout": {
+          "x": 154.4,
+          "y": 334.9,
+          "w": 22.0,
+          "h": 22.0
+        }
+      },
+      "switch_camera_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 154.4,
+          "y": 334.9,
+          "w": 22.0,
+          "h": 22.0
+        }
+      },
+      "switch_camera_bg": {
+        "component": "Surfaceed4c4d6a554c",
+        "layout": {
+          "x": 154.4,
+          "y": 334.9,
+          "w": 22.0,
+          "h": 22.0
+        }
+      },
+      "switch_camera_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 159.4,
+          "y": 339.9,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/switch_camera_icon-81bb2e5a07e6.svg"
+        }
+      },
+      "treasure_handle": {
+        "component": "KitButtonc46f1658a77f",
+        "layout": {
+          "x": 86.45,
+          "y": 362.3,
+          "w": 30.0,
+          "h": 16.0
+        }
+      },
+      "treasure_handle_control": {
+        "component": "NativeButton02f1d1bd99b4",
+        "layout": {
+          "x": 86.45,
+          "y": 362.3,
+          "w": 30.0,
+          "h": 16.0
+        }
+      },
+      "treasure_handle_icon": {
+        "component": "Vectore0a378fde04f",
+        "layout": {
+          "x": 95.5,
+          "y": 364.3,
+          "w": 12.0,
+          "h": 12.0,
+          "src": "http://127.0.0.1:8170/ux-images/camera-02/assets/treasure_handle_icon-ba2aab369353.svg"
+        }
+      }
+    },
+    "bindings": []
+  }
+}

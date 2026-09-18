@@ -1,0 +1,232 @@
+{
+  "frame_id": 9,
+  "source": "camera-09",
+  "controls": {
+    "more_edit": {
+      "event": "more_edit",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        28.9,
+        248.9,
+        32,
+        32
+      ],
+      "enabled": true
+    },
+    "more_info": {
+      "event": "more_info",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        345.1,
+        248.9,
+        32,
+        32
+      ],
+      "enabled": true
+    },
+    "more_supermacro": {
+      "event": "more_supermacro",
+      "text_ids": [
+        "more_supermacro_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        30.4,
+        292.9,
+        107,
+        77
+      ],
+      "enabled": true
+    },
+    "more_highres": {
+      "event": "more_highres",
+      "text_ids": [
+        "more_highres_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        149.4,
+        292.9,
+        107,
+        77
+      ],
+      "enabled": true
+    },
+    "more_slowmo": {
+      "event": "more_slowmo",
+      "text_ids": [
+        "more_slowmo_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        268.4,
+        292.9,
+        107,
+        77
+      ],
+      "enabled": true
+    },
+    "more_aperture_mode": {
+      "event": "more_aperture_mode",
+      "text_ids": [
+        "more_aperture_mode_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        30.4,
+        381.9,
+        107,
+        77
+      ],
+      "enabled": true
+    },
+    "more_timelapse": {
+      "event": "more_timelapse",
+      "text_ids": [
+        "more_timelapse_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        149.4,
+        381.9,
+        107,
+        77
+      ],
+      "enabled": true
+    },
+    "more_lightpaint": {
+      "event": "more_lightpaint",
+      "text_ids": [
+        "more_lightpaint_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        268.4,
+        381.9,
+        107,
+        77
+      ],
+      "enabled": true
+    },
+    "more_panorama": {
+      "event": "more_panorama",
+      "text_ids": [
+        "more_panorama_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        30.4,
+        470.9,
+        107,
+        77
+      ],
+      "enabled": true
+    },
+    "mode_photo": {
+      "event": "mode_photo",
+      "text_ids": [
+        "mode_photo_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        20.100000000000023,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_video": {
+      "event": "mode_video",
+      "text_ids": [
+        "mode_video_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        72.4,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_pro": {
+      "event": "mode_pro",
+      "text_ids": [
+        "mode_pro_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        124.69999999999999,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_more": {
+      "event": "mode_more",
+      "text_ids": [
+        "mode_more_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        177.0,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "thumbnail": {
+      "event": "thumbnail",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        53.2,
+        669.8,
+        44,
+        44
+      ],
+      "enabled": true
+    },
+    "shutter": {
+      "event": "shutter",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        171.0,
+        659.7,
+        64,
+        64
+      ],
+      "enabled": true
+    },
+    "switch_camera": {
+      "event": "switch_camera",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        308.8,
+        669.8,
+        44,
+        44
+      ],
+      "enabled": true
+    },
+    "treasure_handle": {
+      "event": "treasure_handle",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        172.9,
+        724.6,
+        60,
+        32
+      ],
+      "enabled": true
+    }
+  }
+}

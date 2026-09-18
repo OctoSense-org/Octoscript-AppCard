@@ -1,0 +1,307 @@
+{
+  "atlas_sha256": "b60d54c5c5157a7f4580d5053637d6d698ce451f0505d7f4c36c2d7cdef1969f",
+  "reference_sha256": "2cce6696ea76582820aa14221eeb2bd57ffc2f703152dd53c824107270dae7b6",
+  "source_crop": [
+    908,
+    3350,
+    812,
+    1552
+  ],
+  "transform": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      908,
+      3350,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -908.0,
+      0,
+      1.0,
+      -3350.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      908.0,
+      0,
+      1.0,
+      3350.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -454.0,
+      0,
+      0.5,
+      -1675.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      908.0,
+      0,
+      2.0,
+      3350.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "reviewed_source": true,
+  "text": [
+    {
+      "id": "filter_label",
+      "css_box": [
+        337,
+        5,
+        30,
+        26
+      ],
+      "ink_bounds": [
+        337.2205,
+        13.5795,
+        20.454,
+        9.933
+      ],
+      "copy": {
+        "cn": "原色",
+        "en": "原色"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_settings_label",
+      "css_box": [
+        26.0,
+        670.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        64.223,
+        674.2539999999999,
+        20.922,
+        9.954999999999998
+      ],
+      "copy": {
+        "cn": "设置",
+        "en": "Settings"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_vision_label",
+      "css_box": [
+        111.5,
+        670.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        138.602,
+        674.0559999999999,
+        43.054,
+        10.164
+      ],
+      "copy": {
+        "cn": "小艺视觉",
+        "en": "Celia vision"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_xmage_label",
+      "css_box": [
+        197.0,
+        670.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        215.71450000000002,
+        674.045,
+        60.005,
+        10.142
+      ],
+      "copy": {
+        "cn": "XMAGE 风格",
+        "en": "XMAGE style"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_exposure_label",
+      "css_box": [
+        282.5,
+        670.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        321.064,
+        674.0559999999999,
+        20.746,
+        10.12
+      ],
+      "copy": {
+        "cn": "曝光",
+        "en": "Exposure"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_ai_label",
+      "css_box": [
+        26.0,
+        742.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        46.6065,
+        746.0559999999999,
+        55.418000000000006,
+        10.142
+      ],
+      "copy": {
+        "cn": "AI 辅助构图",
+        "en": "AI composition"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_watermark_label",
+      "css_box": [
+        111.5,
+        742.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        149.679,
+        746.078,
+        20.625,
+        10.109
+      ],
+      "copy": {
+        "cn": "水印",
+        "en": "Watermark"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_ratio_glyph",
+      "css_box": [
+        235.75,
+        710.5,
+        20,
+        16
+      ],
+      "ink_bounds": [
+        240.62949999999998,
+        716.274,
+        9.996,
+        5.376
+      ],
+      "copy": {
+        "cn": "4:3",
+        "en": "4:3"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_ratio_label",
+      "css_box": [
+        197.0,
+        742.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        224.223,
+        746.0669999999999,
+        42.690999999999995,
+        10.164
+      ],
+      "copy": {
+        "cn": "照片比例",
+        "en": "Aspect ratio"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "box_flash_label",
+      "css_box": [
+        282.5,
+        742.5,
+        97.5,
+        16
+      ],
+      "ink_bounds": [
+        315.641,
+        746.0559999999999,
+        31.68,
+        10.12
+      ],
+      "copy": {
+        "cn": "闪光灯",
+        "en": "Flash"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    }
+  ],
+  "limits": [
+    "The storyboard is authored from device measurements, so measurement is a consistency check of the render against the spec, not OCR of an unknown image",
+    "No native visual acceptance"
+  ]
+}

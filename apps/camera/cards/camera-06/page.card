@@ -1,0 +1,163 @@
+# ledger camera-06@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy zoom_w_label_text { class: user-copy, en: "W" }
+copy zoom_1_label_text { class: user-copy, en: "1x" }
+copy zoom_2_label_text { class: user-copy, en: "2x" }
+copy zoom_3_label_text { class: user-copy, en: "3x" }
+copy zoom_5_label_text { class: user-copy, en: "5x" }
+copy rec_timer_text { class: user-copy, en: "00:07" }
+state flash_control_enabled { shape: bool, initial: true }
+state zoom_w_control_enabled { shape: bool, initial: true }
+state zoom_1_control_enabled { shape: bool, initial: true }
+state zoom_2_control_enabled { shape: bool, initial: true }
+state zoom_3_control_enabled { shape: bool, initial: true }
+state zoom_5_control_enabled { shape: bool, initial: true }
+state rec_still_control_enabled { shape: bool, initial: true }
+state shutter_control_enabled { shape: bool, initial: true }
+state rec_pause_control_enabled { shape: bool, initial: true }
+component Surfacee138f8831782(instance: text) {
+  view Kit(component: "Surfacee138f8831782", instance: instance) { slot }
+}
+component Surfacefba83cd594ba(instance: text) {
+  view Kit(component: "Surfacefba83cd594ba", instance: instance) { slot }
+}
+component Surfacef88ef6b699d9(instance: text) {
+  view Kit(component: "Surfacef88ef6b699d9", instance: instance) { slot }
+}
+component Surface435646ca400a(instance: text) {
+  view Kit(component: "Surface435646ca400a", instance: instance) { slot }
+}
+component Surface0617176f808e(instance: text) {
+  view Kit(component: "Surface0617176f808e", instance: instance) { slot }
+}
+component Surface98f55d464158(instance: text) {
+  view Kit(component: "Surface98f55d464158", instance: instance) { slot }
+}
+component KitButtonc46f1658a77f(instance: text) {
+  view Kit(component: "KitButtonc46f1658a77f", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component Surface74c49ba91f4b(instance: text) {
+  view Kit(component: "Surface74c49ba91f4b", instance: instance) { slot }
+}
+component KitButton22c14d908dc3(instance: text) {
+  view Kit(component: "KitButton22c14d908dc3", instance: instance) { slot }
+}
+component Text201c5a6de8e1(instance: text, text: text) {
+  view Kit(component: "Text201c5a6de8e1", instance: instance, text: text)
+}
+component KitButton77197ce2bc6e(instance: text) {
+  view Kit(component: "KitButton77197ce2bc6e", instance: instance) { slot }
+}
+component Surface53080be9103a(instance: text) {
+  view Kit(component: "Surface53080be9103a", instance: instance) { slot }
+}
+component Texteebda5bc600e(instance: text, text: text) {
+  view Kit(component: "Texteebda5bc600e", instance: instance, text: text)
+}
+component Text6ab2489037ae(instance: text, text: text) {
+  view Kit(component: "Text6ab2489037ae", instance: instance, text: text)
+}
+component Textcf2ec707b39f(instance: text, text: text) {
+  view Kit(component: "Textcf2ec707b39f", instance: instance, text: text)
+}
+component Text028f263a7813(instance: text, text: text) {
+  view Kit(component: "Text028f263a7813", instance: instance, text: text)
+}
+component Surfaceed4c4d6a554c(instance: text) {
+  view Kit(component: "Surfaceed4c4d6a554c", instance: instance) { slot }
+}
+component Surface764cb33a2909(instance: text) {
+  view Kit(component: "Surface764cb33a2909", instance: instance) { slot }
+}
+component Surfaceb137b1b7c715(instance: text) {
+  view Kit(component: "Surfaceb137b1b7c715", instance: instance) { slot }
+}
+component Surface6a78a8c34722(instance: text) {
+  view Kit(component: "Surface6a78a8c34722", instance: instance) { slot }
+}
+component Textf23d6d1ca265(instance: text, text: text) {
+  view Kit(component: "Textf23d6d1ca265", instance: instance, text: text)
+}
+
+view root Surfacee138f8831782(instance: "page") {
+  Surfacefba83cd594ba(instance: "screen") {
+    Surfacef88ef6b699d9(instance: "viewfinder") {
+
+    }
+    Surface435646ca400a(instance: "rec_pill") {
+
+    }
+    Surface0617176f808e(instance: "rec_dot") {
+
+    }
+    Surface98f55d464158(instance: "top_pill") {
+
+    }
+    KitButtonc46f1658a77f(instance: "flash") {
+      NativeButton02f1d1bd99b4(instance: "flash_control", enabled: flash_control_enabled)
+      Vectore0a378fde04f(instance: "flash_icon")
+    }
+    Surface74c49ba91f4b(instance: "zoom_pill") {
+
+    }
+    KitButton22c14d908dc3(instance: "zoom_w") {
+      NativeButton02f1d1bd99b4(instance: "zoom_w_control", enabled: zoom_w_control_enabled)
+      Text201c5a6de8e1(instance: "zoom_w_label", text: copy.zoom_w_label_text)
+    }
+    KitButton77197ce2bc6e(instance: "zoom_1") {
+      NativeButton02f1d1bd99b4(instance: "zoom_1_control", enabled: zoom_1_control_enabled)
+      Surface53080be9103a(instance: "zoom_1_chip") {
+
+      }
+      Texteebda5bc600e(instance: "zoom_1_label", text: copy.zoom_1_label_text)
+    }
+    KitButton22c14d908dc3(instance: "zoom_2") {
+      NativeButton02f1d1bd99b4(instance: "zoom_2_control", enabled: zoom_2_control_enabled)
+      Text6ab2489037ae(instance: "zoom_2_label", text: copy.zoom_2_label_text)
+    }
+    KitButton22c14d908dc3(instance: "zoom_3") {
+      NativeButton02f1d1bd99b4(instance: "zoom_3_control", enabled: zoom_3_control_enabled)
+      Textcf2ec707b39f(instance: "zoom_3_label", text: copy.zoom_3_label_text)
+    }
+    KitButton22c14d908dc3(instance: "zoom_5") {
+      NativeButton02f1d1bd99b4(instance: "zoom_5_control", enabled: zoom_5_control_enabled)
+      Text028f263a7813(instance: "zoom_5_label", text: copy.zoom_5_label_text)
+    }
+    KitButtonc46f1658a77f(instance: "rec_still") {
+      NativeButton02f1d1bd99b4(instance: "rec_still_control", enabled: rec_still_control_enabled)
+      Surfaceed4c4d6a554c(instance: "rec_still_bg") {
+
+      }
+      Vectore0a378fde04f(instance: "rec_still_icon")
+    }
+    KitButtonc46f1658a77f(instance: "shutter") {
+      NativeButton02f1d1bd99b4(instance: "shutter_control", enabled: shutter_control_enabled)
+      Surface764cb33a2909(instance: "shutter_ring") {
+
+      }
+      Surfaceb137b1b7c715(instance: "shutter_gap") {
+
+      }
+      Surface6a78a8c34722(instance: "shutter_stop") {
+
+      }
+    }
+    KitButtonc46f1658a77f(instance: "rec_pause") {
+      NativeButton02f1d1bd99b4(instance: "rec_pause_control", enabled: rec_pause_control_enabled)
+      Surfaceed4c4d6a554c(instance: "rec_pause_bg") {
+
+      }
+      Vectore0a378fde04f(instance: "rec_pause_icon")
+    }
+    Textf23d6d1ca265(instance: "rec_timer", text: copy.rec_timer_text)
+  }
+}
