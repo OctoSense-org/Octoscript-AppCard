@@ -362,11 +362,11 @@ impl Host {
         }
     }
 
-    /// The quick-zoom pill's rectangle in artboard units, when a mode shows one.
+    /// The quick-zoom pill's rectangle in artboard units, when a mode shows one (while filming too: the lens can be changed mid-clip).
     fn zoom_pill_rect(&self) -> Option<(f64, f64, f64, f64)> {
         let s = &self.session;
         let n = s.mode.zooms(s.front).len();
-        if n == 0 || s.overlay != session::Overlay::None || s.recording != session::Recording::Off { return None; }
+        if n == 0 || s.overlay != session::Overlay::None { return None; }
         let w = 40.0 * n as f64;
         Some((203.0 - w / 2.0, if s.mode == session::Mode::Pro { 441.5 } else { 517.5 }, w, 40.0))
     }
