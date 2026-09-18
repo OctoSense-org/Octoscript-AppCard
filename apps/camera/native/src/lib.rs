@@ -96,7 +96,24 @@ impl AssetServer {
 
 /// One camera the platform offers, with the format we would open it in.
 #[derive(Clone, Debug)]
-struct CameraChoice { input_id: VideoInputId, format_id: VideoFormatId, name: String, front: bool }
+struct CameraChoice { input_id: VideoInputId, name: String, front: bool, formats: Vec<makepad_widgets::makepad_platform::video::VideoFormat> }
+
+impl CameraChoice {
+    /// The best preview profile for a viewfinder aspect (width/height of the
+    /// sensor frame: 4:3 for the photo modes, 16:9 for video), largest first
+    /// within 1080p.
+    fn format_for(&self, aspect: f64) -> Option<(VideoFormatId, usize, usize)> {
+        let usable = |f: &&makepad_widgets::makepad_platform::video::VideoFormat| matches!(f.pixel_format, VideoPixelFormat::NV12 | VideoPixelFormat::YUY2 | VideoPixelFormat::YUV420) && f.width <= 1920 && f.height <= 1080 && f.height > 0;
+        let pixel = |f: &makepad_widgets::makepad_platform::video::VideoFormat| match f.pixel_format { VideoPixelFormat::NV12 => 3, VideoPixelFormat::YUY2 => 2, VideoPixelFormat::YUV420 => 1, _ => 0 };
+        let best = self.formats.iter().filter(usable).min_by(|a, b| {
+            let da = ((a.width as f64 / a.height as f64) - aspect).abs(); let db = ((b.width as f64 / b.height as f64) - aspect).abs();
+            // nearest aspect (within 2 %), then the most pixels, then the better pixel format
+            let key = |d: f64, f: &makepad_widgets::makepad_platform::video::VideoFormat| ((d * 50.0).round() as i64, -((f.width * f.height) as i64), -pixel(f));
+            key(da, a).cmp(&key(db, b))
+        })?;
+        Some((best.format_id, best.width, best.height))
+    }
+}
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
 enum PreviewState { #[default] Idle, Starting, Running, Stopping }
@@ -152,6 +169,7 @@ pub struct CameraView {
     #[rust] permission: Option<PermissionStatus>,
     #[rust] preview: PreviewState,
     #[rust] preview_front: bool,
+    #[rust] preview_aspect: f64,
     #[rust] preview_seen: HashSet<String>,
     #[rust] started_at: f64,
     // motion: the mode strip and the zoom chip slide with a spring; a finger can drag the bar
@@ -177,14 +195,6 @@ fn retire(cx: &mut Cx, widget: &WidgetRef) {
     for child in children { retire(cx, &child); }
 }
 
-fn pick_format(desc: &makepad_widgets::makepad_platform::video::VideoInputDesc) -> Option<VideoFormatId> {
-    let rank = |f: &makepad_widgets::makepad_platform::video::VideoFormat| {
-        let pixel = match f.pixel_format { VideoPixelFormat::NV12 => 3, VideoPixelFormat::YUY2 => 2, VideoPixelFormat::YUV420 => 1, _ => 0 };
-        let size = if f.width > 1920 || f.height > 1080 { 0 } else { f.width * f.height };
-        (pixel, size, (f.frame_rate.unwrap_or(0.0) * 100.0) as usize)
-    };
-    desc.formats.iter().filter(|f| matches!(f.pixel_format, VideoPixelFormat::NV12 | VideoPixelFormat::YUY2 | VideoPixelFormat::YUV420)).max_by_key(|f| rank(f)).map(|f| f.format_id)
-}
 
 impl CameraView {
     fn session(&mut self) -> &mut session::Session {
@@ -208,10 +218,11 @@ impl CameraView {
 
     /// Open the camera the session wants (rear/front) in the Video widget; one step per call, driven by the platform's events.
     fn drive_preview(&mut self, cx: &mut Cx) {
-        let want_front = self.session().front;
+        let (want_front, want_aspect) = { let s = self.session(); (s.front, if s.mode.wide() { 16.0 / 9.0 } else { 4.0 / 3.0 }) };
         let video = self.view.video(cx, ids!(preview));
         match self.preview {
-            PreviewState::Running if want_front != self.preview_front => {
+            // Another camera or another viewfinder shape (4:3 photo vs 16:9 video): reopen with the matching profile.
+            PreviewState::Running if want_front != self.preview_front || (want_aspect - self.preview_aspect).abs() > 0.05 => {
                 if self.cameras.iter().any(|c| c.front == want_front) { self.preview = PreviewState::Stopping; video.stop_and_cleanup_resources(cx); }
             }
             PreviewState::Idle => {
@@ -225,11 +236,14 @@ impl CameraView {
                     None => { log!("camera: no permission result after {waited:.1}s; opening the camera anyway"); self.permission = Some(PermissionStatus::Granted); }
                 }
                 let Some(choice) = self.cameras.iter().find(|c| c.front == want_front).or(self.cameras.first()).cloned() else { return };
+                let Some((format_id, w, h)) = choice.format_for(want_aspect) else { return };
                 video.set_camera_preview_mode(cx, VideoCameraPreviewMode::Texture);
-                video.set_source_camera(cx, choice.input_id, choice.format_id);
+                video.set_source_camera(cx, choice.input_id, format_id);
                 video.begin_playback(cx);
                 self.preview = PreviewState::Starting;
                 self.preview_front = choice.front;
+                self.preview_aspect = want_aspect;
+                log!("camera: preview profile {w}x{h} for a {:.2} viewfinder", want_aspect);
                 self.camera_input = Some(choice.input_id);
                 self.sent_zoom = None; self.sent_flash = None; self.sent_ev = None;
                 if self.preview_seen.insert(choice.name.clone()) { log!("camera: opening {} ({})", choice.name, if choice.front { "front" } else { "rear" }); }
@@ -458,7 +472,9 @@ impl Widget for CameraView {
                 self.cameras = descs.iter().enumerate().filter_map(|(i, d)| {
                     let name = d.name.to_lowercase();
                     let front = name.contains("front") || name.contains("facetime") || name.contains("user") || (descs.len() > 1 && i == 1 && !name.contains("back"));
-                    Some(CameraChoice { input_id: d.input_id, format_id: pick_format(d)?, name: d.name.clone(), front })
+                    let choice = CameraChoice { input_id: d.input_id, name: d.name.clone(), front, formats: d.formats.clone() };
+                    choice.format_for(4.0 / 3.0)?;
+                    Some(choice)
                 }).collect();
                 if self.cameras.is_empty() { log!("camera: no usable camera; the viewfinder stays a placeholder"); }
                 self.drive_preview(cx);
