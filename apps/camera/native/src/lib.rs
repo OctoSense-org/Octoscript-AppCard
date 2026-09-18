@@ -146,6 +146,10 @@ struct BarDrag { start_x: f64, index0: usize, last_x: f64, last_t: f64, velocity
 
 const MODE_PITCH: f64 = 52.3;
 const CHIP_PITCH: f64 = 40.0;
+/// How long the zoom dial stays after the finger leaves it.
+const DIAL_HIDE_AFTER: f64 = 0.6;
+/// A finger must slide this far (artboard units) before it turns the dial; a tap's jitter is not a turn.
+const DIAL_SLIDE: f64 = 4.0;
 
 #[derive(Script, ScriptHook, Widget)]
 pub struct CameraView {
@@ -635,6 +639,8 @@ impl Widget for CameraView {
                     let Some(native) = self.elements.iter().filter_map(|e| e["id"].as_str()).find(|id| self.view.widget(cx, &[LiveId::from_str(id)]).widget_uid() == action.widget_uid).map(str::to_owned) else { log!("camera: action from an unmapped widget"); continue };
                     let Some(control) = self.actions.get(&native).cloned() else { log!("camera: no control for {native}"); continue };
                     let Some(id) = control["event"].as_str().map(str::to_owned) else { continue };
+                    // a tap on any other control while the dial is up takes the dial down first, as on the phone
+                    if self.session().overlay == session::Overlay::ZoomDial { self.close_dial(cx); }
                     let now = self.now();
                     self.session().now = now;
                     let before = { let s = self.session(); (s.mode_bar_index(), s.zoom_index(), 0.0) };
@@ -703,7 +709,7 @@ impl Widget for CameraView {
                 let (lo, hi) = self.session().zoom_range();
                 if self.dial_log2 <= (lo as f64).log2() || self.dial_log2 >= (hi as f64).log2() { self.dial_vel = 0.0; }
                 self.apply_dial(cx, false);
-                self.dial_hide_at = Some(self.now() + 1.2);
+                self.dial_hide_at = Some(self.now() + DIAL_HIDE_AFTER);
                 self.next_frame = cx.new_next_frame();
             }
             self.apply_motion(cx);
@@ -785,6 +791,8 @@ impl Widget for CameraView {
             // A sideways slide on the quick-zoom bar opens the roulette dial; with the dial up any slide turns it.
             if self.dial_drag.is_none() && self.pill_press.is_some() && (x - x0).abs() > 6.0 && self.session().overlay == session::Overlay::None { self.open_dial(cx); }
             if self.session().overlay == session::Overlay::ZoomDial {
+                // a still finger (a tap on the shutter, say) leaves the dial alone
+                if self.dial_drag.is_none() && (x - x0).abs() < DIAL_SLIDE { self.finger_last = Some(p); return; }
                 let t = self.now();
                 let (last_x, last_t, vel) = self.dial_drag.unwrap_or((x, t, 0.0));
                 let dx = x - last_x;
@@ -829,11 +837,11 @@ impl Widget for CameraView {
             if let Some((_, _, vel)) = self.dial_drag.take() {
                 let _ = end;
                 self.dial_vel = vel.clamp(-12.0, 12.0);
-                self.dial_hide_at = Some(self.now() + 1.2);
+                self.dial_hide_at = Some(self.now() + DIAL_HIDE_AFTER);
                 if self.dial_vel.abs() > 0.02 { self.next_frame = cx.new_next_frame(); } else { self.apply_dial(cx, true); }
                 self.finger_start = None;
             } else if self.session().overlay == session::Overlay::ZoomDial {
-                self.dial_hide_at = Some(self.now() + 1.2);
+                self.dial_hide_at = Some(self.now() + DIAL_HIDE_AFTER);
                 self.finger_start = None;
             }
             if self.focus_drag {

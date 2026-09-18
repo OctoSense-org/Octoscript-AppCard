@@ -123,7 +123,7 @@ gallery saves) and replaces whichever host is installed under that bundle.
   labelled stops with focal lengths, red readout under the dot and the large
   readout in the viewfinder). The ring is one SVG the module rotates in place
   as the finger slides, the lens follows continuously, a flick coasts with
-  exponential decay, and after 1.2 s the chips return with the live value on
+  exponential decay, and after 0.6 s the chips return with the live value on
   the nearest stop.
 
 - The ArkUI host (`docs/evidence/mate-oh-native-tour.jpg`, twelve states on

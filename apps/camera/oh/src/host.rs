@@ -26,6 +26,10 @@ thread_local! {
 
 /// The touch registration on the persistent page stack.
 const TOUCH_TARGET: i32 = 0x7000;
+/// How long the zoom dial stays after the finger leaves it.
+const DIAL_HIDE_AFTER: f64 = 0.6;
+/// A finger must slide this far (vp) before it turns the dial; a tap's jitter is not a turn.
+const DIAL_SLIDE: f64 = 4.0;
 
 #[derive(Clone, Copy, PartialEq, Eq, Default, Debug)]
 enum PreviewState { #[default] Idle, Running }
@@ -187,6 +191,8 @@ impl Host {
         let t = now();
         if t < self.suppress_clicks_until { return; }
         let Some(control) = self.chrome.as_ref().and_then(|m| m.controls.get(&target).cloned()) else { return };
+        // a tap on any other control while the dial is up takes the dial down first, as on the phone
+        if self.session.overlay == session::Overlay::ZoomDial { self.close_dial(); }
         let (was_video, was_exposing) = (self.session.mode.is_video(), matches!(self.session.overlay, session::Overlay::Exposing { .. }));
         self.session.now = t;
         let before = (self.session.mode_bar_index(), self.session.zoom_index(), 0.0);
@@ -249,6 +255,8 @@ impl Host {
             // A sideways slide on the quick-zoom bar opens the roulette dial; with the dial up any slide turns it.
             if self.dial_drag.is_none() && self.pill_press.is_some() && (x - x0).abs() > 6.0 && self.session.overlay == session::Overlay::None { self.open_dial(); }
             if self.session.overlay == session::Overlay::ZoomDial {
+                // a still finger (a tap on the shutter, say) leaves the dial alone
+                if self.dial_drag.is_none() && (x - x0).abs() < DIAL_SLIDE { self.finger_last = Some((x, y)); return; }
                 let (last_x, last_t, vel) = self.dial_drag.unwrap_or((x, t, 0.0));
                 let dx = x - last_x;
                 // the ring turns with the finger: an arc length of dx at radius R, 17° per octave
@@ -289,12 +297,12 @@ impl Host {
         self.pill_press = None;
         if let Some((_, _, vel)) = self.dial_drag.take() {
             self.dial_vel = vel.clamp(-12.0, 12.0);
-            self.dial_hide_at = Some(t + 1.2);
+            self.dial_hide_at = Some(t + DIAL_HIDE_AFTER);
             if self.dial_vel.abs() <= 0.02 { self.apply_dial(true); }
             self.finger_start = None;
             self.suppress_clicks_until = t + 0.3;
         } else if self.session.overlay == session::Overlay::ZoomDial {
-            self.dial_hide_at = Some(t + 1.2);
+            self.dial_hide_at = Some(t + DIAL_HIDE_AFTER);
             self.finger_start = None;
         }
         if self.focus_drag {
@@ -528,7 +536,7 @@ impl Host {
             let (lo, hi) = self.session.zoom_range();
             if self.dial_log2 <= (lo as f64).log2() || self.dial_log2 >= (hi as f64).log2() { self.dial_vel = 0.0; }
             self.apply_dial(false);
-            self.dial_hide_at = Some(t + 1.2);
+            self.dial_hide_at = Some(t + DIAL_HIDE_AFTER);
         }
         if self.bar.active() || self.chip.active() || self.bar_drag.is_some() { self.apply_motion(); }
         if let Some((_, _, t0)) = self.pill_press { if t - t0 > 0.35 && self.session.overlay == session::Overlay::None { self.open_dial(); } }
