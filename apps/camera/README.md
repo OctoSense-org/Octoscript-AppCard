@@ -63,10 +63,15 @@ cargo test --release --manifest-path ../Octoscript-AppCard/apps/camera/native/Ca
   captures (chrome geometry matches; glyphs are hand-drawn approximations of
   HarmonyOS icons; the font is Noto Sans SC in place of HarmonyOS Sans).
 - Real capability: the live viewfinder uses the platform camera through
-  Makepad's video input (macOS, Android). On macOS a bare binary may never
-  receive the camera permission prompt; the module then opens the device after
-  2 s anyway and keeps the placeholder if no frames arrive. Photo/video
-  capture, zoom lenses, XMAGE styles, 小艺视觉 and the gallery are mock-ups.
+  Makepad's video input (macOS, Android, OpenHarmony). On macOS a bare binary
+  may never receive the camera permission prompt; the module then opens the
+  device after 2 s anyway and keeps the placeholder if no frames arrive.
+  On OpenHarmony the shutter takes a real 4096×3072 JPEG and 录像 records
+  1080p30 MP4 clips with audio (pause/resume included) through Makepad's
+  `camera_capture`; each file lands in the app's `DCIM` folder, the gallery
+  corner shows the still, and the system "允许保存" dialog hands it to the
+  phone's gallery (`docs/evidence/mate-capture-*.jpeg`). XMAGE styles,
+  小艺视觉 and the in-app gallery view remain mock-ups.
 - OpenHarmony (on the Mate 70 Air itself): Makepad's OHOS backend now drives
   the camera NDK (preview into an ImageReceiver, frames read back and
   uploaded as Y/U/V planes), asks for `ohos.permission.CAMERA` through the

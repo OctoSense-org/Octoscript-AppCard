@@ -132,6 +132,8 @@ pub struct Session {
     pub low_light: bool,
     /// No live frames yet: paint the viewfinder placeholder in the scene.
     pub placeholder: bool,
+    /// Asset name of the latest still (served by the module), shown in the gallery corner.
+    pub last_photo: Option<String>,
     pub now: f64,
     pub panel_until: Option<f64>,
     controls: HashMap<String, Action>,
@@ -157,7 +159,7 @@ impl Session {
         for m in Mode::BAR.iter().chain(Mode::MORE.iter()) { zoom.insert(*m, if m.zooms(false).first() == Some(&"W") { 1 } else { 0 }); }
         Session { locale: locale.into(), mode: Mode::Photo, front: false, flash: Flash::Off, live_photo: false, ai_compose: false, stabilise: false, grid: false, watermark: false, ratio: 0, filter: 0, zoom,
             beauty: 5, beauty_on: true, aperture: 4, night_shutter: 0, night_sub: 0, slow_rate: 1, timelapse: 0, macro_focus: 0, video_res: 2, video_fps: 0, pro: [0, 0, 4, 4, 1, 0], pro_locked: [false; 6], pro_raw: false, pro_video: false,
-            pano_vertical: false, light_paint: 0, overlay: Overlay::None, toast: None, recording: Recording::Off, intro_seen: HashSet::new(), shots: 0, settings: [false, false, false, true, false, false, true, true], low_light: false, placeholder: true, now: 0.0, panel_until: None,
+            pano_vertical: false, light_paint: 0, overlay: Overlay::None, toast: None, recording: Recording::Off, intro_seen: HashSet::new(), shots: 0, settings: [false, false, false, true, false, false, true, true], low_light: false, placeholder: true, last_photo: None, now: 0.0, panel_until: None,
             controls: HashMap::new(), revision: 0 }
     }
     pub fn zoom_index(&self) -> usize { *self.zoom.get(&self.mode).unwrap_or(&0) }
@@ -626,9 +628,13 @@ impl Session {
             let id = self.ctl("thumbnail", Action::Thumbnail);
             s.button(&id, "page", tx, ty, td, td, true);
             s.stack("thumbnail_ring", &id, tx, ty, td, td, Some(WHITE), td / 2.0, None);
-            let tint = ["b9b7b1", "8fa3b8", "b89f8f", "9fb88f"][(self.shots % 4) as usize];
-            s.stack("thumbnail_img", &id, tx + 1.5, ty + 1.5, td - 3.0, td - 3.0, Some(tint), td / 2.0 - 1.5, None);
-            s.stack("thumbnail_line", &id, tx + 3.0, ty + td / 2.0 - 1.0, td - 6.0, 2.0, Some("2a2a2a"), 0.0, None);
+            if let Some(photo) = self.last_photo.clone() {
+                s.image("thumbnail_img", &id, &photo, tx + 1.5, ty + 1.5, td - 3.0, td - 3.0);
+            } else {
+                let tint = ["b9b7b1", "8fa3b8", "b89f8f", "9fb88f"][(self.shots % 4) as usize];
+                s.stack("thumbnail_img", &id, tx + 1.5, ty + 1.5, td - 3.0, td - 3.0, Some(tint), td / 2.0 - 1.5, None);
+                s.stack("thumbnail_line", &id, tx + 3.0, ty + td / 2.0 - 1.0, td - 6.0, 2.0, Some("2a2a2a"), 0.0, None);
+            }
         }
         self.render_shutter(s, scx, scy, sd);
         if recording {
@@ -1085,6 +1091,21 @@ mod strips {
     /// relative to them; after lowering they must land on the bar (the
     /// lowering adds the container origin once) and the module's hit
     /// rectangles must be absolute again.
+    #[test]
+    fn a_captured_still_becomes_the_gallery_thumbnail() {
+        let mut s = Session::new("cn");
+        s.last_photo = Some("thumb_1.jpg".into());
+        let scene = s.render("http://127.0.0.1:1/t");
+        assert!(scene.nodes.iter().any(|n| n["t"] == "image" && n["src"].as_str().unwrap().ends_with("/assets/thumb_1.jpg")));
+        let frame = crate::scene::compile(&scene, "camera-test");
+        let report = octoscript_ui_l0::realize(&frame.card, &frame.data, Default::default());
+        let root = report.complete_root().expect("complete root");
+        let source = octoscript_ui_l0::kit_pack::lower(root, &frame.pack, &frame.data).expect("lower");
+        let tree = octoscript_makepad::design::prepare(&source).expect("prepare");
+        let ui = octoscript_makepad::design::to_makepad_ui(&tree).expect("ui");
+        assert!(ui.contains("thumb_1.jpg"), "the thumbnail image reaches the widget tree");
+    }
+
     #[test]
     fn mode_strip_children_land_on_the_bar() {
         let mut s = Session::new("cn");

@@ -11,7 +11,7 @@ use makepad_app_module::{
 pub use makepad_widgets;
 use makepad_widgets::makepad_platform::permission::{Permission, PermissionStatus};
 use makepad_widgets::makepad_platform::event::TouchState;
-use makepad_widgets::makepad_platform::video::{CameraControl, CameraFlashMode, VideoFormatId, VideoInputId, VideoInputsEvent, VideoPixelFormat};
+use makepad_widgets::makepad_platform::video::{CameraCaptureEvent, CameraCaptureRequest, CameraCaptureResult, CameraControl, CameraFlashMode, VideoFormatId, VideoInputId, VideoInputsEvent, VideoPixelFormat};
 use makepad_widgets::*;
 use serde_json::Value;
 use std::collections::{HashMap, HashSet};
@@ -53,7 +53,10 @@ impl Config {
     pub fn from_env() -> Self { Config { locale: std::env::var("CAMERA_LOCALE").unwrap_or_else(|_| "cn".into()) } }
 }
 
-struct AssetServer { endpoint: String, assets: Arc<Mutex<HashMap<String, String>>>, stop: Arc<AtomicBool> }
+/// content type + bytes, by asset file name
+type Assets = HashMap<String, (&'static str, Vec<u8>)>;
+
+struct AssetServer { endpoint: String, assets: Arc<Mutex<Assets>>, stop: Arc<AtomicBool> }
 
 impl AssetServer {
     /// The renderer only loads vector art from loopback URLs; serve the scene's icons from memory.
@@ -62,7 +65,7 @@ impl AssetServer {
         listener.set_nonblocking(true).map_err(|e| format!("asset server: {e}"))?;
         let token = format!("{:x}", std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0) ^ (std::process::id() as u128) << 64);
         let endpoint = format!("http://127.0.0.1:{}/{token}", listener.local_addr().map_err(|e| e.to_string())?.port());
-        let assets: Arc<Mutex<HashMap<String, String>>> = Arc::default();
+        let assets: Arc<Mutex<Assets>> = Arc::default();
         let stop = Arc::new(AtomicBool::new(false));
         let (shared, flag) = (assets.clone(), stop.clone());
         std::thread::Builder::new().name("camera-assets".into()).spawn(move || {
@@ -79,11 +82,13 @@ impl AssetServer {
                         let head = String::from_utf8_lossy(&data);
                         let route = head.lines().next().unwrap_or("").split_whitespace().nth(1).unwrap_or("").to_owned();
                         let body = route.strip_prefix(&format!("/{token}/assets/")).and_then(|name| shared.lock().ok()?.get(name).cloned());
-                        let response = match body {
-                            Some(svg) => format!("HTTP/1.1 200 OK\r\nContent-Type: image/svg+xml\r\nCache-Control: no-store\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{svg}", svg.len()),
-                            None => "HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n".to_owned(),
-                        };
-                        let _ = socket.write_all(response.as_bytes());
+                        match body {
+                            Some((content_type, bytes)) => {
+                                let head = format!("HTTP/1.1 200 OK\r\nContent-Type: {content_type}\r\nCache-Control: no-store\r\nContent-Length: {}\r\nConnection: close\r\n\r\n", bytes.len());
+                                let _ = socket.write_all(head.as_bytes()).and_then(|_| socket.write_all(&bytes));
+                            }
+                            None => { let _ = socket.write_all(b"HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n"); }
+                        }
                     }
                     Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => std::thread::sleep(Duration::from_millis(8)),
                     Err(_) => break,
@@ -186,6 +191,9 @@ pub struct CameraView {
     #[rust] sent_zoom: Option<f32>,
     #[rust] sent_flash: Option<session::Flash>,
     #[rust] sent_ev: Option<f32>,
+    #[rust] mic: Option<PermissionStatus>,
+    #[rust] mic_asked: bool,
+    #[rust] recording_path: Option<String>,
 }
 
 fn retire(cx: &mut Cx, widget: &WidgetRef) {
@@ -266,7 +274,7 @@ impl CameraView {
         let base = self.assets.as_ref().map(|a| a.endpoint.clone()).unwrap_or_else(|| "http://127.0.0.1:1/none".into());
         let scene = self.session().render(&base);
         let frame = scene::compile(&scene, "camera-native");
-        if let Some(server) = &self.assets { if let Ok(mut map) = server.assets.lock() { map.extend(frame.assets.iter().map(|(k, v)| (k.clone(), v.clone()))); } }
+        if let Some(server) = &self.assets { if let Ok(mut map) = server.assets.lock() { map.extend(frame.assets.iter().map(|(k, v)| (k.clone(), ("image/svg+xml", v.clone().into_bytes())))); } }
         let report = octoscript_ui_l0::realize(&frame.card, &frame.data, Default::default());
         let root = report.complete_root()?;
         let source = octoscript_ui_l0::kit_pack::lower(root, &frame.pack, &frame.data)?;
@@ -356,6 +364,23 @@ impl CameraView {
         if old_bar == new_bar && old_zoom != new_zoom { self.chip.kick((old_zoom as f64 - new_zoom as f64) * CHIP_PITCH); } else if old_bar != new_bar { self.chip.hold(0.0); }
         self.zoom_ratio = self.session().zoom_ratio();
         self.sync_camera(cx);
+        if self.session().mode.is_video() && !self.mic_asked { self.mic_asked = true; cx.request_permission(Permission::AudioInput); }
+    }
+
+    /// The shutter in a video mode: the session already flipped its recording state; drive the platform recorder to match.
+    fn toggle_recording(&mut self, cx: &mut Cx) {
+        let Some(input) = self.camera_input else { return };
+        if self.preview != PreviewState::Running { return; }
+        if self.session().recording != session::Recording::Off {
+            let Some(dir) = cx.get_data_dir() else { return };
+            let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
+            let path = format!("{dir}/DCIM/VID_{now}.mp4");
+            self.recording_path = Some(path.clone());
+            let audio = matches!(self.mic, Some(PermissionStatus::Granted));
+            cx.camera_capture(input, CameraCaptureRequest::StartVideo { path, audio, library: true });
+        } else if self.recording_path.take().is_some() {
+            cx.camera_capture(input, CameraCaptureRequest::StopVideo);
+        }
     }
 
     /// Send what the UI state asks of the real camera, only when it changed.
@@ -370,6 +395,45 @@ impl CameraView {
             cx.camera_control(input, CameraControl::Flash(mode));
         }
         if self.sent_ev != Some(ev) { self.sent_ev = Some(ev); cx.camera_control(input, CameraControl::ExposureBias(ev)); }
+    }
+
+    /// The shutter in a still mode: ask the platform camera for a JPEG next to the app's data and hand it to the gallery.
+    fn take_photo(&mut self, cx: &mut Cx) {
+        let Some(input) = self.camera_input else { log!("camera: shutter without an open camera (mock capture)"); return };
+        if self.preview != PreviewState::Running { return; }
+        let Some(dir) = cx.get_data_dir() else { log!("camera: no data directory for captures"); return };
+        let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
+        let path = format!("{dir}/DCIM/IMG_{now}.jpg");
+        cx.camera_capture(input, CameraCaptureRequest::Photo { path, library: true });
+    }
+
+    /// A capture finished (or failed) on the platform camera.
+    fn on_capture(&mut self, cx: &mut Cx, result: &CameraCaptureResult) {
+        match result {
+            CameraCaptureResult::Photo { path, width, height } => {
+                log!("camera: photo {path} ({width}x{height})");
+                match std::fs::read(path) {
+                    Ok(bytes) => {
+                        let name = format!("thumb_{}.jpg", self.session().shots);
+                        if let Some(server) = &self.assets { if let Ok(mut map) = server.assets.lock() { map.retain(|k, _| !k.starts_with("thumb_")); map.insert(name.clone(), ("image/jpeg", bytes)); } }
+                        self.session().last_photo = Some(name);
+                        self.session().revision += 1;
+                        self.remount_now(cx);
+                    }
+                    Err(e) => log!("camera: cannot read {path}: {e}"),
+                }
+            }
+            CameraCaptureResult::SavedToLibrary { path, uri } => log!("camera: gallery {} {path}", if uri.is_some() { "took" } else { "refused" }),
+            CameraCaptureResult::VideoStarted { path } => log!("camera: recording {path}"),
+            CameraCaptureResult::VideoStopped { path } => log!("camera: recording saved {path}"),
+            CameraCaptureResult::Failed { what, error } => {
+                log!("camera: {what} failed: {error}");
+                if what == "video" && self.session().recording != session::Recording::Off { self.session().recording = session::Recording::Off; self.recording_path = None; }
+                let text = { let en = self.config.locale == "en"; if en { format!("Capture failed: {error}") } else { format!("拍摄失败：{error}") } };
+                self.session().toast = Some((text, self.now() + 2.5)); self.session().revision += 1; self.remount_now(cx);
+            }
+            other => log!("camera: capture {other:?}"),
+        }
     }
 
     fn on_mode_bar(&mut self, x: f64, y: f64) -> bool {
@@ -456,10 +520,25 @@ impl Widget for CameraView {
                     let now = self.now();
                     self.session().now = now;
                     let before = { let s = self.session(); (s.mode_bar_index(), s.zoom_index(), 0.0) };
+                    let (was_video, was_exposing) = { let s = self.session(); (s.mode.is_video(), matches!(s.overlay, session::Overlay::Exposing { .. })) };
                     let changed = self.session().activate(&id);
                     self.after_change(cx, before);
+                    if id == "shutter" && !was_video && !was_exposing { self.take_photo(cx); }
+                    if id == "shutter" && was_video { self.toggle_recording(cx); }
+                    if id == "rec_pause" && was_video {
+                        let paused = matches!(self.session().recording, session::Recording::Paused { .. });
+                        if let Some(input) = self.camera_input { cx.camera_capture(input, if paused { CameraCaptureRequest::PauseVideo } else { CameraCaptureRequest::ResumeVideo }); }
+                    }
                     if changed { self.remount_now(cx); }
                 }
+                for action in actions {
+                    let Some(capture) = action.downcast_ref::<CameraCaptureEvent>() else { continue };
+                    self.on_capture(cx, &capture.result);
+                }
+            }
+            Event::PermissionResult(result) if result.permission == Permission::AudioInput => {
+                log!("camera: microphone permission {:?}", result.status);
+                self.mic = Some(result.status);
             }
             Event::PermissionResult(result) if result.permission == Permission::Camera => {
                 log!("camera: permission result {:?}", result.status);
