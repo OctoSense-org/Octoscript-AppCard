@@ -34,7 +34,7 @@
   },
   "modules": [
     {
-      "name": "camera",
+      "name": "makepad",
       "srcPath": "./entry",
       "targets": [
         {

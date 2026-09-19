@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "camera",
+    "name": "makepad",
     "type": "entry",
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",

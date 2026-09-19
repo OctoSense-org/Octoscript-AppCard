@@ -30,7 +30,9 @@ PY
 echo "==> hvigor"
 node $DEVECO/tools/hvigor/bin/hvigorw.js assembleHap --mode module -p product=default -p buildMode=release --no-daemon 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | grep -E "Error Message|ERROR|BUILD" | sort -u
 [ "${1:-}" = "--build-only" ] && exit 0
-H=entry/build/default/outputs/default/camera-default-signed.hap
+# The module is named like the Makepad host's ("makepad"): both HAPs share the bundle, and only a HAP
+# with the same module name installs in place, keeping the permission grants across a host swap.
+H=entry/build/default/outputs/default/makepad-default-signed.hap
 ls -la "$H" | awk '{print "hap", $5, "bytes"}'
 hdc -t $D shell "aa force-stop com.example.myapplication" >/dev/null 2>&1 || true
 hdc -t $D file send "$H" /data/local/tmp/camera.hap | tail -1
