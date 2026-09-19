@@ -936,7 +936,7 @@ impl Session {
             Ruler::MacroFocus => (t(&locale, "对焦", "Focus"), t(&locale, "近", "Near").into(), t(&locale, "远", "Far").into(), 2, self.macro_focus as i32),
         };
         let auto = matches!(r, Ruler::NightShutter | Ruler::TimeLapse | Ruler::MacroFocus);
-        let (x0, width) = if auto { (93.2, 270.0) } else { (40.0, 326.0) };
+        let (x0, width, _) = self.ruler_layout(r);
         s.stack("ruler_bar", "page", 0.0, 497.5, 406.0, 80.0, Some(PRO_BAR), 0.0, None);
         if r == Ruler::SlowRate {
             s.text("ruler_big", "page", SLOW_RATES[self.slow_rate], 160.9, 415.7, 84.9, 52.0, 40.0, true, WHITE, Align::Center);
@@ -958,9 +958,43 @@ impl Session {
             let x = x0 + k as f64 * step; let tall = k % 3 == 0 || ticks <= 10;
             let id = self.ctl(&format!("ruler_tick{k}"), Action::RulerSet(r, if r == Ruler::Beauty { (k as i32 * 10 + 12) / 24 } else { k as i32 }));
             s.button(&id, "page", x - step / 2.0, 530.0, step, 46.0, true);
-            if k as i32 == value { s.stack("ruler_marker", &id, x - 1.5, 538.0, 3.0, 20.0, Some(REC), 1.5, None); }
-            else { s.stack(&format!("{id}_mark"), &id, x - 0.75, if tall { 545.0 } else { 549.0 }, 1.5, if tall { 14.0 } else { 8.0 }, Some(if tall { WHITE } else { INK_DIM }), 0.75, None); }
+            if k as i32 != value { s.stack(&format!("{id}_mark"), &id, x - 0.75, if tall { 545.0 } else { 549.0 }, 1.5, if tall { 14.0 } else { 8.0 }, Some(if tall { WHITE } else { INK_DIM }), 0.75, None); }
         }
+        // The marker is the page's own child so a host can slide it under a dragging finger.
+        s.stack("ruler_marker", "page", x0 + value as f64 * step - 1.5, 538.0, 3.0, 20.0, Some(REC), 1.5, None);
+    }
+
+    /// The ruler's tick row: left edge, width and tick count (all rulers share the 80-tall strip).
+    pub fn ruler_layout(&self, r: Ruler) -> (f64, f64, usize) {
+        let auto = matches!(r, Ruler::NightShutter | Ruler::TimeLapse | Ruler::MacroFocus);
+        let ticks = match r { Ruler::Beauty => 25, Ruler::Aperture => 10, Ruler::NightShutter => 7, Ruler::SlowRate => 3, Ruler::TimeLapse => 5, Ruler::MacroFocus => 2 };
+        if auto { (93.2, 270.0, ticks) } else { (40.0, 326.0, ticks) }
+    }
+    /// Is this artboard point on the ruler's tick row?
+    pub fn on_ruler(&self, r: Ruler, x: f64, y: f64) -> bool {
+        let (x0, width, ticks) = self.ruler_layout(r);
+        let step = width / (ticks - 1) as f64;
+        (530.0..=576.0).contains(&y) && x >= x0 - step / 2.0 && x <= x0 + width + step / 2.0
+    }
+    /// Where the marker sits for a finger at `x`: clamped to the tick row.
+    pub fn ruler_marker_x(&self, r: Ruler, x: f64) -> f64 {
+        let (x0, width, _) = self.ruler_layout(r);
+        x.clamp(x0, x0 + width)
+    }
+    /// A finger at `x` on the ruler: set the value it points at (nearest tick). Returns true when the value changed.
+    pub fn ruler_drag(&mut self, r: Ruler, x: f64) -> bool {
+        let (x0, width, ticks) = self.ruler_layout(r);
+        let k = (((x - x0) / width) * (ticks - 1) as f64).round().clamp(0.0, (ticks - 1) as f64) as i32;
+        let v = if r == Ruler::Beauty { (k * 10 + 12) / 24 } else { k };
+        let before = (self.beauty, self.aperture, self.night_shutter);
+        match r {
+            Ruler::Beauty => self.beauty = v.clamp(0, 10),
+            Ruler::Aperture => self.aperture = (v as usize).min(APERTURES.len() - 1),
+            Ruler::NightShutter => self.night_shutter = (v as usize).min(NIGHT_SHUTTERS.len() - 1),
+            // the three-way and two-way rulers pick on release, like their taps
+            _ => return false,
+        }
+        before != (self.beauty, self.aperture, self.night_shutter)
     }
     fn render_pro_param(&mut self, s: &mut Scene, i: usize) {
         let values = PRO_VALUES[i];

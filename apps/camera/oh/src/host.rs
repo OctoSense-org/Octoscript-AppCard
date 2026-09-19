@@ -70,6 +70,8 @@ pub struct Host {
     chip: Spring,
     bar_drag: Option<BarDrag>,
     pinch: Option<(f64, f32)>,
+    // a finger on a ruler's tick row: which ruler, and whether it has slid yet
+    ruler_drag: Option<(session::Ruler, bool)>,
     // a finger dragging the focus box: when the real focus point was last sent
     focus_drag: bool,
     focus_sent_at: f64,
@@ -104,7 +106,7 @@ impl Host {
             zoom_ratio, sent_zoom: None, sent_flash: None, sent_ev: None,
             touch_seen: false, finger_start: None, finger_last: None, suppress_clicks_until: 0.0,
             bar: Spring::default(), chip: Spring::default(), bar_drag: None, pinch: None,
-            focus_drag: false, focus_sent_at: 0.0,
+            ruler_drag: None, focus_drag: false, focus_sent_at: 0.0,
             pill_press: None, dial_drag: None, dial_log2: 0.0, dial_vel: 0.0, dial_hide_at: None, dial_sent_at: 0.0,
         };
         HOST.with(|h| *h.borrow_mut() = Some(host));
@@ -249,12 +251,25 @@ impl Host {
                 self.finger_start = Some(p); self.finger_last = Some(p); self.pinch = None;
                 if self.on_zoom_pill(p.0, p.1) { self.pill_press = Some((p.0, p.1, t)); }
                 if self.session.overlay == session::Overlay::ZoomDial { self.dial_hide_at = None; self.dial_vel = 0.0; }
+                if let session::Overlay::Ruler(r) = self.session.overlay { if self.session.on_ruler(r, p.0, p.1) { self.ruler_drag = Some((r, false)); } }
             }
             TOUCH_MOVE => moved = Some(p),
             _ => { ended = Some(p); self.pinch = None; }
         }
         // A finger on the mode bar drags the strip; it snaps to an entry on release.
         if let (Some((x, y)), Some((x0, y0))) = (moved, self.finger_start) {
+            // A finger on a ruler slides its marker continuously; the value follows the nearest tick.
+            if let Some((r, slid)) = self.ruler_drag {
+                if slid || (x - x0).abs() > DIAL_SLIDE {
+                    self.ruler_drag = Some((r, true));
+                    self.suppress_clicks_until = t + 0.3;
+                    let mx = self.session.ruler_marker_x(r, x);
+                    if let Some(h) = self.handle("ruler_marker") { unsafe { mount::set_position(h, (mx - 1.5) as f32, 538.0) } }
+                    self.session.ruler_drag(r, x);
+                }
+                self.finger_last = Some((x, y));
+                return;
+            }
             // A sideways slide on the quick-zoom bar opens the roulette dial; with the dial up any slide turns it.
             if self.dial_drag.is_none() && self.pill_press.is_some() && (x - x0).abs() > 6.0 && self.session.overlay == session::Overlay::None { self.open_dial(); }
             if self.session.overlay == session::Overlay::ZoomDial {
@@ -298,6 +313,10 @@ impl Host {
         }
         let Some((x1, y1)) = ended else { return };
         self.pill_press = None;
+        if let Some((r, slid)) = self.ruler_drag.take() {
+            // a slide settles on the nearest tick; a plain tap is the tick's own click
+            if slid { self.session.ruler_drag(r, x1); self.session.revision += 1; self.remount(); self.suppress_clicks_until = t + 0.3; self.finger_start = None; }
+        }
         if let Some((_, _, vel)) = self.dial_drag.take() {
             self.dial_vel = vel.clamp(-12.0, 12.0);
             self.dial_hide_at = Some(t + DIAL_HIDE_AFTER);

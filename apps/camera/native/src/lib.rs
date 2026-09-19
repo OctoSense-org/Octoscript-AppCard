@@ -196,6 +196,8 @@ pub struct CameraView {
     #[rust] mic: Option<PermissionStatus>,
     #[rust] mic_asked: bool,
     #[rust] recording_path: Option<String>,
+    // a finger on a ruler's tick row: which ruler, and whether it has slid yet
+    #[rust] ruler_drag: Option<(session::Ruler, bool)>,
     // a finger dragging the focus box: when the real focus point was last sent
     #[rust] focus_drag: bool,
     #[rust] focus_sent_at: f64,
@@ -738,6 +740,7 @@ impl Widget for CameraView {
                 self.finger_start = Some(e.abs); self.finger_last = Some(e.abs); self.suppress_activation = false;
                 let (x, y) = self.to_artboard(e.abs);
                 if self.on_zoom_pill(x, y) { self.pill_press = Some((x, y, self.now())); }
+                if let session::Overlay::Ruler(r) = self.session().overlay { if self.session().on_ruler(r, x, y) { self.ruler_drag = Some((r, false)); } }
                 if self.session().overlay == session::Overlay::ZoomDial { self.dial_hide_at = None; self.dial_vel = 0.0; }
             }
             Event::MouseMove(e) if self.finger_start.is_some() => moved = Some(e.abs),
@@ -772,6 +775,7 @@ impl Widget for CameraView {
                                 self.finger_start = Some(touch.abs); self.finger_last = Some(touch.abs); self.suppress_activation = false;
                                 let (x, y) = self.to_artboard(touch.abs);
                                 if self.on_zoom_pill(x, y) { self.pill_press = Some((x, y, self.now())); }
+                                if let session::Overlay::Ruler(r) = self.session().overlay { if self.session().on_ruler(r, x, y) { self.ruler_drag = Some((r, false)); } }
                                 if self.session().overlay == session::Overlay::ZoomDial { self.dial_hide_at = None; self.dial_vel = 0.0; }
                             }
                             TouchState::Move => moved = Some(touch.abs),
@@ -788,6 +792,22 @@ impl Widget for CameraView {
             let (x, y) = self.to_artboard(p);
             let (x0, y0) = self.to_artboard(start);
             let t = self.now();
+            // A finger on a ruler slides its marker continuously; the value follows the nearest tick.
+            if let Some((r, slid)) = self.ruler_drag {
+                if slid || (x - x0).abs() > DIAL_SLIDE {
+                    self.ruler_drag = Some((r, true));
+                    self.suppress_activation = true;
+                    let mx = self.session().ruler_marker_x(r, x);
+                    if let Some(native) = self.mapping.get("ruler_marker").cloned() {
+                        let pos = dvec2(self.art_origin.x + (mx - 1.5) * self.scale, self.art_origin.y + 538.0 * self.scale);
+                        self.view.view(cx, &[LiveId::from_str(&native)]).set_walk(cx, Walk { abs_pos: Some(pos), width: Size::Fixed(3.0 * self.scale), height: Size::Fixed(20.0 * self.scale), ..Default::default() });
+                        self.view.redraw(cx);
+                    }
+                    self.session().ruler_drag(r, x);
+                }
+                self.finger_last = Some(p);
+                return;
+            }
             // A sideways slide on the quick-zoom bar opens the roulette dial; with the dial up any slide turns it.
             if self.dial_drag.is_none() && self.pill_press.is_some() && (x - x0).abs() > 6.0 && self.session().overlay == session::Overlay::None { self.open_dial(cx); }
             if self.session().overlay == session::Overlay::ZoomDial {
@@ -834,6 +854,17 @@ impl Widget for CameraView {
         if ended.is_some() && std::env::var("CAMERA_TRACE").is_ok() { log!("camera: pointer up at {:?} start {:?}", ended, self.finger_start); }
         if let Some(end) = ended {
             self.pill_press = None;
+            if let Some((r, slid)) = self.ruler_drag.take() {
+                // a slide settles on the nearest tick; a plain tap is the tick's own click
+                if slid {
+                    let (x, _) = self.to_artboard(end);
+                    self.session().ruler_drag(r, x);
+                    self.session().revision += 1;
+                    self.remount_now(cx);
+                    self.suppress_activation = true;
+                    self.finger_start = None;
+                }
+            }
             if let Some((_, _, vel)) = self.dial_drag.take() {
                 let _ = end;
                 self.dial_vel = vel.clamp(-12.0, 12.0);
