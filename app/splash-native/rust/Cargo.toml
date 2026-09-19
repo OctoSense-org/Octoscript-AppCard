@@ -2,6 +2,7 @@
 name = "octos-splash-native"
 version = "0.1.0"
 edition = "2021"
+license = "Apache-2.0"
 publish = false
 
 # Separate platform-native renderer workspace, using the shared runtime VM.

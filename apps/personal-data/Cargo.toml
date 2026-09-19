@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 description = "octos plugin skill: search Mail and Calendar app data on this device"
 authors = ["OctoSense"]
-license = "MIT OR Apache-2.0"
+license = "Apache-2.0"
 
 [[bin]]
 name = "main"

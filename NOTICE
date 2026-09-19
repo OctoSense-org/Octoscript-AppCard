@@ -1,0 +1,19 @@
+Octoscript-AppCard
+Copyright 2026 The OctoSense Authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party components
+----------------------
+
+The following third-party components are included in this repository and
+remain under their own licenses; they are not relicensed by this project:
+
+* vendor/rustyline: rustyline, Copyright (c) 2015 Katsu Kawakami & Rustyline
+  authors, licensed under the MIT License (see vendor/rustyline/LICENSE).
+* vendor/mmap-rs: mmap-rs, dual licensed under Apache-2.0 OR MIT
+  (see vendor/mmap-rs/LICENSE-APACHE and vendor/mmap-rs/LICENSE-MIT).
+* apps/*/fonts: Noto Sans SC fonts, licensed under the SIL Open Font License,
+  Version 1.1 (see the OFL.txt file next to each font).
+* octos (git submodule): https://github.com/octos-org/octos, licensed under
+  the Apache License, Version 2.0.
