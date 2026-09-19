@@ -33,14 +33,17 @@ export class Glue {
     else if (kind === 'save') { this.saveToGallery(value); }
   }
 
-  private requestPermission(name: string): void {
-    const permission: Permissions = name === 'microphone' ? 'ohos.permission.MICROPHONE' : 'ohos.permission.CAMERA';
-    abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context, [permission]).then((data) => {
+  /** One request may name several permissions ("camera,microphone,gallery"): the system shows them as one flow. */
+  private requestPermission(names: string): void {
+    const list: Array<string> = names.split(',');
+    const permissions: Array<Permissions> = list.map((name: string): Permissions =>
+      name === 'microphone' ? 'ohos.permission.MICROPHONE' : name === 'gallery' ? 'ohos.permission.WRITE_IMAGEVIDEO' : 'ohos.permission.CAMERA');
+    abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context, permissions).then((data) => {
       const results: Array<number> = data.authResults ?? [];
-      camera.handlePermissionResult(name, results.length > 0 && results[0] === 0);
+      for (let i = 0; i < list.length; i++) { camera.handlePermissionResult(list[i], i < results.length && results[i] === 0); }
     }).catch((err: Any) => {
-      console.error('permission ' + permission + ' failed: ' + JSON.stringify(err));
-      camera.handlePermissionResult(name, false);
+      console.error('permissions ' + names + ' failed: ' + JSON.stringify(err));
+      for (const name of list) { camera.handlePermissionResult(name, false); }
     });
   }
 

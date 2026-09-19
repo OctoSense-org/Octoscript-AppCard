@@ -98,8 +98,9 @@ impl Host {
         let zoom_ratio = session.zoom_ratio();
         let host = Host {
             session, files_dir, outer, surface, surface_rect: (0.0, 39.4, 406.0, 541.0), chrome: None, mounted_revision: None,
-            camera: Camera::new(), permission: None, mic: None, mic_asked: false, preview: PreviewState::Idle, preview_front: false, preview_aspect: 0.0,
-            requests: std::collections::VecDeque::from(vec!["permission|camera".to_owned()]), photos: HashMap::new(), icons_written: Default::default(), recording_path: None,
+            camera: Camera::new(), permission: None, mic: None, mic_asked: true, preview: PreviewState::Idle, preview_front: false, preview_aspect: 0.0,
+            // one prompt flow at first launch, like the phone's own camera; nothing pops up later at the first clip or save
+            requests: std::collections::VecDeque::from(vec!["permission|camera,microphone,gallery".to_owned()]), photos: HashMap::new(), icons_written: Default::default(), recording_path: None,
             zoom_ratio, sent_zoom: None, sent_flash: None, sent_ev: None,
             touch_seen: false, finger_start: None, finger_last: None, suppress_clicks_until: 0.0,
             bar: Spring::default(), chip: Spring::default(), bar_drag: None, pinch: None,
@@ -190,7 +191,8 @@ impl Host {
     fn on_click(&mut self, target: i32) {
         let t = now();
         if t < self.suppress_clicks_until { return; }
-        let Some(control) = self.chrome.as_ref().and_then(|m| m.controls.get(&target).cloned()) else { return };
+        let Some(control) = self.chrome.as_ref().and_then(|m| m.controls.get(&target).cloned()) else { info!("camera-oh: click on an unmapped target {target}"); return };
+        info!("camera-oh: click {control} (target {target})");
         // a tap on any other control while the dial is up takes the dial down first, as on the phone
         if self.session.overlay == session::Overlay::ZoomDial { self.close_dial(); }
         let (was_video, was_exposing) = (self.session.mode.is_video(), matches!(self.session.overlay, session::Overlay::Exposing { .. }));
@@ -219,6 +221,7 @@ impl Host {
     pub fn on_touch(&mut self, action: i32, x: f32, y: f32, fingers: i32, x2: f32, y2: f32) {
         let p = self.to_artboard(x, y);
         let t = now();
+        if action != TOUCH_MOVE { info!("camera-oh: touch action={action} at {:.0},{:.0} fingers={fingers} start={:?}", p.0, p.1, self.finger_start); }
         // Two fingers on the viewfinder: pinch to zoom the real lens; the selected chip shows the live value.
         if fingers >= 2 && action == TOUCH_MOVE && self.preview == PreviewState::Running && self.session.overlay == session::Overlay::None {
             let q = self.to_artboard(x2, y2);
