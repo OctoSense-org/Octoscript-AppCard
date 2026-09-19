@@ -1,0 +1,216 @@
+{
+  "frame_id": 10,
+  "source": "camera-10",
+  "controls": {
+    "ai_compose": {
+      "event": "ai_compose",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        16.0,
+        0.0,
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    "flash": {
+      "event": "flash",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        202,
+        0,
+        52,
+        36
+      ],
+      "enabled": true
+    },
+    "live_photo": {
+      "event": "live_photo",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        254,
+        0,
+        52,
+        36
+      ],
+      "enabled": true
+    },
+    "filter": {
+      "event": "filter",
+      "text_ids": [
+        "filter_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        306,
+        0,
+        68,
+        36
+      ],
+      "enabled": true
+    },
+    "thumbnail": {
+      "event": "thumbnail",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        77,
+        533,
+        40,
+        40
+      ],
+      "enabled": true
+    },
+    "shutter": {
+      "event": "shutter",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        177.0,
+        526.8,
+        52,
+        52
+      ],
+      "enabled": true
+    },
+    "switch_camera": {
+      "event": "switch_camera",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        289.0,
+        533.0,
+        40,
+        40
+      ],
+      "enabled": true
+    },
+    "treasure_handle": {
+      "event": "treasure_handle",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        172.9,
+        586.5,
+        60,
+        32
+      ],
+      "enabled": true
+    },
+    "box_settings": {
+      "event": "box_settings",
+      "text_ids": [
+        "box_settings_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        32.0,
+        622.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    },
+    "box_vision": {
+      "event": "box_vision",
+      "text_ids": [
+        "box_vision_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        117.5,
+        622.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    },
+    "box_xmage": {
+      "event": "box_xmage",
+      "text_ids": [
+        "box_xmage_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        203.0,
+        622.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    },
+    "box_exposure": {
+      "event": "box_exposure",
+      "text_ids": [
+        "box_exposure_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        288.5,
+        622.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    },
+    "box_ai": {
+      "event": "box_ai",
+      "text_ids": [
+        "box_ai_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        32.0,
+        694.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    },
+    "box_watermark": {
+      "event": "box_watermark",
+      "text_ids": [
+        "box_watermark_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        117.5,
+        694.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    },
+    "box_ratio": {
+      "event": "box_ratio",
+      "text_ids": [
+        "box_ratio_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        203.0,
+        694.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    },
+    "box_flash": {
+      "event": "box_flash",
+      "text_ids": [
+        "box_flash_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        288.5,
+        694.5,
+        85.5,
+        72
+      ],
+      "enabled": true
+    }
+  }
+}

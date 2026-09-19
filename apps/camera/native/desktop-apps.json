@@ -1,0 +1,10 @@
+[
+  {
+    "id": "camera",
+    "label": "Camera",
+    "manifest": "Cargo.toml",
+    "package": "octosense-camera",
+    "bin": "camera",
+    "policy": "focus"
+  }
+]

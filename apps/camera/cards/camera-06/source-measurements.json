@@ -1,0 +1,227 @@
+{
+  "atlas_sha256": "b60d54c5c5157a7f4580d5053637d6d698ce451f0505d7f4c36c2d7cdef1969f",
+  "reference_sha256": "2a29e00345c2342050fb887f4686fdb33676c9bab44aac0ab2c0877d9ca36190",
+  "source_crop": [
+    908,
+    1716,
+    812,
+    1552
+  ],
+  "transform": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      908,
+      1716,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -908.0,
+      0,
+      1.0,
+      -1716.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      908.0,
+      0,
+      1.0,
+      1716.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -454.0,
+      0,
+      0.5,
+      -858.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      908.0,
+      0,
+      2.0,
+      1716.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "reviewed_source": true,
+  "text": [
+    {
+      "id": "rec_timer",
+      "css_box": [
+        181,
+        6,
+        64,
+        28
+      ],
+      "ink_bounds": [
+        181.658,
+        15.604,
+        34.775999999999996,
+        10.696
+      ],
+      "copy": {
+        "cn": "00:07",
+        "en": "00:07"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_w_label",
+      "css_box": [
+        103.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        117.2995,
+        533.535,
+        11.388,
+        9.633
+      ],
+      "copy": {
+        "cn": "W",
+        "en": "W"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_1_label",
+      "css_box": [
+        143.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        156.578,
+        533.535,
+        13.701999999999998,
+        9.633
+      ],
+      "copy": {
+        "cn": "1x",
+        "en": "1x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_2_label",
+      "css_box": [
+        183.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        195.967,
+        533.366,
+        14.312999999999999,
+        9.802
+      ],
+      "copy": {
+        "cn": "2x",
+        "en": "2x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_3_label",
+      "css_box": [
+        223.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        235.85,
+        533.366,
+        14.429999999999998,
+        9.984
+      ],
+      "copy": {
+        "cn": "3x",
+        "en": "3x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    },
+    {
+      "id": "zoom_5_label",
+      "css_box": [
+        263.0,
+        517.5,
+        40,
+        40
+      ],
+      "ink_bounds": [
+        275.85,
+        533.535,
+        14.429999999999998,
+        9.815
+      ],
+      "copy": {
+        "cn": "5x",
+        "en": "5x"
+      },
+      "method": "Authored CSS box; ink from bundled Noto glyph metrics at the rendered size"
+    }
+  ],
+  "limits": [
+    "The storyboard is authored from device measurements, so measurement is a consistency check of the render against the spec, not OCR of an unknown image",
+    "No native visual acceptance"
+  ]
+}

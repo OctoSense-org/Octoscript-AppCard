@@ -1,0 +1,15 @@
+/node_modules
+/oh_modules
+/.hvigor
+/.idea
+/local.properties
+/build
+/entry/build
+/entry/oh_modules
+/entry/.preview
+/entry/libs/arm64-v8a/*.so
+/.test
+/.clangd
+/.clang-format
+/.clang-tidy
+/.cxx

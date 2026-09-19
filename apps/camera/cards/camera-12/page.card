@@ -1,0 +1,191 @@
+# ledger camera-12@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy pano_dir_label_text { class: user-copy, en: "横向" }
+copy zoom_1_label_text { class: user-copy, en: "1x" }
+copy zoom_2_label_text { class: user-copy, en: "2x" }
+copy zoom_4_label_text { class: user-copy, en: "4x" }
+copy sub_mode_label_text { class: user-copy, en: "超清全景" }
+state info_control_enabled { shape: bool, initial: true }
+state pano_dir_control_enabled { shape: bool, initial: true }
+state zoom_1_control_enabled { shape: bool, initial: true }
+state zoom_2_control_enabled { shape: bool, initial: true }
+state zoom_4_control_enabled { shape: bool, initial: true }
+state sub_mode_close_control_enabled { shape: bool, initial: true }
+state thumbnail_control_enabled { shape: bool, initial: true }
+state shutter_control_enabled { shape: bool, initial: true }
+state treasure_handle_control_enabled { shape: bool, initial: true }
+component Surfacee138f8831782(instance: text) {
+  view Kit(component: "Surfacee138f8831782", instance: instance) { slot }
+}
+component Surfacefba83cd594ba(instance: text) {
+  view Kit(component: "Surfacefba83cd594ba", instance: instance) { slot }
+}
+component Surfacef88ef6b699d9(instance: text) {
+  view Kit(component: "Surfacef88ef6b699d9", instance: instance) { slot }
+}
+component KitButtonc46f1658a77f(instance: text) {
+  view Kit(component: "KitButtonc46f1658a77f", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component Surfacef86f1a182410(instance: text) {
+  view Kit(component: "Surfacef86f1a182410", instance: instance) { slot }
+}
+component Group0e9585cd3264(instance: text) {
+  view Kit(component: "Group0e9585cd3264", instance: instance) { slot }
+}
+component Surface77131ad4bbf5(instance: text) {
+  view Kit(component: "Surface77131ad4bbf5", instance: instance) { slot }
+}
+component Surface2d2e2fe104cc(instance: text) {
+  view Kit(component: "Surface2d2e2fe104cc", instance: instance) { slot }
+}
+component KitButton77197ce2bc6e(instance: text) {
+  view Kit(component: "KitButton77197ce2bc6e", instance: instance) { slot }
+}
+component Textd6980deb05a9(instance: text, text: text) {
+  view Kit(component: "Textd6980deb05a9", instance: instance, text: text)
+}
+component Surface74c49ba91f4b(instance: text) {
+  view Kit(component: "Surface74c49ba91f4b", instance: instance) { slot }
+}
+component Surface53080be9103a(instance: text) {
+  view Kit(component: "Surface53080be9103a", instance: instance) { slot }
+}
+component Texteebda5bc600e(instance: text, text: text) {
+  view Kit(component: "Texteebda5bc600e", instance: instance, text: text)
+}
+component KitButton22c14d908dc3(instance: text) {
+  view Kit(component: "KitButton22c14d908dc3", instance: instance) { slot }
+}
+component Text6ab2489037ae(instance: text, text: text) {
+  view Kit(component: "Text6ab2489037ae", instance: instance, text: text)
+}
+component Text201c5a6de8e1(instance: text, text: text) {
+  view Kit(component: "Text201c5a6de8e1", instance: instance, text: text)
+}
+component KitButton5cf8a148faf2(instance: text) {
+  view Kit(component: "KitButton5cf8a148faf2", instance: instance) { slot }
+}
+component Surfaceed7e4005beaf(instance: text) {
+  view Kit(component: "Surfaceed7e4005beaf", instance: instance) { slot }
+}
+component Text23f5d3e61327(instance: text, text: text) {
+  view Kit(component: "Text23f5d3e61327", instance: instance, text: text)
+}
+component Surfacec7d8357fd026(instance: text) {
+  view Kit(component: "Surfacec7d8357fd026", instance: instance) { slot }
+}
+component Surfaceee578bd61a2d(instance: text) {
+  view Kit(component: "Surfaceee578bd61a2d", instance: instance) { slot }
+}
+component Surface55474c1c8b64(instance: text) {
+  view Kit(component: "Surface55474c1c8b64", instance: instance) { slot }
+}
+component Surface764cb33a2909(instance: text) {
+  view Kit(component: "Surface764cb33a2909", instance: instance) { slot }
+}
+component Surfaceb137b1b7c715(instance: text) {
+  view Kit(component: "Surfaceb137b1b7c715", instance: instance) { slot }
+}
+component Surface418308a71490(instance: text) {
+  view Kit(component: "Surface418308a71490", instance: instance) { slot }
+}
+
+view root Surfacee138f8831782(instance: "page") {
+  Surfacefba83cd594ba(instance: "screen") {
+    Surfacef88ef6b699d9(instance: "viewfinder") {
+
+    }
+    KitButtonc46f1658a77f(instance: "info") {
+      NativeButton02f1d1bd99b4(instance: "info_control", enabled: info_control_enabled)
+      Vectore0a378fde04f(instance: "info_icon")
+    }
+    Surfacef86f1a182410(instance: "pano_band") {
+
+    }
+    Group0e9585cd3264(instance: "pano_frame") {
+
+    }
+    Vectore0a378fde04f(instance: "pano_arrow_l")
+    Vectore0a378fde04f(instance: "pano_arrow_r")
+    Surface77131ad4bbf5(instance: "pano_line_l") {
+
+    }
+    Surface77131ad4bbf5(instance: "pano_line_r") {
+
+    }
+    Group0e9585cd3264(instance: "pano_target") {
+
+    }
+    Surface2d2e2fe104cc(instance: "pano_target_in") {
+
+    }
+    KitButton77197ce2bc6e(instance: "pano_dir") {
+      NativeButton02f1d1bd99b4(instance: "pano_dir_control", enabled: pano_dir_control_enabled)
+      Vectore0a378fde04f(instance: "pano_dir_icon")
+      Textd6980deb05a9(instance: "pano_dir_label", text: copy.pano_dir_label_text)
+    }
+    Surface74c49ba91f4b(instance: "zoom_pill") {
+
+    }
+    KitButton77197ce2bc6e(instance: "zoom_1") {
+      NativeButton02f1d1bd99b4(instance: "zoom_1_control", enabled: zoom_1_control_enabled)
+      Surface53080be9103a(instance: "zoom_1_chip") {
+
+      }
+      Texteebda5bc600e(instance: "zoom_1_label", text: copy.zoom_1_label_text)
+    }
+    KitButton22c14d908dc3(instance: "zoom_2") {
+      NativeButton02f1d1bd99b4(instance: "zoom_2_control", enabled: zoom_2_control_enabled)
+      Text6ab2489037ae(instance: "zoom_2_label", text: copy.zoom_2_label_text)
+    }
+    KitButton22c14d908dc3(instance: "zoom_4") {
+      NativeButton02f1d1bd99b4(instance: "zoom_4_control", enabled: zoom_4_control_enabled)
+      Text201c5a6de8e1(instance: "zoom_4_label", text: copy.zoom_4_label_text)
+    }
+    KitButton5cf8a148faf2(instance: "sub_mode_close") {
+      NativeButton02f1d1bd99b4(instance: "sub_mode_close_control", enabled: sub_mode_close_control_enabled)
+      Surfaceed7e4005beaf(instance: "sub_mode_bg") {
+
+      }
+      Vectore0a378fde04f(instance: "sub_mode_x")
+      Text23f5d3e61327(instance: "sub_mode_label", text: copy.sub_mode_label_text)
+    }
+    KitButtonc46f1658a77f(instance: "thumbnail") {
+      NativeButton02f1d1bd99b4(instance: "thumbnail_control", enabled: thumbnail_control_enabled)
+      Surfacec7d8357fd026(instance: "thumbnail_ring") {
+
+      }
+      Surfaceee578bd61a2d(instance: "thumbnail_img") {
+
+      }
+      Surface55474c1c8b64(instance: "thumbnail_line") {
+
+      }
+    }
+    KitButtonc46f1658a77f(instance: "shutter") {
+      NativeButton02f1d1bd99b4(instance: "shutter_control", enabled: shutter_control_enabled)
+      Surface764cb33a2909(instance: "shutter_ring") {
+
+      }
+      Surfaceb137b1b7c715(instance: "shutter_gap") {
+
+      }
+      Surface418308a71490(instance: "shutter_disc") {
+
+      }
+    }
+    KitButtonc46f1658a77f(instance: "treasure_handle") {
+      NativeButton02f1d1bd99b4(instance: "treasure_handle_control", enabled: treasure_handle_control_enabled)
+      Vectore0a378fde04f(instance: "treasure_handle_icon")
+    }
+  }
+}

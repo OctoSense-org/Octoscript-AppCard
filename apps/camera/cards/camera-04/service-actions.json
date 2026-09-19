@@ -1,0 +1,246 @@
+{
+  "frame_id": 4,
+  "source": "camera-04",
+  "controls": {
+    "ai_compose": {
+      "event": "ai_compose",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        16.0,
+        0.0,
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    "filter": {
+      "event": "filter",
+      "text_ids": [
+        "filter_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        306,
+        0,
+        68,
+        36
+      ],
+      "enabled": true
+    },
+    "info": {
+      "event": "info",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        352,
+        55.5,
+        40,
+        40
+      ],
+      "enabled": true
+    },
+    "beauty": {
+      "event": "beauty",
+      "text_ids": [
+        "beauty_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        0,
+        513.5,
+        60,
+        48
+      ],
+      "enabled": true
+    },
+    "aperture": {
+      "event": "aperture",
+      "text_ids": [
+        "aperture_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        340,
+        513.5,
+        60,
+        48
+      ],
+      "enabled": true
+    },
+    "zoom_1": {
+      "event": "zoom_1",
+      "text_ids": [
+        "zoom_1_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        143.0,
+        517.5,
+        40,
+        40
+      ],
+      "enabled": true
+    },
+    "zoom_2": {
+      "event": "zoom_2",
+      "text_ids": [
+        "zoom_2_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        183.0,
+        517.5,
+        40,
+        40
+      ],
+      "enabled": true
+    },
+    "zoom_3": {
+      "event": "zoom_3",
+      "text_ids": [
+        "zoom_3_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        223.0,
+        517.5,
+        40,
+        40
+      ],
+      "enabled": true
+    },
+    "mode_night": {
+      "event": "mode_night",
+      "text_ids": [
+        "mode_night_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        72.4,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_snapshot": {
+      "event": "mode_snapshot",
+      "text_ids": [
+        "mode_snapshot_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        124.69999999999999,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_portrait": {
+      "event": "mode_portrait",
+      "text_ids": [
+        "mode_portrait_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        177.0,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_photo": {
+      "event": "mode_photo",
+      "text_ids": [
+        "mode_photo_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        229.3,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_video": {
+      "event": "mode_video",
+      "text_ids": [
+        "mode_video_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        281.6,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "mode_pro": {
+      "event": "mode_pro",
+      "text_ids": [
+        "mode_pro_label"
+      ],
+      "ocr_ids": [],
+      "source_bounds": [
+        333.9,
+        576.6,
+        52,
+        56
+      ],
+      "enabled": true
+    },
+    "thumbnail": {
+      "event": "thumbnail",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        53.2,
+        669.8,
+        44,
+        44
+      ],
+      "enabled": true
+    },
+    "shutter": {
+      "event": "shutter",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        171.0,
+        659.7,
+        64,
+        64
+      ],
+      "enabled": true
+    },
+    "switch_camera": {
+      "event": "switch_camera",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        308.8,
+        669.8,
+        44,
+        44
+      ],
+      "enabled": true
+    },
+    "treasure_handle": {
+      "event": "treasure_handle",
+      "text_ids": [],
+      "ocr_ids": [],
+      "source_bounds": [
+        172.9,
+        724.6,
+        60,
+        32
+      ],
+      "enabled": true
+    }
+  }
+}

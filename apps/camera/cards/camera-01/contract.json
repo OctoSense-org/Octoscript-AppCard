@@ -1,0 +1,917 @@
+{
+  "schema_version": 1,
+  "id": "camera-01",
+  "app": "camera",
+  "number": 1,
+  "title": "拍照",
+  "artboard": [
+    406,
+    776
+  ],
+  "font_family": "Noto Sans SC",
+  "structure": "Mate 70 Air camera app screen, measured on the device: viewfinder placeholder, top chrome, zoom bar, mode bar, foot bar, panels",
+  "content_source": "Device captures of the HUAWEI Mate 70 Air camera (HarmonyOS 6.1); the viewfinder is a live camera texture at runtime",
+  "palette": {
+    "name": "Mate camera",
+    "page": "#000000",
+    "panel": "#202020",
+    "ink": "#ffffff",
+    "accent": "#e2362c"
+  },
+  "graphics": {},
+  "tree": {
+    "t": "stack",
+    "id": "page",
+    "x": 0,
+    "y": 0,
+    "w": 406,
+    "h": 776,
+    "variant": "surface",
+    "bg": 4278190080,
+    "c": [
+      {
+        "t": "stack",
+        "id": "screen",
+        "x": 0.0,
+        "y": 0.0,
+        "w": 203.0,
+        "h": 388.0,
+        "c": [
+          {
+            "t": "stack",
+            "id": "viewfinder",
+            "x": 0.0,
+            "y": 19.7,
+            "w": 203.0,
+            "h": 270.5,
+            "c": [],
+            "variant": "surface",
+            "bg": 4282006076,
+            "radius": 0.0
+          },
+          {
+            "t": "stack",
+            "id": "ai_compose",
+            "x": 8.0,
+            "y": 0.0,
+            "w": 18.0,
+            "h": 18.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "ai_compose_control",
+                "x": 8.0,
+                "y": 0.0,
+                "w": 18.0,
+                "h": 18.0,
+                "enabled": 1
+              },
+              {
+                "t": "stack",
+                "id": "ai_compose_bg",
+                "x": 8.0,
+                "y": 0.0,
+                "w": 18.0,
+                "h": 18.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4279571733,
+                "radius": 9.0
+              },
+              {
+                "t": "svg",
+                "id": "ai_compose_icon",
+                "x": 12.0,
+                "y": 4.0,
+                "w": 10.0,
+                "h": 10.0,
+                "src": ""
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0]}}"
+          },
+          {
+            "t": "stack",
+            "id": "top_pill",
+            "x": 96.0,
+            "y": 0.0,
+            "w": 101.0,
+            "h": 18.0,
+            "c": [],
+            "variant": "surface",
+            "bg": 4279308561,
+            "radius": 9.0
+          },
+          {
+            "t": "stack",
+            "id": "flash",
+            "x": 101.0,
+            "y": 0.0,
+            "w": 26.0,
+            "h": 18.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "flash_control",
+                "x": 101.0,
+                "y": 0.0,
+                "w": 26.0,
+                "h": 18.0,
+                "enabled": 1
+              },
+              {
+                "t": "svg",
+                "id": "flash_icon",
+                "x": 109.0,
+                "y": 4.0,
+                "w": 10.0,
+                "h": 10.0,
+                "src": ""
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0]}}"
+          },
+          {
+            "t": "stack",
+            "id": "live_photo",
+            "x": 127.0,
+            "y": 0.0,
+            "w": 26.0,
+            "h": 18.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "live_photo_control",
+                "x": 127.0,
+                "y": 0.0,
+                "w": 26.0,
+                "h": 18.0,
+                "enabled": 1
+              },
+              {
+                "t": "svg",
+                "id": "live_photo_icon",
+                "x": 135.0,
+                "y": 4.0,
+                "w": 10.0,
+                "h": 10.0,
+                "src": ""
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0]}}"
+          },
+          {
+            "t": "stack",
+            "id": "filter",
+            "x": 153.0,
+            "y": 0.0,
+            "w": 34.0,
+            "h": 18.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "filter_control",
+                "x": 153.0,
+                "y": 0.0,
+                "w": 34.0,
+                "h": 18.0,
+                "enabled": 1
+              },
+              {
+                "t": "stack",
+                "id": "filter_frame",
+                "x": 155.0,
+                "y": 2.5,
+                "w": 30.0,
+                "h": 13.0,
+                "c": [],
+                "border": 0.7,
+                "bordercolor": 4294967295
+              },
+              {
+                "t": "svg",
+                "id": "filter_icon",
+                "x": 158.0,
+                "y": 4.0,
+                "w": 10.0,
+                "h": 10.0,
+                "src": ""
+              },
+              {
+                "t": "text",
+                "id": "filter_label",
+                "text": "原色",
+                "x": 168.5,
+                "y": 4.78975,
+                "w": 14.5,
+                "h": 8.9665,
+                "size": 5.25,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 8.9665,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4294967295,
+                "font_asc": 0.077952380952381,
+                "font_desc": -0.18195238095238098
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[3]}}"
+          },
+          {
+            "t": "stack",
+            "id": "zoom_pill",
+            "x": 51.5,
+            "y": 258.75,
+            "w": 100.0,
+            "h": 20.0,
+            "c": [],
+            "variant": "surface",
+            "bg": 1291845632,
+            "radius": 10.0
+          },
+          {
+            "t": "stack",
+            "id": "zoom_w",
+            "x": 51.5,
+            "y": 258.75,
+            "w": 20.0,
+            "h": 20.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "zoom_w_control",
+                "x": 51.5,
+                "y": 258.75,
+                "w": 20.0,
+                "h": 20.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "zoom_w_label",
+                "text": "W",
+                "x": 58.52625,
+                "y": 264.7675,
+                "w": 9.9475,
+                "h": 8.8165,
+                "size": 6.5,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 8.8165,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4294967295,
+                "font_asc": -0.11130769230769233,
+                "font_desc": -0.01969230769230773
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "zoom_1",
+            "x": 71.5,
+            "y": 258.75,
+            "w": 20.0,
+            "h": 20.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "zoom_1_control",
+                "x": 71.5,
+                "y": 258.75,
+                "w": 20.0,
+                "h": 20.0,
+                "enabled": 1
+              },
+              {
+                "t": "stack",
+                "id": "zoom_1_chip",
+                "x": 71.5,
+                "y": 258.75,
+                "w": 20.0,
+                "h": 20.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4292664540,
+                "radius": 10.0
+              },
+              {
+                "t": "text",
+                "id": "zoom_1_label",
+                "text": "1x",
+                "x": 77.756,
+                "y": 264.7675,
+                "w": 11.488,
+                "h": 8.8165,
+                "size": 6.5,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 8.8165,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4283387727,
+                "font_asc": -0.11130769230769233,
+                "font_desc": -0.01969230769230773
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[2]}}"
+          },
+          {
+            "t": "stack",
+            "id": "zoom_2",
+            "x": 91.5,
+            "y": 258.75,
+            "w": 20.0,
+            "h": 20.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "zoom_2_control",
+                "x": 91.5,
+                "y": 258.75,
+                "w": 20.0,
+                "h": 20.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "zoom_2_label",
+                "text": "2x",
+                "x": 97.756,
+                "y": 264.683,
+                "w": 11.488,
+                "h": 8.901,
+                "size": 6.5,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 8.901,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4294967295,
+                "font_asc": -0.09830769230769221,
+                "font_desc": -0.01969230769230773
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "zoom_3",
+            "x": 111.5,
+            "y": 258.75,
+            "w": 20.0,
+            "h": 20.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "zoom_3_control",
+                "x": 111.5,
+                "y": 258.75,
+                "w": 20.0,
+                "h": 20.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "zoom_3_label",
+                "text": "3x",
+                "x": 117.756,
+                "y": 264.683,
+                "w": 11.488,
+                "h": 8.992,
+                "size": 6.5,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 8.992,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4294967295,
+                "font_asc": -0.09830769230769221,
+                "font_desc": -0.033692307692307855
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "zoom_5",
+            "x": 131.5,
+            "y": 258.75,
+            "w": 20.0,
+            "h": 20.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "zoom_5_control",
+                "x": 131.5,
+                "y": 258.75,
+                "w": 20.0,
+                "h": 20.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "zoom_5_label",
+                "text": "5x",
+                "x": 137.756,
+                "y": 264.7675,
+                "w": 11.488,
+                "h": 8.907499999999999,
+                "size": 6.5,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 8.907499999999999,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4294967295,
+                "font_asc": -0.11130769230769233,
+                "font_desc": -0.03369230769230763
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_night",
+            "x": 10.050000000000011,
+            "y": 288.3,
+            "w": 26.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "mode_night_control",
+                "x": 10.050000000000011,
+                "y": 288.3,
+                "w": 26.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "mode_night_label",
+                "text": "夜景",
+                "x": 15.050000000000011,
+                "y": 294.97200000000004,
+                "w": 20.0,
+                "h": 11.504,
+                "size": 8.0,
+                "weight": 500,
+                "tracking": 0,
+                "line_height": 11.504,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Medium.ttf",
+                "color": 4285690482,
+                "font_asc": -0.05800000000000005,
+                "font_desc": -0.0480000000000001
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_snapshot",
+            "x": 36.2,
+            "y": 288.3,
+            "w": 26.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "mode_snapshot_control",
+                "x": 36.2,
+                "y": 288.3,
+                "w": 26.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "mode_snapshot_label",
+                "text": "闪拍",
+                "x": 41.2,
+                "y": 295.036,
+                "w": 20.0,
+                "h": 11.424,
+                "size": 8.0,
+                "weight": 500,
+                "tracking": 0,
+                "line_height": 11.424,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Medium.ttf",
+                "color": 4294967295,
+                "font_asc": -0.06600000000000006,
+                "font_desc": -0.046000000000000096
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_portrait",
+            "x": 62.349999999999994,
+            "y": 288.3,
+            "w": 26.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "mode_portrait_control",
+                "x": 62.349999999999994,
+                "y": 288.3,
+                "w": 26.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "mode_portrait_label",
+                "text": "人像",
+                "x": 67.35,
+                "y": 295.044,
+                "w": 20.0,
+                "h": 11.418,
+                "size": 8.0,
+                "weight": 500,
+                "tracking": 0,
+                "line_height": 11.418,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Medium.ttf",
+                "color": 4294967295,
+                "font_asc": -0.06699999999999995,
+                "font_desc": -0.04624999999999996
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_photo",
+            "x": 88.5,
+            "y": 288.3,
+            "w": 26.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "mode_photo_control",
+                "x": 88.5,
+                "y": 288.3,
+                "w": 26.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "mode_photo_label",
+                "text": "拍照",
+                "x": 93.5,
+                "y": 294.988,
+                "w": 20.0,
+                "h": 11.559999999999999,
+                "size": 8.0,
+                "weight": 700,
+                "tracking": 0,
+                "line_height": 11.559999999999999,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Bold.ttf",
+                "color": 4294967295,
+                "font_asc": -0.05999999999999983,
+                "font_desc": -0.05699999999999977
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_video",
+            "x": 114.65,
+            "y": 288.3,
+            "w": 26.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "mode_video_control",
+                "x": 114.65,
+                "y": 288.3,
+                "w": 26.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "mode_video_label",
+                "text": "录像",
+                "x": 119.65,
+                "y": 295.044,
+                "w": 20.0,
+                "h": 11.44,
+                "size": 8.0,
+                "weight": 500,
+                "tracking": 0,
+                "line_height": 11.44,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Medium.ttf",
+                "color": 4294967295,
+                "font_asc": -0.06699999999999995,
+                "font_desc": -0.04899999999999999
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_pro",
+            "x": 140.8,
+            "y": 288.3,
+            "w": 26.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "mode_pro_control",
+                "x": 140.8,
+                "y": 288.3,
+                "w": 26.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "mode_pro_label",
+                "text": "专业",
+                "x": 145.8,
+                "y": 295.004,
+                "w": 20.0,
+                "h": 11.48,
+                "size": 8.0,
+                "weight": 500,
+                "tracking": 0,
+                "line_height": 11.48,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Medium.ttf",
+                "color": 4294967295,
+                "font_asc": -0.062000000000000055,
+                "font_desc": -0.04900000000000021
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_more",
+            "x": 166.95,
+            "y": 288.3,
+            "w": 26.0,
+            "h": 28.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "mode_more_control",
+                "x": 166.95,
+                "y": 288.3,
+                "w": 26.0,
+                "h": 28.0,
+                "enabled": 1
+              },
+              {
+                "t": "text",
+                "id": "mode_more_label",
+                "text": "更多",
+                "x": 171.95,
+                "y": 295.012,
+                "w": 20.0,
+                "h": 11.463999999999999,
+                "size": 8.0,
+                "weight": 500,
+                "tracking": 0,
+                "line_height": 11.463999999999999,
+                "alignx": 0,
+                "variant": "single_line",
+                "font_src": "self:resources/service/NotoSansSC-Medium.ttf",
+                "color": 4285690482,
+                "font_asc": -0.06299999999999994,
+                "font_desc": -0.047999999999999876
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0],\"label\":[1]}}"
+          },
+          {
+            "t": "stack",
+            "id": "mode_dot",
+            "x": 99.5,
+            "y": 309.25,
+            "w": 4.0,
+            "h": 4.0,
+            "c": [],
+            "variant": "surface",
+            "bg": 4293015084,
+            "radius": 2.0
+          },
+          {
+            "t": "stack",
+            "id": "thumbnail",
+            "x": 26.6,
+            "y": 334.9,
+            "w": 22.0,
+            "h": 22.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "thumbnail_control",
+                "x": 26.6,
+                "y": 334.9,
+                "w": 22.0,
+                "h": 22.0,
+                "enabled": 1
+              },
+              {
+                "t": "stack",
+                "id": "thumbnail_ring",
+                "x": 26.6,
+                "y": 334.9,
+                "w": 22.0,
+                "h": 22.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294967295,
+                "radius": 11.0
+              },
+              {
+                "t": "stack",
+                "id": "thumbnail_img",
+                "x": 27.35,
+                "y": 335.65,
+                "w": 20.5,
+                "h": 20.5,
+                "c": [],
+                "variant": "surface",
+                "bg": 4290361265,
+                "radius": 10.25
+              },
+              {
+                "t": "stack",
+                "id": "thumbnail_line",
+                "x": 28.1,
+                "y": 345.4,
+                "w": 19.0,
+                "h": 1.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4280953386,
+                "radius": 0.0
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0]}}"
+          },
+          {
+            "t": "stack",
+            "id": "shutter",
+            "x": 85.5,
+            "y": 329.85,
+            "w": 32.0,
+            "h": 32.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "shutter_control",
+                "x": 85.5,
+                "y": 329.85,
+                "w": 32.0,
+                "h": 32.0,
+                "enabled": 1
+              },
+              {
+                "t": "stack",
+                "id": "shutter_ring",
+                "x": 85.5,
+                "y": 329.85,
+                "w": 32.0,
+                "h": 32.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294967295,
+                "radius": 16.0
+              },
+              {
+                "t": "stack",
+                "id": "shutter_gap",
+                "x": 87.0,
+                "y": 331.35,
+                "w": 29.0,
+                "h": 29.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4278190080,
+                "radius": 14.5
+              },
+              {
+                "t": "stack",
+                "id": "shutter_disc",
+                "x": 89.5,
+                "y": 333.85,
+                "w": 24.0,
+                "h": 24.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4294967295,
+                "radius": 12.0
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0]}}"
+          },
+          {
+            "t": "stack",
+            "id": "switch_camera",
+            "x": 154.4,
+            "y": 334.9,
+            "w": 22.0,
+            "h": 22.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "switch_camera_control",
+                "x": 154.4,
+                "y": 334.9,
+                "w": 22.0,
+                "h": 22.0,
+                "enabled": 1
+              },
+              {
+                "t": "stack",
+                "id": "switch_camera_bg",
+                "x": 154.4,
+                "y": 334.9,
+                "w": 22.0,
+                "h": 22.0,
+                "c": [],
+                "variant": "surface",
+                "bg": 4279440147,
+                "radius": 11.0,
+                "border": 0.7,
+                "bordercolor": 4294967295
+              },
+              {
+                "t": "svg",
+                "id": "switch_camera_icon",
+                "x": 159.4,
+                "y": 339.9,
+                "w": 12.0,
+                "h": 12.0,
+                "src": ""
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0]}}"
+          },
+          {
+            "t": "stack",
+            "id": "treasure_handle",
+            "x": 86.45,
+            "y": 362.3,
+            "w": 30.0,
+            "h": 16.0,
+            "c": [
+              {
+                "t": "button",
+                "id": "treasure_handle_control",
+                "x": 86.45,
+                "y": 362.3,
+                "w": 30.0,
+                "h": 16.0,
+                "enabled": 1
+              },
+              {
+                "t": "svg",
+                "id": "treasure_handle_icon",
+                "x": 95.5,
+                "y": 364.3,
+                "w": 12.0,
+                "h": 12.0,
+                "src": ""
+              }
+            ],
+            "kit": "{\"widget\":\"KitButton\",\"bindings\":{\"control\":[0]}}"
+          }
+        ],
+        "variant": "surface",
+        "bg": 4278190080,
+        "radius": 0.0
+      }
+    ]
+  }
+}

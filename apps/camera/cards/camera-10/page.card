@@ -1,0 +1,266 @@
+# ledger camera-10@1.0.0
+# level: L0
+# profile: ui/l0
+# Static design fixture, runtime native Kit composition.
+theme light
+copy filter_label_text { class: user-copy, en: "原色" }
+copy box_settings_label_text { class: user-copy, en: "设置" }
+copy box_vision_label_text { class: user-copy, en: "小艺视觉" }
+copy box_xmage_label_text { class: user-copy, en: "XMAGE 风格" }
+copy box_exposure_label_text { class: user-copy, en: "曝光" }
+copy box_ai_label_text { class: user-copy, en: "AI 辅助构图" }
+copy box_watermark_label_text { class: user-copy, en: "水印" }
+copy box_ratio_glyph_text { class: user-copy, en: "4:3" }
+copy box_ratio_label_text { class: user-copy, en: "照片比例" }
+copy box_flash_label_text { class: user-copy, en: "闪光灯" }
+state ai_compose_control_enabled { shape: bool, initial: true }
+state flash_control_enabled { shape: bool, initial: true }
+state live_photo_control_enabled { shape: bool, initial: true }
+state filter_control_enabled { shape: bool, initial: true }
+state thumbnail_control_enabled { shape: bool, initial: true }
+state shutter_control_enabled { shape: bool, initial: true }
+state switch_camera_control_enabled { shape: bool, initial: true }
+state box_settings_control_enabled { shape: bool, initial: true }
+state box_vision_control_enabled { shape: bool, initial: true }
+state box_xmage_control_enabled { shape: bool, initial: true }
+state box_exposure_control_enabled { shape: bool, initial: true }
+state box_ai_control_enabled { shape: bool, initial: true }
+state box_watermark_control_enabled { shape: bool, initial: true }
+state box_ratio_control_enabled { shape: bool, initial: true }
+state box_flash_control_enabled { shape: bool, initial: true }
+state treasure_handle_control_enabled { shape: bool, initial: true }
+component Surfacee138f8831782(instance: text) {
+  view Kit(component: "Surfacee138f8831782", instance: instance) { slot }
+}
+component Surfacefba83cd594ba(instance: text) {
+  view Kit(component: "Surfacefba83cd594ba", instance: instance) { slot }
+}
+component Surfacef88ef6b699d9(instance: text) {
+  view Kit(component: "Surfacef88ef6b699d9", instance: instance) { slot }
+}
+component KitButtonc46f1658a77f(instance: text) {
+  view Kit(component: "KitButtonc46f1658a77f", instance: instance) { slot }
+}
+component NativeButton02f1d1bd99b4(instance: text, enabled: bool) {
+  view Kit(component: "NativeButton02f1d1bd99b4", instance: instance, enabled: enabled)
+}
+component Surface7e280dacf378(instance: text) {
+  view Kit(component: "Surface7e280dacf378", instance: instance) { slot }
+}
+component Vectore0a378fde04f(instance: text) {
+  view Kit(component: "Vectore0a378fde04f", instance: instance)
+}
+component Surface98f55d464158(instance: text) {
+  view Kit(component: "Surface98f55d464158", instance: instance) { slot }
+}
+component KitButton5cf8a148faf2(instance: text) {
+  view Kit(component: "KitButton5cf8a148faf2", instance: instance) { slot }
+}
+component Group0e9585cd3264(instance: text) {
+  view Kit(component: "Group0e9585cd3264", instance: instance) { slot }
+}
+component Textea52b1f49bc3(instance: text, text: text) {
+  view Kit(component: "Textea52b1f49bc3", instance: instance, text: text)
+}
+component Surface4a0fb534768d(instance: text) {
+  view Kit(component: "Surface4a0fb534768d", instance: instance) { slot }
+}
+component Surface09291e166a69(instance: text) {
+  view Kit(component: "Surface09291e166a69", instance: instance) { slot }
+}
+component Surface55474c1c8b64(instance: text) {
+  view Kit(component: "Surface55474c1c8b64", instance: instance) { slot }
+}
+component Surface4720408623f2(instance: text) {
+  view Kit(component: "Surface4720408623f2", instance: instance) { slot }
+}
+component Surfacecbf2ec973839(instance: text) {
+  view Kit(component: "Surfacecbf2ec973839", instance: instance) { slot }
+}
+component Surface81c14eb311c9(instance: text) {
+  view Kit(component: "Surface81c14eb311c9", instance: instance) { slot }
+}
+component Surface6e0c3c3a3f3a(instance: text) {
+  view Kit(component: "Surface6e0c3c3a3f3a", instance: instance) { slot }
+}
+component Surface2e5065468308(instance: text) {
+  view Kit(component: "Surface2e5065468308", instance: instance) { slot }
+}
+component Surfaced4c135268ed8(instance: text) {
+  view Kit(component: "Surfaced4c135268ed8", instance: instance) { slot }
+}
+component Text1d48bf73de7c(instance: text, text: text) {
+  view Kit(component: "Text1d48bf73de7c", instance: instance, text: text)
+}
+component Textdf73989c732b(instance: text, text: text) {
+  view Kit(component: "Textdf73989c732b", instance: instance, text: text)
+}
+component Text33f6d9ad917c(instance: text, text: text) {
+  view Kit(component: "Text33f6d9ad917c", instance: instance, text: text)
+}
+component Text82405a725e8a(instance: text, text: text) {
+  view Kit(component: "Text82405a725e8a", instance: instance, text: text)
+}
+component Text965ad4baad1f(instance: text, text: text) {
+  view Kit(component: "Text965ad4baad1f", instance: instance, text: text)
+}
+component Text89212dde3301(instance: text, text: text) {
+  view Kit(component: "Text89212dde3301", instance: instance, text: text)
+}
+component KitButton1e1e6df83d34(instance: text) {
+  view Kit(component: "KitButton1e1e6df83d34", instance: instance) { slot }
+}
+component Text2fea18eaf500(instance: text, text: text) {
+  view Kit(component: "Text2fea18eaf500", instance: instance, text: text)
+}
+component Text7d3c048d5812(instance: text, text: text) {
+  view Kit(component: "Text7d3c048d5812", instance: instance, text: text)
+}
+component Surface717e8e46a383(instance: text) {
+  view Kit(component: "Surface717e8e46a383", instance: instance) { slot }
+}
+component Surface084a5c71a0d0(instance: text) {
+  view Kit(component: "Surface084a5c71a0d0", instance: instance) { slot }
+}
+
+view root Surfacee138f8831782(instance: "page") {
+  Surfacefba83cd594ba(instance: "screen") {
+    Surfacef88ef6b699d9(instance: "viewfinder") {
+
+    }
+    KitButtonc46f1658a77f(instance: "ai_compose") {
+      NativeButton02f1d1bd99b4(instance: "ai_compose_control", enabled: ai_compose_control_enabled)
+      Surface7e280dacf378(instance: "ai_compose_bg") {
+
+      }
+      Vectore0a378fde04f(instance: "ai_compose_icon")
+    }
+    Surface98f55d464158(instance: "top_pill") {
+
+    }
+    KitButtonc46f1658a77f(instance: "flash") {
+      NativeButton02f1d1bd99b4(instance: "flash_control", enabled: flash_control_enabled)
+      Vectore0a378fde04f(instance: "flash_icon")
+    }
+    KitButtonc46f1658a77f(instance: "live_photo") {
+      NativeButton02f1d1bd99b4(instance: "live_photo_control", enabled: live_photo_control_enabled)
+      Vectore0a378fde04f(instance: "live_photo_icon")
+    }
+    KitButton5cf8a148faf2(instance: "filter") {
+      NativeButton02f1d1bd99b4(instance: "filter_control", enabled: filter_control_enabled)
+      Group0e9585cd3264(instance: "filter_frame") {
+
+      }
+      Vectore0a378fde04f(instance: "filter_icon")
+      Textea52b1f49bc3(instance: "filter_label", text: copy.filter_label_text)
+    }
+    KitButtonc46f1658a77f(instance: "thumbnail") {
+      NativeButton02f1d1bd99b4(instance: "thumbnail_control", enabled: thumbnail_control_enabled)
+      Surface4a0fb534768d(instance: "thumbnail_ring") {
+
+      }
+      Surface09291e166a69(instance: "thumbnail_img") {
+
+      }
+      Surface55474c1c8b64(instance: "thumbnail_line") {
+
+      }
+    }
+    KitButtonc46f1658a77f(instance: "shutter") {
+      NativeButton02f1d1bd99b4(instance: "shutter_control", enabled: shutter_control_enabled)
+      Surface4720408623f2(instance: "shutter_ring") {
+
+      }
+      Surfacecbf2ec973839(instance: "shutter_gap") {
+
+      }
+      Surface81c14eb311c9(instance: "shutter_disc") {
+
+      }
+    }
+    KitButtonc46f1658a77f(instance: "switch_camera") {
+      NativeButton02f1d1bd99b4(instance: "switch_camera_control", enabled: switch_camera_control_enabled)
+      Surface6e0c3c3a3f3a(instance: "switch_camera_bg") {
+
+      }
+      Vectore0a378fde04f(instance: "switch_camera_icon")
+    }
+    Surface2e5065468308(instance: "box") {
+      KitButton5cf8a148faf2(instance: "box_settings") {
+        NativeButton02f1d1bd99b4(instance: "box_settings_control", enabled: box_settings_control_enabled)
+        Surfaced4c135268ed8(instance: "box_settings_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_settings_icon")
+        Text1d48bf73de7c(instance: "box_settings_label", text: copy.box_settings_label_text)
+      }
+      KitButton5cf8a148faf2(instance: "box_vision") {
+        NativeButton02f1d1bd99b4(instance: "box_vision_control", enabled: box_vision_control_enabled)
+        Surfaced4c135268ed8(instance: "box_vision_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_vision_icon")
+        Textdf73989c732b(instance: "box_vision_label", text: copy.box_vision_label_text)
+      }
+      KitButton5cf8a148faf2(instance: "box_xmage") {
+        NativeButton02f1d1bd99b4(instance: "box_xmage_control", enabled: box_xmage_control_enabled)
+        Surfaced4c135268ed8(instance: "box_xmage_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_xmage_icon")
+        Text33f6d9ad917c(instance: "box_xmage_label", text: copy.box_xmage_label_text)
+      }
+      KitButton5cf8a148faf2(instance: "box_exposure") {
+        NativeButton02f1d1bd99b4(instance: "box_exposure_control", enabled: box_exposure_control_enabled)
+        Surfaced4c135268ed8(instance: "box_exposure_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_exposure_icon")
+        Text82405a725e8a(instance: "box_exposure_label", text: copy.box_exposure_label_text)
+      }
+      KitButton5cf8a148faf2(instance: "box_ai") {
+        NativeButton02f1d1bd99b4(instance: "box_ai_control", enabled: box_ai_control_enabled)
+        Surfaced4c135268ed8(instance: "box_ai_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_ai_icon")
+        Text965ad4baad1f(instance: "box_ai_label", text: copy.box_ai_label_text)
+      }
+      KitButton5cf8a148faf2(instance: "box_watermark") {
+        NativeButton02f1d1bd99b4(instance: "box_watermark_control", enabled: box_watermark_control_enabled)
+        Surfaced4c135268ed8(instance: "box_watermark_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_watermark_icon")
+        Text89212dde3301(instance: "box_watermark_label", text: copy.box_watermark_label_text)
+      }
+      KitButton1e1e6df83d34(instance: "box_ratio") {
+        NativeButton02f1d1bd99b4(instance: "box_ratio_control", enabled: box_ratio_control_enabled)
+        Surfaced4c135268ed8(instance: "box_ratio_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_ratio_icon")
+        Text2fea18eaf500(instance: "box_ratio_glyph", text: copy.box_ratio_glyph_text)
+        Text7d3c048d5812(instance: "box_ratio_label", text: copy.box_ratio_label_text)
+      }
+      KitButton5cf8a148faf2(instance: "box_flash") {
+        NativeButton02f1d1bd99b4(instance: "box_flash_control", enabled: box_flash_control_enabled)
+        Surfaced4c135268ed8(instance: "box_flash_circle") {
+
+        }
+        Vectore0a378fde04f(instance: "box_flash_icon")
+        Text82405a725e8a(instance: "box_flash_label", text: copy.box_flash_label_text)
+      }
+      Surface717e8e46a383(instance: "box_page_active") {
+
+      }
+      Surface084a5c71a0d0(instance: "box_page_other") {
+
+      }
+    }
+    KitButtonc46f1658a77f(instance: "treasure_handle") {
+      NativeButton02f1d1bd99b4(instance: "treasure_handle_control", enabled: treasure_handle_control_enabled)
+      Vectore0a378fde04f(instance: "treasure_handle_icon")
+    }
+  }
+}

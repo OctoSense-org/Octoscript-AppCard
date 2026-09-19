@@ -1,0 +1,118 @@
+{
+  "provider": "Authored HTML storyboard measured from the Mate 70 Air camera app, rendered by headless Chromium through Playwright; no generative image model",
+  "model": "chromium 153.0.8010.12 (playwright)",
+  "requested_size": [
+    3488,
+    4950
+  ],
+  "quality": "high",
+  "actual_size": [
+    3488,
+    4950
+  ],
+  "requested_size_matches_actual": true,
+  "atlas_count": 1,
+  "performed_by_intake": false,
+  "provenance": "Provider/model/requested settings are caller declarations; dimensions and hashes are measured from the supplied bytes",
+  "image_sha256": "a4e18f07968c8fd3fe41aff1a6160f4b0921606f774dc4e484653e0f0848c034",
+  "atlas_sha256": "b60d54c5c5157a7f4580d5053637d6d698ce451f0505d7f4c36c2d7cdef1969f",
+  "prompt_sha256": "d73bf97d550d3ff6ec1dd540ba62d659138246759846b19c4ec1a8ccbe24b432",
+  "source_manifest_sha256": "969c71b54416538457425a397dd16be0c0818d14267410aa9d15fd094e46570b",
+  "source_crop": [
+    1768,
+    1716,
+    812,
+    1552
+  ],
+  "normalization": {
+    "coordinate_convention": "continuous top-left pixel-boundary coordinates; affine arrays are [a,b,c,d,e,f]",
+    "method": "uniform affine contain",
+    "resampler": "Pillow BICUBIC",
+    "source_crop_pixels": [
+      1768,
+      1716,
+      812,
+      1552
+    ],
+    "source_crop_size": [
+      812,
+      1552
+    ],
+    "artboard": [
+      406,
+      776
+    ],
+    "pixel_ratio": 2,
+    "reference_size": [
+      812,
+      1552
+    ],
+    "uniform_scale": 1.0,
+    "offset_pixels": [
+      0.0,
+      0.0
+    ],
+    "content_bounds_pixels": [
+      0.0,
+      0.0,
+      812.0,
+      1552.0
+    ],
+    "crop_to_reference_pixels": [
+      1.0,
+      0,
+      0.0,
+      0,
+      1.0,
+      0.0
+    ],
+    "reference_pixels_to_crop": [
+      1.0,
+      0,
+      -0.0,
+      0,
+      1.0,
+      -0.0
+    ],
+    "atlas_to_reference_pixels": [
+      1.0,
+      0,
+      -1768.0,
+      0,
+      1.0,
+      -1716.0
+    ],
+    "reference_pixels_to_atlas": [
+      1.0,
+      0,
+      1768.0,
+      0,
+      1.0,
+      1716.0
+    ],
+    "atlas_to_logical": [
+      0.5,
+      0,
+      -884.0,
+      0,
+      0.5,
+      -858.0
+    ],
+    "logical_to_atlas": [
+      2.0,
+      0,
+      1768.0,
+      0,
+      2.0,
+      1716.0
+    ],
+    "matte_rgb": [
+      240,
+      245,
+      242
+    ],
+    "stretched": false,
+    "reference_resampled": true
+  },
+  "note": "Derived reference from one atlas; no independent screen generation"
+}
